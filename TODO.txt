@@ -1,0 +1,34 @@
+Naman TODO :-
+
+As discussed on 1st March 2019, Friday, the following groups will work on the layout of the respective modules.
+Groups:
+    1. Akshi, Pranati and Durgesh:
+        Main pages and all the static pages
+        Make the first page interactive
+        Make changes the contents of static pages
+
+
+    2. Aayush and Nitish:
+        Start up
+            Changes in layout
+
+
+    3. Deepali and Sonal:
+        Investor
+            Changes in layout
+
+    4. Mohit and Riddhi:
+        Forms
+            All the registration and login forms for startups, investors and members
+            Adding fields
+            Validate using regular expressions
+
+ADDITIONAL POINTS DISCUSSED:
+    Please make sure all the pages are responsive
+    Maintain colour code
+    Maintain consistency in terms of similar parts such as nav bars and buttons
+    Top nav bar should be sticky
+    Till wednesday, we will complete the layout and if possible, backend
+    Please maintain consistency in code by using 4 space tab and proper indentations
+    Simultaneously, keep updating the external css and js files also
+    Wherever in the code, any further changes or functionalities are left, put a comment “TODO” and later add the description for that task in the todo file.
