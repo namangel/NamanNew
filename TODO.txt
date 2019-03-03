@@ -1,4 +1,4 @@
-Naman TODO :-
+﻿Naman TODO :-
 
 As discussed on 1st March 2019, Friday, the following groups will work on the layout of the respective modules.
 Groups:
@@ -32,3 +32,10 @@ ADDITIONAL POINTS DISCUSSED:
     Please maintain consistency in code by using 4 space tab and proper indentations
     Simultaneously, keep updating the external css and js files also
     Wherever in the code, any further changes or functionalities are left, put a comment “TODO” and later add the description for that task in the todo file.
+
+Current colour scheme:
+Nav bar background colour: #F4F5FA
+Button background-color: #0e3c58
+For invesotr, for startup button background:#8CC1E4
+Sign up/sign in button background-color: #B2DCFF
+New Startup side bar: #0a2b40
