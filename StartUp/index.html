@@ -208,15 +208,7 @@
               </div>
               <div class="col-md-9">
                   <div class="row">
-                      <div class="col-md-12">
-                          <div class="content-item">
-                              <!-- <small>2010 - 2012</small>
-                              <h3>MA Product Design</h3>
-                              <h4>University of California</h4> -->
-
-                              <div width=100%><video controls><source src='videotest.mp4' type='video/mp4'>Your browser does not support the video tag.</video></div>
-                          </div>
-                      </div>
+                    <video width="100%" controls><source src='videotest.mp4' type='video/mp4'>Your browser does not support the video tag.</video>
                   </div>
               </div>
           </div>
@@ -485,7 +477,7 @@
 
     <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="financials">
       <div class="w-100">
-          <h2 class="mb-5">Current Funding Round Aayush</h2>
+          <h2 class="mb-5">Current Funding Round</h2>
           <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
             <div class="resume-content">
               <h3 class="mb-0">Round : Round Name</h3>
@@ -498,7 +490,7 @@
             </div>
           </div>
 
-        <div class="row" style="padding-top:20px">
+        <div class="row" style="padding-bottom:20px">
             <div class="col-md-3">
                 <div class="section-title">
                     <h3>Funding History</h3>
@@ -672,15 +664,32 @@
 
     <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="documents">
         <div class="w-100">
-            <h4>Business Plan</h4>
-            <p>What is your long term business plan? (Upload .pdf file)</p>
-            
+            <div style="padding-bottom:20px">
+                <h4>Business Plan</h4>
+                <p>What is your long term business plan? (Upload .pdf file)</p>
+                <form action="Doc.php" method="post" enctype="multipart/form-data">
+                    <input type="file" name="businessplan" value="Select File">
+                    <input type="submit" name="subbusinessplan" value="Submit">
+                </form>
+            </div>
+            <div style="padding-bottom:20px">
+                <h4>Financial Projection</h4>
+                <p>Provide an overview of where your financials are headed within the next 5 years. Preferred file types: .pdf, .doc, .xls</p>
+                <form action="Doc.php" method="post" enctype="multipart/form-data">
+                    <input type="file" name="financialprojection" value="Select File">
+                    <input type="submit" name="subfinancialprojection" value="Submit">
+                </form>
+            </div>
 
-            <h4>Financial Projection</h4>
-            <p>Provide an overview of where your financials are headed within the next 5 years. Preferred file types: .pdf, .doc, .xls</p>
+            <div style="padding-bottom:20px">
+                <h4>Additional Documents</h4>
+                <p>Upload any documents to support your company. (Upload all document as a single PDF File )</p>
+                <form action="Doc.php" method="post" enctype="multipart/form-data">
+                    <input type="file" name="add_doc" value="Select File">
+                    <input type="submit" name="sub_add_docs" value="Submit">
+                </form>
+            </div>
 
-            <h4>Additional Documents</h4>
-            <p>Upload any documents to support your company. (Upload all document as a single PDF File )</p>
         </div>
     </section>
 
