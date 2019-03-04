@@ -102,6 +102,25 @@ p.lead{
  .social-icons a:hover{
     background-color:#0e3c58
  }
+
+ .browse-icons a{
+   display:inline-block;
+   height:5.5rem;
+   width:5.5rem;
+   background-color:#0e3c58;
+   color:#fff!important;
+   border-radius:100%;
+   text-align:center;
+   font-size:2.5rem;
+   line-height:5.5rem;
+   margin-right:1rem
+}
+.browse-icons a:last-child{
+   margin-right:0
+}
+.browse-icons a:hover{
+   opacity: 0.7;
+}
 .dev-icons{
    font-size:3rem
 }
@@ -209,9 +228,6 @@ a:active,a:focus,a:hover{
     max-height: 20rem;
     text-align: center;
     background-color: white; 
-    border: 1px solid  #cbcfe7;
-    margin-top: 10px;
-    float: right;
 }
 .im:hover{
     box-shadow: 1px 1px 2px 1px #cbcfe7;
@@ -233,10 +249,32 @@ a:active,a:focus,a:hover{
     padding: 0.75rem 1rem;
     background-color: #fff;
     text-transform: uppercase;
-    /* color: #fff; */
   }
   .btn-steps:hover {
     color: #0e3c58;
-    /* opacity: 0.7; */
   }
+  .btn-browse {
+   font-size: 1.8rem;
+   font-weight: 200;
+   letter-spacing: 0.05rem;
+   padding: 0.75rem 1rem;
+   background-color: #fff;
+   text-transform: uppercase;
+ }
+ .btn-browse:hover {
+   color: #0e3c58;
+ }
+ .btn-meetus {
+   font-size: 1rem;
+   font-weight: 200;
+   letter-spacing: 0.05rem;
+   padding: 0.5rem 0.8rem;
+   background-color: #0e3c58;
+   text-transform: uppercase;
+   color: #fff;
+ }
+ .btn-meetus:hover {
+   color: #fff;
+   opacity: 0.7;
+ }
 
