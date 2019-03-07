@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+
 <?php
     require '../server.php';
 	if(!isset($_SESSION['StpID'])){
@@ -187,9 +189,8 @@
     		mysqli_query($db, $q);
     	}
 
+        header('location:index.php');
     }
-
-
 
 ?>
 
@@ -265,7 +266,7 @@
           <a class="nav-link " href="#">Settings</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Logout</a>
+          <a class="nav-link" href="../logout.php">Logout</a>
         </li>
       </ul>
     </div>
@@ -790,7 +791,6 @@
             </div>
           </div>
 
-        <div>
 
         <div class="subheading"><?=$Address?> , <?=$City?> , <?=$State?> , <?=$Country?>.
           <!-- <a href="mailto:name@email.com">name@email.com</a> -->
@@ -1108,53 +1108,53 @@
                     <form method="post" action="index.php">
                         <div class="accordion" id="accordionExample">
                             <div class="card">
-                                    <div class="card-body">
-                                        <div class="form-group">
-                                            <label>Customer Problem</label><br>
-    			    						<small>What customer problem does your product and/or service solve? (upto 200 words)</small>
-                                            <textarea rows="5" name="custform" id="custform" class='form-control' autofocus></textarea>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Products & Services</label><br>
-                                            <small>Describe the product or service that you will sell and how it solves the customer problem, listing the main value proposition for each product/service. (upto 200 words)</small>
-                                            <textarea rows="5" name="prodser" id="prodser" class='form-control'></textarea>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Target Market</label><br>
-                                            <small>Define the important geographic, demographic, and/or psychographic characteristics of the market within which your customer segments exist. (upto 200 words)</small>
-                                            <textarea rows="5" name="TarMar" id="TarMar" class='form-control'></textarea>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Business Model</label><br>
-                                            <small>What strategy will you employ to build, deliver, and retain company value (e.g., profits)? (upto 200 words)</small>
-                                            <textarea rows="5" name="BModel" id="BModel" class='form-control'></textarea>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Market sizing</label><br>
-                                            <small>Estimate and realize the potential of you Market.</small>
-                                            <textarea rows="5" name="MarketSizing" id="MarketSizing" class='form-control'></textarea>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Customer Segments</label><br>
-                                            <small>Outline your targeted customer segments. These are the specific subsets of your target market that you will focus on to gain traction. (upto 200 words)</small>
-                                            <textarea rows="5" name="CSegments" id="CSegments" class='form-control'></textarea>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Sales & Marketing Strategy</label><br>
-                                            <small>What is your customer acquisition and retention strategy? Detail how you will promote, sell and create customer loyalty for your products and services. (upto 200 words)</small>
-                                            <textarea rows="5" name="SMStrat" id="SMStrat" class='form-control'></textarea>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Competitors</label><br>
-                                            <small>Describe the competitive landscape and your competitors' strengths and weaknesses. If direct competitors don't exist, describe the existing alternatives. (upto 200 words)</small>
-                                            <textarea rows="5" name="Competitors" id="Competitors" class='form-control'></textarea>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Competitive Advantage</label><br>
-                                            <small>What is your company's competitive or unfair advantage? This can include patents, first mover advantage, unique expertise, or proprietary processes/technology. (upto 200 words)</small>
-                                            <textarea rows="5" name="CompAdv" id="CompAdv" class='form-control'></textarea>
-                                        </div>
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label>Customer Problem</label><br>
+			    						<small>What customer problem does your product and/or service solve? (upto 200 words)</small>
+                                        <textarea rows="5" name="custform" id="custform" class='form-control' autofocus></textarea>
                                     </div>
+                                    <div class="form-group">
+                                        <label>Products & Services</label><br>
+                                        <small>Describe the product or service that you will sell and how it solves the customer problem, listing the main value proposition for each product/service. (upto 200 words)</small>
+                                        <textarea rows="5" name="prodser" id="prodser" class='form-control'></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Target Market</label><br>
+                                        <small>Define the important geographic, demographic, and/or psychographic characteristics of the market within which your customer segments exist. (upto 200 words)</small>
+                                        <textarea rows="5" name="TarMar" id="TarMar" class='form-control'></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Business Model</label><br>
+                                        <small>What strategy will you employ to build, deliver, and retain company value (e.g., profits)? (upto 200 words)</small>
+                                        <textarea rows="5" name="BModel" id="BModel" class='form-control'></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Market sizing</label><br>
+                                        <small>Estimate and realize the potential of you Market.</small>
+                                        <textarea rows="5" name="MarketSizing" id="MarketSizing" class='form-control'></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Customer Segments</label><br>
+                                        <small>Outline your targeted customer segments. These are the specific subsets of your target market that you will focus on to gain traction. (upto 200 words)</small>
+                                        <textarea rows="5" name="CSegments" id="CSegments" class='form-control'></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Sales & Marketing Strategy</label><br>
+                                        <small>What is your customer acquisition and retention strategy? Detail how you will promote, sell and create customer loyalty for your products and services. (upto 200 words)</small>
+                                        <textarea rows="5" name="SMStrat" id="SMStrat" class='form-control'></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Competitors</label><br>
+                                        <small>Describe the competitive landscape and your competitors' strengths and weaknesses. If direct competitors don't exist, describe the existing alternatives. (upto 200 words)</small>
+                                        <textarea rows="5" name="Competitors" id="Competitors" class='form-control'></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Competitive Advantage</label><br>
+                                        <small>What is your company's competitive or unfair advantage? This can include patents, first mover advantage, unique expertise, or proprietary processes/technology. (upto 200 words)</small>
+                                        <textarea rows="5" name="CompAdv" id="CompAdv" class='form-control'></textarea>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="modal-footer d-flex justify-content-center">
