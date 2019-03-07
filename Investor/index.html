@@ -10,6 +10,8 @@
 
   <title>Resume - Start Bootstrap Theme</title>
 
+
+
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -21,17 +23,46 @@
   <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet">
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
   <!-- Custom styles for this template -->
   <link href="css/resume.min.css" rel="stylesheet">
   <link href="css/resume.min.new.css" rel="stylesheet">
 
   <style>
-    .companybasics{
-      font-size: 5rem;
-      background-color: #eee;
-      text-align: center;
+      #LinkedIn, #Facebook, #Twitter, #Instagram, #Others{
+        display: none;
+      }
+    </style>
+  
+    <script>
+      function social() {
+      var x = document.getElementById("soc").value;
+      if (x== "Facebook")
+      {
+        document.getElementById("Facebook").style.display = "block";
+      }
+      if (x== "LinkedIn")
+      {
+        document.getElementById("LinkedIn").style.display = "block";
+      }
+      if (x== "Instagram")
+      {
+        document.getElementById("Instagram").style.display = "block";
+      }
+      if (x== "Twitter")
+      {
+        document.getElementById("Twitter").style.display = "block";
+      }
+      if (x== "Others")
+      {
+        document.getElementById("Others").style.display = "block";
+      }
     }
-  </style>
+    </script>
+  
 
 </head>
 
@@ -39,10 +70,16 @@
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
     <a class="navbar-brand js-scroll-trigger" href="#page-top">
+
       <span class="d-block d-lg-none">Clarence Taylor</span>
       <span class="d-none d-lg-block">
-        <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="img/profile.jpg" alt="">
+        <img class="img-fluid img-profile rounded-circle mx-auto mb-2 " src="img/profile.jpg" alt="">
       </span>
+      <span class="d-block d-lg-block">              
+         <a href=""  data-toggle="modal" data-target="#profileimageform"> 
+         <i class="fa fa-pencil"></i> 
+       </a></span>
+
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -84,47 +121,194 @@
 
   <div class="container-fluid p-0">
 
-      <div class="modal fade" id="modalContactForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+      <div class="modal fade" id="profileimageform" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header text-center">
+                <h4 class="modal-title w-100 font-weight-bold">investor Basics</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body mx-3">
+                <div class="form-group">
+                    <label>Profile Image</label>
+                    <input class="row" type="file" name="cbpic" placeholder=" ">
+                  </div>
+              </div>
+              <div class="modal-footer d-flex justify-content-center">
+                <button class="btn btn-unique">Cancel </button>
+                <button class="btn btn-unique">Save </button>
+    
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal fade" id="modalContactForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header text-center">
+                  <h4 class="modal-title w-100 font-weight-bold">Contact and Social Presence</h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body mx-3">
+                  <div class="accordion" id="accordionExample">
+                    <div class="card">
+                      <h2 class="mb-0">
+                      <button class="btn btn-light btn-block btn-lg" type="button" data-toggle="collapse" data-target="#contact" aria-expanded="true" aria-controls="collapseOne">
+                        Contact Details
+                      </button>
+                      </h2>         
+                      <div id="contact" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                        <div class="card-body">
+                          <div class="form-group">
+                            <label>Phone</label>
+                            <input type="number" class="form-control" name="cbphone">
+                          </div>
+                          <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" class="form-control" name="cbmail">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card">
+                      <div>
+                        <h2 class="mb-0">
+                        <button class="btn btn-light btn-block btn-lg collapsed" type="button" data-toggle="collapse" data-target="#social" aria-expanded="false" aria-controls="collapseTwo">
+                        Social Presence
+                        </button>
+                        </h2>
+                      </div>
+                      <div id="social" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                        <div class="card-body">
+                          <div class="form-group">
+                            <label>Website</label>
+                            <input type="text" class="form-control" name="cbwebsite">
+                          </div> 
+                          <div class="form-group">
+                            <label>Social Media</label>
+                              <select class="custom-select" name="sfsocialmedia" id="soc" required onchange="social()">
+                                <option>Select Social media</option>
+                                <option value="LinkedIn">LinkedIn</option>
+                                <option value="Facebook">Facebook</option>
+                                <option value="Instagram">Instagram</option>
+                                <option value="Twitter">Twitter</option>
+                                <option value="Others">Others</option>
+                              </select>
+      
+                              <div id="LinkedIn" class="form-group">
+                                <i class="fa fa-linkedin">&nbsp;&nbsp;<input type="text" name="sflinkedin"></i><br>
+                              </div>
+                              <div id="Facebook" class="form-group">
+                                <i class="fa fa-facebook">&nbsp;&nbsp;<input type="text" name="sffacebook"></i><br>							
+                              </div>
+                              <div id="Instagram" class="form-group">
+                                <i class="fa fa-instagram">&nbsp;&nbsp;<input type="text" name="sfinstagram"></i><br>
+                              </div>
+                              <div id="Twitter" class="form-group">
+                                <i class="fa fa-twitter">&nbsp;&nbsp;<input type="text" name="sftwitter"></i><br>
+                              </div>
+                              <div id="Others" class="form-group">
+                                <i class="fa fa-globe">&nbsp;&nbsp;<input type="text" name="sfothers"></i><br>
+                            </div>
+                          </div>       
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer d-flex justify-content-center">
+                  <button class="btn btn-unique">Cancel</button>
+                  <button class="btn btn-unique">Save</i></button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+         <div class="modal fade" id="modalInvestmentForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header text-center">
-            <h4 class="modal-title w-100 font-weight-bold">investor Basics</h4>
+            <h4 class="modal-title w-100 font-weight-bold">Add a previous investment</h4>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
+            <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body mx-3">
-              <div class="accordion" id="accordionExample">
-                  <div class="card">
-                    <div class="companybasics">
+            <form>
+              <div class="form-group">
+                <label>Startup Name</label>
+                <input type="text" class="form-control" name="piname">
+              </div>
+              <div class="form-group">
+                <label>Year of Investment</label>
+                <input type="number" min="2000" max="2099" step="1" class="form-control" name="piyear">
+              </div>
+              <div class="form-group">
+                <label>Amount of Investment</label>
+                <input type="number" class="form-control" name="piamount">
+              </div>
+              <div class="form-group">
+                <label>Stage</label>
+                <select class="custom-select" name="pistage" required>
+                  <option>Select Stage</option>
+                  <option>Concept Only</option>
+                  <option>Product in Development</option>
+                  <option>Prototype ready</option>
+                  <option>Full Product Ready</option>
+                  <option>Early Revenue Stage</option>
+                  <option>Growth Stage</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Stake holding(%)</label>
+                <input type="number" class="form-control" name="pistake">
+              </div>
+              <div class="form-group">
+                <label>Website of Startup</label>
+                <input type="text" class="form-control" name="piweb">
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer d-flex justify-content-center">
+            <button class="btn btn-unique">Cancel</button>
+            <button class="btn btn-unique">Save</button>
+          </div>
+        </div>
+      </div>
+    </div>
+      
+          <div class="modal fade" id="modalBasicForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header text-center">
+                  <h4 class="modal-title w-100 font-weight-bold">Investor Basics</h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body mx-3">
+                  <div class="accordion" id="accordionExample">
+                    <div class="card">
                       <h2 class="mb-0">
-                        <button class="btn btn-light btn-block btn-lg" type="button" data-toggle="collapse" data-target="#basics" aria-expanded="true" aria-controls="collapseOne">
-                          Company Basics
-                        </button>
+                      <button class="btn btn-light btn-block btn-lg" type="button" data-toggle="collapse" data-target="#basics" aria-expanded="true" aria-controls="collapseOne">
+                      Company Details
+                      </button>
                       </h2>
-                    </div>
-                
-                    <div id="basics" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-                      <div class="card-body">
+                      <div id="basics" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                        <div class="card-body">
                           <div class="form-group">
-                              <label>Profile Image</label>
-                              <input class="row" type="file" name="cbpic" placeholder=" ">
-                            </div>
-                          <div class="form-group">
-                            <label>Company Name</label>
-                            <input type="text" name="cbcomp" class="form-control" placeholder=" ">
-                          </div>
-                          <div class="form-group">
-                            <label>Founder's First Name</label>
+                            <label>First Name</label>
                             <input type="text" class="form-control" name="cbfname">
                           </div>
                           <div class="form-group">
-                            <label>Founder's Last Name</label>
+                            <label>Last Name</label>
                             <input type="text" class="form-control" name="cblname">
-                          </div>
-                          <div class="form-group">
-                            <label>Role</label>
-                            <input type="text" class="form-control" name="cbrole">                  
                           </div>
                           <div class="form-group">
                               <label>City</label>
@@ -138,89 +322,158 @@
                               <label>Country</label>
                               <input type="text" class="form-control" name="cbcountry">
                           </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="card">
-                    <div class="companybasics">
-                      <h2 class="mb-0">
-                        <button class="btn btn-light btn-block btn-lg collapsed" type="button" data-toggle="collapse" data-target="#industry" aria-expanded="false" aria-controls="collapseTwo">
-                          Industry details
-                        </button>
-                      </h2>
-                    </div>
-                    <div id="industry" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                      <div class="card-body">
-                          <div class="form-group">
-                              <label>Industry of Interest</label>
-                              <input type="text" class="form-control" name="cbioi">
-                            </div>
-                            <div class="form-group">
-                              <label>Investment range</label>
-                              <input type="text" class="form-control" name="cbrange">
-                            </div>
-                            <div class="form-group">
-                                <label>Partner Name</label>
-                                <input type="text" class="form-control" name="cbpartner">
-                              </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="card">
-                    <div class="companybasics">
-                      <h2 class="mb-0">
-                        <button class="btn btn-light btn-block btn-lg collapsed" type="button" data-toggle="collapse" data-target="#contact" aria-expanded="false" aria-controls="collapseThree">
-                          Contact details
-                        </button>
-                      </h2>
-                    </div>
-                    <div id="contact" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                      <div class="card-body">
-                          <div class="form-group">
-                              <label>Phone</label>
-                              <input type="text" class="form-control" name="cbphone">
-                            </div>
-                            <div class="form-group">
-                              <label>Email</label>
-                              <input type="email" class="form-control" name="cbmail">
-                            </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="card">
-                      <div class="companybasics">
-                        <h2 class="mb-0">
-                          <button class="btn btn-light btn-block btn-lg collapsed" type="button" data-toggle="collapse" data-target="#social" aria-expanded="false" aria-controls="collapseTwo">
-                            Social Presence
-                          </button>
-                        </h2>
-                      </div>
-                      <div id="social" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                        <div class="card-body">
-                            <div class="form-group">
-                                <label>Website</label>
-                                <input type="text" class="form-control" name="cbwebsite">
-                              </div>
-                              <div class="form-group">
-                                <label>LinkedIn</label>
-                                <input type="text" class="form-control" name="cblinkedin">
-                              </div>        
                         </div>
                       </div>
                     </div>
+                    <div class="card">
+                      <div>
+                        <h2 class="mb-0">
+                        <button class="btn btn-light btn-block btn-lg collapsed" type="button" data-toggle="collapse" data-target="#industry" aria-expanded="false" aria-controls="collapseTwo">
+                        Industry details
+                        </button>
+                        </h2>
+                      </div>
+                      <div id="industry" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                        <div class="card-body">
+                          <div class="form-group">
+                            <label>Industry of Interest</label>
+                            <input type="text" class="form-control" name="cbioi">
+                          </div>
+                          <div class="form-group">
+                            <label>Investment range</label>
+                              <select class="custom-select" name="cbrange">
+                                <option>Select Investment</option>
+                                <option>0 - 1,00,000</option>
+                                <option>1,00,000 - 10,00,000</option>
+                                <option>10,00,000 - 50,00,000</option>
+                                <option>50,00,000 - 1,00,00,000</option>
+                                <option>More than 1,00,00,000</option>
+                              </select>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card">
+                      <h2 class="mb-0">
+                      <button class="btn btn-light btn-block btn-lg collapsed" type="button" data-toggle="collapse" data-target="#description" aria-expanded="false" aria-controls="collapseTwo">
+                        Investor Description
+                      </button>
+                      </h2>
+                      <div id="description" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                        <div class="card-body">
+                          <div class="form-group">
+                            <label>Description</label>
+                            <textarea row="3" class="form-control"></textarea>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  </div>
+                  <div class="modal-footer d-flex justify-content-center">
+                    <button class="btn btn-unique">Cancel</button>
+                    <button class="btn btn-unique">Save</button>
+                  </div>
                 </div>
+              </div>
           </div>
-          <div class="modal-footer d-flex justify-content-center">
-            <button class="btn btn-unique">Cancel <i class="fas fa-paper-plane-o ml-1"></i></button>
-            <button class="btn btn-unique">Save <i class="fas fa-paper-plane-o ml-1"></i></button>
 
+    <div class="modal fade" id="addteamform" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header text-center">
+            <h4 class="modal-title w-100 font-weight-bold">Add a Group member</h4>
+            <!-- <p>Your Group is one of the most influential factors driving the investment process.</p> -->
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body mx-3">
+                  <div class="card">               
+                    <div id="basics" aria-labelledby="headingOne">
+                      <div class="card-body">
+                        <form>
+                          <div class="form-group">
+                            <label>Member Name</label>
+                            <input type="text" class="form-control"  placeholder="">
+                          </div>
+                          <div class="form-group">
+                            <label>Member Designation</label>
+                            <input type="text" class="form-control"  placeholder="">
+                          </div>
+                          <div class="form-group">
+                            <label>Member Designation</label>
+                            <input type="text" class="form-control"  placeholder="">
+                          </div>
+                          <div class="form-group">
+                            <label>Experience(in yrs)</label>
+                            <input type="text" class="form-control"  placeholder="">
+                          </div>
+                          <div class="form-group">
+                            <label>Expertise</label>
+                            <input type="text" class="form-control"  placeholder="">
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+          <div class="modal-footer d-flex justify-content-center">
+            <button class="btn btn-unique">Cancel </button>
+            <button class="btn btn-unique">Save </button>
           </div>
         </div>
       </div>
     </div>
-    
-    
-    
+
+    <div class="modal fade" id="ourteamform" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header text-center">
+              <h4 class="modal-title w-100 font-weight-bold">Update Group member's Details</h4>
+              <!-- <p>Your Group is one of the most influential factors driving the investment process.</p> -->
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body mx-3">
+                    <div class="card">               
+                      <div id="basics" aria-labelledby="headingOne">
+                        <div class="card-body">
+                          <form>
+                            <div class="form-group">
+                              <label>Member Name</label>
+                              <input type="text" class="form-control"  placeholder="">
+                            </div>
+                            <div class="form-group">
+                              <label>Member Designation</label>
+                              <input type="text" class="form-control"  placeholder="">
+                            </div>
+                            <div class="form-group">
+                              <label>Member Designation</label>
+                              <input type="text" class="form-control"  placeholder="">
+                            </div>
+                            <div class="form-group">
+                              <label>Experience(in yrs)</label>
+                              <input type="text" class="form-control"  placeholder="">
+                            </div>
+                            <div class="form-group">
+                              <label>Expertise</label>
+                              <input type="text" class="form-control"  placeholder="">
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            <div class="modal-footer d-flex justify-content-center">
+              <button class="btn btn-unique">Cancel </button>
+              <button class="btn btn-unique">Save </button>
+            </div>
+          </div>
+        </div>
+      </div>
+        
     <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="home">
         <div class="w-100">
           <div class="user-icons">
@@ -328,15 +581,11 @@
             </div>
             <div class="col-md-3">
               <div class="text-right">
-                <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalContactForm">Edit</a>
+                <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalBasicForm">Edit</a>
               </div>
             </div>
           </div>
-           
-
-              
-
-            <div class="subheading">Address , City , State , Country. 
+           <div class="subheading">Address , City , State , Country. 
             </div>
             <div class="subheading mb-5">Founder name
             </div>
@@ -358,9 +607,14 @@
             <p class="lead mb-5">Company description ----Describe yourself and the value of your investment.
                 Add an overview to describe yourself, your motives and sight for the startups..</p>
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-9">
                     <div class="section-title"><h3>Email  :  id</h3></div>
                 </div>
+                <div class="col-md-3">
+                    <div class="text-right">
+                      <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalContactForm">Edit</a>
+                    </div>
+                  </div>
             </div>
             <div class="row" >
                 <div class="col-md-4">
@@ -399,55 +653,116 @@
           </div>
           <div class="col-md-3">
             <div class="text-right">
-              <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalContactForm">Edit</a>
+              <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#addteamform">ADD</a>
             </div>
           </div>
         </div>
 
-        <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
-          <div class="resume-content">
-            <h3 class="mb-0">Member Name</h3>
-            <div class="subheading mb-3">Member Designation</div>
-            <p>Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.</p>
-          </div>
-          <div class="resume-date text-md-right">
-            <span class="text-primary">March 2013 - Present</span>
-          </div>
-        </div>
 
-        <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
-          <div class="resume-content">
-            <h3 class="mb-0">Member Name</h3>
-            <div class="subheading mb-3">Member Designation</div>
-            <p>Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop on focusing solely on the bottom line.</p>
-          </div>
-          <div class="resume-date text-md-right">
-            <span class="text-primary">December 2011 - March 2013</span>
-          </div>
-        </div>
+      <div class=row>
+          <div class="col-md-6">
+              <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
+                <div class="resume-content">
+                  <div class="row">
+                    <div class="col-md-10">
+                      <h3 class="mb-0">Member Name</h3>
+                    </div>
+                    <div class="col-md-2">
+                      <div class="row">
+                        <div class="col-md-1">
+                            <a href="" data-toggle="modal" data-target="#ourteamform"><i class="fa fa-pencil "></i></a>
+                          </div>
+                        <div class="col-md-1">
+                          <i class="fa fa-close"></i>
+                        </div>
+                      </div>
+                    </div>
+                    </div>
+                  <div class="subheading mb-3">Member Designation, years</div>
+                    <p>email | linkedin</p>
+                    <p>Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop on focusing solely on the bottom line.</p>
+                  </div>
+              </div>
+            </div>
 
-        <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
-          <div class="resume-content">
-            <h3 class="mb-0">Member Name</h3>
-            <div class="subheading mb-3">Member Designation</div>
-            <p>Podcasting operational change management inside of workflows to establish a framework. Taking seamless key performance indicators offline to maximise the long tail. Keeping your eye on the ball while performing a deep dive on the start-up mentality to derive convergence on cross-platform integration.</p>
+            <div class="col-md-6">
+              <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
+                <div class="resume-content">
+                  <div class="row">
+                    <div class="col-md-10">
+                      <h3 class="mb-0">Member Name</h3>
+                    </div>
+                    <div class="col-md-2">
+                      <div class="row">
+                        <div class="col-md-1">
+                            <a href="" data-toggle="modal" data-target="#ourteamform"><i class="fa fa-pencil "></i></a>
+                          </div>
+                        <div class="col-md-1">
+                          <i class="fa fa-close"></i>
+                        </div>
+                      </div>
+                    </div>
+                    </div>
+                  <div class="subheading mb-3">Member Designation, years</div>
+                    <p>email | linkedin</p>
+                    <p>Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop on focusing solely on the bottom line.</p>
+                  </div>
+              </div>
+            </div>
           </div>
-          <div class="resume-date text-md-right">
-            <span class="text-primary">July 2010 - December 2011</span>
-          </div>
-        </div>
 
-        <div class="resume-item d-flex flex-column flex-md-row justify-content-between">
-          <div class="resume-content">
-            <h3 class="mb-0">Member Name</h3>
-            <div class="subheading mb-3">Member Designation</div>
-            <p>Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate B2C users after installed base benefits. Dramatically visualize customer directed convergence without revolutionary ROI.</p>
-          </div>
-          <div class="resume-date text-md-right">
-            <span class="text-primary">September 2008 - June 2010</span>
-          </div>
-        </div>
-
+      <div class=row>
+          <div class="col-md-6">
+            <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
+              <div class="resume-content">
+                <div class="row">
+                  <div class="col-md-10">
+                    <h3 class="mb-0">Member Name</h3>
+                  </div>
+                  <div class="col-md-2">
+                    <div class="row">
+                      <div class="col-md-1">
+                          <a href="" data-toggle="modal" data-target="#ourteamform"><i class="fa fa-pencil "></i></a>
+                        </div>
+                      <div class="col-md-1">
+                        <i class="fa fa-close"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="subheading mb-3">Member Designation, years</div>
+                  <p>email | linkedin</p>
+                  <p>Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.</p>
+                </div>
+              </div>
+              </div>
+  
+              <div class="col-md-6">
+                <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
+                  <div class="resume-content">
+                    <div class="row">
+                      <div class="col-md-10">
+                        <h3 class="mb-0">Member Name</h3>
+                      </div>
+                      <div class="col-md-2">
+                        <div class="row">
+                          <div class="col-md-1">
+                              <a href="" data-toggle="modal" data-target="#ourteamform"><i class="fa fa-pencil "></i></a>
+                            </div>
+                          <div class="col-md-1">
+                            <i class="fa fa-close"></i>
+                          </div>
+                        </div>
+                      </div>
+                      </div>
+                    <div class="subheading mb-3">Member Designation, years</div>
+                      <p>email | linkedin</p>
+                      <p>Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop on focusing solely on the bottom line.</p>
+                    </div>
+                </div>
+              </div>
+            </div>
+      
       </div>
 
     </section>
@@ -463,9 +778,9 @@
               </h2>
             </div>
             <div class="col-md-3">
-              <div class="text-right">
-                <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalContactForm">Edit</a>
-              </div>
+                <div class="text-right">
+                  <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalInvestmentForm">Add</a>
+                </div>
             </div>
           </div>
 
