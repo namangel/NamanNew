@@ -1,3 +1,15 @@
+<?php
+ require '../server.php';
+ $sql = "SELECT * FROM home;";  
+ $result = mysqli_query($db, $sql); 
+ while($row= mysqli_fetch_array($result))
+ {
+  $tagline = $row['tagline'];
+  $abt_us = $row['abt_us'];
+ 
+ }
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,8 +53,10 @@
       <div class="logo float-left">
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <h1 class="text-light"><a href="#header"><span>NewBiz</span></a></h1> -->
-        <a href="#intro" class="scrollto"><img src="img/logo.png" alt="" class="img-fluid"></a>
-      </div>
+        <a href="#"class="navbar-brand" >
+          <img src="img/Logo2.png" width="200" height="350" alt="">
+        </a>
+        </div>
 
       <nav class="main-nav float-right d-none d-lg-block">
         <ul>
@@ -50,7 +64,7 @@
           <li><a href="#about">About Us</a></li>
           <li><a href="#startups">Startups</a></li>
           <li><a href="#investors">Investors</a></li>
-
+         
         <!--  <li class="drop-down"><a href="">Drop Down</a>
             <ul>
               <li><a href="#">Drop Down 1</a></li>
@@ -69,16 +83,16 @@
             </ul>
           </li> -->
           <li><a href="#contact">Contact Us</a></li>
-          <div class="btn-group">
-            <li><button type="button" class="btn btn-primary"><a style="height:40px;">Sign In</a></button></li>
-            <li>&nbsp;</li>
-            <li><button type="button" class="btn btn-primary"><a style="height:40px;">Sign Up</a></button></li>
-          </div>
-
+          
+              <div class="btn-group" style="height: -1000px;">
+                  <button type="button" class="btn btn-link btn-group-sm">Sign In</button>
+                  <button type="button" class="btn btn-link btn-group-sm">Sign Up</button>
+                  </div>
+          
           <!--<li><a href="#team">Sign up </a></li>-->
         </ul>
       </nav><!-- .main-nav -->
-
+      
     </div>
   </header><!-- #header -->
 
@@ -93,7 +107,7 @@
       </div>
 
       <div class="intro-info">
-
+        
         <h2>Connect with Entrepreneurs and Investors <br><span> on a single platform</span><br>to help startups grow!</h2>
         <div>
           <a href="#about" class="btn-get-started scrollto">Get Started</a>
@@ -114,34 +128,36 @@
 
         <header class="section-header">
           <h3>About Us</h3>
-          <p class="text-justify">Naman Angels India Foundation (NAMAN) is Navi Mumbai’s first Seed Investment & Innovation Platform.
-            We are committed to disrupt the seed investment in Navi Mumbai and Maharashtra.
-            Our innovation platform provides values to startups through its angel networks,
-            mentors, venture funds & co-working facility and strategic tie-ups.</p>
+          <button type="button" name="btn_edit" onclick='function()' class="abt_us" >edit</button>
+          <p class="abt_us text-justify" contenteditable>
+         
+            <?php
+            echo $abt_us;
+          ?></p>
         </header>
 
         <div class="row about-container">
-
-          <div class="col-lg-6 content order-lg-1 order-2">
+          
+        <div class="col-lg-6 content order-lg-1 order-2">
             <h2 class="title">Featured On</h2>
             <div class="icon-box wow fadeInUp">
-
+              
               <div class="icon"> <img src="img/featured/f1.png" class="img-fluid" alt=""></div>
               <h4 class="title"><a href="">Economic Times</a></h4>
             <!--  <p class="description">P”.</p>-->
-          </div>
+            </div>
 
-          <div class="icon-box wow fadeInUp" data-wow-delay="0.2s">
+            <div class="icon-box wow fadeInUp" data-wow-delay="0.2s">
               <div class="icon"><img src="img/featured/f2.png" class="img-fluid" alt=""></div>
               <h4 class="title"><a href="">Maharashtra Times</a></h4>
            <!--   <p class="description">Setting up incubation centres at top colleges to encourage innovation and support such alphapreneurs.</p>-->
-          </div>
+            </div>
 
-          <div class="icon-box wow fadeInUp" data-wow-delay="0.4s">
+            <div class="icon-box wow fadeInUp" data-wow-delay="0.4s">
               <div class="icon"> <img src="img/featured/f3.png" class="img-fluid" alt=""></div>
               <h4 class="title"><a href="">University Startup World Cup</a></h4>
              <!-- <p class="description">Facilitating a Pan-India Network of Entrepreneurs, Investors and Mentors.</p>-->
-          </div>
+            </div>
 
           </div>
 
@@ -149,30 +165,21 @@
             <img src="img/about-img.svg" class="img-fluid" alt="">
           </div>
         </div>
-      <section id="startups">
-        <div class="row about-extra">
+<section id="startups">
+        <div class="row about-extra" >
           <div class="col-lg-6 wow fadeInUp">
             <img src="img/about-extra-1.svg" class="img-fluid" alt="">
           </div>
           <div class="col-lg-6 wow fadeInUp pt-5 pt-lg-0">
-            <h2>Startups.</h2>
-            <div class="icon-box wow fadeInUp" data-wow-delay="0.2s">
-            <div class="icon"><i class="fa fa-group"></i></div>
-            <h4 class="title"><a href="">Proper mentoring</a></h4>
-            </div>
-            <div class="icon-box wow fadeInUp" data-wow-delay="0.4s">
-            <div class="icon"><i class="fa fa-photo"></i></div>
-              <h4 class="title"><a href="">Technological support</a></h4>
-            </div>
-            <div class="icon-box wow fadeInUp" data-wow-delay="0.8s">
-              <div class="icon"><i class="fa fa-handshake-o"></i></div>
-              <h4 class="title"><a href="">	Hand-hold through the entire process
-                  </a></h4>
-            </div>
-            <div class="icon-box wow fadeInUp" data-wow-delay="1.0s">
-              <div class="icon"><i class="fa fa-sack"></i></div>
-              <h4 class="title"><a href="">Connect with legitimate Investors</a></h4>
-          </div>
+          <div class="jumbotron jumbotron-fluid view overlay zoom" style="background-color:#ADD8E6">
+  <div class="container ">
+    <h1 class="display-4 title">Startup</h1>
+    <p class="lead">Proper mentoring,
+            Technological support,Hand-hold through the entire process,
+
+Connect with legitimate Investors.</p>
+  </div>
+</div>
           <button type="button" class="btn btn-primary">Register Now!</button>
           </div>
         </div>
@@ -184,29 +191,23 @@
           <div class="col-lg-6 wow fadeInUp order-1 order-lg-2">
             <img src="img/about-extra-2.svg" class="img-fluid" alt="">
           </div>
+          <div class="col-lg-6 wow fadeInUp pt-5 pt-lg-0">
+          <div class="jumbotron jumbotron-fluid btn-floating btn-sm blue-gradient">
+  <div class="container ">
+    <h1 class="display-4 title">Investors</h1>
+    <p class="lead">Greater breadth of investment opportunities,
 
-          <div class="col-lg-6 wow fadeInUp pt-4 pt-lg-0 order-2 order-lg-1">
-            <h2>Investors</h2>
-            <div class="icon-box wow fadeInUp" data-wow-delay="0.2s">
-                <div class="icon"><i class="fa fa-photo"></i></div>
-                <h4 class="title"><a href="">Greater breadth of investment opportunities</a></h4>
-                </div>
-                <div class="icon-box wow fadeInUp" data-wow-delay="0.4s">
-                <div class="icon"><i class="fa fa-photo"></i></div>
-                  <h4 class="title"><a href="">Become a certified NAMAN investor</a></h4>
-                </div>
-                <div class="icon-box wow fadeInUp" data-wow-delay="0.8s">
-                  <div class="icon"><i class="fa fa-photo"></i></div>
-                  <h4 class="title"><a href="">	Get recognition across social media
-                      </a></h4>
-                </div>
-                <div class="icon-box wow fadeInUp" data-wow-delay="1.0s">
-                  <div class="icon"><i class="fa fa-photo"></i></div>
-                  <h4 class="title"><a href="">Browse 100+ types of Startups!</a></h4>
-              </div>
-              <button type="button" class="btn btn-primary">Register Now!</button>
-              </div>
+Become a certified NAMAN investor,
+
+Get recognition across social media, 
+
+Browse 100+ types of Startups!</p>
+  </div>
+</div>
+          <button type="button" class="btn btn-primary">Register Now!</button>
           </div>
+        </div>
+        
           </section>
         </div>
 
@@ -270,9 +271,9 @@
               <p class="description">Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi</p>
             </div>
           </div>
-
+         
         </div>
-
+      
       </div>
     </section><!-- #services -->
 
@@ -323,7 +324,7 @@
 
         </div>
 
-        <!-- <div class="row counters">
+        <div class="row counters">
 
           <div class="col-lg-3 col-6 text-center">
             <span data-toggle="counter-up">274</span>
@@ -344,8 +345,8 @@
             <span data-toggle="counter-up">18</span>
             <p>Hard Workers</p>
           </div>
-
-        </div> -->
+  
+        </div>
 
       </div>
     </section>
@@ -518,7 +519,7 @@
           <div class="col-lg-8">
 
             <div class="owl-carousel testimonials-carousel wow fadeInUp">
-
+    
               <div class="testimonial-item">
                 <img src="img/testimonial-1.jpg" class="testimonial-img" alt="">
                 <h3>Saul Goodman</h3>
@@ -527,7 +528,7 @@
                   Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
                 </p>
               </div>
-
+    
               <div class="testimonial-item">
                 <img src="img/testimonial-2.jpg" class="testimonial-img" alt="">
                 <h3>Sara Wilsson</h3>
@@ -536,7 +537,7 @@
                   Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
                 </p>
               </div>
-
+    
               <div class="testimonial-item">
                 <img src="img/testimonial-3.jpg" class="testimonial-img" alt="">
                 <h3>Jena Karlis</h3>
@@ -545,7 +546,7 @@
                   Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
                 </p>
               </div>
-
+    
               <div class="testimonial-item">
                 <img src="img/testimonial-4.jpg" class="testimonial-img" alt="">
                 <h3>Matt Brandon</h3>
@@ -554,7 +555,7 @@
                   Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
                 </p>
               </div>
-
+    
               <div class="testimonial-item">
                 <img src="img/testimonial-5.jpg" class="testimonial-img" alt="">
                 <h3>John Larson</h3>
@@ -671,7 +672,7 @@
 
         <div class="section-header">
           <h3>Our Partners</h3>
-
+          
         </div>
 
         <div class="row no-gutters clients-wrap clearfix wow fadeInUp">
@@ -681,43 +682,43 @@
               <img src="img/partners/p1.png" class="img-fluid" alt="">
             </div>
           </div>
-
+          
           <div class="col-lg-3 col-md-4 col-xs-6">
             <div class="client-logo">
               <img src="img/partners/p2.png" class="img-fluid" alt="">
             </div>
           </div>
-
+        
           <div class="col-lg-3 col-md-4 col-xs-6">
             <div class="client-logo">
               <img src="img/partners/p3.png" class="img-fluid" alt="">
             </div>
           </div>
-
+          
           <div class="col-lg-3 col-md-4 col-xs-6">
             <div class="client-logo">
               <img src="img/partners/p4.png" class="img-fluid" alt="">
             </div>
           </div>
-
+          
           <div class="col-lg-3 col-md-4 col-xs-6">
             <div class="client-logo">
               <img src="img/partners/p5.png" class="img-fluid" alt="">
             </div>
           </div>
-
+        
           <div class="col-lg-3 col-md-4 col-xs-6">
             <div class="client-logo">
               <img src="img/partners/p6.png" class="img-fluid" alt="">
             </div>
           </div>
-
+          
           <div class="col-lg-3 col-md-4 col-xs-6">
             <div class="client-logo">
               <img src="img/partners/p7.png" class="img-fluid" alt="">
             </div>
           </div>
-
+          
           <div class="col-lg-3 col-md-4 col-xs-6">
             <div class="client-logo">
               <img src="img/partners/p8.png" class="img-fluid" alt="">
@@ -809,7 +810,9 @@
         <div class="row">
 
           <div class="col-lg-4 col-md-6 footer-info">
-            <h3>Naman Angels</h3>
+            <a href="#"class="navbar-brand" >
+              <img src="img/Logo2.png" width="250" height="150" alt="">
+            </a>
             <p class="text-justify">Naman Angels India Foundation (NAMAN) is Navi Mumbai’s first Seed Investment & Innovation Platform. We are committed to disrupt the seed investment in Navi Mumbai and Maharashtra. Our innovation platform provides values to startups through its angel networks, mentors, venture funds & co-working facility and strategic tie-ups.</p>
           </div>
 
@@ -818,18 +821,6 @@
             <ul>
               <li><a href="#">Home</a></li>
               <li><a href="#">About us</a></li>
-              <li><a href="#">Team</a></li>
-              <li><a href="#">Startups</a></li>
-              <li><a href="#">Investors</a></li>
-            </ul>
-          </div>
-
-          <div class=" col-lg-2 col-md-6 footer-links">
-            <br>
-            <br>
-           
-            <ul>
-              <li><a href="#">Events</a></li>
               <li><a href="#">Services</a></li>
               <li><a href="#">Terms of service</a></li>
               <li><a href="#">Privacy policy</a></li>
@@ -862,26 +853,26 @@
             <form action="" method="post">
               <input type="email" name="email"><input type="submit"  value="Subscribe">
             </form>
-          </div> -->
+          </div>
 
         </div>
       </div>
     </div>
 
-    <!-- <div class="container">
+    <div class="container">
       <div class="copyright">
-       &copy; Copyright <strong>NewBiz</strong>. All Rights Reserved
+       <!-- &copy; Copyright <strong>NewBiz</strong>. All Rights Reserved-->
       </div>
       <div class="credits">
-        
+        <!--
           All the links in the footer should remain intact.
           You can delete the links only if you purchased the pro version.
           Licensing information: https://bootstrapmade.com/license/
           Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=NewBiz
-       
-       Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        -->
+       <!-- Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>-->
       </div>
-    </div> -->
+    </div>
   </footer><!-- #footer -->
 
   <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
@@ -905,6 +896,32 @@
 
   <!-- Template Main Javascript File -->
   <script src="js/main.js"></script>
+  <script>
+  $(document).ready(function(){  
+   
+    $(document).on('click', '.abt_us', function(){  
+        var abt_us = $('#abt_us').text();  
+        
+        $.ajax({  
+            url:'edit.php',  
+            method:"POST",  
+            data:{abt_us:abt_us},  
+            dataType:"text",  
+            success:function(data)  
+            {  
+                alert(data);  
+                fetch_data();  
+            }  
+        })  
+    });  
+    $(document).on('blur', '.abt_us', function(){  
+      
+        var abt_us = $(this).text();  
+        edit_data(abt_us, "abt_us");  
+    }); 
+    
+    </script>
 
 </body>
+
 </html>
