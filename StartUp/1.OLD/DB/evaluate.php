@@ -63,7 +63,7 @@
             <div class="container">
                 <h3>Evaluation Form</h3>
                 <p>Fill out the form and receive help from our team to evaluate your<p>
-                <form method="post" action="/NamanAngels/Signing/mem_email.php">
+                <form method="post" action="/NamanNew/Signing/mem_email.php">
                     <label>Email:</label>
                         <input type="email" name="evaluate_from" placeholder="Enter your email.." required>
                     <label>Subject:</label>

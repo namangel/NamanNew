@@ -53,7 +53,7 @@
 </head>
 <body>
     <div class="grid-container1" >
-        <div class="grid-item1" style="font-size:16px;"><a href="./index.php"><img src="/NamanAngels/img/HeaderLogo.png" style="height:100px;width:350px; margin: 5px;"></a>
+        <div class="grid-item1" style="font-size:16px;"><a href="./index.php"><img src="/NamanNew/img/HeaderLogo.png" style="height:100px;width:350px; margin: 5px;"></a>
             <p align="justify">Naman Angels India Foundation (NAMAN) is Navi Mumbai's first Seed Investment & Innovation Platform. We are committed to disrupt the seed investment in Navi Mumbai and Maharashtra. Our innovation platform provides values to startups through its angel networks, mentors, venture funds & co-working facility and strategic tie-ups.</p><br><br>
         </div>
         <div class="grid-item1" style="font-size:16px;">
@@ -61,14 +61,14 @@
             <table width="50%">
                 <tr>
                     <td>
-                        <ul><li><span class="spa"><a href="/NamanAngels/include/about/team.php" class="foota1"> Our Team</a></span></li></ul>
+                        <ul><li><span class="spa"><a href="/NamanNew/include/about/team.php" class="foota1"> Our Team</a></span></li></ul>
                     </td>
                     <td>
                         <ul><li> <span class="spa"><a class="foota2" href="#">Terms of Service </a></span></li></ul></td>
                 </tr>
                 <tr>
                     <td>
-                        <ul><li><span class="spa"><a href="/NamanAngels/include/about/about.php#fstp" class="foota1">For Startups</a></span></li>
+                        <ul><li><span class="spa"><a href="/NamanNew/include/about/about.php#fstp" class="foota1">For Startups</a></span></li>
                         </ul>
                     </td>
                     <td>
@@ -78,7 +78,7 @@
                 </tr>
                 <tr>
                     <td><ul><li><span class="spa">
-                    <a href="/NamanAngels/include/about/about.php#finv" class="foota1">For Investors</a>
+                    <a href="/NamanNew/include/about/about.php#finv" class="foota1">For Investors</a>
                     </span></li></ul></td>
                     <td><ul><li> <span class="spa">
                     <a class="foota2" href="#" > License </a>
@@ -86,10 +86,10 @@
                 </tr>
                 <tr>
                     <td><ul><li><span class="spa">
-                    <a href="/NamanAngels/include/about/about.php#cont" class="foota1"> Support </a>
+                    <a href="/NamanNew/include/about/about.php#cont" class="foota1"> Support </a>
                     </span></li></ul></td>
                     <td><ul><li><span class="spa">
-                    <a href="/NamanAngels/include/about/about.php#cont" class="foota1"> Contact Us</a>
+                    <a href="/NamanNew/include/about/about.php#cont" class="foota1"> Contact Us</a>
                     </span></li></ul></td>
                 </tr>
             </table>

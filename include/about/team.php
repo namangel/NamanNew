@@ -5,7 +5,7 @@
     <head>
         <title>Team Naman | NAMAN</title>
         <link rel="icon" href="../../img/favicon.jpg" type="image/jpg" sizes="16x16">
-        <link rel="stylesheet" href="/NamanAngels/css/team.css">
+        <link rel="stylesheet" href="/NamanNew/css/team.css">
     </head>
 
     <body>

@@ -101,20 +101,20 @@
             <hr width=80%>
             <nav id="mainNav1" class="stroke">
                 <ul type="none">
-                    <li><a href="/NamanAngels/include/about/team.php" class="foota1"> Our Team</a></li>
+                    <li><a href="/NamanNew/include/about/team.php" class="foota1"> Our Team</a></li>
                     <li><a class="foota2" href="#">Terms of Service </a></li>
-                    <li><a href="/NamanAngels/include/about/about.php#fstp" class="foota1">For Startups</a></li>
+                    <li><a href="/NamanNew/include/about/about.php#fstp" class="foota1">For Startups</a></li>
                     <li><a class="foota2" href="#"> Privacy </a></li>
                     <li>
-                    <a href="/NamanAngels/include/about/about.php#finv" class="foota1">For Investors</a></li>
+                    <a href="/NamanNew/include/about/about.php#finv" class="foota1">For Investors</a></li>
                     <li>
                     <a class="foota2" href="#" > License </a>
                     </li>
                     <li>
-                    <a href="/NamanAngels/include/about/about.php#cont" class="foota1"> Support </a>
+                    <a href="/NamanNew/include/about/about.php#cont" class="foota1"> Support </a>
                     </li>
                     <li>
-                    <a href="/NamanAngels/include/about/about.php#cont" class="foota1"> Contact Us</a>
+                    <a href="/NamanNew/include/about/about.php#cont" class="foota1"> Contact Us</a>
                     </li>
                 </ul>
             </nav>

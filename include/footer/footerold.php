@@ -46,22 +46,22 @@
             <br>
             <p>
                 <span class="spa">
-                  <a href="/NamanAngels/include/about/about.php#cinf" class="foota1">Company Info</a>
+                  <a href="/NamanNew/include/about/about.php#cinf" class="foota1">Company Info</a>
                 </span>
                 <span class="spa">
-                  <a href="/NamanAngels/include/about/team.php" class="foota1"> Our Team</a>
+                  <a href="/NamanNew/include/about/team.php" class="foota1"> Our Team</a>
                 </span>
                 <span class="spa">
-                  <a href="/NamanAngels/include/about/about.php#fstp" class="foota1">For Startups</a>
+                  <a href="/NamanNew/include/about/about.php#fstp" class="foota1">For Startups</a>
                 </span>
                 <span class="spa">
-                  <a href="/NamanAngels/include/about/about.php#finv" class="foota1">For Investors</a>
+                  <a href="/NamanNew/include/about/about.php#finv" class="foota1">For Investors</a>
                 </span>
                 <span class="spa">
-                  <a href="/NamanAngels/include/about/about.php#cont" class="foota1"> Support </a>
+                  <a href="/NamanNew/include/about/about.php#cont" class="foota1"> Support </a>
                 </span>
                 <span class="spa">
-                  <a href="/NamanAngels/include/about/about.php#cont" class="foota1"> Contact Us</a>
+                  <a href="/NamanNew/include/about/about.php#cont" class="foota1"> Contact Us</a>
                 </span>
 
             </p>

@@ -35,7 +35,7 @@
 	$q = "SELECT * FROM inv_uploads WHERE InvID='$u'";
     $results = mysqli_query($db, $q);
 	$row = mysqli_fetch_assoc($results);
-	$img = $row['ProfilePic']==""? '/NamanAngels/Uploads/default.png':$row['ProfilePic'];
+	$img = $row['ProfilePic']==""? '/NamanNew/Uploads/default.png':$row['ProfilePic'];
 
 	if(isset($_POST["cbsave"])){
         $cbfname = mysqli_real_escape_string($db, $_POST['cbfname']);

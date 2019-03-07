@@ -23,7 +23,7 @@
 </style>
 <div class="topnav">
     <div class="toplogo">
-        <center><img src="/NamanAngels/img/HeaderLogo.png" style="height:50px;width:135px; margin: 5px;"></center>
+        <center><img src="/NamanNew/img/HeaderLogo.png" style="height:50px;width:135px; margin: 5px;"></center>
     </div>
     <div class="topfor">
          <a href="javascript:window.open('','_self').close();" class="cs1"><center>CLOSE</center></a>
