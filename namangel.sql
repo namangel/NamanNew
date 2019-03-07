@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.8.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Feb 27, 2019 at 04:30 AM
--- Server version: 10.1.36-MariaDB
--- PHP Version: 7.2.10
+-- Host: 127.0.0.1
+-- Generation Time: Mar 07, 2019 at 01:52 AM
+-- Server version: 10.1.33-MariaDB
+-- PHP Version: 7.2.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -35,7 +35,7 @@ CREATE TABLE `admin` (
   `Username` varchar(50) NOT NULL,
   `Password` varchar(50) NOT NULL,
   `ProfilePic` varchar(200) DEFAULT 'uploads/default/default.png	',
-  `privilege` int(1) NOT NULL DEFAULT '0'
+  `privilege` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -43,7 +43,8 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`adminID`, `AdminName`, `AdminDesgn`, `Username`, `Password`, `ProfilePic`, `privilege`) VALUES
-(1, 'Deepali', 'CEO', 'admin', 'admin12345', 'uploads/admin/Deepali_ProfilePic2.png', 0);
+(1, 'Deepali', 'CEO', 'admin', 'admin12345', 'uploads/admin/default.png', 1),
+(13, 'Nitish', 'CFO', 'admin2', 'admin54321', 'uploads/admin/tool.png', 0);
 
 -- --------------------------------------------------------
 
@@ -119,9 +120,6 @@ CREATE TABLE `cprofile` (
 ,`WebLink` varchar(200)
 ,`LName` varchar(200)
 ,`AvgInv` varchar(200)
-,`Email` varchar(200)
-,`Phone` varchar(200)
-,`InvRange` varchar(200)
 ,`CImg` varchar(200)
 );
 
@@ -398,7 +396,7 @@ CREATE TABLE `siteinfo` (
 --
 
 INSERT INTO `siteinfo` (`ID`, `Counter`) VALUES
-(1, 10);
+(1, 22);
 
 -- --------------------------------------------------------
 
@@ -548,6 +546,15 @@ CREATE TABLE `st_team` (
   `LinkedIn` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `st_team`
+--
+
+INSERT INTO `st_team` (`ID`, `StpID`, `FName`, `LName`, `Designation`, `Experience`, `Expertise`, `Email`, `LinkedIn`) VALUES
+(1, 'NAMST0000001', 'Nitish', 'Talekar', 'CFO', '21', 'Very Very Very Talented', 'ABC@ABC', 'abclin'),
+(2, 'NAMST0000001', 'Aayush', 'Singh', 'CEO', '21', 'Extra Talent', 'asdadsd@sfsd.com', 'asadsad'),
+(3, 'NAMST0000001', 'Mohit', 'Sawant', 'CMO', '22', 'Extraordinary Talent', 'three1nine@gmail.com', 'abclinss');
+
 -- --------------------------------------------------------
 
 --
@@ -627,7 +634,8 @@ CREATE TABLE `userbinv` (
 --
 
 INSERT INTO `userbinv` (`Entry`, `BinvID`, `Fname`, `Lname`, `Cname`, `Email`, `Phone`, `MemID`) VALUES
-(1, 'NAMBIN000000', '', '', NULL, '', '', '');
+(1, 'NAMBIN000000', '', '', NULL, '', '', ''),
+(3, 'NAMBIN000001', 'ABC', 'ABC', 'ABC', 'ABC@ABC', '1231231234', 'MEM2AD207EC');
 
 -- --------------------------------------------------------
 
@@ -700,7 +708,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `cprofile`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `cprofile`  AS  select `a`.`InvID` AS `InvID`,`a`.`CName` AS `CName`,`a`.`FName` AS `FName`,`a`.`Website` AS `WebLink`,`a`.`LName` AS `LName`,`a`.`AvgInvestment` AS `AvgInv`,`a`.`Email` AS `Email`,`a`.`Phone` AS `Phone`,`c`.`InvRange` AS `InvRange`,`b`.`ProfilePic` AS `CImg` from ((`inv_details` `a` join `inv_uploads` `b`) join `inv_addetails` `c`) where ((`a`.`InvID` = `b`.`InvID`) and (`a`.`InvID` = `c`.`InvID`)) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `cprofile`  AS  select `a`.`InvID` AS `InvID`,`a`.`CName` AS `CName`,`a`.`FName` AS `FName`,`a`.`Website` AS `WebLink`,`a`.`LName` AS `LName`,`a`.`AvgInvestment` AS `AvgInv`,`b`.`ProfilePic` AS `CImg` from (`inv_details` `a` join `inv_uploads` `b`) where (`a`.`InvID` = `b`.`InvID`) ;
 
 -- --------------------------------------------------------
 
@@ -709,7 +717,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `profile`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `profile`  AS  select `a`.`StpID` AS `StpID`,`b`.`Stname` AS `StpName`,`a`.`Logo` AS `StpImg`,`b`.`Ffname` AS `FName`,`b`.`Sfname` AS `SName`,`b`.`Type` AS `Type`,`c`.`Verified` AS `Verified` from ((`st_uploads` `a` join `st_details` `b`) join `userstp` `c`) where ((`a`.`StpID` = `c`.`StpID`) and (`b`.`StpID` = `c`.`StpID`) and (`c`.`Verified` = 1)) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `profile`  AS  select `a`.`StpID` AS `StpID`,`b`.`Stname` AS `StpName`,`a`.`Logo` AS `StpImg`,`b`.`Ffname` AS `FName`,`b`.`Sfname` AS `SName`,`b`.`Type` AS `Type`,`c`.`Verified` AS `Verified` from ((`st_uploads` `a` join `st_details` `b`) join `userstp` `c`) where ((`a`.`StpID` = `c`.`StpID`) and (`b`.`StpID` = `c`.`StpID`)) ;
 
 --
 -- Indexes for dumped tables
@@ -873,7 +881,7 @@ ALTER TABLE `userstp`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `adminID` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `adminID` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `annual_financial`
@@ -933,7 +941,7 @@ ALTER TABLE `st_previnvestment`
 -- AUTO_INCREMENT for table `st_team`
 --
 ALTER TABLE `st_team`
-  MODIFY `ID` int(50) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tools`
@@ -945,7 +953,7 @@ ALTER TABLE `tools`
 -- AUTO_INCREMENT for table `userbinv`
 --
 ALTER TABLE `userbinv`
-  MODIFY `Entry` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `Entry` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `userinv`

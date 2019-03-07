@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <?php
-  require '../../server.php';
+  require '../server.php';
 	if(!isset($_SESSION['StpID'])){
         header('location: ../pageerror.php');
     }
@@ -51,8 +51,23 @@
 	$Summary = $row['Summary']==""? 'Tell the world who you are and what makes your company special.':$row['Summary'];
 	$OLP = $row['OLP']==""? 'Write A Short Pitch For Your Company In One Line':$row['OLP'];
 
+  $qu = "SELECT * FROM st_description WHERE StpID = '$id';";
+	$results = mysqli_query($db, $qu);
+	$row = mysqli_fetch_assoc($results);
+
+	// $MTeam = $row['MTeam'];
+	$CProb = $row['CustomerProblem'];
+	$ProdSer = $row['ProductService'];
+	$TarMar = $row['TargetMarket'];
+	$BModel = $row['BusinessModel'];
+	// $Market = $row['Market'];
+	$CSegments = $row['CustomerSegments'];
+	$SMStrat = $row['SaleMarketStrat'];
+	$Competitors = $row['Competitors'];
+	$CompAdv = $row['CompAdvantage'];
+
   ?>
-  
+
 <html lang="en">
 <head>
 
@@ -85,7 +100,8 @@
     <a class="navbar-brand js-scroll-trigger" href="#page-top">
       <!-- <span class="d-block d-lg-none">Clarence Taylor</span> -->
       <span class="d-none d-lg-block">
-        <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="img/profile.jpg" alt="">
+        <!-- <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="../.''" alt=""> -->
+        <?= "<img class='img-fluid img-profile rounded-circle mx-auto mb-2' src='../".$Logo."' />";?>
       </span>
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -183,7 +199,7 @@
           </div>
 
           <h1 class="mb-0">
-            <span class="text-primary">Hello Startup</span>
+            <span class="text-primary">Hello <?=$Stname?></span>
           </h1>
           <div class="subheading mb-1">GET STARTED.
             <!-- <a href="mailto:name@email.com">name@email.com</a> -->
@@ -315,22 +331,27 @@
     <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="companybasics">
       <div class="w-100">
         <h1 class="mb-0">
-          <span class="text-primary">Startup Name</span>
+          <span class="text-primary"><?=$Stname?></span>
         </h1>
-        <div class="subheading">Address , City , State , Country.
+        <div class="subheading"><?=$Address?> , <?=$City?> , <?=$State?> , <?=$Country?>.
           <!-- <a href="mailto:name@email.com">name@email.com</a> -->
         </div>
-        <div class="subheading mb-5">One Line Pitch
+        <div class="subheading mb-5"><?=$OLP?>
           <!-- <a href="mailto:name@email.com">name@email.com</a> -->
         </div>
         <div class="row" >
             <div class="col-md-4">
-                <div class="section-title"><h3>Industry  :  Type</h3></div>
+                <div class="section-title"><h3>Industry  :  <?=$Type?></h3></div>
             </div>
         </div>
         <div class="row" >
             <div class="col-md-4">
-                <div class="section-title"><h3>Incorporation Type  :  Type</h3></div>
+                <div class="section-title"><h3>Incorporation Type  :  <?=$IncType?></h3></div>
+            </div>
+        </div>
+        <div class="row" >
+            <div class="col-md-4">
+                <div class="section-title"><h3>Stage  :  <?=$Stage?></h3></div>
             </div>
         </div>
         <div class="row" >
@@ -338,31 +359,31 @@
                 <div class="section-title" style="padding-top:50px"><h3>Company Summary</h3></div>
             </div>
         </div>
-        <p class="lead mb-5">Company Summary ---- Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p class="lead mb-5"><?=$Summary?> ---- Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
         <div class="row">
             <div class="col-md-4">
-                <div class="section-title"><h3>Founded  :  DD/MM/YYYY</h3></div>
+                <div class="section-title"><h3>Founded  :  <?=$DOF?></h3></div>
             </div>
         </div>
         <div class="row" >
             <div class="col-md-4">
-                <div class="section-title"><h3>Employees  :  Number</h3></div>
+                <div class="section-title"><h3>Employees  :  <?=$EmpNum?></h3></div>
             </div>
         </div>
         <div class="social-icons">
-          <a href="#">
+          <a href="<?=$Website?>">
             <i class='fab fa-react'></i>
           </a>
-          <a href="#">
+          <a href="<?=$LinkedInLink?>">
             <i class="fab fa-linkedin-in"></i>
           </a>
-          <a href="#">
+          <a href="<?=$YTLink?>">
             <i class="fab fa-github"></i>
           </a>
-          <a href="#">
+          <a href="<?=$TwitterLink?>">
             <i class="fab fa-twitter"></i>
           </a>
-          <a href="#">
+          <a href="<?=$FBLink?>">
             <i class="fab fa-facebook-f"></i>
           </a>
         </div>
@@ -524,7 +545,28 @@
       <div class="w-100">
         <h2 class="mb-5">Our Team</h2>
 
-        <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
+        <?php
+								$q = "SELECT * FROM st_team where StpID = '$id' AND expertise != '';";
+								$results=mysqli_query($db, $q);
+								if (mysqli_num_rows($results) > 0) {
+                  while($row = mysqli_fetch_assoc($results)) {
+                    echo '<div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">';
+                      echo '<div class="resume-content">';
+                        echo '<h3 class="mb-0">'.$row["FName"].'&nbsp;'.$row["LName"].'</h3>';
+                        echo '<div class="subheading mb-3">'.$row["Designation"].'</div>';
+                        echo '<p>'.$row["Expertise"].'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate</p>';
+                      echo '</div>';
+                      echo '<div class="resume-date text-md-right">';
+                        echo '<span class="text-primary">'.$row["Email"].'</span>';
+                      echo '</div>';
+                    echo '</div>';
+                  }
+								} else {
+									echo '<img src="../img/Contact.png">';
+								}
+							?>
+
+        <!-- <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
           <div class="resume-content">
             <h3 class="mb-0">Member Name</h3>
             <div class="subheading mb-3">Member Designation</div>
@@ -568,7 +610,7 @@
           </div>
         </div>
 
-      </div>
+      </div> -->
 
     </section>
 
@@ -585,7 +627,8 @@
                             <div class="media">
                                 <div class="media-body">
                                     <h4 class="media-heading">Customer Problem</h4>
-                                    Seamlessly formulate covalent outsourcing vis-a-vis virtual resources. Distinctively conceptualize.
+                                    Seamlessly formulate covalent outsourcing vis-a-vis virtual resources. Distinctively conceptualize.<br>
+                                    <?=$CProb?>
                                 </div>
                             </div>
                         </div>
@@ -595,7 +638,8 @@
                             <div class="media">
                                 <div class="media-body">
                                     <h4 class="media-heading">Product & Service</h4>
-                                    Seamlessly formulate covalent outsourcing vis-a-vis virtual resources. Distinctively conceptualize.
+                                    Seamlessly formulate covalent outsourcing vis-a-vis virtual resources. Distinctively conceptualize.<br>
+                                    <?=$ProdSer?>
                                 </div>
                             </div>
                         </div>
@@ -605,7 +649,8 @@
                             <div class="media">
                                 <div class="media-body">
                                     <h4 class="media-heading">Target Market</h4>
-                                    Seamlessly formulate covalent outsourcing vis-a-vis virtual resources. Distinctively conceptualize.
+                                    Seamlessly formulate covalent outsourcing vis-a-vis virtual resources. Distinctively conceptualize.<br>
+                                    <?=$TarMar?>
                                 </div>
                             </div>
                         </div>
@@ -615,7 +660,8 @@
                             <div class="media">
                                 <div class="media-body">
                                     <h4 class="media-heading">Business Model</h4>
-                                    Seamlessly formulate covalent outsourcing vis-a-vis virtual resources. Distinctively conceptualize.
+                                    Seamlessly formulate covalent outsourcing vis-a-vis virtual resources. Distinctively conceptualize.<br>
+                                    <?=$BModel?>
                                 </div>
                             </div>
                         </div>
@@ -625,7 +671,8 @@
                             <div class="media">
                                 <div class="media-body">
                                     <h4 class="media-heading">Market Sizing</h4>
-                                    Seamlessly formulate covalent outsourcing vis-a-vis virtual resources. Distinctively conceptualize.
+                                    Seamlessly formulate covalent outsourcing vis-a-vis virtual resources. Distinctively conceptualize.<br>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -635,7 +682,8 @@
                             <div class="media">
                                 <div class="media-body">
                                     <h4 class="media-heading">Customer Segments</h4>
-                                    Seamlessly formulate covalent outsourcing vis-a-vis virtual resources. Distinctively conceptualize.
+                                    Seamlessly formulate covalent outsourcing vis-a-vis virtual resources. Distinctively conceptualize.<br>
+                                    <?=$CSegments?>
                                 </div>
                             </div>
                         </div>
@@ -646,6 +694,8 @@
                                 <div class="media-body">
                                     <h4 class="media-heading">Sales & Marketing Strategy</h4>
                                     Seamlessly formulate covalent outsourcing vis-a-vis virtual resources. Distinctively conceptualize.
+                                    <br>
+                                    <?=$SMStrat?>
                                 </div>
                             </div>
                         </div>
@@ -655,7 +705,8 @@
                             <div class="media">
                                 <div class="media-body">
                                     <h4 class="media-heading">Competitors</h4>
-                                    Seamlessly formulate covalent outsourcing vis-a-vis virtual resources. Distinctively conceptualize.
+                                    Seamlessly formulate covalent outsourcing vis-a-vis virtual resources. Distinctively conceptualize.<br>
+                                    <?=$Competitors?>
                                 </div>
                             </div>
                         </div>
@@ -665,7 +716,8 @@
                             <div class="media">
                                 <div class="media-body">
                                     <h4 class="media-heading">Competitive Advantage</h4>
-                                    Seamlessly formulate covalent outsourcing vis-a-vis virtual resources. Distinctively conceptualize.
+                                    Seamlessly formulate covalent outsourcing vis-a-vis virtual resources. Distinctively conceptualize.<br>
+                                    <?=$CompAdv?>
                                 </div>
                             </div>
                         </div>
