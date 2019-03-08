@@ -1,130 +1,118 @@
-<html>
 <head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<style>
-        .grid-container1 {
-			display: grid;
-			grid-template-columns: 1fr 1fr 1fr;
-		    background-color:#F4F6F6;
-		    color: #444;
-		    font-family:Arial, Helvetica, sans-serif
-        }
-        .grid-item1 {
-   			background-color:#F4F6F5;
-  			padding: 5px 80px;
-  			height:325px;
-        }
-        .spa a{
-            text-decoration: none;
-            color:black;
-            font-size: 13px;
-        }
-        .spa a:visited{
-      		color:black;
-        }
-        .foota1:hover{
-            font-size: 15px;
-            color: black;
-        }
-        .foota2:hover{
-            font-size: 15px;
-            color: black;
-        }
-        .spa{
-            display: inline-block;
-            width: 120px;
-        }
-        #icon{
-            display: inline-block;
-            font-size: 24px;
-            color:#9cc5e0;
-            margin-right:10px;
-        }
-        #icon:hover{
-            cursor:pointer;
-            font-size: 25px;
-            color:black;
-        }
-        #map{
-			height:100px;
-            width:inherit;
+    <meta charset="utf-8">
+    <title>Naman|Angels</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicons -->
+    <link href="img/favicon.png" rel="icon">
+    <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
+
+    <!-- Bootstrap CSS File -->
+    <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Libraries CSS Files -->
+    <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+
+    <!-- Main Stylesheet File -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <style>
+        body{
+            padding:0px;
         }
     </style>
 </head>
+<!--==========================
+Footer
+============================-->
 <body>
-    <div class="grid-container1" >
-        <div class="grid-item1" style="font-size:16px;"><a href="./index.php"><img src="/NamanNew/img/HeaderLogo.png" style="height:100px;width:350px; margin: 5px;"></a>
-            <p align="justify">Naman Angels India Foundation (NAMAN) is Navi Mumbai's first Seed Investment & Innovation Platform. We are committed to disrupt the seed investment in Navi Mumbai and Maharashtra. Our innovation platform provides values to startups through its angel networks, mentors, venture funds & co-working facility and strategic tie-ups.</p><br><br>
+<footer id="footer">
+<div class="footer-top">
+    <div class="container">
+    <div class="row">
+
+        <div class="col-lg-4 col-md-6 footer-info">
+        <h3>Naman Angels</h3>
+        <p class="text-justify">Naman Angels India Foundation (NAMAN) is Navi Mumbai’s first Seed Investment & Innovation Platform. We are committed to disrupt the seed investment in Navi Mumbai and Maharashtra. Our innovation platform provides values to startups through its angel networks, mentors, venture funds & co-working facility and strategic tie-ups.</p>
         </div>
-        <div class="grid-item1" style="font-size:16px;">
-            <br><center><h1>Useful Links</h1><br>
-            <table width="50%">
-                <tr>
-                    <td>
-                        <ul><li><span class="spa"><a href="/NamanNew/include/about/team.php" class="foota1"> Our Team</a></span></li></ul>
-                    </td>
-                    <td>
-                        <ul><li> <span class="spa"><a class="foota2" href="#">Terms of Service </a></span></li></ul></td>
-                </tr>
-                <tr>
-                    <td>
-                        <ul><li><span class="spa"><a href="/NamanNew/include/about/about.php#fstp" class="foota1">For Startups</a></span></li>
-                        </ul>
-                    </td>
-                    <td>
-                        <ul><li><span class="spa"><a class="foota2" href="#"> Privacy </a></span>
-                        </li></ul>
-                    </td>
-                </tr>
-                <tr>
-                    <td><ul><li><span class="spa">
-                    <a href="/NamanNew/include/about/about.php#finv" class="foota1">For Investors</a>
-                    </span></li></ul></td>
-                    <td><ul><li> <span class="spa">
-                    <a class="foota2" href="#" > License </a>
-                    </span></li></ul></td>
-                </tr>
-                <tr>
-                    <td><ul><li><span class="spa">
-                    <a href="/NamanNew/include/about/about.php#cont" class="foota1"> Support </a>
-                    </span></li></ul></td>
-                    <td><ul><li><span class="spa">
-                    <a href="/NamanNew/include/about/about.php#cont" class="foota1"> Contact Us</a>
-                    </span></li></ul></td>
-                </tr>
-            </table>
 
-            <center>
-            <p>
-                <i class="fa fa-facebook-official" id="icon"></i>
-                <i class="fa fa-linkedin-square" id="icon"></i>
-                <i class="fa fa-twitter-square" id="icon"></i>
-                <i class="fa fa-instagram" id="icon"></i>
-            </p>
-            </center>
+        <div class="col-lg-2 col-md-6 footer-links">
+        <h4>Useful Links</h4>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About us</a></li>
+            <li><a href="#">Team</a></li>
+            <li><a href="#">Startups</a></li>
+            <li><a href="#">Investors</a></li>
+        </ul>
         </div>
-        <div class="grid-item1"><br><center><h1>Address</h1>
-             <div id="map">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3771.894091167963!2d73.02922931446696!3d19.024387987117553!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c3b0d6eb86df%3A0x9d4c87cc97d36b36!2sZoomStart+India!5e0!3m2!1sen!2sin!4v1493124603654"
-                        width="100%" height="230" frameborder="0" style="border: 0" allowfullscreen>
-                </iframe>
-                </center> 
-                </div>       
-                <br>
-        </div>        
-               <!-- <script>
-                    function initMap() {
-                    var uluru = {lat: -25.344, lng: 131.036};
-                    var map = new google.maps.Map(
-                    document.getElementById('map'), {zoom: 4, center: uluru});
-                    var marker = new google.maps.Marker({position: uluru, map: map});
-                    }
-                </script>
-                <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBT9SkM5dzPSbUvMyJrO3QsiYtRfzWIZkA&callback=initMap">
-                </script>-->
-        </body>
-</html>                
 
+        <div class=" col-lg-2 col-md-6 footer-links">
+        <br>
+        <br>
+        
+        <ul>
+            <li><a href="#">Events</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Terms of service</a></li>
+            <li><a href="#">Privacy policy</a></li>
+        </ul>
+        </div>
 
+        <div class="col-lg-4 col-md-6 footer-contact">
+        <h4>Contact Us</h4>
+        <p>
+            Plot No 37, Sector 26, <br>
+            Parsik Hill, CBD Belapur,<br>
+            Navi Mumbai, Maharashtra 400614 <br>
+            <strong>Phone:</strong> +91-90291 99771<br>
+            <strong>Email:</strong> info@example.com<br>
+        </p>
 
+        <div class="social-links">
+            <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+            <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+            <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
+            <a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
+            <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
+        </div>
 
+        </div>
+
+        <!-- <div class="col-lg-3 col-md-6 footer-newsletter">
+        <h4>Our Newsletter</h4>
+        <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna veniam enim veniam illum dolore legam minim quorum culpa amet magna export quem marada parida nodela caramase seza.</p>
+        <form action="" method="post">
+            <input type="email" name="email"><input type="submit"  value="Subscribe">
+        </form>
+        </div> -->
+
+    </div>
+    </div>
+</div>
+
+<!-- <div class="container">
+    <div class="copyright">
+    &copy; Copyright <strong>NewBiz</strong>. All Rights Reserved
+    </div>
+    <div class="credits">
+    
+        All the links in the footer should remain intact.
+        You can delete the links only if you purchased the pro version.
+        Licensing information: https://bootstrapmade.com/license/
+        Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=NewBiz
+    
+    Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+    </div>
+</div> -->
+</footer><!-- #footer -->
+</body>

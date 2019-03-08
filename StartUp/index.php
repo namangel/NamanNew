@@ -43,7 +43,7 @@
 	$PitchName = $row['PitchName'];
 	$PitchExt = $row['PitchExt'];
 	$Logo = $row['Logo'];
-    $Backimg = $row['BackImg'];
+  $Backimg = $row['BackImg'];
 
 	$q = "SELECT * FROM st_description WHERE StpID = '$id';";
 	$results = mysqli_query($db, $q);
@@ -51,12 +51,12 @@
 	$Summary = $row['Summary']==""? 'Tell the world who you are and what makes your company special.':$row['Summary'];
 	$OLP = $row['OLP']==""? 'Write A Short Pitch For Your Company In One Line':$row['OLP'];
 
-    $qu = "SELECT * FROM st_description WHERE StpID = '$id';";
+  $qu = "SELECT * FROM st_description WHERE StpID = '$id';";
 	$results = mysqli_query($db, $qu);
 	$row = mysqli_fetch_assoc($results);
 
 	// $MTeam = $row['MTeam'];
-    $CProb = $row['CustomerProblem']==""? 'What customer problem does your product and/or service solve?':$row['CustomerProblem'];
+  $CProb = $row['CustomerProblem']==""? 'What customer problem does your product and/or service solve?':$row['CustomerProblem'];
 	$ProdSer = $row['ProductService']==""? 'Describe the product or service that you will sell and how it solves the customer problem, listing the main value proposition for each product/service.':$row['ProductService'];
 	$TarMar = $row['TargetMarket']==""? 'Define the important geographic, demographic, and/or psychographic characteristics of the market within which your customer segments exist.':$row['TargetMarket'];
 	$BModel = $row['BusinessModel']==""? 'What strategy will you employ to build, deliver, and retain company value (e.g., profits)?':$row['BusinessModel'];
@@ -67,7 +67,7 @@
 	$CompAdv = $row['CompAdvantage']==""? 'What is your companys competitive or unfair advantage? This can include patents, first mover advantage, unique expertise, or proprietary processes/technology.':$row['CompAdvantage'];
 
 
-    $qrnd = "SELECT * FROM current_round WHERE StpID='$id'";
+  $qrnd = "SELECT * FROM current_round WHERE StpID='$id'";
 	$roundresult = mysqli_query($db, $qrnd);
 	if(mysqli_num_rows($roundresult)== 1){
         $q = "SELECT * FROM current_round WHERE StpID = '$id'";
@@ -81,7 +81,7 @@
         $ValCap = $row['Val_cap'];
         $ConvDisc = $row['Conversion_disc'];
         $IntRate = $row['Interest_rate'];
-        $Term = $row['Term_len'];
+        $Termlen = $row['Term_len'];
         $RndBtn = "Close Round";
         $RndBlock = 0;
     }
@@ -100,92 +100,92 @@
 
 
     $q = "SELECT * FROM st_uploads WHERE StpID = '$id';";
-	$results = mysqli_query($db, $q);
-	$row = mysqli_fetch_assoc($results);
-	$PitchName = $row['PitchName'];
-	$PitchExt = $row['PitchExt'];
-	$Logo = $row['Logo'];
-	$Backimg = $row['BackImg'];
-	$BPlan = $row['BPlan'];
-	$BPlanExt = $row['BPlanExt'];
-	$FProjection = $row['FProjection'];
-	$FProjectionExt = $row['FProjectionExt'];
-	$AdDocs = $row['AdDocs'];
-	$AdDocsExt = $row['AdDocsExt'];
+  	$results = mysqli_query($db, $q);
+  	$row = mysqli_fetch_assoc($results);
+  	$PitchName = $row['PitchName'];
+  	$PitchExt = $row['PitchExt'];
+  	$Logo = $row['Logo'];
+  	$Backimg = $row['BackImg'];
+  	$BPlan = $row['BPlan'];
+  	$BPlanExt = $row['BPlanExt'];
+  	$FProjection = $row['FProjection'];
+  	$FProjectionExt = $row['FProjectionExt'];
+  	$AdDocs = $row['AdDocs'];
+  	$AdDocsExt = $row['AdDocsExt'];
 
 
     if(isset($_POST["cbsave"])){
-		$cbname = mysqli_real_escape_string($db, $_POST['cbname']);
-		$cbstage = mysqli_real_escape_string($db, $_POST['cbstage']);
-		$cbaddress = mysqli_real_escape_string($db, $_POST['cbaddress']);
-		$cbcity = mysqli_real_escape_string($db, $_POST['cbcity']);
-		$cbstate = mysqli_real_escape_string($db, $_POST['cbstate']);
-		$cbcountry = mysqli_real_escape_string($db, $_POST['cbcountry']);
-		$cbdate = mysqli_real_escape_string($db, $_POST['cbdate']);
-		$cbempnum = mysqli_real_escape_string($db, $_POST['cbempnum']);
-		$cbinc = mysqli_real_escape_string($db, $_POST['cbinc']);
-		$cbweb = mysqli_real_escape_string($db, $_POST['cbweb']);
-        $cbsummary = mysqli_real_escape_string($db, $_POST['cbsummary']);
+    		$cbname = mysqli_real_escape_string($db, $_POST['cbname']);
+    		$cbstage = mysqli_real_escape_string($db, $_POST['cbstage']);
+    		$cbaddress = mysqli_real_escape_string($db, $_POST['cbaddress']);
+    		$cbcity = mysqli_real_escape_string($db, $_POST['cbcity']);
+    		$cbstate = mysqli_real_escape_string($db, $_POST['cbstate']);
+    		$cbcountry = mysqli_real_escape_string($db, $_POST['cbcountry']);
+    		$cbdate = mysqli_real_escape_string($db, $_POST['cbdate']);
+    		$cbempnum = mysqli_real_escape_string($db, $_POST['cbempnum']);
+    		$cbinc = mysqli_real_escape_string($db, $_POST['cbinc']);
+    		$cbweb = mysqli_real_escape_string($db, $_POST['cbweb']);
+            $cbsummary = mysqli_real_escape_string($db, $_POST['cbsummary']);
 
 
-		if($cbname != "")
-		{
-			$q = "UPDATE st_details set Stname='$cbname' where StpID='$id';";
-			mysqli_query($db, $q);
-		}
+    		if($cbname != "")
+    		{
+    			$q = "UPDATE st_details set Stname='$cbname' where StpID='$id';";
+    			mysqli_query($db, $q);
+    		}
 
-		if($cbstage != 'Select Stage')
-		{
-			$q = "UPDATE st_addetails set Stage='$cbstage' where StpID='$id';";
-			mysqli_query($db, $q);
-		}
-		if($cbaddress != "")
-		{
-			$q = "UPDATE st_details set Address='$cbaddress' where StpID='$id';";
-			mysqli_query($db, $q);
-		}
-		if($cbcity != "")
-		{
-			$q = "UPDATE st_details set City='$cbcity' where StpID='$id';";
-			mysqli_query($db, $q);
-		}
-		if($cbstate != "")
-		{
-			$q = "UPDATE st_details set State='$cbstate' where StpID='$id';";
-			mysqli_query($db, $q);
-		}
-		if($cbcountry != "")
-		{
-			$q = "UPDATE st_details set Country='$cbcountry' where StpID='$id';";
-			mysqli_query($db, $q);
-		}
-		if($cbdate != "")
-		{
-			$q = "UPDATE st_addetails set DOF='$cbdate' where StpID='$id';";
-			mysqli_query($db, $q);
-		}
-		if($cbempnum != "")
-		{
-			$q = "UPDATE st_addetails set EmpNum='$cbempnum' where StpID='$id';";
-			mysqli_query($db, $q);
-		}
-		if($cbinc != 'Select Incorporation')
-		{
-			$q = "UPDATE st_addetails set IncType='$cbinc' where StpID='$id';";
-			mysqli_query($db, $q);
-		}
-		if($cbweb != "")
-		{
-			$q = "UPDATE st_details set Website='$cbweb' where StpID='$id';";
-			mysqli_query($db, $q);
-		}
-        if($cbsummary != "")
-		{
-            $q = "UPDATE st_description set Summary='$cbsummary' where StpID='$id';";
-    		mysqli_query($db, $q);
-		}
-		header('location:index.php');
-	}
+    		if($cbstage != 'Select Stage')
+    		{
+    			$q = "UPDATE st_addetails set Stage='$cbstage' where StpID='$id';";
+    			mysqli_query($db, $q);
+    		}
+    		if($cbaddress != "")
+    		{
+    			$q = "UPDATE st_details set Address='$cbaddress' where StpID='$id';";
+    			mysqli_query($db, $q);
+    		}
+    		if($cbcity != "")
+    		{
+    			$q = "UPDATE st_details set City='$cbcity' where StpID='$id';";
+    			mysqli_query($db, $q);
+    		}
+    		if($cbstate != "")
+    		{
+    			$q = "UPDATE st_details set State='$cbstate' where StpID='$id';";
+    			mysqli_query($db, $q);
+    		}
+    		if($cbcountry != "")
+    		{
+    			$q = "UPDATE st_details set Country='$cbcountry' where StpID='$id';";
+    			mysqli_query($db, $q);
+    		}
+    		if($cbdate != "")
+    		{
+    			$q = "UPDATE st_addetails set DOF='$cbdate' where StpID='$id';";
+    			mysqli_query($db, $q);
+    		}
+    		if($cbempnum != "")
+    		{
+    			$q = "UPDATE st_addetails set EmpNum='$cbempnum' where StpID='$id';";
+    			mysqli_query($db, $q);
+    		}
+    		if($cbinc != 'Select Incorporation')
+    		{
+    			$q = "UPDATE st_addetails set IncType='$cbinc' where StpID='$id';";
+    			mysqli_query($db, $q);
+    		}
+    		if($cbweb != "")
+    		{
+    			$q = "UPDATE st_details set Website='$cbweb' where StpID='$id';";
+    			mysqli_query($db, $q);
+    		}
+            if($cbsummary != "")
+    		{
+                $q = "UPDATE st_description set Summary='$cbsummary' where StpID='$id';";
+        		mysqli_query($db, $q);
+    		}
+    		header('location:index.php');
+	     }
 
 
     if(isset($_POST['essave'])){
@@ -238,14 +238,52 @@
 
         header('location:index.php');
     }
+    
+    if(isset($_POST['roundsave'])){
+    		$Round = mysqli_real_escape_string($db, $_POST['round']);
+    		$Seek = mysqli_real_escape_string($db, $_POST['seeking']);
+    		$Sec_type = mysqli_real_escape_string($db, $_POST['security']);
+    		$Premoney_val = mysqli_real_escape_string($db, $_POST['preval']);
+    		$Val_cap = mysqli_real_escape_string($db, $_POST['valcap']);
+    		$Discount = mysqli_real_escape_string($db, $_POST['discount']);
+    		$Interest = mysqli_real_escape_string($db, $_POST['interest']);
+    		$Term = mysqli_real_escape_string($db, $_POST['term']);
+
+    		if( $Sec_type == 'Preferred Equity' || $Sec_type == 'Common Equity' ){
+    			$q = "INSERT INTO current_round(StpId,Round,Seeking,Security_type,Premoney_val) values('$id','$Round','$Seek','$Sec_type',$Premoney_val)";
+    			mysqli_query($db, $q);
+    		  }
+    		if( $Sec_type == 'Convertible Notes' ){
+    			$q = "INSERT INTO current_round(StpId,Round,Seeking,Security_type,Val_cap,Conversion_disc,Interest_rate,Term_len) values('$id','$Round','$Seek','$Sec_type','$Val_cap','$Discount','$Interest','$Term')";
+    			mysqli_query($db, $q);
+    		  }
+    		header('location:index.php');
+	   }
+   
+   if(isset($_POST['roundclose'])){
+  		$Capraised = mysqli_real_escape_string($db, $_POST['capraise']);
+  		$Cldate = mysqli_real_escape_string($db, $_POST['cal']);
+
+  		$q= "SELECT Round,Security_type FROM current_round WHERE StpID = '$id';";
+  		$results = mysqli_query($db, $q);
+  		$row=mysqli_fetch_array($results);
+
+  		$q1= "INSERT INTO round_history(StpID,Round,Security_type,Capital_raised,Close_date) values('$id','$row[0]','$row[1]','$Capraised','$Cldate')";
+  		mysqli_query($db, $q1);
+
+  		$q2 = "DELETE FROM current_round WHERE StpId='$id'";
+  		mysqli_query($db, $q2);
+
+  		header('location:index.php#financials');
+  	 }
 
     if(isset($_POST['histdel'])){
-		$Hid= mysqli_real_escape_string($db, $_POST['hid']);
-		$q2 = "DELETE FROM round_history WHERE HistID='$Hid'";
-		mysqli_query($db, $q2);
+    		$Hid= mysqli_real_escape_string($db, $_POST['hid']);
+    		$q2 = "DELETE FROM round_history WHERE HistID='$Hid'";
+    		mysqli_query($db, $q2);
 
-		header('location:index.php');
-	}
+    		header('location:index.php');
+    	}
 
     $q = "SELECT * FROM userstp where StpID='$id'";
     $resultverify = mysqli_query($db, $q);
@@ -269,12 +307,12 @@
     }
 
     if($rowverify['Verified'] == 0){
-        $verify = "RED";
+        $verify = '#cf1919';
         $acctype = "Verify Yourself";
         $message = 'Your Account is not yet verified By Naman Angels. Please continue to complete your profile and have an early verification.';
     }
     else{
-        $verify = "Green";
+        $verify = '#18c74d';
         $acctype = "Verified Account";
         $message = 'Verified';
     }
@@ -311,33 +349,33 @@
 
 
     if(isset($_POST['subfinancialprojection'])){
-		$name= $Stname."_fproj_".$_FILES['financialprojection']['name'];
-		$tmp_name= $_FILES['financialprojection']['tmp_name'];
-		$submitbutton= $_POST['subfinancialprojection'];
-		$position= strpos($name, ".");
-		$fileextension= substr($name, $position + 1);
-		$fileextension= strtolower($fileextension);
-		$success= -1;
-		if (isset($name)){
-			$pathas = 'uploads/startup/'.$name;
-			$path= '../uploads/startup/'.$name;
-			if (!empty($name)){
-				if ($fileextension !== "pdf"){
-					$success=0;
-					echo '<script>alert("The file extension must be .pdf in order to be uploaded")</script>';
-				}
-				else if ($fileextension == "pdf"){
-					$success=1;
-					if (copy($tmp_name, $path)) {
-						echo '<script> alert("Uploaded!")</script>';
-						$q = "UPDATE st_uploads SET FProjection='$pathas', FProjectionExt='$fileextension' where StpID='$id';";
-						mysqli_query($db, $q);
-					}
-				}
-			}
-		}
-		header('location:index.php');
-	}
+    		$name= $Stname."_fproj_".$_FILES['financialprojection']['name'];
+    		$tmp_name= $_FILES['financialprojection']['tmp_name'];
+    		$submitbutton= $_POST['subfinancialprojection'];
+    		$position= strpos($name, ".");
+    		$fileextension= substr($name, $position + 1);
+    		$fileextension= strtolower($fileextension);
+    		$success= -1;
+    		if (isset($name)){
+    			$pathas = 'uploads/startup/'.$name;
+    			$path= '../uploads/startup/'.$name;
+    			if (!empty($name)){
+    				if ($fileextension !== "pdf"){
+    					$success=0;
+    					echo '<script>alert("The file extension must be .pdf in order to be uploaded")</script>';
+    				}
+    				else if ($fileextension == "pdf"){
+    					$success=1;
+    					if (copy($tmp_name, $path)) {
+    						echo '<script> alert("Uploaded!")</script>';
+    						$q = "UPDATE st_uploads SET FProjection='$pathas', FProjectionExt='$fileextension' where StpID='$id';";
+    						mysqli_query($db, $q);
+    					}
+    				}
+    			}
+    		}
+    		header('location:index.php');
+    	}
 
 	if(isset($_POST['sub_add_docs'])){
 		$name= $Stname."_add_doc_".$_FILES['add_doc']['name'];
@@ -367,6 +405,7 @@
 		}
 		header('location:index.php');
 	}
+
 ?>
 
 <html lang="en">
@@ -458,11 +497,13 @@
               <i class="fas fa-user-circle" style="color:<?= $verify?>"></i>
             </a>
           </div>
+          <h5 class="media-heading"><?=$message?></h5>
+          
 
           <div class="row">
             <div class="col-md-9">
                 <h1 class="mb-0">
-                  <span class="text-primary">Hello <?=$Stname?></span>
+                  <span class="text-primary">Hello <?=$Stname?>!</span>
                 </h1>
             </div>
           </div>
@@ -1247,7 +1288,7 @@
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label>Customer Problem</label><br>
-			    						<small>What customer problem does your product and/or service solve? (upto 200 words)</small>
+			    						                  <small>What customer problem does your product and/or service solve? (upto 200 words)</small>
                                         <textarea rows="5" name="custform" id="custform" class='form-control' autofocus></textarea>
                                     </div>
                                     <div class="form-group">
@@ -1448,7 +1489,7 @@
                                         </div>
                                         <div class="form-group">
                                           <label>Security type</label>
-                          									<select name="security" id="sec" class="form-control" onchange="valfunc()">
+                          									<select name="security" name="sec" id="sec" class="form-control" onchange="valfunc()">
                                                 <option value="SecType" selected='selected'>Select Security Type</option>
                                                 <option value="Preferred Equity">Preferred Equity</option>
                                                 <option value="Common Equity">Common Equity</option>
@@ -1476,7 +1517,7 @@
                           										<input type="text" class="form-control" name="interest" placeholder="Numbers Only" size="53">
                                               <br>
                           										<label>Term Length</label>
-                          										<input type="text" name="term" class="form-control" placeholder="Months" size="55">
+                          										<input type="text" class="form-control" name="term" placeholder="Months" size="55">
                           									</span>
                                         </div>
                                     </div>
@@ -1484,13 +1525,54 @@
                         </div>
                         <div class="modal-footer d-flex justify-content-center">
                             <!-- <button class="btn btn-unique">Cancel <i class="fas fa-paper-plane-o ml-1"></i></button> -->
-                            <button class="btn btn-unique" name="cbsave">Save <i class="fas fa-paper-plane-o ml-1"></i></button>
+                            <button class="btn btn-unique" name="roundsave">Start Round <i class="fas fa-paper-plane-o ml-1"></i></button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+    
+    <div class="modal fade" id="CloseRoundForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h4 class="modal-title w-100 font-weight-bold">Open Funding Round</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body mx-3">
+                    <form method="post" action="index.php">
+                        <div class="accordion" id="accordionExample">
+                            <div class="card">
+                                    <div class="card-body">
+                                        <!-- <div class="form-group">
+                                          <label>Round</label>
+                                          <input type="text" class="form-control" name="seeking" placeholder="Numbers Only" size="54">
+                                        </div> -->
+                                        <div class="subheading mb-4">Round : <?= $RndName?></div>
+                                        <div class="form-group">
+                                          <label>Capital Raised</label>
+                                          <input type="text" class="form-control" name="capraise" placeholder="Numbers Only" size="54">
+                                        </div>
+                                        <div class="form-group">
+                                          <label>Closing Date</label>
+                                          <input type="date" class="form-control" name="cal" placeholder="Numbers Only" size="54">
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer d-flex justify-content-center">
+                            <!-- <button class="btn btn-unique">Cancel <i class="fas fa-paper-plane-o ml-1"></i></button> -->
+                            <button class="btn btn-unique" name="roundclose">Close Round<i class="fas fa-paper-plane-o ml-1"></i></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
 
     <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="financials">
       <div class="w-100">
@@ -1518,7 +1600,7 @@
                     echo '<div class="subheading mb-3">Valuation Capital :'.$ValCap.'</div>';
                     echo '<div class="subheading mb-3">Conversion Discount :'.$ConvDisc.'</div>';
                     echo '<div class="subheading mb-3">Interest Rate : '.$IntRate.'</div>';
-                    echo '<div class="subheading mb-3">Term Length : '.$Term.'</div>';
+                    echo '<div class="subheading mb-3">Term Length : '.$Termlen.'</div>';
                   }
                 echo '</div>';
                 echo '<div class="resume-date text-md-right">';
