@@ -56,7 +56,7 @@
 	$row = mysqli_fetch_assoc($results);
 
 	// $MTeam = $row['MTeam'];
-  $CProb = $row['CustomerProblem']==""? 'What customer problem does your product and/or service solve?':$row['CustomerProblem'];
+    $CProb = $row['CustomerProblem']==""? 'What customer problem does your product and/or service solve?':$row['CustomerProblem'];
 	$ProdSer = $row['ProductService']==""? 'Describe the product or service that you will sell and how it solves the customer problem, listing the main value proposition for each product/service.':$row['ProductService'];
 	$TarMar = $row['TargetMarket']==""? 'Define the important geographic, demographic, and/or psychographic characteristics of the market within which your customer segments exist.':$row['TargetMarket'];
 	$BModel = $row['BusinessModel']==""? 'What strategy will you employ to build, deliver, and retain company value (e.g., profits)?':$row['BusinessModel'];
@@ -67,29 +67,29 @@
 	$CompAdv = $row['CompAdvantage']==""? 'What is your companys competitive or unfair advantage? This can include patents, first mover advantage, unique expertise, or proprietary processes/technology.':$row['CompAdvantage'];
 
 
-  $qrnd = "SELECT * FROM current_round WHERE StpID='$id'";
+    $qrnd = "SELECT * FROM current_round WHERE StpID='$id'";
 	$roundresult = mysqli_query($db, $qrnd);
 	if(mysqli_num_rows($roundresult)== 1){
-    $q = "SELECT * FROM current_round WHERE StpID = '$id'";
-  	$results = mysqli_query($db, $q);
-    $row = mysqli_fetch_assoc($results);
+        $q = "SELECT * FROM current_round WHERE StpID = '$id'";
+        $results = mysqli_query($db, $q);
+        $row = mysqli_fetch_assoc($results);
 
-    $RndName = $row['Round'];
-    $Seek = $row['Seeking'];
-    $SecType = $row['Security_type'];
-    $PreVal = $row['Premoney_val'];
-    $ValCap = $row['Val_cap'];
-    $ConvDisc = $row['Conversion_disc'];
-    $IntRate = $row['Interest_rate'];
-    $Term = $row['Term_len'];
-    $RndBtn = "Close Round";
-    $RndBlock = 0;
-  }
-  else{
-    $RndBtn = "Open Round";
-    $RndBlock = 1;
-  }
-  
+        $RndName = $row['Round'];
+        $Seek = $row['Seeking'];
+        $SecType = $row['Security_type'];
+        $PreVal = $row['Premoney_val'];
+        $ValCap = $row['Val_cap'];
+        $ConvDisc = $row['Conversion_disc'];
+        $IntRate = $row['Interest_rate'];
+        $Term = $row['Term_len'];
+        $RndBtn = "Close Round";
+        $RndBlock = 0;
+    }
+    else{
+        $RndBtn = "Open Round";
+        $RndBlock = 1;
+    }
+
   $y=date("Y");
   $q = "SELECT revenue_rate,burn_rate,revenue_driver FROM annual_financial WHERE StpId='$id' AND year= '$y' ";
   $results = mysqli_query($db, $q);
@@ -223,7 +223,7 @@
 
         header('location:index.php');
     }
-    
+
     if(isset($_POST['histdel'])){
 		$Hid= mysqli_real_escape_string($db, $_POST['hid']);
 		$q2 = "DELETE FROM round_history WHERE HistID='$Hid'";
@@ -273,43 +273,43 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-        <a class="nav-link js-scroll-trigger" href="#home">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="#companybasics">Company Basics</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="#overview">Overview</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="#teams">Team</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="#executivesummary">Executive Summary</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="#financials">Financials</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="#documents">Documents</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="#toolsandservices">Tools and Services</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="#consultancy">Consultancy</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link " href="#">Settings</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../logout.php">Logout</a>
-        </li>
-      </ul>
-    </div>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#companybasics">Company Basics</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#overview">Overview</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#teams">Team</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#executivesummary">Executive Summary</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#financials">Financials</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#documents">Documents</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#toolsandservices">Tools and Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#consultancy">Consultancy</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="#">Settings</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../logout.php">Logout</a>
+                </li>
+            </ul>
+        </div>
     </nav>
 
     <div class="container-fluid p-0">
@@ -1325,8 +1325,8 @@
                     <h3>Funding History</h3>
                 </div>
             </div>
-            
-            
+
+
 
             <div class="col-md-9" style="padding-bottom:20px">
                 <div id="review">
