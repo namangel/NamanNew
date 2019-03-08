@@ -56,7 +56,7 @@
 	$row = mysqli_fetch_assoc($results);
 
 	// $MTeam = $row['MTeam'];
-  $CProb = $row['CustomerProblem']==""? 'What customer problem does your product and/or service solve?':$row['CustomerProblem'];
+    $CProb = $row['CustomerProblem']==""? 'What customer problem does your product and/or service solve?':$row['CustomerProblem'];
 	$ProdSer = $row['ProductService']==""? 'Describe the product or service that you will sell and how it solves the customer problem, listing the main value proposition for each product/service.':$row['ProductService'];
 	$TarMar = $row['TargetMarket']==""? 'Define the important geographic, demographic, and/or psychographic characteristics of the market within which your customer segments exist.':$row['TargetMarket'];
 	$BModel = $row['BusinessModel']==""? 'What strategy will you employ to build, deliver, and retain company value (e.g., profits)?':$row['BusinessModel'];
@@ -67,36 +67,51 @@
 	$CompAdv = $row['CompAdvantage']==""? 'What is your companys competitive or unfair advantage? This can include patents, first mover advantage, unique expertise, or proprietary processes/technology.':$row['CompAdvantage'];
 
 
-  $qrnd = "SELECT * FROM current_round WHERE StpID='$id'";
+    $qrnd = "SELECT * FROM current_round WHERE StpID='$id'";
 	$roundresult = mysqli_query($db, $qrnd);
 	if(mysqli_num_rows($roundresult)== 1){
-    $q = "SELECT * FROM current_round WHERE StpID = '$id'";
-  	$results = mysqli_query($db, $q);
-    $row = mysqli_fetch_assoc($results);
+        $q = "SELECT * FROM current_round WHERE StpID = '$id'";
+        $results = mysqli_query($db, $q);
+        $row = mysqli_fetch_assoc($results);
 
-    $RndName = $row['Round'];
-    $Seek = $row['Seeking'];
-    $SecType = $row['Security_type'];
-    $PreVal = $row['Premoney_val'];
-    $ValCap = $row['Val_cap'];
-    $ConvDisc = $row['Conversion_disc'];
-    $IntRate = $row['Interest_rate'];
-    $Term = $row['Term_len'];
-    $RndBtn = "Close Round";
-    $RndBlock = 0;
-  }
-  else{
-    $RndBtn = "Open Round";
-    $RndBlock = 1;
-  }
-  
-  $y=date("Y");
-  $q = "SELECT revenue_rate,burn_rate,revenue_driver FROM annual_financial WHERE StpId='$id' AND year= '$y' ";
-  $results = mysqli_query($db, $q);
-  $row=mysqli_fetch_array($results);
-  $revrr= $row[0];
-  $mbr= $row[1];
-  $revdr= $row[2];
+        $RndName = $row['Round'];
+        $Seek = $row['Seeking'];
+        $SecType = $row['Security_type'];
+        $PreVal = $row['Premoney_val'];
+        $ValCap = $row['Val_cap'];
+        $ConvDisc = $row['Conversion_disc'];
+        $IntRate = $row['Interest_rate'];
+        $Term = $row['Term_len'];
+        $RndBtn = "Close Round";
+        $RndBlock = 0;
+    }
+    else{
+        $RndBtn = "Open Round";
+        $RndBlock = 1;
+    }
+
+    $y=date("Y");
+    $q = "SELECT revenue_rate,burn_rate,revenue_driver FROM annual_financial WHERE StpId='$id' AND year= '$y' ";
+    $results = mysqli_query($db, $q);
+    $row=mysqli_fetch_array($results);
+    $revrr= $row[0];
+    $mbr= $row[1];
+    $revdr= $row[2];
+
+
+    $q = "SELECT * FROM st_uploads WHERE StpID = '$id';";
+	$results = mysqli_query($db, $q);
+	$row = mysqli_fetch_assoc($results);
+	$PitchName = $row['PitchName'];
+	$PitchExt = $row['PitchExt'];
+	$Logo = $row['Logo'];
+	$Backimg = $row['BackImg'];
+	$BPlan = $row['BPlan'];
+	$BPlanExt = $row['BPlanExt'];
+	$FProjection = $row['FProjection'];
+	$FProjectionExt = $row['FProjectionExt'];
+	$AdDocs = $row['AdDocs'];
+	$AdDocsExt = $row['AdDocsExt'];
 
 
     if(isset($_POST["cbsave"])){
@@ -223,7 +238,7 @@
 
         header('location:index.php');
     }
-    
+
     if(isset($_POST['histdel'])){
 		$Hid= mysqli_real_escape_string($db, $_POST['hid']);
 		$q2 = "DELETE FROM round_history WHERE HistID='$Hid'";
@@ -232,6 +247,126 @@
 		header('location:index.php');
 	}
 
+    $q = "SELECT * FROM userstp where StpID='$id'";
+    $resultverify = mysqli_query($db, $q);
+    $rowverify = mysqli_fetch_assoc($resultverify);
+
+    if($rowverify["VerifyMe"] == 0){
+        $verifybutton = "VERIFY ME";
+        $verifybuttonname = "verifyme";
+        $verifyclass = '';
+    }
+    elseif ($rowverify["VerifyMe"] == 1) {
+        $verifybutton = "VERIFICATION IN PROGRESS";
+        $verifybuttonname = "verificationinprogress";
+        $verifyclass = 'disabled';
+    }
+
+    if(isset($_POST['verifyme'])){
+        $q = "UPDATE userstp set VerifyMe=1 where StpID='$id';";
+        mysqli_query($db, $q);
+        header('location:index.php');
+    }
+
+    if($rowverify['Verified'] == 0){
+        $verify = "RED";
+        $acctype = "Verify Yourself";
+        $message = 'Your Account is not yet verified By Naman Angels. Please continue to complete your profile and have an early verification.';
+    }
+    else{
+        $verify = "Green";
+        $acctype = "Verified Account";
+        $message = 'Verified';
+    }
+
+
+    if(isset($_POST['subbusinessplan'])){
+        $name= $Stname."_bplan_".$_FILES['businessplan']['name'];
+        $tmp_name= $_FILES['businessplan']['tmp_name'];
+        $submitbutton= $_POST['subbusinessplan'];
+        $position= strpos($name, ".");
+        $fileextension= substr($name, $position + 1);
+        $fileextension= strtolower($fileextension);
+        $success= -1;
+        if (isset($name)){
+            $pathas = 'uploads/startup/'.$name;
+            $path= '../uploads/startup/'.$name;
+            if (!empty($name)){
+                if ($fileextension !== "pdf"){
+                    $success=0;
+                    echo '<script>alert("The file extension must be .pdf in order to be uploaded")</script>';
+                }
+                else if ($fileextension == "pdf"){
+                    $success=1;
+                    if (copy($tmp_name, $path)) {
+                        echo '<script> alert("Uploaded!")</script>';
+                        $q = "UPDATE st_uploads SET BPlan='$pathas', BPlanExt='$fileextension' where StpID='$id';";
+                        mysqli_query($db, $q);
+                    }
+                }
+            }
+        }
+        header('location:index.php');
+    }
+
+
+    if(isset($_POST['subfinancialprojection'])){
+		$name= $Stname."_fproj_".$_FILES['financialprojection']['name'];
+		$tmp_name= $_FILES['financialprojection']['tmp_name'];
+		$submitbutton= $_POST['subfinancialprojection'];
+		$position= strpos($name, ".");
+		$fileextension= substr($name, $position + 1);
+		$fileextension= strtolower($fileextension);
+		$success= -1;
+		if (isset($name)){
+			$pathas = 'uploads/startup/'.$name;
+			$path= '../uploads/startup/'.$name;
+			if (!empty($name)){
+				if ($fileextension !== "pdf"){
+					$success=0;
+					echo '<script>alert("The file extension must be .pdf in order to be uploaded")</script>';
+				}
+				else if ($fileextension == "pdf"){
+					$success=1;
+					if (copy($tmp_name, $path)) {
+						echo '<script> alert("Uploaded!")</script>';
+						$q = "UPDATE st_uploads SET FProjection='$pathas', FProjectionExt='$fileextension' where StpID='$id';";
+						mysqli_query($db, $q);
+					}
+				}
+			}
+		}
+		header('location:index.php');
+	}
+
+	if(isset($_POST['sub_add_docs'])){
+		$name= $Stname."_add_doc_".$_FILES['add_doc']['name'];
+		$tmp_name= $_FILES['add_doc']['tmp_name'];
+		$submitbutton= $_POST['sub_add_docs'];
+		$position= strpos($name, ".");
+		$fileextension= substr($name, $position + 1);
+		$fileextension= strtolower($fileextension);
+		$success= -1;
+		if (isset($name)){
+			$pathas = 'uploads/startup/'.$name;
+			$path= '../uploads/startup/'.$name;
+			if (!empty($name)){
+				if ($fileextension !== "pdf"){
+					$success=0;
+					echo '<script>alert("The file extension must be .pdf in order to be uploaded")</script>';
+				}
+				else if ($fileextension == "pdf"){
+					$success=1;
+					if (copy($tmp_name, $path)) {
+						echo '<script> alert("Uploaded!")</script>';
+						$q = "UPDATE st_uploads SET AdDocs='$pathas', AdDocsExt='$fileextension' where StpID='$id';";
+						mysqli_query($db, $q);
+					}
+				}
+			}
+		}
+		header('location:index.php');
+	}
 ?>
 
 <html lang="en">
@@ -242,7 +377,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Resume - Start Bootstrap Theme</title>
+    <title>My Dashboard</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -256,6 +391,8 @@
     <link href="css/resume.min.css" rel="stylesheet">
     <link href="css/resume.min.new.css" rel="stylesheet">
     <!-- <link href="css/style.css" rel="stylesheet"> -->
+    
+    <script src="js/finround.js"></script>
 
 
 </head>
@@ -273,43 +410,43 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-        <a class="nav-link js-scroll-trigger" href="#home">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="#companybasics">Company Basics</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="#overview">Overview</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="#teams">Team</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="#executivesummary">Executive Summary</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="#financials">Financials</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="#documents">Documents</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="#toolsandservices">Tools and Services</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="#consultancy">Consultancy</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link " href="#">Settings</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../logout.php">Logout</a>
-        </li>
-      </ul>
-    </div>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#companybasics">Company Basics</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#overview">Overview</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#teams">Team</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#executivesummary">Executive Summary</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#financials">Financials</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#documents">Documents</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#toolsandservices">Tools and Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#consultancy">Consultancy</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="#">Settings</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../logout.php">Logout</a>
+                </li>
+            </ul>
+        </div>
     </nav>
 
     <div class="container-fluid p-0">
@@ -318,7 +455,7 @@
         <div class="w-100">
           <div class="user-icons">
             <a href="#">
-              <i class="fas fa-user-circle"></i>
+              <i class="fas fa-user-circle" style="color:<?= $verify?>"></i>
             </a>
           </div>
 
@@ -366,7 +503,10 @@
                           <div class="profile-item">
                               <div class="media">
                                   <div class="media-body">
-                                      <button class="btn btn-lg btn-block btn-login text-uppercase font-weight-bold mb-3" type="submit">EVALUATE</button>
+                                      <form action="index.php" method="post">
+                                          <button class="btn btn-lg btn-block btn-login text-uppercase font-weight-bold mb-3" type="submit">EVALUATE</button>
+                                      </form>
+
                                   </div>
                               </div>
                           </div>
@@ -434,23 +574,22 @@
                       </div>
                   </div>
               </div>
-        </div>
-        <div class="row" style="padding-top:50px">
-          <div class="col-md-6">
-              <div class="section-title"><h3>Verify your Startup once your profile is built</h3></div>
           </div>
-          <!-- <div class="col-md-12"> -->
-              <!-- <div class="row"> -->
-                  <div class="col-md-6" >
-                      <div class="profile-item">
-                          <div class="media">
-                              <div class="media-body">
-                                  <button class="btn btn-lg btn-block btn-login text-uppercase font-weight-bold mb-3" type="submit">Verify</button>
-                              </div>
+          <div class="row" style="padding-top:50px">
+              <div class="col-md-6">
+                  <div class="section-title"><h3>Verify your Startup once your profile is built</h3></div>
+              </div>
+              <div class="col-md-6" >
+                  <div class="profile-item">
+                      <div class="media">
+                          <div class="media-body">
+                              <form action="index.php" method="post">
+                                  <button class="btn btn-lg btn-block btn-login text-uppercase font-weight-bold mb-3 <?=$verifyclass?>" name="<?=$verifybuttonname?>" type="submit"><?=$verifybutton?></button>
+                              </form>
                           </div>
                       </div>
                   </div>
-                <!-- </div> -->
+              </div>
           </div>
         </div>
     </section>
@@ -808,7 +947,7 @@
                         </div>
                     </div>
                     <div class="modal-footer d-flex justify-content-center">
-                        <button class="btn btn-unique">Cancel <i class="fas fa-paper-plane-o ml-1"></i></button>
+                        <!-- <button class="btn btn-unique">Cancel <i class="fas fa-paper-plane-o ml-1"></i></button> -->
                         <button class="btn btn-unique" name="cbsave">Save <i class="fas fa-paper-plane-o ml-1"></i></button>
                     </div>
                 </form>
@@ -839,33 +978,33 @@
           <!-- <a href="mailto:name@email.com">name@email.com</a> -->
         </div>
         <div class="row" >
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <div class="section-title"><h3>Industry  :  <?=$Type?></h3></div>
             </div>
         </div>
         <div class="row" >
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <div class="section-title"><h3>Incorporation Type  :  <?=$IncType?></h3></div>
             </div>
         </div>
         <div class="row" >
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <div class="section-title"><h3>Stage  :  <?=$Stage?></h3></div>
             </div>
         </div>
         <div class="row" >
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <div class="section-title" style="padding-top:50px"><h3>Company Summary</h3></div>
             </div>
         </div>
         <p class="lead mb-5"><?=$Summary?> ---- Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <div class="section-title"><h3>Founded  :  <?=$DOF?></h3></div>
             </div>
         </div>
         <div class="row" >
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <div class="section-title"><h3>Employees  :  <?=$EmpNum?></h3></div>
             </div>
         </div>
@@ -917,7 +1056,7 @@
                             </div>
                         </div>
                         <div class="modal-footer d-flex justify-content-center">
-                            <button class="btn btn-unique">Cancel <i class="fas fa-paper-plane-o ml-1"></i></button>
+                            <!-- <button class="btn btn-unique">Cancel <i class="fas fa-paper-plane-o ml-1"></i></button> -->
                             <button class="btn btn-unique" name="cbsave">Save <i class="fas fa-paper-plane-o ml-1"></i></button>
                         </div>
                     </form>
@@ -1152,7 +1291,7 @@
                             </div>
                         </div>
                         <div class="modal-footer d-flex justify-content-center">
-                            <button class="btn btn-unique">Cancel <i class="fas fa-paper-plane-o ml-1"></i></button>
+                            <!-- <button class="btn btn-unique">Cancel <i class="fas fa-paper-plane-o ml-1"></i></button> -->
                             <button class="btn btn-unique" name="essave">Save <i class="fas fa-paper-plane-o ml-1"></i></button>
                         </div>
                     </form>
@@ -1275,6 +1414,80 @@
     </section>
 
     <hr class="m-0">
+    
+    <div class="modal fade" id="OpenRoundForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h4 class="modal-title w-100 font-weight-bold">Open Funding Round</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body mx-3">
+                    <form method="post" action="index.php">
+                        <div class="accordion" id="accordionExample">
+                            <div class="card">
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                          <select name="round" class="form-control">
+                                                <option>Select Round</option>
+                                                <option value="Founder">Founder</option>
+                                                <option value="Friends and Family">Friends and Family</option>
+                                                <option value="Angel">Angel</option>
+                                                <option value="Preseries A">Preseries A</option>
+                                                <option value="Series A">Series A</option>
+                                          </select>
+                                        </div>
+                                        <div class="form-group">
+                                          <label>Seeking</label>
+                                          <input type="text" class="form-control" name="seeking" placeholder="Numbers Only" size="54">
+                                        </div>
+                                        <div class="form-group">
+                                          <label>Security type</label>
+                          									<select name="security" id="sec" class="form-control" onchange="valfunc()">
+                                                <option value="SecType" selected='selected'>Select Security Type</option>
+                                                <option value="Preferred Equity">Preferred Equity</option>
+                                                <option value="Common Equity">Common Equity</option>
+                                                <option value="Convertible Notes">Convertible Notes</option>
+                          									</select>
+                                        </div>
+                                        <div class="form-group">
+                                          <!-- <script>
+                                          document.getElementById("notes").style.display = "none";
+                                          document.getElementById("equity").style.display = "none";
+                                          </script> -->
+                                            <span id="equity" class="collapse1">
+                          										<label>Pre-Money Valuation</label>
+                          										<input type="text" class="form-control" name="preval" placeholder="Numbers Only" size="54">      
+                                              <br>
+                          									</span>
+                          									<span id="notes" class="collapse1">
+                          										<label>Valuation Cap</label>
+                          										<input type="text" class="form-control" name="valcap" placeholder="Numbers Only" size="54">
+                                              <br>
+                          										<label>Conversion Discount</label>
+                          										<input type="text" class="form-control" name="discount" placeholder="Numbers Only" size="53">
+                                              <br>
+                          										<label>Interest Rate</label>
+                          										<input type="text" class="form-control" name="interest" placeholder="Numbers Only" size="53">
+                                              <br>
+                          										<label>Term Length</label>
+                          										<input type="text" name="term" class="form-control" placeholder="Months" size="55">
+                          									</span>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer d-flex justify-content-center">
+                            <!-- <button class="btn btn-unique">Cancel <i class="fas fa-paper-plane-o ml-1"></i></button> -->
+                            <button class="btn btn-unique" name="cbsave">Save <i class="fas fa-paper-plane-o ml-1"></i></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="financials">
       <div class="w-100">
@@ -1291,32 +1504,32 @@
 
           <!-- <h2 class="mb-5">Current Funding Round</h2> -->
           <?php
-          if($RndBlock == 0){
-          echo '<div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">';
-            echo '<div class="resume-content">';
-              echo '<h3 class="mb-0">Round : '.$RndName.'</h3>';
-              echo '<div class="subheading mb-3">Seeking :'.$Seek.'</div>';
-              echo '<div class="subheading mb-3">Security Type :'.$SecType.'</div>';
-              echo '<div class="subheading mb-3">Premoney Evaluation : '.$PreVal.'</div>';
-              if($SecType == 'Convertible Notes'){
-                echo '<div class="subheading mb-3">Valuation Capital :'.$ValCap.'</div>';
-                echo '<div class="subheading mb-3">Conversion Discount :'.$ConvDisc.'</div>';
-                echo '<div class="subheading mb-3">Interest Rate : '.$IntRate.'</div>';
-                echo '<div class="subheading mb-3">Term Length : '.$Term.'</div>';
-              }
-            echo '</div>';
-            echo '<div class="resume-date text-md-right">';
-              echo '<span class="text-primary"><button class="btn btn-lg btn-block btn-login text-uppercase font-weight-bold mb-3" type="submit">'.$RndBtn.'</button></span>';
-            echo '</div>';
-          echo '</div>';
-        }
-        else{
-            echo '<div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">';
-          echo '<div class="resume-date text-md-right">';
-            echo '<span class="text-primary"><button class="btn btn-lg btn-block btn-login text-uppercase font-weight-bold mb-3" type="submit">'.$RndBtn.'</button></span>';
-          echo '</div>';
-          echo '</div>';
-        }
+              if($RndBlock == 0){
+              echo '<div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">';
+                echo '<div class="resume-content">';
+                  echo '<h3 class="mb-0">Round : '.$RndName.'</h3>';
+                  echo '<div class="subheading mb-3">Seeking :'.$Seek.'</div>';
+                  echo '<div class="subheading mb-3">Security Type :'.$SecType.'</div>';
+                  echo '<div class="subheading mb-3">Premoney Evaluation : '.$PreVal.'</div>';
+                  if($SecType == 'Convertible Notes'){
+                    echo '<div class="subheading mb-3">Valuation Capital :'.$ValCap.'</div>';
+                    echo '<div class="subheading mb-3">Conversion Discount :'.$ConvDisc.'</div>';
+                    echo '<div class="subheading mb-3">Interest Rate : '.$IntRate.'</div>';
+                    echo '<div class="subheading mb-3">Term Length : '.$Term.'</div>';
+                  }
+                echo '</div>';
+                echo '<div class="resume-date text-md-right">';
+                  echo '<span class="text-primary"><button class="btn btn-lg btn-block btn-login text-uppercase font-weight-bold mb-3" data-toggle="modal" data-target="#CloseRoundForm" type="submit">'.$RndBtn.'</button></span>';
+                echo '</div>';
+              echo '</div>';
+            }
+            else{
+                echo '<div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">';
+              echo '<div class="resume-date text-md-right">';
+                echo '<span class="text-primary"><button class="btn btn-lg btn-block btn-login text-uppercase font-weight-bold mb-3" data-toggle="modal" data-target="#OpenRoundForm" type="submit">'.$RndBtn.'</button></span>';
+              echo '</div>';
+              echo '</div>';
+            }
           ?>
 
         <div class="row" style="padding-bottom:20px">
@@ -1325,15 +1538,15 @@
                     <h3>Funding History</h3>
                 </div>
             </div>
-            
-            
+
+
 
             <div class="col-md-9" style="padding-bottom:20px">
                 <div id="review">
                   <?php
-      							$q= "SELECT * FROM round_history WHERE StpID = '$id';";
-      							$results = mysqli_query($db, $q);
-      							while($row=mysqli_fetch_assoc($results)){
+					$q= "SELECT * FROM round_history WHERE StpID = '$id';";
+					$results = mysqli_query($db, $q);
+					while($row=mysqli_fetch_assoc($results)){
                       echo '<div class="item">';
                       echo '<form method="post" action="index.php">';
                       echo '<input type="text" name="hid" value="'.$row['HistID'].'" style="display:none;">';
@@ -1429,15 +1642,55 @@
             <div style="padding-bottom:40px">
                 <h4>Business Plan</h4>
                 <p>What is your long term business plan? (Upload .pdf file)</p>
-                <form action="Doc.php" method="post" enctype="multipart/form-data">
-                    <input type="file" name="businessplan" value="Select File">
-                    <input type="submit" name="subbusinessplan" value="Submit">
-                </form>
+                <div class="">
+                    <form action="index.php" method="post" enctype="multipart/form-data">
+                        <input type="file" name="businessplan" value="Select File">
+                        <input type="submit" name="subbusinessplan" value="Submit">
+                    </form>
+                </div>
+
+                <!-- echo '<div class="col-md-12">';
+                    echo '<div class="row">';
+                        echo '<div class="col-md-2" style="padding-top:20px">';
+                            echo '<div class="profile-item">';
+                                echo '<div class="media">';
+                                    echo '<div class="media-body">';
+                                        echo '<form action="index.php" method="post">';
+                                            echo '<a href="#link" class="btn btn-info" role="button">Link Button</a>';
+                                        echo '</form>';
+                                    echo '</div>';
+                                echo '</div>';
+                            echo '</div>';
+                        echo '</div>';
+                    echo '</div>';
+                echo '</div>'; -->
+                <?php
+
+                // if($BPlan != ""){
+                //     // echo '<a href="../'.$BPlan.'" target="_blank">Business Plan</a>';
+                //     echo '<div class="col-md-12">';
+                //         echo '<div class="row">';
+                //             echo '<div class="col-md-3" style="padding-top:20px">';
+                //                 echo '<div class="profile-item">';
+                //                     echo '<div class="media">';
+                //                         echo '<div class="media-body">';
+                //                             echo '<form action="index.php" method="post">';
+                //                                 echo '<a href="../'.$BPlan.'" class="btn btn-lg btn-block btn-login text-uppercase font-weight-bold mb-3" role="button">Show Business Plan</a>';
+                //                             echo '</form>';
+                //                         echo '</div>';
+                //                     echo '</div>';
+                //                 echo '</div>';
+                //             echo '</div>';
+                //         echo '</div>';
+                //     echo '</div>';
+                // }
+
+                ?>
             </div>
             <div style="padding-bottom:40px">
                 <h4>Financial Projection</h4>
                 <p>Provide an overview of where your financials are headed within the next 5 years. Preferred file types: .pdf, .doc, .xls</p>
-                <form action="Doc.php" method="post" enctype="multipart/form-data">
+                <form action="index.php" method="post" enctype="multipart/form-data">
                     <input type="file" name="financialprojection" value="Select File">
                     <input type="submit" name="subfinancialprojection" value="Submit">
                 </form>
@@ -1445,11 +1698,62 @@
             <div style="padding-bottom:40px">
                 <h4>Additional Documents</h4>
                 <p>Upload any documents to support your company. (Upload all document as a single PDF File )</p>
-                <form action="Doc.php" method="post" enctype="multipart/form-data">
+                <form action="index.php" method="post" enctype="multipart/form-data">
                     <input type="file" name="add_doc" value="Select File">
                     <input type="submit" name="sub_add_docs" value="Submit">
                 </form>
             </div>
+
+
+            <?php
+            echo '<div class="col-md-12">';
+                echo '<div class="row">';
+            if($BPlan != ""){
+                // echo '<a href="../'.$BPlan.'" target="_blank">Business Plan</a>';
+                    echo '<div class="col-md-4" style="padding-top:20px">';
+                        echo '<div class="profile-item">';
+                            echo '<div class="media">';
+                                echo '<div class="media-body">';
+                                    echo '<form action="index.php" method="post">';
+                                        echo '<a href="../'.$BPlan.'" class="btn btn-lg btn-block btn-login text-uppercase font-weight-bold mb-3" role="button" download>Show Business Plan</a>';
+                                    echo '</form>';
+                                echo '</div>';
+                            echo '</div>';
+                        echo '</div>';
+                    echo '</div>';
+            }
+            if($FProjection != ""){
+                // echo '<a href="../'.$BPlan.'" target="_blank">Business Plan</a>';
+                    echo '<div class="col-md-4" style="padding-top:20px">';
+                        echo '<div class="profile-item">';
+                            echo '<div class="media">';
+                                echo '<div class="media-body">';
+                                    echo '<form action="index.php" method="post">';
+                                        echo '<a href="../'.$FProjection.'" class="btn btn-lg btn-block btn-login text-uppercase font-weight-bold mb-3" role="button" download>Show Financial Projection</a>';
+                                    echo '</form>';
+                                echo '</div>';
+                            echo '</div>';
+                        echo '</div>';
+                    echo '</div>';
+            }
+            if($AdDocs != ""){
+                // echo '<a href="../'.$BPlan.'" target="_blank">Business Plan</a>';
+                    echo '<div class="col-md-4" style="padding-top:20px">';
+                        echo '<div class="profile-item">';
+                            echo '<div class="media">';
+                                echo '<div class="media-body">';
+                                    echo '<form action="index.php" method="post">';
+                                        echo '<a href="../'.$AdDocs.'" class="btn btn-lg btn-block btn-login text-uppercase font-weight-bold mb-3" role="button" download>Show Additional Documents</a>';
+                                    echo '</form>';
+                                echo '</div>';
+                            echo '</div>';
+                        echo '</div>';
+                    echo '</div>';
+            }
+                echo '</div>';
+            echo '</div>';
+
+            ?>
 
         </div>
     </section>

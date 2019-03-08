@@ -95,7 +95,7 @@
                         <th>Verify</th>
                     </tr>
                     <?php
-                    $qu = "SELECT * FROM st_details where StpID IN (SELECT StpID from userstp where Verified = '0')";
+                    $qu = "SELECT * FROM st_details where StpID IN (SELECT StpID from userstp where Verified = '0' AND VerifyMe = '1')";
                     $results = mysqli_query($db, $qu);
                     while($row = mysqli_fetch_assoc($results))
                     {
