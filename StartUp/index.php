@@ -319,6 +319,8 @@
     <link href="css/resume.min.css" rel="stylesheet">
     <link href="css/resume.min.new.css" rel="stylesheet">
     <!-- <link href="css/style.css" rel="stylesheet"> -->
+    
+    <script src="js/finround.js"></script>
 
 
 </head>
@@ -873,7 +875,7 @@
                         </div>
                     </div>
                     <div class="modal-footer d-flex justify-content-center">
-                        <button class="btn btn-unique">Cancel <i class="fas fa-paper-plane-o ml-1"></i></button>
+                        <!-- <button class="btn btn-unique">Cancel <i class="fas fa-paper-plane-o ml-1"></i></button> -->
                         <button class="btn btn-unique" name="cbsave">Save <i class="fas fa-paper-plane-o ml-1"></i></button>
                     </div>
                 </form>
@@ -982,7 +984,7 @@
                             </div>
                         </div>
                         <div class="modal-footer d-flex justify-content-center">
-                            <button class="btn btn-unique">Cancel <i class="fas fa-paper-plane-o ml-1"></i></button>
+                            <!-- <button class="btn btn-unique">Cancel <i class="fas fa-paper-plane-o ml-1"></i></button> -->
                             <button class="btn btn-unique" name="cbsave">Save <i class="fas fa-paper-plane-o ml-1"></i></button>
                         </div>
                     </form>
@@ -1217,7 +1219,7 @@
                             </div>
                         </div>
                         <div class="modal-footer d-flex justify-content-center">
-                            <button class="btn btn-unique">Cancel <i class="fas fa-paper-plane-o ml-1"></i></button>
+                            <!-- <button class="btn btn-unique">Cancel <i class="fas fa-paper-plane-o ml-1"></i></button> -->
                             <button class="btn btn-unique" name="essave">Save <i class="fas fa-paper-plane-o ml-1"></i></button>
                         </div>
                     </form>
@@ -1340,6 +1342,80 @@
     </section>
 
     <hr class="m-0">
+    
+    <div class="modal fade" id="OpenRoundForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h4 class="modal-title w-100 font-weight-bold">Open Funding Round</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body mx-3">
+                    <form method="post" action="index.php">
+                        <div class="accordion" id="accordionExample">
+                            <div class="card">
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                          <select name="round" class="form-control">
+                                                <option>Select Round</option>
+                                                <option value="Founder">Founder</option>
+                                                <option value="Friends and Family">Friends and Family</option>
+                                                <option value="Angel">Angel</option>
+                                                <option value="Preseries A">Preseries A</option>
+                                                <option value="Series A">Series A</option>
+                                          </select>
+                                        </div>
+                                        <div class="form-group">
+                                          <label>Seeking</label>
+                                          <input type="text" class="form-control" name="seeking" placeholder="Numbers Only" size="54">
+                                        </div>
+                                        <div class="form-group">
+                                          <label>Security type</label>
+                          									<select name="security" id="sec" class="form-control" onchange="valfunc()">
+                                                <option value="SecType" selected='selected'>Select Security Type</option>
+                                                <option value="Preferred Equity">Preferred Equity</option>
+                                                <option value="Common Equity">Common Equity</option>
+                                                <option value="Convertible Notes">Convertible Notes</option>
+                          									</select>
+                                        </div>
+                                        <div class="form-group">
+                                          <!-- <script>
+                                          document.getElementById("notes").style.display = "none";
+                                          document.getElementById("equity").style.display = "none";
+                                          </script> -->
+                                            <span id="equity" class="collapse1">
+                          										<label>Pre-Money Valuation</label>
+                          										<input type="text" class="form-control" name="preval" placeholder="Numbers Only" size="54">      
+                                              <br>
+                          									</span>
+                          									<span id="notes" class="collapse1">
+                          										<label>Valuation Cap</label>
+                          										<input type="text" class="form-control" name="valcap" placeholder="Numbers Only" size="54">
+                                              <br>
+                          										<label>Conversion Discount</label>
+                          										<input type="text" class="form-control" name="discount" placeholder="Numbers Only" size="53">
+                                              <br>
+                          										<label>Interest Rate</label>
+                          										<input type="text" class="form-control" name="interest" placeholder="Numbers Only" size="53">
+                                              <br>
+                          										<label>Term Length</label>
+                          										<input type="text" name="term" class="form-control" placeholder="Months" size="55">
+                          									</span>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer d-flex justify-content-center">
+                            <!-- <button class="btn btn-unique">Cancel <i class="fas fa-paper-plane-o ml-1"></i></button> -->
+                            <button class="btn btn-unique" name="cbsave">Save <i class="fas fa-paper-plane-o ml-1"></i></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="financials">
       <div class="w-100">
@@ -1371,14 +1447,14 @@
                   }
                 echo '</div>';
                 echo '<div class="resume-date text-md-right">';
-                  echo '<span class="text-primary"><button class="btn btn-lg btn-block btn-login text-uppercase font-weight-bold mb-3" type="submit">'.$RndBtn.'</button></span>';
+                  echo '<span class="text-primary"><button class="btn btn-lg btn-block btn-login text-uppercase font-weight-bold mb-3" data-toggle="modal" data-target="#CloseRoundForm" type="submit">'.$RndBtn.'</button></span>';
                 echo '</div>';
               echo '</div>';
             }
             else{
                 echo '<div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">';
               echo '<div class="resume-date text-md-right">';
-                echo '<span class="text-primary"><button class="btn btn-lg btn-block btn-login text-uppercase font-weight-bold mb-3" type="submit">'.$RndBtn.'</button></span>';
+                echo '<span class="text-primary"><button class="btn btn-lg btn-block btn-login text-uppercase font-weight-bold mb-3" data-toggle="modal" data-target="#OpenRoundForm" type="submit">'.$RndBtn.'</button></span>';
               echo '</div>';
               echo '</div>';
             }

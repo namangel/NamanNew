@@ -120,6 +120,9 @@ p.lead{
   border: none;
 }
 
+.collapse1{
+  display: none;
+}
 .dev-icons{
     font-size:3rem
 }
