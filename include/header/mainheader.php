@@ -43,7 +43,7 @@ Header
         <li><a href="../home/index.php#investors">Investors</a></li>
         <li><a href="../home/index.php#contact">Contact Us</a></li>
         <div class="btn-group">
-        <li><button type="button" class="btn btn-primary"><a style="height:40px;">Sign In</a></button></li>
+        <li><button type="button" class="btn btn-primary" onclick="location.href = './Signing/login.php'" style="height:40px;">Sign In</a></button></li>
         <li>&nbsp;</li>
         <li><button type="button" class="btn btn-primary"><a style="height:40px;">Sign Up</a></button></li>
         </div>
