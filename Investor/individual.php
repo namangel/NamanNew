@@ -5,21 +5,21 @@
     }
 	$u = $_SESSION['InvID'];
 	$qu = "SELECT * FROM inv_details WHERE InvID='$u'";
-  	$results = mysqli_query($db, $qu);
+  $results = mysqli_query($db, $qu);
 	$row = mysqli_fetch_assoc($results);
 	$fname = $row['FName'];
-    $lname = $row['LName'];
-    $cname = $row['CName'];
-    $web = $row['Website'];
-    $city = $row['City'];
-    $state = $row['State'];
+  $lname = $row['LName'];
+  // $cname = $row['CName'];
+  $web = $row['Website'];
+  $city = $row['City'];
+  $state = $row['State'];
 	$country = $row['Country'];
 	$phone = $row['Phone'];
-    $email = $row['Email'];
-	$website = $row['Website'];
+  $email = $row['Email'];
+	// $website = $row['Website'];
 
-    $qu = "SELECT * FROM inv_addetails WHERE InvID='$u'";
-    $results = mysqli_query($db, $qu);
+  $qu = "SELECT * FROM inv_addetails WHERE InvID='$u'";
+  $results = mysqli_query($db, $qu);
 	$row = mysqli_fetch_assoc($results);
 	$indOfInt=$row['IOI']==""? '--':$row['IOI'];
 	$facebook=$row['Facebook']==""? '--':$row['Facebook'];
@@ -27,27 +27,29 @@
 	$linkedin=$row['LinkedIn']==""? '--':$row['LinkedIn'];
 	$instagram=$row['Instagram']==""? '--':$row['Instagram'];
 	$others = $row['Others']==""? '--':$row['Others'];
-	$role = $row['Role']==""? '--':$row['Role'];
-	$partner = $row['Partner']==""? '--':$row['Partner'];
+	// $role = $row['Role']==""? '--':$row['Role'];
+	// $partner = $row['Partner']==""? '--':$row['Partner'];
 	$invrange = $row['InvRange']==""? '--':$row['InvRange'];
-    $summary=$row['Summary']==""? 'Describe yourself and the value of your investment.':$row['Summary'];
+  $summary=$row['Summary']==""? 'Describe yourself and the value of your investment.':$row['Summary'];
 
 	$q = "SELECT * FROM inv_uploads WHERE InvID='$u'";
-    $results = mysqli_query($db, $q);
+  $results = mysqli_query($db, $q);
 	$row = mysqli_fetch_assoc($results);
 	$img = $row['ProfilePic']==""? '/NamanNew/Uploads/default.png':$row['ProfilePic'];
 
 	if(isset($_POST["cbsave"])){
-        $cbfname = mysqli_real_escape_string($db, $_POST['cbfname']);
-        $cblname = mysqli_real_escape_string($db, $_POST['cblname']);
-		$cbcomp = mysqli_real_escape_string($db, $_POST['cbcomp']);
-		$cbcity = mysqli_real_escape_string($db, $_POST['cbcity']);
+    $cbfname = mysqli_real_escape_string($db, $_POST['cbfname']);
+    $cblname = mysqli_real_escape_string($db, $_POST['cblname']);
+		// $cbcomp = mysqli_real_escape_string($db, $_POST['cbcomp']);
+    $cbcity = mysqli_real_escape_string($db, $_POST['cbcity']);
+    $cbstate = mysqli_real_escape_string($db, $_POST['cbstate']);
 		$cbcountry = mysqli_real_escape_string($db, $_POST['cbcountry']);
-		$cbrole = mysqli_real_escape_string($db, $_POST['cbrole']);
-		$cbpartner = mysqli_real_escape_string($db, $_POST['cbpartner']);
+		// $cbrole = mysqli_real_escape_string($db, $_POST['cbrole']);
+		// $cbpartner = mysqli_real_escape_string($db, $_POST['cbpartner']);
 		$cbioi = mysqli_real_escape_string($db, $_POST['cbioi']);
-		$cbrange = mysqli_real_escape_string($db, $_POST['cbrange']);
-		$cbweb = mysqli_real_escape_string($db, $_POST['cbweb']);
+    $cbrange = mysqli_real_escape_string($db, $_POST['cbrange']);
+    $summary = mysqli_real_escape_string($db, $_POST['summary']);
+		// $cbweb = mysqli_real_escape_string($db, $_POST['cbweb']);
 
 
 		if($cbfname != "")
@@ -56,9 +58,9 @@
 			mysqli_query($db, $q);
         }
 
-        if($cblname != "")
+    if($cblname != "")
 		{
-			$q = "UPDATE inv_details set LName ='$cbfname' where InvID='$u';";
+			$q = "UPDATE inv_details set LName ='$cblname' where InvID='$u';";
 			mysqli_query($db, $q);
 		}
 
@@ -91,51 +93,37 @@
 		{
 			$q = "UPDATE inv_details set Website='$cbweb' where InvID='$u';";
 			mysqli_query($db, $q);
-		}
-
-		$check = getimagesize($_FILES["cbpic"]["tmp_name"]);
-		if($check != false)
-		{
-			$file_name = $fname."_".$lname."_".$_FILES['cbpic']['name'];
-			$file_size = $_FILES['cbpic']['size'];
-			$file_tmp = $_FILES['cbpic']['tmp_name'];
-			$file_type = $_FILES['cbpic']['type'];
-			$file_ext=strtolower(end(explode('.',$_FILES['cbpic']['name'])));
-
-			$extensions= array("jpeg","jpg","png");
-
-			if(in_array($file_ext,$extensions)=== false)
-			{
-				echo "<script>alert('Extension not allowed, please choose a JPEG or PNG file.')</script>";
-			}
-			else
-			{
-				if($file_size > 5242880)
-				{
-					echo "<script>alert('File size must be less than 5 MB')</script>";
-				}
-				else
-				{
-					$uploadas = "uploads/investor/".$file_name;
-					$upload = "../../../uploads/investor/".$file_name;
-					if(move_uploaded_file($file_tmp, $upload)){
-						$q = "UPDATE inv_uploads set ProfilePic='$uploadas' where InvID='$u';";
-						mysqli_query($db, $q);
-						echo "<script>alert('Successfully Uploaded')</script>";
-					}
-				}
-			}
-		}
-		header('location: index.php');
+    }
+    
+    if(summary != "")
+	  {
+			$q = "UPDATE inv_addetails set Summary='$summary' where InvID='$u'";
+			mysqli_query($db, $q);
+    }
+		header('location: individual.php');
 	}
 
 
-    if(isset($_POST["sfsave"])){
+  if(isset($_POST["cfsave"])){
 		$sllinkin = mysqli_real_escape_string($db, $_POST['sflinkedin']);
 		$sltwit = mysqli_real_escape_string($db, $_POST['sftwitter']);
 		$slfb = mysqli_real_escape_string($db, $_POST['sffacebook']);
 		$slinst = mysqli_real_escape_string($db, $_POST['sfinstagram']);
-		$slots = mysqli_real_escape_string($db, $_POST['sfothers']);
+    $slots = mysqli_real_escape_string($db, $_POST['sfothers']);
+    $sfemail = mysqli_real_escape_string($db, $_POST['sfemail']);
+		$sfphone = mysqli_real_escape_string($db, $_POST['sfphone']);
+
+		if($sfemail != NULL)
+		{
+			$q = "UPDATE inv_details set Email='$sfemail' where InvID='$u'";
+			mysqli_query($db, $q);
+		}
+		if($sfphone != NULL)
+		{
+			$q = "UPDATE inv_details set Phone='$sfphone' where InvID='$u'";
+			mysqli_query($db, $q);
+		}
+
 
 		if($sllinkin != NULL)
 		{
@@ -161,36 +149,9 @@
 		{
 			$q = "UPDATE inv_addetails set Others='$slots' where InvID='$u'";
 			mysqli_query($db, $q);
-        }
-		header('location: index.php');
-    }
-
-    if(isset($_POST["cfsave"]))
-	{
-		$cfemail = mysqli_real_escape_string($db, $_POST['cfemail']);
-		$cfphone = mysqli_real_escape_string($db, $_POST['cfphone']);
-
-		if($cfemail != NULL)
-		{
-			$q = "UPDATE inv_details set Email='$cfemail' where InvID='$u'";
-			mysqli_query($db, $q);
-		}
-		if($updphone != NULL)
-		{
-			$q = "UPDATE inv_details set Phone='$cfphone' where InvID='$u'";
-			mysqli_query($db, $q);
-		}
-
-		header('location: index.php');
-    }
-
-    if(isset($_POST["sumsave"]))
-	{
-        $summ = mysqli_real_escape_string($db, $_POST['summaryform']);
-			$q = "UPDATE inv_addetails set Summary='$summ' where InvID='$u'";
-			mysqli_query($db, $q);
-		header('location: index.php');
-    }
+     }
+		header('location: individual.php');
+  }
 
 	if(isset($_POST['pisave'])){
 		$piname = mysqli_real_escape_string($db, $_POST['piname']);
@@ -198,21 +159,22 @@
 		$piamount = mysqli_real_escape_string($db, $_POST['piamount']);
 		$pistage = mysqli_real_escape_string($db, $_POST['pistage']);
 		$pistake = mysqli_real_escape_string($db, $_POST['pistake']);
-		$piweb = mysqli_real_escape_string($db, $_POST['piweb']);
+    $piweb = mysqli_real_escape_string($db, $_POST['piweb']);
+    
 		$q = "INSERT INTO inv_previnvestment (InvID, Name, Year,Amount, Stage, Stake, Website) VALUES ('$u', '$piname', '$piyear', '$piamount','$pistage','$pistake','$piweb');";
 		mysqli_query($db, $q);
 
-		header('location: index.php');
+		header('location: individual.php');
 	}
 
-	if(isset($_POST['rem_inv'])){
-		$mem_id = mysqli_real_escape_string($db, $_POST['prev_inv']);
+	// if(isset($_POST['rem_inv'])){
+	// 	$mem_id = mysqli_real_escape_string($db, $_POST['prev_inv']);
 
-		$q = "DELETE FROM inv_previnvestment where ID = $mem_id;";
-		mysqli_query($db, $q);
+	// 	$q = "DELETE FROM inv_previnvestment where ID = $mem_id;";
+	// 	mysqli_query($db, $q);
 
-		header('location:index.php');
-	}
+	// 	header('location:individual.php');
+	// }
 
 ?>
 
@@ -244,36 +206,37 @@
   <style>
     #LinkedIn, #Facebook, #Twitter, #Instagram, #Others{
       display: none;
+      padding-top: 10px;
     }
   </style>
 
-  <script>
+</head>
+
+<script type="text/javascript">
     function social() {
     var x = document.getElementById("soc").value;
     if (x== "Facebook")
     {
-      document.getElementById("Facebook").style.display = "block";
+      document.getElementById("Facebook").style.display = "inline-block";
     }
     if (x== "LinkedIn")
     {
-      document.getElementById("LinkedIn").style.display = "block";
+      document.getElementById("LinkedIn").style.display = "inline-block";
     }
     if (x== "Instagram")
     {
-      document.getElementById("Instagram").style.display = "block";
+      document.getElementById("Instagram").style.display = "inline-block";
     }
     if (x== "Twitter")
     {
-      document.getElementById("Twitter").style.display = "block";
+      document.getElementById("Twitter").style.display = "inline-block";
     }
     if (x== "Others")
     {
-      document.getElementById("Others").style.display = "block";
+      document.getElementById("Others").style.display = "inline-block";
     }
   }
-  </script>
-
-</head>
+</script>
 
 <body id="page-top">
 
@@ -313,7 +276,7 @@
         </li>
         </li>
         <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="#">log out</a>
+          <a class="nav-link js-scroll-trigger" href="../logout.php">log out</a>
         </li>
       </ul>
     </div>
@@ -344,11 +307,11 @@
                   <div class="card-body">
                     <div class="form-group">
                       <label>Phone</label>
-                      <input type="number" class="form-control" name="cbphone">
+                      <input type="number" class="form-control" name="sfphone" placeholder="<?=$phone?>">
                     </div>
                     <div class="form-group">
                       <label>Email</label>
-                      <input type="email" class="form-control" name="cbmail">
+                      <input type="email" class="form-control" name="sfemail" placeholder="<?=$email?>">
                     </div>
                   </div>
                 </div>
@@ -364,10 +327,6 @@
                 <div id="social" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                   <div class="card-body">
                     <div class="form-group">
-                      <label>Website</label>
-                      <input type="text" class="form-control" name="cbwebsite">
-                    </div>
-                    <div class="form-group">
                       <label>Social Media</label>
                         <select class="custom-select" name="sfsocialmedia" id="soc" required onchange="social()">
                           <option>Select Social media</option>
@@ -379,19 +338,24 @@
                         </select>
 
                         <div id="LinkedIn" class="form-group">
-                          <i class="fa fa-linkedin">&nbsp;&nbsp;<input type="text" name="sflinkedin"></i><br>
+                          <i class="fa fa-linkedin">&nbsp;&nbsp;
+                          <input type="text" class="form-control" name="sflinkedin" placeholder="<?=$linkedin?>"></i>
                         </div>
                         <div id="Facebook" class="form-group">
-                          <i class="fa fa-facebook">&nbsp;&nbsp;<input type="text" name="sffacebook"></i><br>
+                          <i class="fa fa-facebook">&nbsp;&nbsp;
+                          <input type="text" class="form-control" name="sffacebook" placeholder="<?=$facebook?>"></i>
                         </div>
                         <div id="Instagram" class="form-group">
-                          <i class="fa fa-instagram">&nbsp;&nbsp;<input type="text" name="sfinstagram"></i><br>
+                          <i class="fa fa-instagram">&nbsp;&nbsp;
+                          <input type="text" class="form-control" name="sfinstagram" placeholder="<?=$instagram?>"></i>
                         </div>
                         <div id="Twitter" class="form-group">
-                          <i class="fa fa-twitter">&nbsp;&nbsp;<input type="text" name="sftwitter"></i><br>
+                          <i class="fa fa-twitter">&nbsp;&nbsp;
+                          <input type="text" class="form-control" name="sftwitter" placeholder="<?=$twitter?>"></i>
                         </div>
                         <div id="Others" class="form-group">
-                          <i class="fa fa-globe">&nbsp;&nbsp;<input type="text" name="sfothers"></i><br>
+                          <i class="fa fa-globe">&nbsp;&nbsp;
+                          <input type="text" class="form-control" name="sfothers" placeholder="<?=$others?>"></i>
                       </div>
                     </div>
                   </div>
@@ -401,7 +365,7 @@
           </div>
           <div class="modal-footer d-flex justify-content-center">
             <button class="btn btn-unique">Cancel</button>
-            <button class="btn btn-unique">Save</i></button>
+            <button class="btn btn-unique" name="cfsave">Save</i></button>
           </div>
         </form>
         </div>
@@ -430,23 +394,23 @@
                   <div class="card-body">
                     <div class="form-group">
                       <label>First Name</label>
-                      <input type="text" class="form-control" name="cbfname">
+                      <input type="text" class="form-control" name="cbfname" placeholder="<?=$fname?>">
                     </div>
                     <div class="form-group">
                       <label>Last Name</label>
-                      <input type="text" class="form-control" name="cblname">
+                      <input type="text" class="form-control" name="cblname" placeholder="<?=$lname?>">
                     </div>
                     <div class="form-group">
                         <label>City</label>
-                        <input type="text" class="form-control" name="cbcity">
+                        <input type="text" class="form-control" name="cbcity" placeholder="<?=$city?>">
                     </div>
                     <div class="form-group">
                       <label>State</label>
-                      <input type="text" class="form-control" name="cbstate">
+                      <input type="text" class="form-control" name="cbstate" placeholder="<?=$state?>">
                     </div>
                     <div class="form-group">
                         <label>Country</label>
-                        <input type="text" class="form-control" name="cbcountry">
+                        <input type="text" class="form-control" name="cbcountry" placeholder="<?=$country?>">
                     </div>
                   </div>
                 </div>
@@ -463,7 +427,7 @@
                   <div class="card-body">
                     <div class="form-group">
                       <label>Industry of Interest</label>
-                      <input type="text" class="form-control" name="cbioi">
+                      <input type="text" class="form-control" name="cbioi" placeholder="<?=$indOfInt?>">
                     </div>
                     <div class="form-group">
                       <label>Investment range</label>
@@ -489,7 +453,7 @@
                   <div class="card-body">
                     <div class="form-group">
                       <label>Description</label>
-                      <textare row="3" class="form-control"></textare>
+                      <textarea row="3" name="summary" class="form-control"></textarea>
                     </div>
                   </div>
                 </div>
@@ -498,7 +462,7 @@
             </div>
             <div class="modal-footer d-flex justify-content-center">
               <button class="btn btn-unique">Cancel</button>
-              <button class="btn btn-unique">Save</button>
+              <button class="btn btn-unique" name="cbsave">Save</button>
             </div>
           </form>
           </div>
@@ -509,13 +473,13 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header text-center">
-            <h4 class="modal-title w-100 font-weight-bold">Add a previous investment</h4>
+            <h4 class="modal-title w-100 font-weight-bold">Add a previous investment (max. 3)</h4>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body mx-3">
-            <form mothod="post">
+            <form method="post" action='individual.php'>
               <div class="form-group">
                 <label>Startup Name</label>
                 <input type="text" class="form-control" name="piname">
@@ -542,7 +506,7 @@
               </div>
               <div class="form-group">
                 <label>Stake holding(%)</label>
-                <input type="number" class="form-control" name="pistake">
+                <input type="number" size="3" class="form-control" name="pistake">
               </div>
               <div class="form-group">
                 <label>Website of Startup</label>
@@ -551,7 +515,7 @@
             </div>
             <div class="modal-footer d-flex justify-content-center">
               <button class="btn btn-unique">Cancel</button>
-              <button class="btn btn-unique">Save</button>
+              <button class="btn btn-unique" name="pisave" type="submit">Save</button>
             </div>
           </form>
         </div>
@@ -559,98 +523,98 @@
     </div>
 
     <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="home">
-    <div class="w-100">
-      <div class="user-icons">
-        <a href="#">
-          <i class="fas fa-user-circle"></i>
-        </a>
-      </div>
+      <div class="w-100">
+        <div class="user-icons">
+          <a href="#">
+            <i class="fas fa-user-circle"></i>
+          </a>
+        </div>
 
-      <h1 class="mb-0">
-        <span class="text-primary">Hello Investor</span>
-      </h1>
-      <div class="subheading mb-5">GET STARTED.
+        <h1 class="mb-0">
+          <span class="text-primary">Hello <?= $fname ?></span>
+        </h1>
+        <div class="subheading mb-5">GET STARTED.
         <!-- <a href="mailto:name@email.com">name@email.com</a> -->
-      </div>
-      <p class="lead mb-2">Thank you for your interest in Naman!
+        </div>
+        <p class="lead mb-2">Thank you for your interest in Naman!
           Our team will contact you shortly to discuss your needs and schedulea demo. In the meantime,
           take a look at some startups in your area.
-      </p>
+        </p>
 
-      <div class="row" style="padding-top:10px">
+        <div class="row" style="padding-top:10px">
           <div class="col-md-12">
-              <div class="row">
-                  <div class="col-md-12" style="padding-top:20px">
-                      <div class="profile-item">
-                          <div class="media">
-                              <div class="media-body">
-                                  <h4 class="media-heading">Next Steps</h4>
-                                  Follow the next steps to invest in starups of your interest.
-                              </div>
-                          </div>
-                      </div>
+            <div class="row">
+              <div class="col-md-12" style="padding-top:20px">
+                <div class="profile-item">
+                  <div class="media">
+                    <div class="media-body">
+                      <h4 class="media-heading">Next Steps</h4>
+                        Follow the next steps to invest in starups of your interest.
+                    </div>
                   </div>
+                </div>
               </div>
+            </div>
           </div>
           <div class="col-md-12">
-              <div class="row">
-                  <div class="col-md-4" style="padding-top:20px">
-                    <div class="profile-item">
-                      <div class="media">
-                        <div class="media-body step-icons">
-                            <a href="#">
-                              <i class="fa fa-calendar"></i>
-                            </a>
-                          <button class="btn btn-steps">Schedule a demo</button>
-                          <p>Schedule an introductory call or demo</p>
-                        </div>
-                      </div>
+            <div class="row">
+              <div class="col-md-4" style="padding-top:20px">
+                <div class="profile-item">
+                  <div class="media">
+                    <div class="media-body step-icons">
+                      <a href="#">
+                      <i class="fa fa-calendar"></i>
+                      </a>
+                      <button class="btn btn-steps">Schedule a demo</button>
+                      <p>Schedule an introductory call or demo</p>
                     </div>
                   </div>
-                  <div class="col-md-4" style="padding-top:20px">
-                    <div class="profile-item">
-                      <div class="media">
-                        <div class="media-body step-icons">
-                            <a href="#">
-                              <i class="fa fa-registered"></i>
-                            </a>
-                          <button class="btn btn-steps">Get Registered</button>
-                          <p>Complete your enterprise registration</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-4" style="padding-top:20px">
-                    <div class="profile-item">
-                      <div class="media">
-                        <div class="media-body step-icons">
-                            <a href="#">
-                              <i class="fa fa-address-book"></i>
-                            </a>
-                          <button class="btn btn-steps">Browse Startups</button>
-                          <p>Explore latest startups</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                </div>
               </div>
+              <div class="col-md-4" style="padding-top:20px">
+                <div class="profile-item">
+                  <div class="media">
+                    <div class="media-body step-icons">
+                      <a href="#">
+                      <i class="fa fa-registered"></i>
+                      </a>
+                      <button class="btn btn-steps">Get Registered</button>
+                      <p>Complete your enterprise registration</p>
+                    </div>
+                  </div>
+                </div>
+               </div>
+               <div class="col-md-4" style="padding-top:20px">
+                <div class="profile-item">
+                  <div class="media">
+                    <div class="media-body step-icons">
+                      <a href="#">
+                      <i class="fa fa-address-book"></i>
+                      </a>
+                      <button class="btn btn-steps">Browse Startups</button>
+                      <p>Explore latest startups</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
+        </div>
+        <div class="social-icons" style="padding-top: 50px">
+          <a href="#">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="#">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="#">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="#">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+        </div>
       </div>
-      <div class="social-icons" style="padding-top: 50px">
-        <a href="#">
-          <i class="fab fa-linkedin-in"></i>
-        </a>
-        <a href="#">
-          <i class="fab fa-github"></i>
-        </a>
-        <a href="#">
-          <i class="fab fa-twitter"></i>
-        </a>
-        <a href="#">
-          <i class="fab fa-facebook-f"></i>
-        </a>
-      </div>
-    </div>
     </section>
 
     <hr class="m-0">
@@ -660,7 +624,7 @@
         <div class="row">
           <div class="col-md-9">
             <h1 class="mb-0">
-              <span class="text-primary">Investor Name</span>
+              <span class="text-primary"><?= $fname ?>&nbsp;<?= $lname ?></span>
             </h1>
           </div>
           <div class="col-md-3">
@@ -669,29 +633,28 @@
             </div>
           </div>
         </div>
-      <div class="subheading mb-5">Address , City , State , Country.
+      <div class="subheading mb-5"><?= $city ?> ,&nbsp;<?= $state ?> ,&nbsp;<?= $country ?>.
       </div>
       <div class="row" >
-          <div class="col-md-4">
-              <div class="section-title"><h3>Industry of interest  :  Type</h3></div>
+          <div class="col-md-12">
+              <div class="section-title"><h3>Industry of interest  :  <?= $indOfInt ?></h3></div>
           </div>
       </div>
       <div class="row" >
-          <div class="col-md-4">
-              <div class="section-title"><h3>Investment range  :  Type</h3></div>
+          <div class="col-md-12">
+              <div class="section-title"><h3>Investment range  :  <?= $invrange ?></h3></div>
           </div>
       </div>
       <div class="row" >
-          <div class="col-md-4">
+          <div class="col-md-12">
               <div class="section-title" style="padding-top:50px"><h3>Investor Description</h3></div>
           </div>
       </div>
-      <p class="lead mb-5">Investor Description ---- Describe yourself and the value of your investment.
-          Add an overview to describe yourself, your motives and sight for the startups.
+      <p class="lead mb-5">Investor Description ---- <?php echo $summary;?>
       </p>
       <div class="row">
           <div class="col-md-9">
-              <div class="section-title"><h3>Email  :  id</h3></div>
+              <div class="section-title"><h3>Email  :  <?=$email?></h3></div>
           </div>
           <div class="col-md-3">
             <div class="text-right">
@@ -701,7 +664,7 @@
       </div>
       <div class="row" >
           <div class="col-md-4">
-              <div class="section-title"><h3>Contact  :  Number</h3></div>
+              <div class="section-title"><h3>Contact  :  <?=$phone?></h3></div>
           </div>
       </div>
       <div class="social-icons">
@@ -740,55 +703,30 @@
             </div>
           </div>
         </div>
-          <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
-            <div class="col-md-12">
-              <div class="row">
-                <div class="col-md-4">
-                  <div class="profile-item">
-                    <div class="media">
-                      <div class="media-body">
-                        <h3 class="media-heading">Startup Name</h3>
-                        <div class="subheading">website</div>
-                        <p>Stage of investment</p>
-                        <p>Stake holding</p>
-                        <p>Amount</p>
-                        <p>Year of investment</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="profile-item">
-                    <div class="media">
-                      <div class="media-body">
-                          <h3 class="media-heading">Startup Name</h3>
-                          <div class="subheading">website</div>
-                          <p>Stage of investment</p>
-                          <p>Stake holding</p>
-                          <p>Amount</p>
-                          <p>Year of investment</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="profile-item">
-                    <div class="media">
-                      <div class="media-body">
-                        <h3 class="media-heading">Startup Name</h3>
-                        <div class="subheading">website</div>
-                        <p>Stage of investment</p>
-                        <p>Stake holding</p>
-                        <p>Amount</p>
-                        <p>Year of investment</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-            </div>
+          <!-- <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5"> -->
+            <div class="row">
+              <?php
+                $q = "SELECT * FROM inv_previnvestment where InvID='$u';";
+                $results=mysqli_query($db, $q);
+                while($row = mysqli_fetch_assoc($results)) {
+                echo'<div class="col-md-4">';
+                  echo'<div class="profile-item">';
+                    echo'<div class="media">';
+                      echo'<div class="media-body">';
+                        echo '<h3 class="media-heading">'.$row["Name"].'</h3>';
+                        echo '<div class="subheading">'.$row["Website"].'</div>';
+                          echo '<p>Stage of investment: '.$row["Stage"].'</p>';
+                          echo '<p>Stake holding: '.$row["Stake"].'</p>';
+                          echo '<p>Amount: '.$row['Amount'].'</p>';
+                          echo '<p>Year of investment: '.$row["Year"].'</p>';
+                        echo'</div>';
+                      echo'</div>';
+                    echo'</div>';
+                  echo'</div>';
+              }
+            ?>
           </div>
-        </div>
-     <div class="w-100">
+        <!-- </div> -->
         <div class="row">
             <div class="col-md-3">
               <div class="section-title">
@@ -1033,8 +971,8 @@
     <hr class="m-0">
 
     <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="settings">
-    <div class="w-100">
-      <h3 class="mb-5">Change Contact Information</h3>
+      <div class="w-100">
+        <h3 class="mb-5">Change Contact Information</h3>
         <div class="col-md-12">
           <div class="row">
             <div class="col-md-6">
@@ -1044,7 +982,7 @@
               <p class="settings">Last Name:</p>
             </div>
           </div>
-      </div>
+        </div>
       <div class="w-100">
         <div class="col-md-12">
           <div class="row">
@@ -1081,7 +1019,6 @@
     </section>
 
   </div>
-
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -1096,7 +1033,5 @@
   <script src="js/owl.carousel.min.js"></script>
   <!--theme script-->
   <script src="js/scripts.js"></script>
-
-</body>
-
+  </body>
 </html>
