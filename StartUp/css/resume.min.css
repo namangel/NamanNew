@@ -115,6 +115,11 @@ p.lead{
   opacity: 0.7;
 }
 
+.closebtn{
+  background-color: #FFF;
+  border: none;
+}
+
 .dev-icons{
     font-size:3rem
 }

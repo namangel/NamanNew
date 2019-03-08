@@ -56,15 +56,47 @@
 	$row = mysqli_fetch_assoc($results);
 
 	// $MTeam = $row['MTeam'];
-	$CProb = $row['CustomerProblem'];
-	$ProdSer = $row['ProductService'];
-	$TarMar = $row['TargetMarket'];
-	$BModel = $row['BusinessModel'];
-	$MarketSizing = $row['MarketSizing'];
-	$CSegments = $row['CustomerSegments'];
-	$SMStrat = $row['SaleMarketStrat'];
-	$Competitors = $row['Competitors'];
-	$CompAdv = $row['CompAdvantage'];
+  $CProb = $row['CustomerProblem']==""? 'What customer problem does your product and/or service solve?':$row['CustomerProblem'];
+	$ProdSer = $row['ProductService']==""? 'Describe the product or service that you will sell and how it solves the customer problem, listing the main value proposition for each product/service.':$row['ProductService'];
+	$TarMar = $row['TargetMarket']==""? 'Define the important geographic, demographic, and/or psychographic characteristics of the market within which your customer segments exist.':$row['TargetMarket'];
+	$BModel = $row['BusinessModel']==""? 'What strategy will you employ to build, deliver, and retain company value (e.g., profits)?':$row['BusinessModel'];
+	$Market = "Estimate and realize the potential of you Market.";
+	$CSegments = $row['CustomerSegments']==""? 'Outline your targeted customer segments. These are the specific subsets of your target market that you will focus on to gain traction.':$row['CustomerSegments'];
+	$SMStrat = $row['SaleMarketStrat']==""? 'What is your customer acquisition and retention strategy? Detail how you will promote, sell and create customer loyalty for your products and services.':$row['SaleMarketStrat'];
+	$Competitors = $row['Competitors']==""? 'Describe the competitive landscape and your competitors strengths and weaknesses. If direct competitors dont exist, describe the existing alternatives.':$row['Competitors'];
+	$CompAdv = $row['CompAdvantage']==""? 'What is your companys competitive or unfair advantage? This can include patents, first mover advantage, unique expertise, or proprietary processes/technology.':$row['CompAdvantage'];
+
+
+  $qrnd = "SELECT * FROM current_round WHERE StpID='$id'";
+	$roundresult = mysqli_query($db, $qrnd);
+	if(mysqli_num_rows($roundresult)== 1){
+    $q = "SELECT * FROM current_round WHERE StpID = '$id'";
+  	$results = mysqli_query($db, $q);
+    $row = mysqli_fetch_assoc($results);
+
+    $RndName = $row['Round'];
+    $Seek = $row['Seeking'];
+    $SecType = $row['Security_type'];
+    $PreVal = $row['Premoney_val'];
+    $ValCap = $row['Val_cap'];
+    $ConvDisc = $row['Conversion_disc'];
+    $IntRate = $row['Interest_rate'];
+    $Term = $row['Term_len'];
+    $RndBtn = "Close Round";
+    $RndBlock = 0;
+  }
+  else{
+    $RndBtn = "Open Round";
+    $RndBlock = 1;
+  }
+  
+  $y=date("Y");
+  $q = "SELECT revenue_rate,burn_rate,revenue_driver FROM annual_financial WHERE StpId='$id' AND year= '$y' ";
+  $results = mysqli_query($db, $q);
+  $row=mysqli_fetch_array($results);
+  $revrr= $row[0];
+  $mbr= $row[1];
+  $revdr= $row[2];
 
 
     if(isset($_POST["cbsave"])){
@@ -191,6 +223,14 @@
 
         header('location:index.php');
     }
+    
+    if(isset($_POST['histdel'])){
+		$Hid= mysqli_real_escape_string($db, $_POST['hid']);
+		$q2 = "DELETE FROM round_history WHERE HistID='$Hid'";
+		mysqli_query($db, $q2);
+
+		header('location:index.php');
+	}
 
 ?>
 
@@ -1043,52 +1083,6 @@
 								}
 							?>
 
-        <!-- <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
-          <div class="resume-content">
-            <h3 class="mb-0">Member Name</h3>
-            <div class="subheading mb-3">Member Designation</div>
-            <p>Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.</p>
-          </div>
-          <div class="resume-date text-md-right">
-            <span class="text-primary">March 2013 - Present</span>
-          </div>
-        </div>
-
-        <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
-          <div class="resume-content">
-            <h3 class="mb-0">Member Name</h3>
-            <div class="subheading mb-3">Member Designation</div>
-            <p>Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop on focusing solely on the bottom line.</p>
-          </div>
-          <div class="resume-date text-md-right">
-            <span class="text-primary">December 2011 - March 2013</span>
-          </div>
-        </div>
-
-        <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
-          <div class="resume-content">
-            <h3 class="mb-0">Member Name</h3>
-            <div class="subheading mb-3">Member Designation</div>
-            <p>Podcasting operational change management inside of workflows to establish a framework. Taking seamless key performance indicators offline to maximise the long tail. Keeping your eye on the ball while performing a deep dive on the start-up mentality to derive convergence on cross-platform integration.</p>
-          </div>
-          <div class="resume-date text-md-right">
-            <span class="text-primary">July 2010 - December 2011</span>
-          </div>
-        </div>
-
-        <div class="resume-item d-flex flex-column flex-md-row justify-content-between">
-          <div class="resume-content">
-            <h3 class="mb-0">Member Name</h3>
-            <div class="subheading mb-3">Member Designation</div>
-            <p>Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate B2C users after installed base benefits. Dramatically visualize customer directed convergence without revolutionary ROI.</p>
-          </div>
-          <div class="resume-date text-md-right">
-            <span class="text-primary">September 2008 - June 2010</span>
-          </div>
-        </div>
-
-      </div> -->
-
     </section>
 
     <hr class="m-0">
@@ -1179,112 +1173,103 @@
             </div>
           </div>
 
-        <div class="row" style="padding-top:20px">
-            <div class="col-md-12">
-                <div class="row">
-                    <div class="col-md-6" style="padding-top:20px">
-                        <div class="profile-item">
-                            <div class="media">
-                                <div class="media-body">
-                                    <h4 class="media-heading">Customer Problem</h4>
-                                    Seamlessly formulate covalent outsourcing vis-a-vis virtual resources. Distinctively conceptualize.<br>
-                                    <?=$CProb?>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6" style="padding-top:20px">
-                        <div class="profile-item">
-                            <div class="media">
-                                <div class="media-body">
-                                    <h4 class="media-heading">Product & Service</h4>
-                                    Seamlessly formulate covalent outsourcing vis-a-vis virtual resources. Distinctively conceptualize.<br>
-                                    <?=$ProdSer?>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6" style="padding-top:20px">
-                        <div class="profile-item">
-                            <div class="media">
-                                <div class="media-body">
-                                    <h4 class="media-heading">Target Market</h4>
-                                    Seamlessly formulate covalent outsourcing vis-a-vis virtual resources. Distinctively conceptualize.<br>
-                                    <?=$TarMar?>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6" style="padding-top:20px">
-                        <div class="profile-item">
-                            <div class="media">
-                                <div class="media-body">
-                                    <h4 class="media-heading">Business Model</h4>
-                                    Seamlessly formulate covalent outsourcing vis-a-vis virtual resources. Distinctively conceptualize.<br>
-                                    <?=$BModel?>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6" style="padding-top:20px">
-                        <div class="profile-item">
-                            <div class="media">
-                                <div class="media-body">
-                                    <h4 class="media-heading">Market Sizing</h4>
-                                    Seamlessly formulate covalent outsourcing vis-a-vis virtual resources. Distinctively conceptualize.<br>
-                                    <?= $MarketSizing?>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6" style="padding-top:20px">
-                        <div class="profile-item">
-                            <div class="media">
-                                <div class="media-body">
-                                    <h4 class="media-heading">Customer Segments</h4>
-                                    Seamlessly formulate covalent outsourcing vis-a-vis virtual resources. Distinctively conceptualize.<br>
-                                    <?=$CSegments?>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6" style="padding-top:20px">
-                        <div class="profile-item">
-                            <div class="media">
-                                <div class="media-body">
-                                    <h4 class="media-heading">Sales & Marketing Strategy</h4>
-                                    Seamlessly formulate covalent outsourcing vis-a-vis virtual resources. Distinctively conceptualize.
-                                    <br>
-                                    <?=$SMStrat?>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6" style="padding-top:20px">
-                        <div class="profile-item">
-                            <div class="media">
-                                <div class="media-body">
-                                    <h4 class="media-heading">Competitors</h4>
-                                    Seamlessly formulate covalent outsourcing vis-a-vis virtual resources. Distinctively conceptualize.<br>
-                                    <?=$Competitors?>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6" style="padding-top:20px">
-                        <div class="profile-item">
-                            <div class="media">
-                                <div class="media-body">
-                                    <h4 class="media-heading">Competitive Advantage</h4>
-                                    Seamlessly formulate covalent outsourcing vis-a-vis virtual resources. Distinctively conceptualize.<br>
-                                    <?=$CompAdv?>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+          <div class="row" style="padding-top:20px">
+              <div class="col-md-12">
+                  <div class="row">
+                      <div class="col-md-6" style="padding-top:20px">
+                          <div class="profile-item">
+                              <div class="media">
+                                  <div class="media-body">
+                                      <h4 class="media-heading">Customer Problem</h4>
+                                      <p><?=$CProb?></p>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-md-6" style="padding-top:20px">
+                          <div class="profile-item">
+                              <div class="media">
+                                  <div class="media-body">
+                                      <h4 class="media-heading">Product & Service</h4>
+                                      <p><?=$ProdSer?></p>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-md-6" style="padding-top:20px">
+                          <div class="profile-item">
+                              <div class="media">
+                                  <div class="media-body">
+                                      <h4 class="media-heading">Target Market</h4>
+                                      <p><?=$TarMar?>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-md-6" style="padding-top:20px">
+                          <div class="profile-item">
+                              <div class="media">
+                                  <div class="media-body">
+                                      <h4 class="media-heading">Business Model</h4>
+                                      <p><?=$BModel?>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-md-6" style="padding-top:20px">
+                          <div class="profile-item">
+                              <div class="media">
+                                  <div class="media-body">
+                                      <h4 class="media-heading">Market Sizing</h4>
+                                    <!-- /NEED TO PUT PHP -->
+                                    <p><?=$Market?></p>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-md-6" style="padding-top:20px">
+                          <div class="profile-item">
+                              <div class="media">
+                                  <div class="media-body">
+                                      <h4 class="media-heading">Customer Segments</h4>
+                                      <p><?=$CSegments?>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-md-6" style="padding-top:20px">
+                          <div class="profile-item">
+                              <div class="media">
+                                  <div class="media-body">
+                                      <h4 class="media-heading">Sales & Marketing Strategy</h4>
+                                      <p><?=$SMStrat?>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-md-6" style="padding-top:20px">
+                          <div class="profile-item">
+                              <div class="media">
+                                  <div class="media-body">
+                                      <h4 class="media-heading">Competitors</h4>
+                                      <p><?=$Competitors?>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-md-6" style="padding-top:20px">
+                          <div class="profile-item">
+                              <div class="media">
+                                  <div class="media-body">
+                                      <h4 class="media-heading">Competitive Advantage</h4>
+                                      <p><?=$CompAdv?>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
 
       </div>
     </section>
@@ -1297,24 +1282,42 @@
             <div class="col-md-9">
                 <h2 class="mb-5">Current Funding Round</h2>
             </div>
-            <div class="col-md-3">
+            <!-- <div class="col-md-3">
                 <div class="text-right">
                     <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalContactForm">Edit</a>
                 </div>
-            </div>
+            </div> -->
           </div>
 
-          <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
-            <div class="resume-content">
-              <h3 class="mb-0">Round : Round Name</h3>
-              <div class="subheading mb-3">Seeking : $10000</div>
-              <div class="subheading mb-3">Security Type : My Bungalow</div>
-              <div class="subheading mb-3">Premoney Evaluation : $900000</div>
-            </div>
-            <div class="resume-date text-md-right">
-              <span class="text-primary">March 2013 - Present</span>
-            </div>
-          </div>
+          <!-- <h2 class="mb-5">Current Funding Round</h2> -->
+          <?php
+          if($RndBlock == 0){
+          echo '<div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">';
+            echo '<div class="resume-content">';
+              echo '<h3 class="mb-0">Round : '.$RndName.'</h3>';
+              echo '<div class="subheading mb-3">Seeking :'.$Seek.'</div>';
+              echo '<div class="subheading mb-3">Security Type :'.$SecType.'</div>';
+              echo '<div class="subheading mb-3">Premoney Evaluation : '.$PreVal.'</div>';
+              if($SecType == 'Convertible Notes'){
+                echo '<div class="subheading mb-3">Valuation Capital :'.$ValCap.'</div>';
+                echo '<div class="subheading mb-3">Conversion Discount :'.$ConvDisc.'</div>';
+                echo '<div class="subheading mb-3">Interest Rate : '.$IntRate.'</div>';
+                echo '<div class="subheading mb-3">Term Length : '.$Term.'</div>';
+              }
+            echo '</div>';
+            echo '<div class="resume-date text-md-right">';
+              echo '<span class="text-primary"><button class="btn btn-lg btn-block btn-login text-uppercase font-weight-bold mb-3" type="submit">'.$RndBtn.'</button></span>';
+            echo '</div>';
+          echo '</div>';
+        }
+        else{
+            echo '<div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">';
+          echo '<div class="resume-date text-md-right">';
+            echo '<span class="text-primary"><button class="btn btn-lg btn-block btn-login text-uppercase font-weight-bold mb-3" type="submit">'.$RndBtn.'</button></span>';
+          echo '</div>';
+          echo '</div>';
+        }
+          ?>
 
         <div class="row" style="padding-bottom:20px">
             <div class="col-md-3">
@@ -1322,101 +1325,33 @@
                     <h3>Funding History</h3>
                 </div>
             </div>
+            
+            
 
             <div class="col-md-9" style="padding-bottom:20px">
                 <div id="review">
-                    <div class="item">
-                        <div class="media">
-                            <div class="media-left">
-                                <img src="img/img-testimonial-2.jpg" alt="avatar"/>
-                            </div>
+                  <?php
+      							$q= "SELECT * FROM round_history WHERE StpID = '$id';";
+      							$results = mysqli_query($db, $q);
+      							while($row=mysqli_fetch_assoc($results)){
+                      echo '<div class="item">';
+                      echo '<form method="post" action="index.php">';
+                      echo '<input type="text" name="hid" value="'.$row['HistID'].'" style="display:none;">';
+                      echo '<input type="submit" class="close closebtn" name="histdel"  value="&times" aria-label="Close">';
+                      echo '</form>';
+                          echo '<div class="media">';
+                            echo '  <div class="media-body">';
+                                  echo '<div class="user-name subheading">ROUND : '.$row['Round'];
+                                  echo '</div>';
+                              echo '</div>';
+                          echo '</div>';
+                          echo '<div class="user-name subheading">SECURITY TYPE : '.$row['Security_type'].'</div>';
+                          echo '<div class="user-name subheading">CAPITAL RAISED : Rs.'.$row['Capital_raised'].'</div>';
+                          echo '<div class="user-name subheading">CLOSE DATE : '.$row['Close_date'].'</div>';
+                      echo '</div>';
+      							}
+      						?>
 
-                            <div class="media-body">
-                                <div class="user-name">Sofia Voigt</div>
-                            </div>
-                        </div>
-                        <div class="review-text">
-                            Seamlessly leverage other's transparent resources after resource maximizing channels.
-                            Continually grow economically sound collaboration and idea-sharing and compelling
-                            technology. Collaboratively unleash.
-                        </div>
-                    </div>
-
-                    <div class="item">
-                        <div class="media">
-                            <div class="media-left">
-                                <img src="img/img-testimonial-1.jpg" alt="avatar"/>
-                            </div>
-
-                            <div class="media-body">
-                                <div class="user-name">Matteo Müller</div>
-                                <!--.user-name-->
-
-                            </div>
-                        </div>
-                        <div class="review-text">
-                            Uniquely target empowered relationships after client-based e-commerce. Energistically morph
-                            worldwide resources for future-proof content. Authoritatively transform granular users
-                            whereas intermandated applications.
-                        </div>
-                        <!--.review-text-->
-                    </div>
-
-                    <div class="item">
-                        <div class="media">
-                            <div class="media-left">
-                                <img src="img/img-testimonial-3.jpg" alt="avatar"/>
-                            </div>
-
-                            <div class="media-body">
-                                <div class="user-name">Noel Schulze</div>
-                            </div>
-                        </div>
-                        <div class="review-text">
-                            Enthusiastically mesh an expanded array of infrastructures through distinctive customer
-                            service. Distinctively reintermediate e-business information vis-a-vis excellent networks.
-                            Uniquely fabricate just.
-                        </div>
-                    </div>
-
-                    <div class="item">
-                        <div class="media">
-                            <div class="media-left">
-                                <img src="img/unknown.png" alt="avatar"/>
-                            </div>
-
-                            <div class="media-body">
-                                <div class="user-name">Jason Lehmann</div>
-                                <!--.user-name-->
-
-                            </div>
-                        </div>
-                        <div class="review-text">
-                            Proactively network unique potentialities rather than one-to-one process improvements.
-                            Dynamically leverage existing progressive methods of empowerment rather than efficient
-                            functionalities. Continually.
-                        </div>
-                        <!--.review-text-->
-                    </div>
-                    <!--.item-->
-
-                    <div class="item">
-                        <div class="media">
-                            <div class="media-left">
-                                <img src="img/unknown.png" alt="avatar"/>
-                            </div>
-
-                            <div class="media-body">
-                                <div class="user-name">Jason Lehmann</div>
-                                <!--.user-name-->
-                            </div>
-                        </div>
-                        <div class="review-text">
-                            Progressively leverage existing 24/7 paradigms through exceptional process improvements.
-                            Completely revolutionize compelling architectures for team driven partnerships. Quickly
-                            transform focused value.
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -1426,8 +1361,8 @@
               <div class="section-title">
                   <h3>Annual Financials</h3>
               </div>
-              <div class="subheading mb-3"><p>Annual Revenue Run Rate : 100</p></div>
-              <div class="subheading mb-3"><p>Monthly Burn Rate: 11</p></div>
+              <div class="subheading mb-3"><p>Annual Revenue Run Rate : <?=$revrr?></p></div>
+              <div class="subheading mb-3"><p>Monthly Burn Rate: <?=$mbr?></p></div>
           </div>
 
           <div class="col-md-8">
