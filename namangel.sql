@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 08, 2019 at 04:34 AM
+-- Generation Time: Mar 08, 2019 at 05:43 PM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.10
 
@@ -146,7 +146,6 @@ CREATE TABLE `current_round` (
 --
 
 INSERT INTO `current_round` (`StpID`, `Round`, `Seeking`, `Security_type`, `Premoney_val`, `Val_cap`, `Conversion_disc`, `Interest_rate`, `Term_len`) VALUES
-('NAMST0000001', 'Friends and Family', 12345, 'Common Equity', 123, 0, 0, 0, 0),
 ('NAMST0000002', 'Preseries A', 3423, 'Preferred Equity', 233, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
@@ -390,8 +389,8 @@ CREATE TABLE `round_history` (
 --
 
 INSERT INTO `round_history` (`HistID`, `StpID`, `Round`, `Security_type`, `Capital_raised`, `Close_date`) VALUES
-(1, 'NAMST0000001', 'Founder', 'Preferred Equity', 3124, '2019-02-16'),
-(2, 'NAMST0000001', 'Friends and Family', 'Preferred Equity', 3124, '2019-02-23');
+(2, 'NAMST0000001', 'Friends and Family', 'Preferred Equity', 3124, '2019-02-23'),
+(3, 'NAMST0000001', 'Friends and Family', 'Common Equity', 534354, '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -409,7 +408,7 @@ CREATE TABLE `siteinfo` (
 --
 
 INSERT INTO `siteinfo` (`ID`, `Counter`) VALUES
-(1, 25);
+(1, 51);
 
 -- --------------------------------------------------------
 
@@ -459,7 +458,7 @@ CREATE TABLE `st_addetails` (
 --
 
 INSERT INTO `st_addetails` (`StpID`, `Stage`, `DOF`, `EmpNum`, `IncType`, `LinkedIn`, `Twitter`, `Facebook`, `Instagram`, `Others`, `Youtube`) VALUES
-('NAMST0000001', 'Prototype ready', '2014-12-12', '12', 'LLP', 'sdsdsd', 'spacex/twitter', 'shdg', 'spacex/insta', 'sxsx', NULL),
+('NAMST0000001', 'Prototype ready', '2014-12-12', '12', 'Partnership', 'sdsdsd', 'spacex/twitter', 'shdg', 'spacex/insta', 'sxsx', NULL),
 ('NAMST0000002', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 ('NAMST0000003', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
@@ -493,6 +492,7 @@ CREATE TABLE `st_description` (
   `StpID` varchar(20) NOT NULL,
   `Summary` varchar(500) DEFAULT NULL,
   `OLP` varchar(200) DEFAULT NULL,
+  `ElevatorPitch` varchar(500) NOT NULL,
   `CustomerProblem` varchar(500) DEFAULT NULL,
   `ProductService` varchar(500) DEFAULT NULL,
   `TargetMarket` varchar(500) DEFAULT NULL,
@@ -508,10 +508,10 @@ CREATE TABLE `st_description` (
 -- Dumping data for table `st_description`
 --
 
-INSERT INTO `st_description` (`StpID`, `Summary`, `OLP`, `CustomerProblem`, `ProductService`, `TargetMarket`, `BusinessModel`, `MarketSizing`, `CustomerSegments`, `SaleMarketStrat`, `Competitors`, `CompAdvantage`) VALUES
-('NAMST0000001', 'Space X is an awesome project', 'Lets go to Mars', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('NAMST0000002', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('NAMST0000003', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `st_description` (`StpID`, `Summary`, `OLP`, `ElevatorPitch`, `CustomerProblem`, `ProductService`, `TargetMarket`, `BusinessModel`, `MarketSizing`, `CustomerSegments`, `SaleMarketStrat`, `Competitors`, `CompAdvantage`) VALUES
+('NAMST0000001', 'Space X is an awesome project', 'Lets go to Mars', '', 'Xyzaavvvbs', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+('NAMST0000002', NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+('NAMST0000003', NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -540,7 +540,7 @@ CREATE TABLE `st_details` (
 --
 
 INSERT INTO `st_details` (`StpID`, `Stname`, `Ffname`, `Sfname`, `Email`, `Phone`, `Type`, `Address`, `City`, `State`, `Country`, `Website`, `Investment`) VALUES
-('NAMST0000001', 'Spacex', 'Elon Musk', 'Bill Gates', 'spacex@spx.com', '8169163192', 'Technology', 'Near Launch Pad', 'CC', 'Florida', 'United States', 'spacex.com', '100000000'),
+('NAMST0000001', 'SpaceX', 'Elon Musk', 'Bill Gates', 'spacex@spx.com', '8169163192', 'Technology', 'Near Launch Pad', 'CC', 'Florida', 'Andorra', 'spacex.com', '100000000'),
 ('NAMST0000002', 'akdbis', 'baiubai', 'bibiyv', 'qsbiab@in.in', '9090909090', 'B2B', 'vjh', 'jv', 'jv', 'Jamaica', 'vui.in', '1222'),
 ('NAMST0000003', 'BroStore', 'Aayush Singh', 'Nitish Talekar', 'admin@brostore.in', '8082189671', 'E-Commerce', 'Bandra-West', 'Mumbai', 'Maharashtra', 'India', 'brostore.in', '30000');
 
@@ -616,7 +616,7 @@ CREATE TABLE `st_uploads` (
 --
 
 INSERT INTO `st_uploads` (`StpID`, `Logo`, `BackImg`, `PitchName`, `PitchExt`, `BPlan`, `BPlanExt`, `FProjection`, `FProjectionExt`, `AdDocs`, `AdDocsExt`) VALUES
-('NAMST0000001', 'uploads/startup/Spacex_ProfilePic2.png', 'uploads/startup/Spacex_backimg_Spacex_backimg_Hero-5.jpg', 'uploads/startup/Spacex_pitch_VID-20181209-WA0003.mp4', 'mp4', 'uploads/startup/Spacex_bplan_naman-todo.pdf', 'pdf', 'uploads/startup/Spacex_fproj_Aayush Singh.pdf', 'pdf', NULL, NULL),
+('NAMST0000001', 'uploads/startup/Spacex_ProfilePic2.png', 'uploads/startup/Spacex_backimg_Spacex_backimg_Hero-5.jpg', 'uploads/startup/Spacex_pitch_VID-20181209-WA0003.mp4', 'mp4', 'uploads/startup/Spacex_bplan_EXP6OP.pdf', 'pdf', 'uploads/startup/Spacex_fproj_Aayush Singh.pdf', 'pdf', NULL, NULL),
 ('NAMST0000002', 'uploads/default/default.png', 'uploads/default/defaultbackimg.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 ('NAMST0000003', 'uploads/default/default.png', 'uploads/default/defaultbackimg.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
@@ -716,7 +716,7 @@ CREATE TABLE `userstp` (
 --
 
 INSERT INTO `userstp` (`Entry`, `StpID`, `Username`, `Password`, `Verified`, `VerifyMe`) VALUES
-(1, 'NAMST0000001', 'abc123', '370194ff6e0f93a7432e16cc9badd9427e8b4e13', 1, 0),
+(1, 'NAMST0000001', 'abc123', '370194ff6e0f93a7432e16cc9badd9427e8b4e13', 1, 1),
 (2, 'NAMST0000002', 'vivi', 'ed42785ca24ae8fa2d9fd131401e44c3c86519ae', 1, 0),
 (4, 'NAMST0000003', 'brostore', '614a00dc6516aa60dd7c8f12a4bc74a98210fb28', 0, 0);
 
@@ -954,7 +954,7 @@ ALTER TABLE `requests`
 -- AUTO_INCREMENT for table `round_history`
 --
 ALTER TABLE `round_history`
-  MODIFY `HistID` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `HistID` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `siteinfo`
