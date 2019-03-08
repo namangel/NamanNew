@@ -1143,7 +1143,20 @@
                     </div>
                 </div>
             </div>
+            <!-- <div class="row">
+                <div class="col-md-12">
+                    <div class="text-right">
+                        <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#AdvisorsForm">Add</a>
+                    </div>
+                </div>
+            </div> -->
+            <hr class="m-8">
             <div class="row" style="padding-top:20px">
+              <div class="col-md-12">
+                  <div class="text-right">
+                      <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#AdvisorsForm">Add</a>
+                  </div>
+              </div>
                 <div class="col-md-3">
                     <div class="section-title">
                         <h3>Advisors</h3>
@@ -1151,7 +1164,7 @@
                 </div>
                 <div class="col-md-9">
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-6" style="padding-bottom:10px">
                             <div class="profile-item">
                                 <div class="media">
                                     <div class="media-body">
@@ -1194,7 +1207,13 @@
                     </div>
                 </div>
             </div>
+            <hr class="m-8">
             <div class="row" style="padding-top:20px">
+              <div class="col-md-12">
+                  <div class="text-right">
+                      <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#AdvisorsForm">Add</a>
+                  </div>
+              </div>
             <div class="col-md-3">
                 <div class="section-title"><h3>Previous Investors</h3></div>
             </div>
