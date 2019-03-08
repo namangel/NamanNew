@@ -99,6 +99,21 @@
     $revdr= $row[2];
 
 
+    $q = "SELECT * FROM st_uploads WHERE StpID = '$id';";
+	$results = mysqli_query($db, $q);
+	$row = mysqli_fetch_assoc($results);
+	$PitchName = $row['PitchName'];
+	$PitchExt = $row['PitchExt'];
+	$Logo = $row['Logo'];
+	$Backimg = $row['BackImg'];
+	$BPlan = $row['BPlan'];
+	$BPlanExt = $row['BPlanExt'];
+	$FProjection = $row['FProjection'];
+	$FProjectionExt = $row['FProjectionExt'];
+	$AdDocs = $row['AdDocs'];
+	$AdDocsExt = $row['AdDocsExt'];
+
+
     if(isset($_POST["cbsave"])){
 		$cbname = mysqli_real_escape_string($db, $_POST['cbname']);
 		$cbstage = mysqli_real_escape_string($db, $_POST['cbstage']);
@@ -291,10 +306,67 @@
                 }
             }
         }
-        header('location:Doc.php');
+        header('location:index.php');
     }
 
 
+    if(isset($_POST['subfinancialprojection'])){
+		$name= $Stname."_fproj_".$_FILES['financialprojection']['name'];
+		$tmp_name= $_FILES['financialprojection']['tmp_name'];
+		$submitbutton= $_POST['subfinancialprojection'];
+		$position= strpos($name, ".");
+		$fileextension= substr($name, $position + 1);
+		$fileextension= strtolower($fileextension);
+		$success= -1;
+		if (isset($name)){
+			$pathas = 'uploads/startup/'.$name;
+			$path= '../uploads/startup/'.$name;
+			if (!empty($name)){
+				if ($fileextension !== "pdf"){
+					$success=0;
+					echo '<script>alert("The file extension must be .pdf in order to be uploaded")</script>';
+				}
+				else if ($fileextension == "pdf"){
+					$success=1;
+					if (copy($tmp_name, $path)) {
+						echo '<script> alert("Uploaded!")</script>';
+						$q = "UPDATE st_uploads SET FProjection='$pathas', FProjectionExt='$fileextension' where StpID='$id';";
+						mysqli_query($db, $q);
+					}
+				}
+			}
+		}
+		header('location:index.php');
+	}
+
+	if(isset($_POST['sub_add_docs'])){
+		$name= $Stname."_add_doc_".$_FILES['add_doc']['name'];
+		$tmp_name= $_FILES['add_doc']['tmp_name'];
+		$submitbutton= $_POST['sub_add_docs'];
+		$position= strpos($name, ".");
+		$fileextension= substr($name, $position + 1);
+		$fileextension= strtolower($fileextension);
+		$success= -1;
+		if (isset($name)){
+			$pathas = 'uploads/startup/'.$name;
+			$path= '../uploads/startup/'.$name;
+			if (!empty($name)){
+				if ($fileextension !== "pdf"){
+					$success=0;
+					echo '<script>alert("The file extension must be .pdf in order to be uploaded")</script>';
+				}
+				else if ($fileextension == "pdf"){
+					$success=1;
+					if (copy($tmp_name, $path)) {
+						echo '<script> alert("Uploaded!")</script>';
+						$q = "UPDATE st_uploads SET AdDocs='$pathas', AdDocsExt='$fileextension' where StpID='$id';";
+						mysqli_query($db, $q);
+					}
+				}
+			}
+		}
+		header('location:index.php');
+	}
 ?>
 
 <html lang="en">
@@ -305,7 +377,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Resume - Start Bootstrap Theme</title>
+    <title>My Dashboard</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -1570,22 +1642,55 @@
             <div style="padding-bottom:40px">
                 <h4>Business Plan</h4>
                 <p>What is your long term business plan? (Upload .pdf file)</p>
-                <form action="Doc.php" method="post" enctype="multipart/form-data">
-                    <input type="file" name="businessplan" value="Select File">
-                    <input type="submit" name="subbusinessplan" value="Submit">
-                </form>
+                <div class="">
+                    <form action="index.php" method="post" enctype="multipart/form-data">
+                        <input type="file" name="businessplan" value="Select File">
+                        <input type="submit" name="subbusinessplan" value="Submit">
+                    </form>
+                </div>
+
+                <!-- echo '<div class="col-md-12">';
+                    echo '<div class="row">';
+                        echo '<div class="col-md-2" style="padding-top:20px">';
+                            echo '<div class="profile-item">';
+                                echo '<div class="media">';
+                                    echo '<div class="media-body">';
+                                        echo '<form action="index.php" method="post">';
+                                            echo '<a href="#link" class="btn btn-info" role="button">Link Button</a>';
+                                        echo '</form>';
+                                    echo '</div>';
+                                echo '</div>';
+                            echo '</div>';
+                        echo '</div>';
+                    echo '</div>';
+                echo '</div>'; -->
                 <?php
 
-                if($BPlan != ""){
-                    echo '<iframe src="../../'.$BPlan.'" height=500px width=100%></iframe>';
-                }
+                // if($BPlan != ""){
+                //     // echo '<a href="../'.$BPlan.'" target="_blank">Business Plan</a>';
+                //     echo '<div class="col-md-12">';
+                //         echo '<div class="row">';
+                //             echo '<div class="col-md-3" style="padding-top:20px">';
+                //                 echo '<div class="profile-item">';
+                //                     echo '<div class="media">';
+                //                         echo '<div class="media-body">';
+                //                             echo '<form action="index.php" method="post">';
+                //                                 echo '<a href="../'.$BPlan.'" class="btn btn-lg btn-block btn-login text-uppercase font-weight-bold mb-3" role="button">Show Business Plan</a>';
+                //                             echo '</form>';
+                //                         echo '</div>';
+                //                     echo '</div>';
+                //                 echo '</div>';
+                //             echo '</div>';
+                //         echo '</div>';
+                //     echo '</div>';
+                // }
 
                 ?>
             </div>
             <div style="padding-bottom:40px">
                 <h4>Financial Projection</h4>
                 <p>Provide an overview of where your financials are headed within the next 5 years. Preferred file types: .pdf, .doc, .xls</p>
-                <form action="Doc.php" method="post" enctype="multipart/form-data">
+                <form action="index.php" method="post" enctype="multipart/form-data">
                     <input type="file" name="financialprojection" value="Select File">
                     <input type="submit" name="subfinancialprojection" value="Submit">
                 </form>
@@ -1593,11 +1698,62 @@
             <div style="padding-bottom:40px">
                 <h4>Additional Documents</h4>
                 <p>Upload any documents to support your company. (Upload all document as a single PDF File )</p>
-                <form action="Doc.php" method="post" enctype="multipart/form-data">
+                <form action="index.php" method="post" enctype="multipart/form-data">
                     <input type="file" name="add_doc" value="Select File">
                     <input type="submit" name="sub_add_docs" value="Submit">
                 </form>
             </div>
+
+
+            <?php
+            echo '<div class="col-md-12">';
+                echo '<div class="row">';
+            if($BPlan != ""){
+                // echo '<a href="../'.$BPlan.'" target="_blank">Business Plan</a>';
+                    echo '<div class="col-md-4" style="padding-top:20px">';
+                        echo '<div class="profile-item">';
+                            echo '<div class="media">';
+                                echo '<div class="media-body">';
+                                    echo '<form action="index.php" method="post">';
+                                        echo '<a href="../'.$BPlan.'" class="btn btn-lg btn-block btn-login text-uppercase font-weight-bold mb-3" role="button" download>Show Business Plan</a>';
+                                    echo '</form>';
+                                echo '</div>';
+                            echo '</div>';
+                        echo '</div>';
+                    echo '</div>';
+            }
+            if($FProjection != ""){
+                // echo '<a href="../'.$BPlan.'" target="_blank">Business Plan</a>';
+                    echo '<div class="col-md-4" style="padding-top:20px">';
+                        echo '<div class="profile-item">';
+                            echo '<div class="media">';
+                                echo '<div class="media-body">';
+                                    echo '<form action="index.php" method="post">';
+                                        echo '<a href="../'.$FProjection.'" class="btn btn-lg btn-block btn-login text-uppercase font-weight-bold mb-3" role="button" download>Show Financial Projection</a>';
+                                    echo '</form>';
+                                echo '</div>';
+                            echo '</div>';
+                        echo '</div>';
+                    echo '</div>';
+            }
+            if($AdDocs != ""){
+                // echo '<a href="../'.$BPlan.'" target="_blank">Business Plan</a>';
+                    echo '<div class="col-md-4" style="padding-top:20px">';
+                        echo '<div class="profile-item">';
+                            echo '<div class="media">';
+                                echo '<div class="media-body">';
+                                    echo '<form action="index.php" method="post">';
+                                        echo '<a href="../'.$AdDocs.'" class="btn btn-lg btn-block btn-login text-uppercase font-weight-bold mb-3" role="button" download>Show Additional Documents</a>';
+                                    echo '</form>';
+                                echo '</div>';
+                            echo '</div>';
+                        echo '</div>';
+                    echo '</div>';
+            }
+                echo '</div>';
+            echo '</div>';
+
+            ?>
 
         </div>
     </section>
