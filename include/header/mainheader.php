@@ -1,23 +1,54 @@
+<!--==========================
+Header
+============================-->
 <head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link type="text/css" rel="stylesheet" href="css/navbar.css">
+  <meta charset="utf-8">
+  <title>Naman|Angels</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="" name="keywords">
+  <meta content="" name="description">
+
+  <!-- Favicons -->
+  <link href="img/favicon.png" rel="icon">
+  <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
+
+  <!-- Bootstrap CSS File -->
+  <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Libraries CSS Files -->
+  <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="lib/animate/animate.min.css" rel="stylesheet">
+  <link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+  <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+
+  <!-- Main Stylesheet File -->
+  <link href="css/style.css" rel="stylesheet">
 </head>
-<body>
-  <div class="topnav">
-    <div class="toplogo">
-       <center><a href="./index.php"><img src="/NamanNew/img/HeaderLogo.png" style="height:50px;width:135px; margin: 5px;"></a></center>
+<header id="header" class="fixed-top">
+<div class="container">
+
+    <div class="logo float-left">
+    <a href="#intro" class="scrollto"><img src="img/logo.png" alt="" class="img-fluid"></a>
     </div>
-    <div class="topfor">
-      <a href="./static_st.php" class="cs1"><center>FOR STARTUPS</center></a>
-    </div>
-    <div class="topfor2">
-      <a href="./static_inv.php" class="cs1"><center>FOR INVESTORS</center></a>
-    </div>
-    <div class="topbutn">
-          <button class="button" onclick="location.href = './Signing/register.php'"><span >Sign Up</span></button>
-      </div>
-    <div class="topbutn2">
-       <button class="button" onclick="location.href = './Signing/login.php'"><span >Sign In</span></button>
-    </div>
-  </div>
-</body>
+
+    <nav class="main-nav float-right d-none d-lg-block">
+    <ul>
+        <li class="active"><a href="../home/index.php#intro">Home</a></li>
+        <li><a href="../home/index.php#about">About Us</a></li>
+        <li><a href="../home/index.php#startups">Startups</a></li>
+        <li><a href="../home/index.php#investors">Investors</a></li>
+        <li><a href="../home/index.php#contact">Contact Us</a></li>
+        <div class="btn-group">
+        <li><button type="button" class="btn btn-primary"><a style="height:40px;">Sign In</a></button></li>
+        <li>&nbsp;</li>
+        <li><button type="button" class="btn btn-primary"><a style="height:40px;">Sign Up</a></button></li>
+        </div>
+    </ul>
+    </nav>
+
+</div>
+</header><!-- #header -->
