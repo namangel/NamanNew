@@ -407,6 +407,26 @@
 		header('location:#documents');
 	}
 
+    if(isset($_POST['ovsave'])){
+
+        $olp = mysqli_real_escape_string($db, $_POST['olp']);
+        $elp = mysqli_real_escape_string($db, $_POST['elp']);
+
+        if($elp != ""){
+            $q = "UPDATE st_description set ElevatorPitch='$elp' where StpID='$id'";
+            mysqli_query($db, $q);
+        }
+        if($elp != ""){
+            $q = "UPDATE st_description set OLP='$olp' where StpID='$id'";
+            mysqli_query($db, $q)l
+        }
+
+        //TODO - Write Upload PHP for Pitch Upload
+        //TODO - Change Form and shift OLP to Company basic
+    }
+
+
+
 ?>
 
 <html lang="en">
@@ -1102,11 +1122,15 @@
                             <div class="card">
                                     <div class="card-body">
                                         <div class="form-group">
-                                            <label for="olpform">Elevator Pitch</label><br>
-                                            <textarea class="form-control" rows=5 name="olpform" id="pitch" required><?= $OLP?></textarea>
+                                            <label for="olpform">One Line Pitch</label><br>
+                                            <textarea class="form-control" rows=1 name="olp" ></textarea>
                                         </div>
                                         <div class="form-group">
-                                            <label for="">Pitch</label><br>
+                                            <label for="olpform">Elevator Pitch</label><br>
+                                            <textarea class="form-control" rows=5 name="elp" ></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">Pitch(pdf or mp4 file)</label><br>
                                             <input type="file" name="pitchfile" class="form-control">
                                         </div>
                                     </div>
@@ -1114,7 +1138,7 @@
                         </div>
                         <div class="modal-footer d-flex justify-content-center">
                             <!-- <button class="btn btn-unique">Cancel <i class="fas fa-paper-plane-o ml-1"></i></button> -->
-                            <button class="btn btn-unique" name="cbsave">Save <i class="fas fa-paper-plane-o ml-1"></i></button>
+                            <button class="btn btn-unique" name="ovsave">Save <i class="fas fa-paper-plane-o ml-1"></i></button>
                         </div>
                     </form>
                 </div>
