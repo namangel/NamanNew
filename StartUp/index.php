@@ -391,7 +391,7 @@
     <link href="css/resume.min.css" rel="stylesheet">
     <link href="css/resume.min.new.css" rel="stylesheet">
     <!-- <link href="css/style.css" rel="stylesheet"> -->
-    
+
     <script src="js/finround.js"></script>
 
 
@@ -958,19 +958,22 @@
 
     <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="companybasics">
       <div class="w-100">
-          <div class="row">
+        <div class="row">
             <div class="col-md-9">
                 <h1 class="mb-0">
-                  <span class="text-primary"><?=$Stname?></span>
+                    <span class="text-primary"><?=$Stname?></span>
                 </h1>
             </div>
-            <div class="col-md-3"><div class="text-center">
-                <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#CompanyBasicForm">Edit</a>
-              </div>
+            <div class="col-md-3">
+                <div class="text-center">
+                    <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#CompanyBasicForm">Edit</a>
+                </div>
             </div>
-          </div>
+        </div>
 
-
+        <div class="subheading"><?=$Email?>
+          <!-- <a href="mailto:name@email.com">name@email.com</a> -->
+        </div>
         <div class="subheading"><?=$Address?> , <?=$City?> , <?=$State?> , <?=$Country?>.
           <!-- <a href="mailto:name@email.com">name@email.com</a> -->
         </div>
@@ -1414,7 +1417,7 @@
     </section>
 
     <hr class="m-0">
-    
+
     <div class="modal fade" id="OpenRoundForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -1459,7 +1462,7 @@
                                           </script> -->
                                             <span id="equity" class="collapse1">
                           										<label>Pre-Money Valuation</label>
-                          										<input type="text" class="form-control" name="preval" placeholder="Numbers Only" size="54">      
+                          										<input type="text" class="form-control" name="preval" placeholder="Numbers Only" size="54">
                                               <br>
                           									</span>
                           									<span id="notes" class="collapse1">
@@ -1865,62 +1868,36 @@
     <hr class="m-0">
 
     <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="consultancy">
-      <div class="w-100">
-        <h2 class="mb-5">Consultancy Form</h2>
-        <div class="form">
-          <!-- <div id="sendmessage">Your message has been sent. Thank you!</div> -->
-          <div id="errormessage"></div>
-          <form action="" method="post" role="form" class="contactForm">
-            <div class="form-row">
-              <div class="form-group col-lg-6">
-                <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                <div class="validation"></div>
-              </div>
-              <div class="form-group col-lg-6">
-                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
-                <div class="validation"></div>
-              </div>
+        <div class="w-100">
+            <h2 class="mb-5">Consultancy Form</h2>
+            <div class="form">
+            <!-- <div id="sendmessage">Your message has been sent. Thank you!</div> -->
+                <div id="errormessage"></div>
+                <form action="" method="post" role="form" class="contactForm">
+                    <div class="form-row">
+                        <div class="form-group col-lg-6">
+                            <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                            <div class="validation"></div>
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
+                            <div class="validation"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                        <div class="validation"></div>
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
+                        <div class="validation"></div>
+                    </div>
+                    <div class="text-center">
+                        <button class="btn btn-lg btn-block btn-login text-uppercase font-weight-bold mb-3" type="submit">Submit</button>
+                    </div>
+                </form>
             </div>
-            <div class="form-group">
-              <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
-              <div class="validation"></div>
-            </div>
-            <div class="form-group">
-              <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
-              <div class="validation"></div>
-            </div>
-            <div class="text-center"><button class="btn btn-lg btn-block btn-login text-uppercase font-weight-bold mb-3" type="submit">Submit</button></div>
-          </form>
         </div>
-        <!-- <ul class="fa-ul mb-0">
-          <li>
-            <i class="fa-li fa fa-trophy text-warning"></i>
-            Google Analytics Certified Developer</li>
-          <li>
-            <i class="fa-li fa fa-trophy text-warning"></i>
-            Mobile Web Specialist - Google Certification</li>
-          <li>
-            <i class="fa-li fa fa-trophy text-warning"></i>
-            1<sup>st</sup>
-            Place - University of Colorado Boulder - Emerging Tech Competition 2009</li>
-          <li>
-            <i class="fa-li fa fa-trophy text-warning"></i>
-            1<sup>st</sup>
-            Place - University of Colorado Boulder - Adobe Creative Jam 2008 (UI Design Category)</li>
-          <li>
-            <i class="fa-li fa fa-trophy text-warning"></i>
-            2<sup>nd</sup>
-            Place - University of Colorado Boulder - Emerging Tech Competition 2008</li>
-          <li>
-            <i class="fa-li fa fa-trophy text-warning"></i>
-            1<sup>st</sup>
-            Place - James Buchanan High School - Hackathon 2006</li>
-          <li>
-            <i class="fa-li fa fa-trophy text-warning"></i>
-            3<sup>rd</sup>
-            Place - James Buchanan High School - Hackathon 2005</li>
-        </ul> -->
-      </div>
     </section>
 
 
@@ -1940,6 +1917,12 @@
   <script src="js/owl.carousel.min.js"></script>
   <!--theme script-->
   <script src="js/scripts.js"></script>
+
+  <script>
+  	if ( window.history.replaceState ) {
+  		window.history.replaceState( null, null, window.location.href );
+  	}
+  </script>
 
 </body>
 
