@@ -43,7 +43,7 @@
 	$PitchName = $row['PitchName'];
 	$PitchExt = $row['PitchExt'];
 	$Logo = $row['Logo'];
-  $Backimg = $row['BackImg'];
+    $Backimg = $row['BackImg'];
 
 	$q = "SELECT * FROM st_description WHERE StpID = '$id';";
 	$results = mysqli_query($db, $q);
@@ -51,12 +51,12 @@
 	$Summary = $row['Summary']==""? 'Tell the world who you are and what makes your company special.':$row['Summary'];
 	$OLP = $row['OLP']==""? 'Write A Short Pitch For Your Company In One Line':$row['OLP'];
 
-  $qu = "SELECT * FROM st_description WHERE StpID = '$id';";
+    $qu = "SELECT * FROM st_description WHERE StpID = '$id';";
 	$results = mysqli_query($db, $qu);
 	$row = mysqli_fetch_assoc($results);
 
 	// $MTeam = $row['MTeam'];
-  $CProb = $row['CustomerProblem']==""? 'What customer problem does your product and/or service solve?':$row['CustomerProblem'];
+    $CProb = $row['CustomerProblem']==""? 'What customer problem does your product and/or service solve?':$row['CustomerProblem'];
 	$ProdSer = $row['ProductService']==""? 'Describe the product or service that you will sell and how it solves the customer problem, listing the main value proposition for each product/service.':$row['ProductService'];
 	$TarMar = $row['TargetMarket']==""? 'Define the important geographic, demographic, and/or psychographic characteristics of the market within which your customer segments exist.':$row['TargetMarket'];
 	$BModel = $row['BusinessModel']==""? 'What strategy will you employ to build, deliver, and retain company value (e.g., profits)?':$row['BusinessModel'];
@@ -67,7 +67,7 @@
 	$CompAdv = $row['CompAdvantage']==""? 'What is your companys competitive or unfair advantage? This can include patents, first mover advantage, unique expertise, or proprietary processes/technology.':$row['CompAdvantage'];
 
 
-  $qrnd = "SELECT * FROM current_round WHERE StpID='$id'";
+    $qrnd = "SELECT * FROM current_round WHERE StpID='$id'";
 	$roundresult = mysqli_query($db, $qrnd);
 	if(mysqli_num_rows($roundresult)== 1){
         $q = "SELECT * FROM current_round WHERE StpID = '$id'";
@@ -134,7 +134,7 @@
     			mysqli_query($db, $q);
     		}
 
-    		if($cbstage != 'Select Stage')
+    		if($cbstage != '--Select Stage--')
     		{
     			$q = "UPDATE st_addetails set Stage='$cbstage' where StpID='$id';";
     			mysqli_query($db, $q);
@@ -169,7 +169,7 @@
     			$q = "UPDATE st_addetails set EmpNum='$cbempnum' where StpID='$id';";
     			mysqli_query($db, $q);
     		}
-    		if($cbinc != 'Select Incorporation')
+    		if($cbinc != '--Select Incorporation Type--')
     		{
     			$q = "UPDATE st_addetails set IncType='$cbinc' where StpID='$id';";
     			mysqli_query($db, $q);
@@ -184,7 +184,7 @@
                 $q = "UPDATE st_description set Summary='$cbsummary' where StpID='$id';";
         		mysqli_query($db, $q);
     		}
-    		header('location:index.php');
+    		header('location:#companybasics');
 	     }
 
 
@@ -236,31 +236,31 @@
     		mysqli_query($db, $q);
     	}
 
-        header('location:index.php');
+        header('location:#executivesummary');
     }
-    
-    if(isset($_POST['roundsave'])){
-    		$Round = mysqli_real_escape_string($db, $_POST['round']);
-    		$Seek = mysqli_real_escape_string($db, $_POST['seeking']);
-    		$Sec_type = mysqli_real_escape_string($db, $_POST['security']);
-    		$Premoney_val = mysqli_real_escape_string($db, $_POST['preval']);
-    		$Val_cap = mysqli_real_escape_string($db, $_POST['valcap']);
-    		$Discount = mysqli_real_escape_string($db, $_POST['discount']);
-    		$Interest = mysqli_real_escape_string($db, $_POST['interest']);
-    		$Term = mysqli_real_escape_string($db, $_POST['term']);
 
-    		if( $Sec_type == 'Preferred Equity' || $Sec_type == 'Common Equity' ){
-    			$q = "INSERT INTO current_round(StpId,Round,Seeking,Security_type,Premoney_val) values('$id','$Round','$Seek','$Sec_type',$Premoney_val)";
-    			mysqli_query($db, $q);
-    		  }
-    		if( $Sec_type == 'Convertible Notes' ){
-    			$q = "INSERT INTO current_round(StpId,Round,Seeking,Security_type,Val_cap,Conversion_disc,Interest_rate,Term_len) values('$id','$Round','$Seek','$Sec_type','$Val_cap','$Discount','$Interest','$Term')";
-    			mysqli_query($db, $q);
-    		  }
-    		header('location:index.php');
-	   }
-   
-   if(isset($_POST['roundclose'])){
+    if(isset($_POST['roundsave'])){
+    	$Round = mysqli_real_escape_string($db, $_POST['round']);
+    	$Seek = mysqli_real_escape_string($db, $_POST['seeking']);
+    	$Sec_type = mysqli_real_escape_string($db, $_POST['security']);
+    	$Premoney_val = mysqli_real_escape_string($db, $_POST['preval']);
+    	$Val_cap = mysqli_real_escape_string($db, $_POST['valcap']);
+    	$Discount = mysqli_real_escape_string($db, $_POST['discount']);
+    	$Interest = mysqli_real_escape_string($db, $_POST['interest']);
+    	$Term = mysqli_real_escape_string($db, $_POST['term']);
+
+    	if( $Sec_type == 'Preferred Equity' || $Sec_type == 'Common Equity' ){
+    		$q = "INSERT INTO current_round(StpId,Round,Seeking,Security_type,Premoney_val) values('$id','$Round','$Seek','$Sec_type',$Premoney_val)";
+    		mysqli_query($db, $q);
+        }
+    	if( $Sec_type == 'Convertible Notes' ){
+    		$q = "INSERT INTO current_round(StpId,Round,Seeking,Security_type,Val_cap,Conversion_disc,Interest_rate,Term_len) values('$id','$Round','$Seek','$Sec_type','$Val_cap','$Discount','$Interest','$Term')";
+    		mysqli_query($db, $q);
+        }
+    	header('location:#financials');
+    }
+
+    if(isset($_POST['roundclose'])){
   		$Capraised = mysqli_real_escape_string($db, $_POST['capraise']);
   		$Cldate = mysqli_real_escape_string($db, $_POST['cal']);
 
@@ -274,16 +274,16 @@
   		$q2 = "DELETE FROM current_round WHERE StpId='$id'";
   		mysqli_query($db, $q2);
 
-  		header('location:index.php#financials');
-  	 }
+  		header('location:#financials');
+    }
 
     if(isset($_POST['histdel'])){
     		$Hid= mysqli_real_escape_string($db, $_POST['hid']);
     		$q2 = "DELETE FROM round_history WHERE HistID='$Hid'";
     		mysqli_query($db, $q2);
 
-    		header('location:index.php');
-    	}
+    		header('location:#financials');
+    }
 
     $q = "SELECT * FROM userstp where StpID='$id'";
     $resultverify = mysqli_query($db, $q);
@@ -300,10 +300,11 @@
         $verifyclass = 'disabled';
     }
 
+
     if(isset($_POST['verifyme'])){
         $q = "UPDATE userstp set VerifyMe=1 where StpID='$id';";
         mysqli_query($db, $q);
-        header('location:index.php');
+        header('location:index.php#home');
     }
 
     if($rowverify['Verified'] == 0){
@@ -313,7 +314,7 @@
     }
     else{
         $verify = '#18c74d';
-        $acctype = "Verified Account";
+        $verifybutton = "Verified Account";
         $message = 'Verified';
     }
 
@@ -344,7 +345,7 @@
                 }
             }
         }
-        header('location:index.php');
+        header('location:#documents');
     }
 
 
@@ -374,7 +375,7 @@
     				}
     			}
     		}
-    		header('location:index.php');
+    		header('location:#documents');
     	}
 
 	if(isset($_POST['sub_add_docs'])){
@@ -403,7 +404,7 @@
 				}
 			}
 		}
-		header('location:index.php');
+		header('location:#documents');
 	}
 
 ?>
@@ -498,7 +499,7 @@
             </a>
           </div>
           <h5 class="media-heading"><?=$message?></h5>
-          
+
 
           <div class="row">
             <div class="col-md-9">
@@ -544,10 +545,22 @@
                           <div class="profile-item">
                               <div class="media">
                                   <div class="media-body">
-                                      <form action="index.php" method="post">
+                                      <form action="index.php#home" method="post">
                                           <button class="btn btn-lg btn-block btn-login text-uppercase font-weight-bold mb-3" type="submit">EVALUATE</button>
                                       </form>
 
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-md-3" style="padding-top:20px">
+                          <div class="profile-item">
+                              <div class="media">
+                                  <div class="media-body">
+                                      <form action="generateonepager.php" target="_blank" method="post">
+                                          <input type="hidden" name="op" value="<?= $id?>">
+                                          <input type="submit" class="btn btn-lg btn-block btn-login text-uppercase font-weight-bold mb-3" href="generateonepager.php?op=<?= $id?>" target="_blank" value="MY ONE PAGER"></a>
+                                      </form>
                                   </div>
                               </div>
                           </div>
@@ -624,7 +637,7 @@
                   <div class="profile-item">
                       <div class="media">
                           <div class="media-body">
-                              <form action="index.php" method="post">
+                              <form action="index.php#home" method="post">
                                   <button class="btn btn-lg btn-block btn-login text-uppercase font-weight-bold mb-3 <?=$verifyclass?>" name="<?=$verifybuttonname?>" type="submit"><?=$verifybutton?></button>
                               </form>
                           </div>
@@ -647,7 +660,7 @@
                     </button>
                 </div>
                 <div class="modal-body mx-3">
-                    <form method="post" action="index.php">
+                    <form method="post" action="index.php#companybasics">
                     <div class="accordion" id="accordionExample">
                         <div class="card">
                             <div class="card-body">
@@ -661,8 +674,8 @@
                                     <!-- <label>Founder's First Name</label>
                                     <input type="text" class="form-control" name="cbfname"> -->
                                     <label for="stage">Company Stage</label><br>
-                                    <select name="cbstage" class="form-control" placeholder="<?= $Stage?>">
-                                        <option value="<?= $Stage?>"><?= $Stage?></option>
+                                    <select name="cbstage" class="form-control">
+                                        <option>--Select Stage--</option>
                                         <option>Concept Only</option>
                                         <option>Product in Development</option>
                                         <option>Prototype ready</option>
@@ -963,7 +976,7 @@
                                     <input type="text" class="form-control" name="cbcountry"> -->
                                     <label for="inc">Incorporation Type</label><br>
                                     <select name="cbinc" class="form-control" placeholder="<?= $IncType?>">
-                                        <option><?= $IncType?></option>
+                                        <option>--Select Incorporation Type--</option>
                                         <option>Not Incorporated</option>
                                         <option>Proprietorship</option>
                                         <option>Partnership</option>
@@ -1006,7 +1019,7 @@
                 </h1>
             </div>
             <div class="col-md-3">
-                <div class="text-center">
+                <div class="text-right">
                     <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#CompanyBasicForm">Edit</a>
                 </div>
             </div>
@@ -1084,7 +1097,7 @@
                     </button>
                 </div>
                 <div class="modal-body mx-3">
-                    <form method="post" action="index.php">
+                    <form method="post" action="index.php#overview">
                         <div class="accordion" id="accordionExample">
                             <div class="card">
                                     <div class="card-body">
@@ -1112,7 +1125,12 @@
     <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="overview">
         <div class="w-100">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-9">
+                    <h2 class="mb-0">
+                        <span class="text-primary">Overview</span>
+                    </h2>
+                </div>
+                <div class="col-md-3">
                     <div class="text-right">
                         <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#OverviewPitchForm">Edit</a>
                     </div>
@@ -1282,7 +1300,7 @@
                 </div>
                 <small class='text-center'>You can save the form partially filled and continue filling later</small>
                 <div class="modal-body mx-3">
-                    <form method="post" action="index.php">
+                    <form method="post" action="index.php#executivesummary">
                         <div class="accordion" id="accordionExample">
                             <div class="card">
                                 <div class="card-body">
@@ -1469,7 +1487,7 @@
                     </button>
                 </div>
                 <div class="modal-body mx-3">
-                    <form method="post" action="index.php">
+                    <form method="post" action="index.php#financials">
                         <div class="accordion" id="accordionExample">
                             <div class="card">
                                     <div class="card-body">
@@ -1532,7 +1550,7 @@
             </div>
         </div>
     </div>
-    
+
     <div class="modal fade" id="CloseRoundForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -1543,7 +1561,7 @@
                     </button>
                 </div>
                 <div class="modal-body mx-3">
-                    <form method="post" action="index.php">
+                    <form method="post" action="index.php#financials">
                         <div class="accordion" id="accordionExample">
                             <div class="card">
                                     <div class="card-body">
@@ -1572,7 +1590,7 @@
             </div>
         </div>
     </div>
-    
+
 
     <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="financials">
       <div class="w-100">
@@ -1633,7 +1651,7 @@
 					$results = mysqli_query($db, $q);
 					while($row=mysqli_fetch_assoc($results)){
                       echo '<div class="item">';
-                      echo '<form method="post" action="index.php">';
+                      echo '<form method="post" action="index.php#financials">';
                       echo '<input type="text" name="hid" value="'.$row['HistID'].'" style="display:none;">';
                       echo '<input type="submit" class="close closebtn" name="histdel"  value="&times" aria-label="Close">';
                       echo '</form>';
@@ -1728,7 +1746,7 @@
                 <h4>Business Plan</h4>
                 <p>What is your long term business plan? (Upload .pdf file)</p>
                 <div class="">
-                    <form action="index.php" method="post" enctype="multipart/form-data">
+                    <form action="index.php#documents" method="post" enctype="multipart/form-data">
                         <input type="file" name="businessplan" value="Select File">
                         <input type="submit" name="subbusinessplan" value="Submit">
                     </form>
@@ -1775,7 +1793,7 @@
             <div style="padding-bottom:40px">
                 <h4>Financial Projection</h4>
                 <p>Provide an overview of where your financials are headed within the next 5 years. Preferred file types: .pdf, .doc, .xls</p>
-                <form action="index.php" method="post" enctype="multipart/form-data">
+                <form action="index.php#documents" method="post" enctype="multipart/form-data">
                     <input type="file" name="financialprojection" value="Select File">
                     <input type="submit" name="subfinancialprojection" value="Submit">
                 </form>
@@ -1783,7 +1801,7 @@
             <div style="padding-bottom:40px">
                 <h4>Additional Documents</h4>
                 <p>Upload any documents to support your company. (Upload all document as a single PDF File )</p>
-                <form action="index.php" method="post" enctype="multipart/form-data">
+                <form action="index.php#documents" method="post" enctype="multipart/form-data">
                     <input type="file" name="add_doc" value="Select File">
                     <input type="submit" name="sub_add_docs" value="Submit">
                 </form>
@@ -1799,9 +1817,7 @@
                         echo '<div class="profile-item">';
                             echo '<div class="media">';
                                 echo '<div class="media-body">';
-                                    echo '<form action="index.php" method="post">';
-                                        echo '<a href="../'.$BPlan.'" class="btn btn-lg btn-block btn-login text-uppercase font-weight-bold mb-3" role="button" download>Show Business Plan</a>';
-                                    echo '</form>';
+                                    echo '<a href="../'.$BPlan.'" class="btn btn-lg btn-block btn-login text-uppercase font-weight-bold mb-3" role="button" download>Show Business Plan</a>';
                                 echo '</div>';
                             echo '</div>';
                         echo '</div>';
@@ -1813,9 +1829,7 @@
                         echo '<div class="profile-item">';
                             echo '<div class="media">';
                                 echo '<div class="media-body">';
-                                    echo '<form action="index.php" method="post">';
-                                        echo '<a href="../'.$FProjection.'" class="btn btn-lg btn-block btn-login text-uppercase font-weight-bold mb-3" role="button" download>Show Financial Projection</a>';
-                                    echo '</form>';
+                                    echo '<a href="../'.$FProjection.'" class="btn btn-lg btn-block btn-login text-uppercase font-weight-bold mb-3" role="button" download>Show Financial Projection</a>';
                                 echo '</div>';
                             echo '</div>';
                         echo '</div>';
@@ -1827,9 +1841,9 @@
                         echo '<div class="profile-item">';
                             echo '<div class="media">';
                                 echo '<div class="media-body">';
-                                    echo '<form action="index.php" method="post">';
+                                    // echo '<form action="index.php" method="post">';
                                         echo '<a href="../'.$AdDocs.'" class="btn btn-lg btn-block btn-login text-uppercase font-weight-bold mb-3" role="button" download>Show Additional Documents</a>';
-                                    echo '</form>';
+                                    // echo '</form>';
                                 echo '</div>';
                             echo '</div>';
                         echo '</div>';

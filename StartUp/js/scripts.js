@@ -17,8 +17,8 @@ jQuery(function ($) {
 
     (function () {
         $("#review").owlCarousel({
-            autoPlay: 15000, //Set AutoPlay to 3 seconds
-            items: 3,
+            autoPlay: 10000, //Set AutoPlay to 10 seconds
+            items: 2,
             itemsDesktop: [1199, 3],
             itemsDesktopSmall: [979, 3]
 
