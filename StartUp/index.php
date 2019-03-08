@@ -377,7 +377,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Resume - Start Bootstrap Theme</title>
+    <title>My Dashboard</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -1639,7 +1639,7 @@
                             echo '<div class="media">';
                                 echo '<div class="media-body">';
                                     echo '<form action="index.php" method="post">';
-                                        echo '<a href="../'.$BPlan.'" class="btn btn-lg btn-block btn-login text-uppercase font-weight-bold mb-3" role="button" target="_blank">Show Business Plan</a>';
+                                        echo '<a href="../'.$BPlan.'" class="btn btn-lg btn-block btn-login text-uppercase font-weight-bold mb-3" role="button" download>Show Business Plan</a>';
                                     echo '</form>';
                                 echo '</div>';
                             echo '</div>';
@@ -1653,7 +1653,7 @@
                             echo '<div class="media">';
                                 echo '<div class="media-body">';
                                     echo '<form action="index.php" method="post">';
-                                        echo '<a href="../'.$FProjection.'" class="btn btn-lg btn-block btn-login text-uppercase font-weight-bold mb-3" role="button" target="_blank">Show Financial Projection</a>';
+                                        echo '<a href="../'.$FProjection.'" class="btn btn-lg btn-block btn-login text-uppercase font-weight-bold mb-3" role="button" download>Show Financial Projection</a>';
                                     echo '</form>';
                                 echo '</div>';
                             echo '</div>';
@@ -1667,7 +1667,7 @@
                             echo '<div class="media">';
                                 echo '<div class="media-body">';
                                     echo '<form action="index.php" method="post">';
-                                        echo '<a href="../'.$AdDocs.'" class="btn btn-lg btn-block btn-login text-uppercase font-weight-bold mb-3" role="button" target="_blank">Show Additional Documents</a>';
+                                        echo '<a href="../'.$AdDocs.'" class="btn btn-lg btn-block btn-login text-uppercase font-weight-bold mb-3" role="button" download>Show Additional Documents</a>';
                                     echo '</form>';
                                 echo '</div>';
                             echo '</div>';
