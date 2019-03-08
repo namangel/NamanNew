@@ -307,12 +307,12 @@
     }
 
     if($rowverify['Verified'] == 0){
-        $verify = "RED";
+        $verify = '#cf1919';
         $acctype = "Verify Yourself";
         $message = 'Your Account is not yet verified By Naman Angels. Please continue to complete your profile and have an early verification.';
     }
     else{
-        $verify = "Green";
+        $verify = '#18c74d';
         $acctype = "Verified Account";
         $message = 'Verified';
     }
@@ -497,11 +497,13 @@
               <i class="fas fa-user-circle" style="color:<?= $verify?>"></i>
             </a>
           </div>
+          <h5 class="media-heading"><?=$message?></h5>
+          
 
           <div class="row">
             <div class="col-md-9">
                 <h1 class="mb-0">
-                  <span class="text-primary">Hello <?=$Stname?></span>
+                  <span class="text-primary">Hello <?=$Stname?>!</span>
                 </h1>
             </div>
           </div>
