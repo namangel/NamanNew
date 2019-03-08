@@ -90,13 +90,14 @@
         $RndBlock = 1;
     }
 
-  $y=date("Y");
-  $q = "SELECT revenue_rate,burn_rate,revenue_driver FROM annual_financial WHERE StpId='$id' AND year= '$y' ";
-  $results = mysqli_query($db, $q);
-  $row=mysqli_fetch_array($results);
-  $revrr= $row[0];
   $mbr= $row[1];
-  $revdr= $row[2];
+    $y=date("Y");
+    $q = "SELECT revenue_rate,burn_rate,revenue_driver FROM annual_financial WHERE StpId='$id' AND year= '$y' ";
+    $results = mysqli_query($db, $q);
+    $row=mysqli_fetch_array($results);
+    $revrr= $row[0];
+    $mbr= $row[1];
+    $revdr= $row[2];
 
 
     if(isset($_POST["cbsave"])){
@@ -232,6 +233,40 @@
 		header('location:index.php');
 	}
 
+    $q = "SELECT * FROM userstp where StpID='$id'";
+    $resultverify = mysqli_query($db, $q);
+    $rowverify = mysqli_fetch_assoc($resultverify);
+
+    if($rowverify["VerifyMe"] == 0){
+        $verifybutton = "VERIFY ME";
+        $verifybuttonname = "verifyme";
+        $verifyclass = '';
+    }
+    elseif ($rowverify["VerifyMe"] == 1) {
+        $verifybutton = "VERIFICATION IN PROGRESS";
+        $verifybuttonname = "verificationinprogress";
+        $verifyclass = 'disabled';
+    }
+
+    if(isset($_POST['verifyme'])){
+        $q = "UPDATE userstp set VerifyMe=1 where StpID='$id';";
+        mysqli_query($db, $q);
+        header('location:index.php');
+    }
+
+    if($rowverify['Verified'] == 0){
+        $verify = "RED";
+        $acctype = "Verify Yourself";
+        $message = 'Your Account is not yet verified By Naman Angels. Please continue to complete your profile and have an early verification.';
+    }
+    else{
+        $verify = "Green";
+        $acctype = "Verified Account";
+        $message = 'Verified';
+    }
+
+
+
 ?>
 
 <html lang="en">
@@ -318,7 +353,7 @@
         <div class="w-100">
           <div class="user-icons">
             <a href="#">
-              <i class="fas fa-user-circle"></i>
+              <i class="fas fa-user-circle" style="color:<?= $verify?>"></i>
             </a>
           </div>
 
@@ -366,7 +401,10 @@
                           <div class="profile-item">
                               <div class="media">
                                   <div class="media-body">
-                                      <button class="btn btn-lg btn-block btn-login text-uppercase font-weight-bold mb-3" type="submit">EVALUATE</button>
+                                      <form action="index.php" method="post">
+                                          <button class="btn btn-lg btn-block btn-login text-uppercase font-weight-bold mb-3" type="submit">EVALUATE</button>
+                                      </form>
+
                                   </div>
                               </div>
                           </div>
@@ -434,23 +472,22 @@
                       </div>
                   </div>
               </div>
-        </div>
-        <div class="row" style="padding-top:50px">
-          <div class="col-md-6">
-              <div class="section-title"><h3>Verify your Startup once your profile is built</h3></div>
           </div>
-          <!-- <div class="col-md-12"> -->
-              <!-- <div class="row"> -->
-                  <div class="col-md-6" >
-                      <div class="profile-item">
-                          <div class="media">
-                              <div class="media-body">
-                                  <button class="btn btn-lg btn-block btn-login text-uppercase font-weight-bold mb-3" type="submit">Verify</button>
-                              </div>
+          <div class="row" style="padding-top:50px">
+              <div class="col-md-6">
+                  <div class="section-title"><h3>Verify your Startup once your profile is built</h3></div>
+              </div>
+              <div class="col-md-6" >
+                  <div class="profile-item">
+                      <div class="media">
+                          <div class="media-body">
+                              <form action="index.php" method="post">
+                                  <button class="btn btn-lg btn-block btn-login text-uppercase font-weight-bold mb-3 <?=$verifyclass?>" name="<?=$verifybuttonname?>" type="submit"><?=$verifybutton?></button>
+                              </form>
                           </div>
                       </div>
                   </div>
-                <!-- </div> -->
+              </div>
           </div>
         </div>
     </section>
