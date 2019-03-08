@@ -90,7 +90,6 @@
         $RndBlock = 1;
     }
 
-  $mbr= $row[1];
     $y=date("Y");
     $q = "SELECT revenue_rate,burn_rate,revenue_driver FROM annual_financial WHERE StpId='$id' AND year= '$y' ";
     $results = mysqli_query($db, $q);
@@ -265,6 +264,35 @@
         $message = 'Verified';
     }
 
+
+    if(isset($_POST['subbusinessplan'])){
+        $name= $Stname."_bplan_".$_FILES['businessplan']['name'];
+        $tmp_name= $_FILES['businessplan']['tmp_name'];
+        $submitbutton= $_POST['subbusinessplan'];
+        $position= strpos($name, ".");
+        $fileextension= substr($name, $position + 1);
+        $fileextension= strtolower($fileextension);
+        $success= -1;
+        if (isset($name)){
+            $pathas = 'uploads/startup/'.$name;
+            $path= '../uploads/startup/'.$name;
+            if (!empty($name)){
+                if ($fileextension !== "pdf"){
+                    $success=0;
+                    echo '<script>alert("The file extension must be .pdf in order to be uploaded")</script>';
+                }
+                else if ($fileextension == "pdf"){
+                    $success=1;
+                    if (copy($tmp_name, $path)) {
+                        echo '<script> alert("Uploaded!")</script>';
+                        $q = "UPDATE st_uploads SET BPlan='$pathas', BPlanExt='$fileextension' where StpID='$id';";
+                        mysqli_query($db, $q);
+                    }
+                }
+            }
+        }
+        header('location:Doc.php');
+    }
 
 
 ?>
@@ -876,33 +904,33 @@
           <!-- <a href="mailto:name@email.com">name@email.com</a> -->
         </div>
         <div class="row" >
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <div class="section-title"><h3>Industry  :  <?=$Type?></h3></div>
             </div>
         </div>
         <div class="row" >
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <div class="section-title"><h3>Incorporation Type  :  <?=$IncType?></h3></div>
             </div>
         </div>
         <div class="row" >
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <div class="section-title"><h3>Stage  :  <?=$Stage?></h3></div>
             </div>
         </div>
         <div class="row" >
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <div class="section-title" style="padding-top:50px"><h3>Company Summary</h3></div>
             </div>
         </div>
         <p class="lead mb-5"><?=$Summary?> ---- Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <div class="section-title"><h3>Founded  :  <?=$DOF?></h3></div>
             </div>
         </div>
         <div class="row" >
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <div class="section-title"><h3>Employees  :  <?=$EmpNum?></h3></div>
             </div>
         </div>
@@ -1328,32 +1356,32 @@
 
           <!-- <h2 class="mb-5">Current Funding Round</h2> -->
           <?php
-          if($RndBlock == 0){
-          echo '<div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">';
-            echo '<div class="resume-content">';
-              echo '<h3 class="mb-0">Round : '.$RndName.'</h3>';
-              echo '<div class="subheading mb-3">Seeking :'.$Seek.'</div>';
-              echo '<div class="subheading mb-3">Security Type :'.$SecType.'</div>';
-              echo '<div class="subheading mb-3">Premoney Evaluation : '.$PreVal.'</div>';
-              if($SecType == 'Convertible Notes'){
-                echo '<div class="subheading mb-3">Valuation Capital :'.$ValCap.'</div>';
-                echo '<div class="subheading mb-3">Conversion Discount :'.$ConvDisc.'</div>';
-                echo '<div class="subheading mb-3">Interest Rate : '.$IntRate.'</div>';
-                echo '<div class="subheading mb-3">Term Length : '.$Term.'</div>';
-              }
-            echo '</div>';
-            echo '<div class="resume-date text-md-right">';
-              echo '<span class="text-primary"><button class="btn btn-lg btn-block btn-login text-uppercase font-weight-bold mb-3" type="submit">'.$RndBtn.'</button></span>';
-            echo '</div>';
-          echo '</div>';
-        }
-        else{
-            echo '<div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">';
-          echo '<div class="resume-date text-md-right">';
-            echo '<span class="text-primary"><button class="btn btn-lg btn-block btn-login text-uppercase font-weight-bold mb-3" type="submit">'.$RndBtn.'</button></span>';
-          echo '</div>';
-          echo '</div>';
-        }
+              if($RndBlock == 0){
+              echo '<div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">';
+                echo '<div class="resume-content">';
+                  echo '<h3 class="mb-0">Round : '.$RndName.'</h3>';
+                  echo '<div class="subheading mb-3">Seeking :'.$Seek.'</div>';
+                  echo '<div class="subheading mb-3">Security Type :'.$SecType.'</div>';
+                  echo '<div class="subheading mb-3">Premoney Evaluation : '.$PreVal.'</div>';
+                  if($SecType == 'Convertible Notes'){
+                    echo '<div class="subheading mb-3">Valuation Capital :'.$ValCap.'</div>';
+                    echo '<div class="subheading mb-3">Conversion Discount :'.$ConvDisc.'</div>';
+                    echo '<div class="subheading mb-3">Interest Rate : '.$IntRate.'</div>';
+                    echo '<div class="subheading mb-3">Term Length : '.$Term.'</div>';
+                  }
+                echo '</div>';
+                echo '<div class="resume-date text-md-right">';
+                  echo '<span class="text-primary"><button class="btn btn-lg btn-block btn-login text-uppercase font-weight-bold mb-3" type="submit">'.$RndBtn.'</button></span>';
+                echo '</div>';
+              echo '</div>';
+            }
+            else{
+                echo '<div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">';
+              echo '<div class="resume-date text-md-right">';
+                echo '<span class="text-primary"><button class="btn btn-lg btn-block btn-login text-uppercase font-weight-bold mb-3" type="submit">'.$RndBtn.'</button></span>';
+              echo '</div>';
+              echo '</div>';
+            }
           ?>
 
         <div class="row" style="padding-bottom:20px">
@@ -1368,9 +1396,9 @@
             <div class="col-md-9" style="padding-bottom:20px">
                 <div id="review">
                   <?php
-      							$q= "SELECT * FROM round_history WHERE StpID = '$id';";
-      							$results = mysqli_query($db, $q);
-      							while($row=mysqli_fetch_assoc($results)){
+					$q= "SELECT * FROM round_history WHERE StpID = '$id';";
+					$results = mysqli_query($db, $q);
+					while($row=mysqli_fetch_assoc($results)){
                       echo '<div class="item">';
                       echo '<form method="post" action="index.php">';
                       echo '<input type="text" name="hid" value="'.$row['HistID'].'" style="display:none;">';
@@ -1470,6 +1498,13 @@
                     <input type="file" name="businessplan" value="Select File">
                     <input type="submit" name="subbusinessplan" value="Submit">
                 </form>
+                <?php
+
+                if($BPlan != ""){
+                    echo '<iframe src="../../'.$BPlan.'" height=500px width=100%></iframe>';
+                }
+
+                ?>
             </div>
             <div style="padding-bottom:40px">
                 <h4>Financial Projection</h4>
