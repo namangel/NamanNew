@@ -43,7 +43,7 @@
 	$PitchName = $row['PitchName'];
 	$PitchExt = $row['PitchExt'];
 	$Logo = $row['Logo'];
-    $Backimg = $row['BackImg'];
+  $Backimg = $row['BackImg'];
 
 	$q = "SELECT * FROM st_description WHERE StpID = '$id';";
 	$results = mysqli_query($db, $q);
@@ -115,77 +115,77 @@
 
 
     if(isset($_POST["cbsave"])){
-		$cbname = mysqli_real_escape_string($db, $_POST['cbname']);
-		$cbstage = mysqli_real_escape_string($db, $_POST['cbstage']);
-		$cbaddress = mysqli_real_escape_string($db, $_POST['cbaddress']);
-		$cbcity = mysqli_real_escape_string($db, $_POST['cbcity']);
-		$cbstate = mysqli_real_escape_string($db, $_POST['cbstate']);
-		$cbcountry = mysqli_real_escape_string($db, $_POST['cbcountry']);
-		$cbdate = mysqli_real_escape_string($db, $_POST['cbdate']);
-		$cbempnum = mysqli_real_escape_string($db, $_POST['cbempnum']);
-		$cbinc = mysqli_real_escape_string($db, $_POST['cbinc']);
-		$cbweb = mysqli_real_escape_string($db, $_POST['cbweb']);
-        $cbsummary = mysqli_real_escape_string($db, $_POST['cbsummary']);
+    		$cbname = mysqli_real_escape_string($db, $_POST['cbname']);
+    		$cbstage = mysqli_real_escape_string($db, $_POST['cbstage']);
+    		$cbaddress = mysqli_real_escape_string($db, $_POST['cbaddress']);
+    		$cbcity = mysqli_real_escape_string($db, $_POST['cbcity']);
+    		$cbstate = mysqli_real_escape_string($db, $_POST['cbstate']);
+    		$cbcountry = mysqli_real_escape_string($db, $_POST['cbcountry']);
+    		$cbdate = mysqli_real_escape_string($db, $_POST['cbdate']);
+    		$cbempnum = mysqli_real_escape_string($db, $_POST['cbempnum']);
+    		$cbinc = mysqli_real_escape_string($db, $_POST['cbinc']);
+    		$cbweb = mysqli_real_escape_string($db, $_POST['cbweb']);
+            $cbsummary = mysqli_real_escape_string($db, $_POST['cbsummary']);
 
 
-		if($cbname != "")
-		{
-			$q = "UPDATE st_details set Stname='$cbname' where StpID='$id';";
-			mysqli_query($db, $q);
-		}
+    		if($cbname != "")
+    		{
+    			$q = "UPDATE st_details set Stname='$cbname' where StpID='$id';";
+    			mysqli_query($db, $q);
+    		}
 
-		if($cbstage != 'Select Stage')
-		{
-			$q = "UPDATE st_addetails set Stage='$cbstage' where StpID='$id';";
-			mysqli_query($db, $q);
-		}
-		if($cbaddress != "")
-		{
-			$q = "UPDATE st_details set Address='$cbaddress' where StpID='$id';";
-			mysqli_query($db, $q);
-		}
-		if($cbcity != "")
-		{
-			$q = "UPDATE st_details set City='$cbcity' where StpID='$id';";
-			mysqli_query($db, $q);
-		}
-		if($cbstate != "")
-		{
-			$q = "UPDATE st_details set State='$cbstate' where StpID='$id';";
-			mysqli_query($db, $q);
-		}
-		if($cbcountry != "")
-		{
-			$q = "UPDATE st_details set Country='$cbcountry' where StpID='$id';";
-			mysqli_query($db, $q);
-		}
-		if($cbdate != "")
-		{
-			$q = "UPDATE st_addetails set DOF='$cbdate' where StpID='$id';";
-			mysqli_query($db, $q);
-		}
-		if($cbempnum != "")
-		{
-			$q = "UPDATE st_addetails set EmpNum='$cbempnum' where StpID='$id';";
-			mysqli_query($db, $q);
-		}
-		if($cbinc != 'Select Incorporation')
-		{
-			$q = "UPDATE st_addetails set IncType='$cbinc' where StpID='$id';";
-			mysqli_query($db, $q);
-		}
-		if($cbweb != "")
-		{
-			$q = "UPDATE st_details set Website='$cbweb' where StpID='$id';";
-			mysqli_query($db, $q);
-		}
-        if($cbsummary != "")
-		{
-            $q = "UPDATE st_description set Summary='$cbsummary' where StpID='$id';";
-    		mysqli_query($db, $q);
-		}
-		header('location:index.php');
-	}
+    		if($cbstage != 'Select Stage')
+    		{
+    			$q = "UPDATE st_addetails set Stage='$cbstage' where StpID='$id';";
+    			mysqli_query($db, $q);
+    		}
+    		if($cbaddress != "")
+    		{
+    			$q = "UPDATE st_details set Address='$cbaddress' where StpID='$id';";
+    			mysqli_query($db, $q);
+    		}
+    		if($cbcity != "")
+    		{
+    			$q = "UPDATE st_details set City='$cbcity' where StpID='$id';";
+    			mysqli_query($db, $q);
+    		}
+    		if($cbstate != "")
+    		{
+    			$q = "UPDATE st_details set State='$cbstate' where StpID='$id';";
+    			mysqli_query($db, $q);
+    		}
+    		if($cbcountry != "")
+    		{
+    			$q = "UPDATE st_details set Country='$cbcountry' where StpID='$id';";
+    			mysqli_query($db, $q);
+    		}
+    		if($cbdate != "")
+    		{
+    			$q = "UPDATE st_addetails set DOF='$cbdate' where StpID='$id';";
+    			mysqli_query($db, $q);
+    		}
+    		if($cbempnum != "")
+    		{
+    			$q = "UPDATE st_addetails set EmpNum='$cbempnum' where StpID='$id';";
+    			mysqli_query($db, $q);
+    		}
+    		if($cbinc != 'Select Incorporation')
+    		{
+    			$q = "UPDATE st_addetails set IncType='$cbinc' where StpID='$id';";
+    			mysqli_query($db, $q);
+    		}
+    		if($cbweb != "")
+    		{
+    			$q = "UPDATE st_details set Website='$cbweb' where StpID='$id';";
+    			mysqli_query($db, $q);
+    		}
+            if($cbsummary != "")
+    		{
+                $q = "UPDATE st_description set Summary='$cbsummary' where StpID='$id';";
+        		mysqli_query($db, $q);
+    		}
+    		header('location:index.php');
+	     }
 
 
     if(isset($_POST['essave'])){
