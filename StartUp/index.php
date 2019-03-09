@@ -1,5 +1,4 @@
 
-
 <?php
     require '../server.php';
 	if(!isset($_SESSION['StpID'])){
@@ -428,7 +427,7 @@
 
 
 ?>
-
+<!DOCTYPE html>
 <html lang="en">
 <head>
 
