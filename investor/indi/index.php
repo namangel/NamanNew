@@ -9,14 +9,12 @@
 	$row = mysqli_fetch_assoc($results);
 	$fname = $row['FName'];
   $lname = $row['LName'];
-  // $cname = $row['CName'];
   $web = $row['Website'];
   $city = $row['City'];
   $state = $row['State'];
 	$country = $row['Country'];
 	$phone = $row['Phone'];
   $email = $row['Email'];
-	// $website = $row['Website'];
 
   $qu = "SELECT * FROM inv_addetails WHERE InvID='$u'";
   $results = mysqli_query($db, $qu);
@@ -27,8 +25,6 @@
 	$linkedin=$row['LinkedIn']==""? '--':$row['LinkedIn'];
 	$instagram=$row['Instagram']==""? '--':$row['Instagram'];
 	$others = $row['Others']==""? '--':$row['Others'];
-	// $role = $row['Role']==""? '--':$row['Role'];
-	// $partner = $row['Partner']==""? '--':$row['Partner'];
 	$invrange = $row['InvRange']==""? '--':$row['InvRange'];
   $summary=$row['Summary']==""? 'Describe yourself and the value of your investment.':$row['Summary'];
 
@@ -40,17 +36,12 @@
 	if(isset($_POST["cbsave"])){
     $cbfname = mysqli_real_escape_string($db, $_POST['cbfname']);
     $cblname = mysqli_real_escape_string($db, $_POST['cblname']);
-		// $cbcomp = mysqli_real_escape_string($db, $_POST['cbcomp']);
     $cbcity = mysqli_real_escape_string($db, $_POST['cbcity']);
     $cbstate = mysqli_real_escape_string($db, $_POST['cbstate']);
 		$cbcountry = mysqli_real_escape_string($db, $_POST['cbcountry']);
-		// $cbrole = mysqli_real_escape_string($db, $_POST['cbrole']);
-		// $cbpartner = mysqli_real_escape_string($db, $_POST['cbpartner']);
 		$cbioi = mysqli_real_escape_string($db, $_POST['cbioi']);
     $cbrange = mysqli_real_escape_string($db, $_POST['cbrange']);
     $summary = mysqli_real_escape_string($db, $_POST['summary']);
-		// $cbweb = mysqli_real_escape_string($db, $_POST['cbweb']);
-
 
 		if($cbfname != "")
 		{
@@ -100,7 +91,7 @@
 			$q = "UPDATE inv_addetails set Summary='$summary' where InvID='$u'";
 			mysqli_query($db, $q);
     }
-		header('location: individual.php');
+		header('location: index.php');
 	}
 
 
@@ -150,7 +141,7 @@
 			$q = "UPDATE inv_addetails set Others='$slots' where InvID='$u'";
 			mysqli_query($db, $q);
      }
-		header('location: individual.php');
+		header('location: index.php');
   }
 
 	if(isset($_POST['pisave'])){
@@ -164,7 +155,7 @@
 		$q = "INSERT INTO inv_previnvestment (InvID, Name, Year,Amount, Stage, Stake, Website) VALUES ('$u', '$piname', '$piyear', '$piamount','$pistage','$pistake','$piweb');";
 		mysqli_query($db, $q);
 
-		header('location: individual.php');
+		header('location: index.php');
 	}
 
 	// if(isset($_POST['rem_inv'])){
@@ -689,179 +680,115 @@
 
     <hr class="m-0">
 
-		<section class="resume-section p-3 p-lg-5 d-flex justify-content-center" id="investment">
-			<div class="w-100">
-					<div class="row">
-						<div class="col-md-9">
-							<h2 class="mb-5">
-								Previous Investments
-							</h2>
-						</div>
-						<div class="col-md-3">
-								<div class="text-right">
-									<a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalInvestmentForm">Add</a>
-								</div>
-						</div>
-					</div>
+    <section class="resume-section p-3 p-lg-5 d-flex justify-content-center" id="investment">
+      <div class="w-100">
+        <div class="row">
+          <div class="col-md-9">
+            <h2 class="mb-5">
+              Previous Investments
+            </h2>
+          </div>
+          <div class="col-md-3">
+            <div class="text-right">
+              <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalInvestmentForm">Add</a>
+            </div>
+          </div>
+        </div>
+            <div class="row">
+              <?php
+                $q = "SELECT * FROM inv_previnvestment where InvID='$u';";
+                $results=mysqli_query($db, $q);
+                if (mysqli_num_rows($results) > 0){
+                  while($row = mysqli_fetch_assoc($results)) {
+                  echo'<div class="col-md-4">';
+                    echo'<div class="profile-item">';
+                      echo'<div class="media">';
+                        echo'<div class="media-body">';
+                          echo '<h3 class="media-heading">'.$row["Name"].'</h3>';
+                          echo '<div class="subheading">'.$row["Website"].'</div>';
+                            echo '<p>Stage of investment: '.$row["Stage"].'</p>';
+                            echo '<p>Stake holding: '.$row["Stake"].'</p>';
+                            echo '<p>Amount: '.$row['Amount'].'</p>';
+                            echo '<p>Year of investment: '.$row["Year"].'</p>';
+                          echo'</div>';
+                        echo'</div>';
+                      echo'</div>';
+                    echo'</div>';
+                  }
+                }
+                else{
+                  echo'<div class="col-md-4">';
+                    echo'<div class="profile-item">';
+                      echo'<div class="media">';
+                        echo'<div class="media-body">';
+                          echo '<h3 class="subheading">Add your previous investments!</h3>';
+                          echo '<p>Mention the best three investments done and its details.</p>';
+                          echo'</div>';
+                        echo'</div>';
+                      echo'</div>';
+                    echo'</div>';
+                }
+            ?>
+          </div>
+        
+        <div class="row">
+            <div class="col-md-3">
+              <div class="section-title">
+                <h3>Investments Through Naman</h3>
+              </div>
+            </div>
+            <div class="col-md-9">
+              <?php
+                $q = "SELECT * FROM requests where Inv_ID='$u';";
+                $results=mysqli_query($db, $q);
+                if (mysqli_num_rows($results) > 0) {
+                  while($row = mysqli_fetch_assoc($results)) {
+                    $stid=$row['St_ID'];
+                    $qu = "SELECT Stname FROM st_details where StpID='$stid';";
+                    $result = mysqli_query($db, $qu);
+                    $row1= mysqli_fetch_assoc($result);
+                    echo'<div id="review">';
+                      echo'<div class="item">';
+                        echo'<div class="media">';
+                          echo'<div class="media-body">';
+                            echo'<div class="user-name">'.$row1['Stname'].'</div>';
+                          echo'</div>';
+                        echo'</div>';
+                        echo'<div class="review-text">';
+                        if($row['Deal'] == 0){
+                          echo 'Transaction in progress';
+                        }
+                        if($row['Deal'] == 1){
+                          echo 'Invested';
+                          echo 'Amount: '.$row['Amount'];
+                          echo 'Stakeholding: '.$row['Stakehold'];
+                          echo 'Date: '.$row['Date']; 
+                        }
+                        echo'</div>';
+                        echo'</div>';
+                  }
+                }
+                else{
+                  echo'<div id="review">';
+                    echo'<div class="item">';
+                      echo'<div class="media">';
+                        echo'<div class="media-body">';
+                          echo'<div class="user-name">Hello '.$fname.'</div>';
+                        echo'</div>';
+                      echo'</div>';
+                      echo'<div class="review-text">';
+                      echo'Start browsing startups and invest now!!';
+                      echo'<br>';
+                      echo'<a class="nav-link" href="#browsestartup">Browse Startups</a>';
+                    echo'</div>';
+                  echo'</div>';
+                }
+              ?>
+          </div>
+        </div>
+      </div>
 
-					<div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
-						<div class="col-md-12">
-							<div class="row">
-								<div class="col-md-4">
-									<div class="profile-item">
-										<div class="media">
-											<div class="media-body">
-												<h3 class="media-heading">Startup Name</h3>
-												<div class="subheading">website</div>
-												<p>Stage of investment</p>
-												<p>Stake holding</p>
-												<p>Amount</p>
-												<p>Year of investment</p>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-4">
-									<div class="profile-item">
-										<div class="media">
-											<div class="media-body">
-													<h3 class="media-heading">Startup Name</h3>
-													<div class="subheading">website</div>
-													<p>Stage of investment</p>
-													<p>Stake holding</p>
-													<p>Amount</p>
-													<p>Year of investment</p>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-4">
-									<div class="profile-item">
-										<div class="media">
-											<div class="media-body">
-												<h3 class="media-heading">Startup Name</h3>
-												<div class="subheading">website</div>
-												<p>Stage of investment</p>
-												<p>Stake holding</p>
-												<p>Amount</p>
-												<p>Year of investment</p>
-											</div>
-										</div>
-									</div>
-								</div>
-						</div>
-					</div>
-				</div>
-			<div class="w-100">
-				<div class="row">
-						<div class="col-md-3">
-							<div class="section-title">
-								<h3>Investments Through Naman</h3>
-							</div>
-						</div>
-
-						<div class="col-md-9">
-							<div id="review">
-								<div class="item">
-									<div class="media">
-										<div class="media-left">
-											<img src="../img/img-testimonial-2.jpg" alt="avatar"/>
-										</div>
-										<div class="media-body">
-											<div class="user-name">Sofia Voigt</div>
-												<!--.user-name-->
-										</div>
-									</div>
-									<div class="review-text">
-										Seamlessly leverage other's transparent resources after resource maximizing channels.
-										Continually grow economically sound collaboration and idea-sharing and compelling
-										technology. Collaboratively unleash.
-									</div>
-										<!--.review-text-->
-									</div>
-									<!--.item-->
-									<div class="item">
-										<div class="media">
-											<div class="media-left">
-												<img src="../img/img-testimonial-1.jpg" alt="avatar"/>
-											</div>
-											<div class="media-body">
-												<div class="user-name">Matteo Müller</div>
-												<!--.user-name-->
-											</div>
-										</div>
-										<div class="review-text">
-												Uniquely target empowered relationships after client-based e-commerce. Energistically morph
-												worldwide resources for future-proof content. Authoritatively transform granular users
-												whereas intermandated applications.
-										</div>
-										<!--.review-text-->
-									</div>
-									<!--.item-->
-
-									<div class="item">
-										<div class="media">
-											<div class="media-left">
-												<img src="../img/img-testimonial-3.jpg" alt="avatar"/>
-											</div>
-											<div class="media-body">
-												<div class="user-name">Noel Schulze</div>
-													<!--.user-name-->
-											</div>
-										</div>
-										<div class="review-text">
-											Enthusiastically mesh an expanded array of infrastructures through distinctive customer
-											service. Distinctively reintermediate e-business information vis-a-vis excellent networks.
-											Uniquely fabricate just.
-										</div>
-										<!--.review-text-->
-									</div>
-									<!--.item-->
-
-									<div class="item">
-										<div class="media">
-											<div class="media-left">
-												<img src="../img/unknown.png" alt="avatar"/>
-											</div>
-											<div class="media-body">
-												<div class="user-name">Jason Lehmann</div>
-													<!--.user-name-->
-											</div>
-										</div>
-										<div class="review-text">
-											Proactively network unique potentialities rather than one-to-one process improvements.
-											Dynamically leverage existing progressive methods of empowerment rather than efficient
-											functionalities. Continually.
-										</div>
-											<!--.review-text-->
-									</div>
-									<!--.item-->
-
-									<div class="item">
-										<div class="media">
-											<div class="media-left">
-												<img src="../img/unknown.png" alt="avatar"/>
-											</div>
-											<div class="media-body">
-												<div class="user-name">Jason Lehmann</div>
-													<!--.user-name-->
-										</div>
-									</div>
-									<div class="review-text">
-										Progressively leverage existing 24/7 paradigms through exceptional process improvements.
-										Completely revolutionize compelling architectures for team driven partnerships. Quickly
-										transform focused value.
-									</div>
-										<!--.review-text-->
-								</div>
-									<!--.item-->
-							</div>
-							<!--#review-->
-					</div>
-				</div>
-			</div>
-
-		</section>
+      </section>
 
     <hr class="m-0">
 
