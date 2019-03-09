@@ -12,7 +12,7 @@ if (isset($_POST['login'])) {
   $row = mysqli_fetch_assoc($results);
   if (mysqli_num_rows($results) == 1) {
       $_SESSION['adminID'] = $row['adminID'];
-      header('location: dashboard.php');
+      header('location: dashboard.php');                  //CHANGE
   }else {
       echo "<script>alert('Wrong username/password combination')</script>";
   }
@@ -30,7 +30,7 @@ if (isset($_POST['loginblind'])) {
   $row = mysqli_fetch_assoc($results);
   if (mysqli_num_rows($results) == 1) {
       $_SESSION['BinvID'] = $row['BinvID'];
-      header('location: blindbrowse.php');
+      header('location: blindbrowse.php');        ////CHANGE
   }else {
       echo "<script>alert('Wrong id combination')</script>";
   }
@@ -86,7 +86,7 @@ if (isset($_POST['reginv_ind'])) {
 
         // $_SESSION['success'] = "You are now logged in";
 
-        header('location: ../Investor/Individual/index.php');
+        header('location: ../Investor/indi/');
     }
 }
 
@@ -139,7 +139,7 @@ if (isset($_POST['reginv_inst'])) {
       mysqli_query($db, $query);
 
       // $_SESSION['success'] = "You are now logged in";
-      header('location: ../Investor/Institution/index.php');
+      header('location: ../Investor/inst/');
   }
 }
 
@@ -213,7 +213,7 @@ if (isset($_POST['reg_st'])) {
         mysqli_query($db, $query);
 
 
-        header('location: ../StartUp/index.php');
+        header('location: ../StartUp/');
     }
 }
 
@@ -237,10 +237,10 @@ if (isset($_POST['login_inv'])) {
         $type = $row['Type'];
 
         if($type == "Individual"){
-          header('location: Investor/individual.php');
+          header('location: Investor/indi');
         }
         else{
-          header('location: Investor/index.php');
+          header('location: Investor/inst');
         }
 
   	}else {
@@ -260,7 +260,7 @@ if (isset($_POST['login_st'])){
   	if (mysqli_num_rows($results) == 1) {
         $_SESSION['StpID'] = $row['StpID'];
 
-        header('location: ../StartUp/index.php');
+        header('location: ../StartUp');
   	}
     else
     {

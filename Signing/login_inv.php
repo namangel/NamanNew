@@ -6,10 +6,10 @@ if(isset($_SESSION['InvID'])){
     $row = mysqli_fetch_assoc($result);
 
     if($row['Type'] == 'Institution'){
-        header('location: ../Investor/index.php');
+        header('location: ../Investor/inst');
     }
     elseif ($row['Type'] == 'Individual') {
-        header('location: ../Investor/individual.php');
+        header('location: ../Investor/indi');
     }
 }
 

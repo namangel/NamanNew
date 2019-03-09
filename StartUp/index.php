@@ -418,7 +418,7 @@
         }
         if($elp != ""){
             $q = "UPDATE st_description set OLP='$olp' where StpID='$id'";
-            mysqli_query($db, $q)l
+            mysqli_query($db, $q);
         }
 
         //TODO - Write Upload PHP for Pitch Upload
@@ -448,11 +448,11 @@
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="css/resume.min.css" rel="stylesheet">
-    <link href="css/resume.min.new.css" rel="stylesheet">
+    <link href="css/stp.css" rel="stylesheet">
+    <link href="css/carousel.css" rel="stylesheet">
     <!-- <link href="css/style.css" rel="stylesheet"> -->
 
-    <script src="js/finround.js"></script>
+
 
 
 </head>
@@ -551,7 +551,7 @@
                               <div class="media">
                                   <div class="media-body">
                                     <center>
-                                      <img src="../img/Launch.png" height="200px">
+                                      <img src="img/Launch.png" height="200px">
                                     </center>
                                   </div>
                               </div>
@@ -1973,34 +1973,6 @@
             </div>
         </div>
 
-        <!-- <ul class="fa-ul mb-0">
-          <li>
-            <i class="fa-li fa fa-trophy text-warning"></i>
-            Google Analytics Certified Developer</li>
-          <li>
-            <i class="fa-li fa fa-trophy text-warning"></i>
-            Mobile Web Specialist - Google Certification</li>
-          <li>
-            <i class="fa-li fa fa-trophy text-warning"></i>
-            1<sup>st</sup>
-            Place - University of Colorado Boulder - Emerging Tech Competition 2009</li>
-          <li>
-            <i class="fa-li fa fa-trophy text-warning"></i>
-            1<sup>st</sup>
-            Place - University of Colorado Boulder - Adobe Creative Jam 2008 (UI Design Category)</li>
-          <li>
-            <i class="fa-li fa fa-trophy text-warning"></i>
-            2<sup>nd</sup>
-            Place - University of Colorado Boulder - Emerging Tech Competition 2008</li>
-          <li>
-            <i class="fa-li fa fa-trophy text-warning"></i>
-            1<sup>st</sup>
-            Place - James Buchanan High School - Hackathon 2006</li>
-          <li>
-            <i class="fa-li fa fa-trophy text-warning"></i>
-            3<sup>rd</sup>
-            Place - James Buchanan High School - Hackathon 2005</li>
-        </ul> -->
       </div>
     </section>
 
@@ -2050,13 +2022,15 @@
   <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
   <!-- Custom scripts for this template -->
-  <script src="js/resume.min.js"></script>
+  <script src="js/stp.js"></script>
 
   <!--owl carousal-->
-  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/owlcarousel.js"></script>
   <!--theme script-->
-  <script src="js/scripts.js"></script>
+  <script src="js/stpscripts.js"></script>
 
+  <script src="js/finround.js"></script>
+  
   <script>
   	if ( window.history.replaceState ) {
   		window.history.replaceState( null, null, window.location.href );
