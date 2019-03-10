@@ -485,7 +485,7 @@
 
     <!-- Custom styles for this template -->
     <link href="css/stp.css" rel="stylesheet">
-    <link href="css/carousel.css" rel="stylesheet">
+    <link href="css/owlcarousel.css" rel="stylesheet">
     <!-- <link href="css/style.css" rel="stylesheet"> -->
 
 
@@ -498,7 +498,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
         <a class="navbar-brand js-scroll-trigger" href="#page-top">
             <span class="d-none d-lg-block">
-                <div class="imagebox">
+                <div class="d-none d-lg-block imagebox">
                     <?= "<img class='img-fluid img-profile rounded-circle mx-auto mb-2' src='../".$Logo."' />";?>
                     <a class="imagebox-desc" href="" data-toggle="modal" data-target="#profileImageForm">Edit</a>
                 </div>
@@ -552,22 +552,20 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header text-center">
-                        <h4 class="modal-title w-100 font-weight-bold">investor Basics</h4>
+                        <h4 class="modal-title w-100 font-weight-bold">Update Logo</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <form method="post" action="index.php" enctype="multipart/form-data">
                         <div class="modal-body mx-3">
-
                             <div class="form-group">
-                                <label>Profile Image</label>
-                                <input class="row" type="file" name="cbpic" placeholder=" ">
+                                <label>Upload New Logo</label>
+                                <input class="form-control" type="file" name="cbpic" placeholder=" ">
                             </div>
                         </div>
                         <div class="modal-footer d-flex justify-content-center">
-                            <button class="btn btn-unique">Cancel </button>
-                            <button class="btn btn-unique" name="pimgsave">Save </button>
+                            <button class="btn btn-unique" name="pimgsave">Save</button>
                         </div>
                     </form>
                 </div>

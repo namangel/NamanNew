@@ -234,20 +234,23 @@ width: 100%;
 
 .imagebox img {
 opacity: 1;
-transition: 0.5s opacity;
+transition: 0.7s opacity;
+
 }
 
 .imagebox .imagebox-desc {
 /* background-color: rgba(0, 0, 0, 0.6); */
+
 bottom: 0px;
-color: black;
-font-size: 1.2em;
+color: #00173d;
+font-size: 0.8em;
 left: 0px;
-padding: 10px 15px;
+padding: 10px 20px;
 position: absolute;
-transition: 0.5s padding;
+transition: 0.7s padding;
 text-align: center;
 width: 100%;
+text-decoration: none;
 }
 
 .imagebox-desc {
@@ -261,9 +264,9 @@ text-decoration: none;
 display: inline-block;}
 
 .imagebox:hover img {
-opacity: 0.7;
+opacity: 0.9;
 }
 
 .imagebox:hover .imagebox-desc {
-padding-bottom: 10%;
+padding-bottom: 15%;
 }
