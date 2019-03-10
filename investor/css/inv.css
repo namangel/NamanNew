@@ -328,3 +328,7 @@ a:active,a:focus,a:hover{
 .imagebox:hover .imagebox-desc {
  padding-bottom: 10%;
 }
+
+#LinkedIn, #Facebook, #Twitter, #Instagram, #Others{
+   display: none;
+   padding-top: 10px;

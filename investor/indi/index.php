@@ -1,8 +1,8 @@
 <?php
 	require '../../server.php';
 	if(!isset($_SESSION['InvID'])){
-        header('location: ../pageerror.php');
-    }
+    header('location: ../pageerror.php');
+  }
 	$u = $_SESSION['InvID'];
 	$qu = "SELECT * FROM inv_details WHERE InvID='$u'";
   $results = mysqli_query($db, $qu);
@@ -156,16 +156,45 @@
 		mysqli_query($db, $q);
 
 		header('location: index.php');
-	}
+  }
+  
+  if(isset($_POST['imgsave'])){
+  
+    $check = getimagesize($_FILES["cbpic"]["tmp_name"]);
+		if($check != false)
+		{
+			$file_name = $fname."_".$lname."_".$_FILES['cbpic']['name'];
+			$file_size = $_FILES['cbpic']['size'];
+			$file_tmp = $_FILES['cbpic']['tmp_name'];
+			$file_type = $_FILES['cbpic']['type'];
+			$file_ext=strtolower(end(explode('.',$_FILES['cbpic']['name'])));
 
-	// if(isset($_POST['rem_inv'])){
-	// 	$mem_id = mysqli_real_escape_string($db, $_POST['prev_inv']);
+			$extensions= array("jpeg","jpg","png");
 
-	// 	$q = "DELETE FROM inv_previnvestment where ID = $mem_id;";
-	// 	mysqli_query($db, $q);
-
-	// 	header('location:individual.php');
-	// }
+			if(in_array($file_ext,$extensions)=== false)
+			{
+				echo "<script>alert('Extension not allowed, please choose a JPEG or PNG file.')</script>";
+			}
+			else
+			{
+				if($file_size > 5242880)
+				{
+					echo "<script>alert('File size must be less than 5 MB')</script>";
+				}
+				else
+				{
+					$uploadas = "uploads/investor/".$file_name;
+					$upload = "../../../uploads/investor/".$file_name;
+					if(move_uploaded_file($file_tmp, $upload)){
+					$q = "UPDATE inv_uploads set ProfilePic='$uploadas' where InvID='$u';";
+          mysqli_query($db, $q);
+          echo "<script>alert('Successfully Uploaded')</script>";
+				}
+			}		
+    }
+  }
+  header('location: index.php');
+}
 
 ?>
 
@@ -193,57 +222,6 @@
   <!-- Custom styles for this template -->
   <link href="../css/inv.css" rel="stylesheet">
   <link href="../css/owlcarousel.css" rel="stylesheet">
-
-  <style>
-    #LinkedIn, #Facebook, #Twitter, #Instagram, #Others{
-      display: none;
-      padding-top: 10px;
-    }
-    .imagebox {
-    /* background: black; */
-    padding: 0px;
-    position: relative;
-    text-align: center;
-    width: 100%;
-  }
-
-  .imagebox img {
-    opacity: 1;
-    transition: 0.5s opacity;
-  }
-
-  .imagebox .imagebox-desc {
-    /* background-color: rgba(0, 0, 0, 0.6); */
-    bottom: 0px; 
-    color: black;
-    font-size: 1.2em;
-    left: 0px; 
-    padding: 10px 15px;
-    position: absolute;
-    transition: 0.5s padding;
-    text-align: center;
-    width: 100%;
-  }
-
-  .imagebox-desc {
-    display: none;
-    color: black;
-    font-weight: bold;
-    text-decoration: none;
-  }
-
-  .imagebox:hover .imagebox-desc{
-    display: inline-block;}
-
-  .imagebox:hover img {
-    opacity: 0.7;
-  }
-
-  .imagebox:hover .imagebox-desc {
-    padding-bottom: 10%;
-  }
-
-  </style>
 
 </head>
 
@@ -279,10 +257,10 @@
     <a class="navbar-brand js-scroll-trigger" href="#page-top">
       <span class="d-block d-lg-none"><?= $fname ?>&nbsp;<?= $lname ?></span>
       <span class="d-none d-lg-block">
-      <div class="imagebox">
-        <?= "<img class='img-fluid img-profile rounded-circle mx-auto mb-2' src='../../".$img."' />";?>
-        <a class="imagebox-desc" href="" data-toggle="modal" data-target="#profileImageForm">Edit</a>
-      </div>
+        <div class="d-none d-lg-block imagebox ">
+          <?= "<img class='img-fluid img-profile rounded-circle mx-auto mb-2' src='../../".$img."' />";?>
+          <a class="imagebox-desc" href="" data-toggle="modal" data-target="#profileImageForm">Edit</a>
+        </div>
       </span>
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -297,13 +275,13 @@
           <a class="nav-link js-scroll-trigger" href="#investorbasics">Investor Basics</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="#investment">Investments </a>
-        </li>
-        <li class="nav-item">
           <a class="nav-link js-scroll-trigger" href="#membership">Membership</a>
         </li>
         <li class="nav-item">
           <a class="nav-link js-scroll-trigger" href="#browsestartup">browse startups</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" href="#investment">Investments </a>
         </li>
         <li class="nav-item">
           <a class="nav-link js-scroll-trigger" href="#consultancy">Consultancy</a>
@@ -570,15 +548,15 @@
             </button>
           </div>
           <div class="modal-body mx-3">
-            <form method="post">
+            <form method="post" action="index.php">
             <div class="form-group">
               <label>Profile Image</label>
-              <input class="row" type="file" name="cbpic" placeholder=" ">
+              <input name="cbpic" class="row" type="file" title="Choose file of type .jpeg, .png, .jpg of size less than 5MB!">
             </div>
           </div>
           <div class="modal-footer d-flex justify-content-center">
             <button class="btn btn-unique ">Cancel </button>
-            <button class="btn btn-unique">Save </button>
+            <button class="btn btn-unique" name="imgsave">Save </button>
           </div>
         </div>
         </form>
@@ -752,6 +730,102 @@
 
     <hr class="m-0">
 
+    <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="membership">
+      <div class="w-100">
+        <h2 class="mb-5">Membership</h2>
+        <p class="lead mb-5">"A great business starts from small investment, whereas the small investments start from a big risk." </p>
+        <div class="row">
+          <div class="col-md-6" style="padding-top:20px">
+            <div class="profile-item">
+              <div class="media">
+                <div class="media-body">
+                  <h3 class="media-heading">Why become a member?</h3>
+                  <p class="lead">Becoming a member of Naman Angels enables you to explore the startups and look through their details before investing.
+                  Become a member of Naman Angels network, browse through unlimited industries and get premium treatment.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6" style="padding-top:20px">
+            <div class="row">
+              <div class="col-md-3">
+                <div class="profile-item">
+                  <div class="media">
+                    <div class="media-body im">
+                      <img src="../img/Internet.png" height="100px">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="profile-item">
+                  <div class="media">
+                    <div class="media-body im">
+                      <img src="../img/Food.png" height="100px">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="profile-item">
+                  <div class="media">
+                    <div class="media-body im">
+                      <img src="../img/Education.png" height="100px">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="container-fluid">
+            <button type="button" class="btn btn-member" onclick="location.href=#" style="margin:20px 50px 0px 50px">BECOME OUR MEMBER</button>
+          </div>
+        </div>
+    </section>
+
+    <hr class="m-0">
+
+    <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="browsestartup">
+      <div class="w-100">
+        <h2 class="mb-5">Browse Startups</h2>
+        <p>Flip through the latest starups connected with Naman!</p>
+        <p class="mb-0">Explore the startups of your interest.</p>
+
+      <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-6" style="padding-top:40px">
+              <div class="profile-item">
+                <div class="media">
+                  <div class="media-body browse-icons">
+                      <a href="../browse/browsebyname.html" target="_blank">
+                        <i class="fa fa-font"></i>
+                      </a>
+                    <button class="btn btn-browse" onclick="window.open('../browse/browsebyname.html')">Browse by name</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6" style="padding-top:40px">
+              <div class="profile-item">
+                <div class="media">
+                  <div class="media-body browse-icons">
+                      <a href="../browse/browsebyindustry.html" target="_blank">
+                        <i class="fa fa-industry"></i>
+                      </a>
+                    <button class="btn btn-browse" onclick="window.open('../browse/browsebyindustry.html')">Browse by Industry</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="m-0">
+  
     <section class="resume-section p-3 p-lg-5 d-flex justify-content-center" id="investment">
       <div class="w-100">
         <div class="row">
@@ -861,102 +935,6 @@
       </div>
 
       </section>
-
-    <hr class="m-0">
-
-    <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="membership">
-      <div class="w-100">
-        <h2 class="mb-5">Membership</h2>
-        <p class="lead mb-5">"A great business starts from small investment, whereas the small investments start from a big risk." </p>
-        <div class="row">
-          <div class="col-md-6" style="padding-top:20px">
-            <div class="profile-item">
-              <div class="media">
-                <div class="media-body">
-                  <h3 class="media-heading">Why become a member?</h3>
-                  <p class="lead">Becoming a member of Naman Angels enables you to explore the startups and look through their details before investing.
-                  Become a member of Naman Angels network, browse through unlimited industries and get premium treatment.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6" style="padding-top:20px">
-            <div class="row">
-              <div class="col-md-3">
-                <div class="profile-item">
-                  <div class="media">
-                    <div class="media-body im">
-                      <img src="../img/Internet.png" height="100px">
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-3">
-                <div class="profile-item">
-                  <div class="media">
-                    <div class="media-body im">
-                      <img src="../img/Food.png" height="100px">
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-3">
-                <div class="profile-item">
-                  <div class="media">
-                    <div class="media-body im">
-                      <img src="../img/Education.png" height="100px">
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="container-fluid">
-            <button type="button" class="btn btn-member" onclick="location.href=#" style="margin:20px 50px 0px 50px">BECOME OUR MEMBER</button>
-          </div>
-        </div>
-    </section>
-
-    <hr class="m-0">
-
-    <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="browsestartup">
-      <div class="w-100">
-        <h2 class="mb-5">Browse Startups</h2>
-        <p>Flip through the latest starups connected with Naman!</p>
-        <p class="mb-0">Explore the startups of your interest.</p>
-
-      <div class="col-md-12">
-        <div class="row">
-            <div class="col-md-6" style="padding-top:40px">
-              <div class="profile-item">
-                <div class="media">
-                  <div class="media-body browse-icons">
-                      <a href="../browse/browsebyname.html" target="_blank">
-                        <i class="fa fa-font"></i>
-                      </a>
-                    <button class="btn btn-browse">Browse by name</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6" style="padding-top:40px">
-              <div class="profile-item">
-                <div class="media">
-                  <div class="media-body browse-icons">
-                      <a href="../browse/browsebyindustry.html" target="_blank">
-                        <i class="fa fa-industry"></i>
-                      </a>
-                    <button class="btn btn-browse">Browse by Industry</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
 
     <hr class="m-0">
 
