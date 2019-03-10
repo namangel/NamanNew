@@ -26,7 +26,7 @@ $record10= mysqli_query($db,$sql10);
 $sql11="SELECT * FROM st_team where StpID='$s'" ;
 $record11= mysqli_query($db,$sql11);
 
-require("../generateonepager/fpdf.php");
+require("generateonepager/fpdf.php");
 
 class PDF extends FPDF {
     // function footer(){
