@@ -231,7 +231,7 @@
 				else
 				{
 					$uploadas = "uploads/investor/".$file_name;
-					$upload = "../../../uploads/investor/".$file_name;
+					$upload = "../../uploads/investor/".$file_name;
 					if(move_uploaded_file($file_tmp, $upload)){
 						$q = "UPDATE inv_uploads set ProfilePic='$uploadas' where InvID='$u';";
 						mysqli_query($db, $q);
@@ -369,9 +369,9 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
         <a class="navbar-brand js-scroll-trigger" href="#page-top">
 
-            <span class="d-block d-lg-none"><?= cname ?> </span>
+            <span class="d-block d-lg-none"><?=$cname?></span>
             <span class="d-none d-lg-block">
-            <div class="imagebox">
+            <div class="imagebox d-none d-lg-block">
                 <?= "<img class='img-fluid img-profile rounded-circle mx-auto mb-2' src='../../".$img."' />";?>
                 <a class="imagebox-desc" href="" data-toggle="modal" data-target="#profileImageForm">Edit</a>
             </div>
@@ -389,16 +389,16 @@
                     <a class="nav-link js-scroll-trigger" href="#companybasics">Company Basics</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="#teams">Team</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="#investment">Investments </a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link js-scroll-trigger" href="#membership">Membership</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link js-scroll-trigger" href="#browsestartup">browse startups</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#teams">Team</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#investment">Investments </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link js-scroll-trigger" href="#consultancy">Consultancy</a>
@@ -426,13 +426,13 @@
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <div class="modal-body mx-3">
                             <form method="post" action="index.php" enctype="multipart/form-data">
-                                <div class="form-group">
-                                        <label>Profile Image</label>
-                                        <input class="row" type="file" name="cbpic" placeholder=" ">
+                                <div class="modal-body mx-3">
+                                    <div class="form-group">
+                                        <label>Upload new Profile Image</label>
+                                        <input class="form-control" type="file" name="cbpic" placeholder=" ">
                                     </div>
-                            </div>
+                                </div>
                             <div class="modal-footer d-flex justify-content-center">
                                 <button class="btn btn-unique">Cancel </button>
                                 <button class="btn btn-unique" name="pimgsave">Save </button>
