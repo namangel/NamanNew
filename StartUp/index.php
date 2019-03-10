@@ -424,6 +424,43 @@
         //TODO - Change Form and shift OLP to Company basic
     }
 
+    if(isset($_POST["pimgsave"])){
+        $check = getimagesize($_FILES["cbpic"]["tmp_name"]);
+		if($check != false)
+		{
+			$file_name = $Stname."_".$_FILES['cbpic']['name'];
+			$file_size = $_FILES['cbpic']['size'];
+			$file_tmp = $_FILES['cbpic']['tmp_name'];
+			$file_type = $_FILES['cbpic']['type'];
+			$file_ext=strtolower(end(explode('.',$_FILES['cbpic']['name'])));
+
+			$extensions= array("jpeg","jpg","png");
+
+			if(in_array($file_ext,$extensions)=== false)
+			{
+				echo "<script>alert('Extension not allowed, please choose a JPEG or PNG file.')</script>";
+			}
+			else
+			{
+				if($file_size > 5242880)
+				{
+					echo "<script>alert('File size must be less than 5 MB')</script>";
+				}
+				else
+				{
+					$uploadas = "uploads/startup/".$file_name;
+					$upload = "../uploads/startup/".$file_name;
+					if(move_uploaded_file($file_tmp, $upload)){
+						$q = "UPDATE st_uploads set Logo='$uploadas' where StpID='$id';";
+						mysqli_query($db, $q);
+						echo "<script>alert('Successfully Uploaded')</script>";
+					}
+				}
+			}
+		}
+		header('location: index.php');
+  }
+
 
 
 ?>
@@ -460,10 +497,11 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
         <a class="navbar-brand js-scroll-trigger" href="#page-top">
-            <!-- <span class="d-block d-lg-none">Clarence Taylor</span> -->
             <span class="d-none d-lg-block">
-            <!-- <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="../.''" alt=""> -->
-            <?= "<img class='img-fluid img-profile rounded-circle mx-auto mb-2' src='../".$Logo."' />";?>
+                <div class="imagebox">
+                    <?= "<img class='img-fluid img-profile rounded-circle mx-auto mb-2' src='../".$Logo."' />";?>
+                    <a class="imagebox-desc" href="" data-toggle="modal" data-target="#profileImageForm">Edit</a>
+                </div>
             </span>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -509,6 +547,32 @@
     </nav>
 
     <div class="container-fluid p-0">
+
+        <div class="modal fade" id="profileImageForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header text-center">
+                        <h4 class="modal-title w-100 font-weight-bold">investor Basics</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form method="post" action="index.php" enctype="multipart/form-data">
+                        <div class="modal-body mx-3">
+
+                            <div class="form-group">
+                                <label>Profile Image</label>
+                                <input class="row" type="file" name="cbpic" placeholder=" ">
+                            </div>
+                        </div>
+                        <div class="modal-footer d-flex justify-content-center">
+                            <button class="btn btn-unique">Cancel </button>
+                            <button class="btn btn-unique" name="pimgsave">Save </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
 
     <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="home">
         <div class="w-100">
@@ -2029,7 +2093,7 @@
   <script src="js/stpscripts.js"></script>
 
   <script src="js/finround.js"></script>
-  
+
   <script>
   	if ( window.history.replaceState ) {
   		window.history.replaceState( null, null, window.location.href );
