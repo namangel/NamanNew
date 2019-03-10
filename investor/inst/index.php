@@ -35,7 +35,7 @@
 	$q = "SELECT * FROM inv_uploads WHERE InvID='$u'";
   $results = mysqli_query($db, $q);
 	$row = mysqli_fetch_assoc($results);
-	$img = $row['ProfilePic']==""? '/NamanNew/Uploads/default.png':$row['ProfilePic'];
+	$img = $row['ProfilePic'];
 
 	if(isset($_POST["cbsave"])){
     $cbfname = mysqli_real_escape_string($db, $_POST['cbfname']);
@@ -204,9 +204,44 @@
 		mysqli_query($db, $q);
 
 		header('location:index.php');
-	}
+  }
+  
+	if(isset($_POST["pimgsave"])){
+  $check = getimagesize($_FILES["cbpic"]["tmp_name"]);
+		if($check != false)
+		{
+			$file_name = $fname."_".$lname."_".$_FILES['cbpic']['name'];
+			$file_size = $_FILES['cbpic']['size'];
+			$file_tmp = $_FILES['cbpic']['tmp_name'];
+			$file_type = $_FILES['cbpic']['type'];
+			$file_ext=strtolower(end(explode('.',$_FILES['cbpic']['name'])));
 
+			$extensions= array("jpeg","jpg","png");
 
+			if(in_array($file_ext,$extensions)=== false)
+			{
+				echo "<script>alert('Extension not allowed, please choose a JPEG or PNG file.')</script>";
+			}
+			else
+			{
+				if($file_size > 5242880)
+				{
+					echo "<script>alert('File size must be less than 5 MB')</script>";
+				}
+				else
+				{
+					$uploadas = "uploads/investor/".$file_name;
+					$upload = "../../../uploads/investor/".$file_name;
+					if(move_uploaded_file($file_tmp, $upload)){
+						$q = "UPDATE inv_uploads set ProfilePic='$uploadas' where InvID='$u';";
+						mysqli_query($db, $q);
+						echo "<script>alert('Successfully Uploaded')</script>";
+					}
+				}
+			}
+		}
+		header('location: index.php');
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -252,6 +287,50 @@
         border:0px;
         background-color:#eee;
       }
+      .imagebox {
+    /* background: black; */
+    padding: 0px;
+    position: relative;
+    text-align: center;
+    width: 100%;
+  }
+
+  .imagebox img {
+    opacity: 1;
+    transition: 0.5s opacity;
+  }
+
+  .imagebox .imagebox-desc {
+    /* background-color: rgba(0, 0, 0, 0.6); */
+    bottom: 0px; 
+    color: black;
+    font-size: 1.2em;
+    left: 0px; 
+    padding: 10px 15px;
+    position: absolute;
+    transition: 0.5s padding;
+    text-align: center;
+    width: 100%;
+  }
+
+  .imagebox-desc {
+    display: none;
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+  }
+
+  .imagebox:hover .imagebox-desc{
+    display: inline-block;}
+
+  .imagebox:hover img {
+    opacity: 0.7;
+  }
+
+  .imagebox:hover .imagebox-desc {
+    padding-bottom: 10%;
+  }
+
   </style>
 
   <script>
@@ -292,13 +371,11 @@
 
       <span class="d-block d-lg-none"><?= cname ?> </span>
       <span class="d-none d-lg-block">
-        <img class="img-fluid img-profile rounded-circle mx-auto mb-2 " src="../img/profile.jpg" alt="">
+      <div class="imagebox">
+        <?= "<img class='img-fluid img-profile rounded-circle mx-auto mb-2' src='../../".$img."' />";?>
+        <a class="imagebox-desc" href="" data-toggle="modal" data-target="#profileImageForm">Edit</a>
+      </div>
       </span>
-      <span class="d-block d-lg-block">
-         <a href=""  data-toggle="modal" data-target="#profileimageform">
-         <i class="fa fa-pencil"></i>
-       </a></span>
-
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -340,8 +417,7 @@
 
   <div class="container-fluid p-0">
 
-
-      <div class="modal fade" id="profileimageform" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal fade" id="profileImageForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header text-center">
@@ -351,17 +427,18 @@
                 </button>
               </div>
               <div class="modal-body mx-3">
+              <form method="post" action="index.php" enctype="multipart/form-data">
                 <div class="form-group">
                     <label>Profile Image</label>
                     <input class="row" type="file" name="cbpic" placeholder=" ">
                   </div>
               </div>
               <div class="modal-footer d-flex justify-content-center">
-                <button class="btn btn-unique close">Cancel </button>
-                <button class="btn btn-unique">Save </button>
-
+                <button class="btn btn-unique">Cancel </button>
+                <button class="btn btn-unique" name="pimgsave">Save </button>
               </div>
             </div>
+            </form>
           </div>
       </div>
 
@@ -375,7 +452,7 @@
               </button>
             </div>
             <div class="modal-body mx-3">
-              <form method="post">
+              <form method="post" action="index.php">
                 <div class="accordion" id="accordionExample">
                   <div class="card">
                     <h2 class="mb-0">
@@ -448,11 +525,11 @@
                 </div>
               </div>
               <div class="modal-footer d-flex justify-content-center">
-                <button class="btn btn-unique close">Cancel</button>
+                <button class="btn btn-unique">Cancel</button>
                 <button class="btn btn-unique" name="cfsave">Save</i></button>
               </div>
-            </form>
           </div>
+          </form>
         </div>
       </div>
 
@@ -466,7 +543,7 @@
               </button>
             </div>
             <div class="modal-body mx-3">
-              <form method="post">
+              <form method="post" action="index.php">
                 <div class="form-group">
                   <label>Startup Name</label>
                   <input type="text" class="form-control" name="piname" >
@@ -501,11 +578,11 @@
                 </div>
               </div>
               <div class="modal-footer d-flex justify-content-center">
-                <button class="btn btn-unique close" data-dismiss="modal" aria-label="Close">Cancel</button>
+                <button class="btn btn-unique" data-dismiss="modal" aria-label="Close">Cancel</button>
                 <button class="btn btn-unique" name="pisave">Save</button>
               </div>
-            </form>
           </div>
+          </form>
         </div>
       </div>
 
@@ -519,7 +596,7 @@
               </button>
             </div>
             <div class="modal-body mx-3">
-            <form method="POST">
+            <form method="POST" action="index.php">
               <div class="accordion" id="accordionExample">
                 <div class="card">
                   <h2 class="mb-0">
@@ -598,7 +675,7 @@
               </div>
               </div>
               <div class="modal-footer d-flex justify-content-center">
-                <button class="btn btn-unique close">Cancel</button>
+                <button class="btn btn-unique">Cancel</button>
                 <button class="btn btn-unique" name="cbsave">Save</button>
               </div>
               </form>
@@ -606,7 +683,7 @@
           </div>
       </div>
 
-      <div class="modal fade" id="addteamform" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal fade" id="addTeamForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header text-center">
@@ -617,7 +694,7 @@
               </button>
             </div>
             <div class="modal-body mx-3">
-              <form method="post" >
+              <form method="post" action="index.php" >
                 <div class="card">
                   <div id="basics" aria-labelledby="headingOne">
                     <div class="card-body">
@@ -651,7 +728,7 @@
                 </div>
               </div>
               <div class="modal-footer d-flex justify-content-center">
-                <button class="btn btn-unique close">Cancel </button>
+                <button class="btn btn-unique">Cancel </button>
                 <button class="btn btn-unique" name="gmsave">Save </button>
               </div>
             </form>
@@ -659,7 +736,7 @@
         </div>
       </div>
 
-      <div class="modal fade" id="ourteamform" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal fade" id="updateTeamForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header text-center">
@@ -670,6 +747,7 @@
                 </button>
             </div>
             <div class="modal-body mx-3">
+            <form method="post" action="index.php" >
               <div class="card">
                 <div id="basics" aria-labelledby="headingOne">
                   <div class="card-body">
@@ -694,16 +772,16 @@
                         <label>Expertise</label>
                         <input type="text" class="form-control"  placeholder="">
                       </div>
-                    </form>
                   </div>
                 </div>
               </div>
             </div>
             <div class="modal-footer d-flex justify-content-center">
-              <button class="btn btn-unique close">Cancel </button>
+              <button class="btn btn-unique">Cancel </button>
               <button class="btn btn-unique">Save </button>
             </div>
           </div>
+          </form>
         </div>
       </div>
 
@@ -891,7 +969,7 @@
         </div>
         <div class="col-md-3">
           <div class="text-right">
-            <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#addteamform">ADD</a>
+            <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#addTeamForm">ADD</a>
           </div>
         </div>
       </div>
@@ -904,99 +982,51 @@
 					if (mysqli_num_rows($results) > 0) {
             while($row = mysqli_fetch_assoc($results)) {
               echo '<div class="col-md-6">';
-              echo '<div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">';
-              echo '<div class="resume-content">';
-              echo '<div class="row">';
-              echo '<div class="col-md-10">';
-              echo '<h3 class="mb-0">';
-              echo $row["Name"] ;
-              echo '</h3>';
-              echo '</div>';
-              echo '<div class="col-md-2">';
-              echo '<div class="row">';
-              echo '<div class="col-md-1">';
-              echo '<a href="" data-toggle="modal" data-target="#ourteamform"><i class="fa fa-pencil "></i></a></div>';
-              echo '<div class="col-md-1">';    
-              echo '<form method="post" action="index.php">
-                    <input class="member" type="number" name="member" value="'.$row['ID'].'">
-                    <button name="rem_mem" value="rem_mem" type="submit" class="rem_mem"  ><i class="fa fa-close"></i></button>
-                    </form>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="subheading mb-3">';
-                echo $row["Designation"]. "," .$row["Years"].'</div>';
-                echo '<p>' .$row["Email"]. " | " .$row["LinkedIn"]. '</p>';
-                echo '<p>' .$row["Expertise"]. '</p>';
-                echo '</div>';
-                echo '</div>';
-                echo '</div>';
-
-              }
-             }
+                echo '<div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">';
+                  echo '<div class="resume-content">';
+                    echo '<div class="row">';
+                      echo '<div class="col-md-10">';
+                        echo '<h3 class="mb-0">';
+                          echo $row["Name"] ;
+                        echo '</h3>';
+                      echo '</div>';
+                      echo '<div class="col-md-2">';
+                        echo '<div class="row">';
+                          echo '<div class="col-md-1">';
+                            echo '<a href="" data-toggle="modal" data-target="#updateTeamForm"><i class="fa fa-pencil "></i></a></div>';
+                              echo '<div class="col-md-1">';    
+                                echo '<form method="post" action="index.php">
+                                      <input class="member" type="number" name="member" value="'.$row['ID'].'">
+                                      <button name="rem_mem" value="rem_mem" type="submit" class="rem_mem"  ><i class="fa fa-close"></i></button>
+                                      </form>';
+                              echo '</div>';
+                            echo '</div>';
+                          echo '</div>';
+                        echo '</div>';
+                        echo '<div class="subheading mb-3">';
+                          echo $row["Designation"]. "," .$row["Years"].'</div>';
+                          echo '<p>' .$row["Email"]. " | " .$row["LinkedIn"]. '</p>';
+                          echo '<p>' .$row["Expertise"]. '</p>';
+                        echo '</div>';
+                      echo '</div>';
+                    echo '</div>';
+                  }
+                }
            else{
-            echo 'Add team members with thier details';
+            echo'<div class="col-md-4">';
+            echo'<div class="profile-item">';
+              echo'<div class="media">';
+                echo'<div class="media-body">';
+                  echo '<h3 class="subheading">Add group members!</h3>';
+                  echo '<p>Mention four group members</p>';
+                  echo'</div>';
+                echo'</div>';
+              echo'</div>';
+            echo'</div>';
           }
 ?>
 </div>
-
-          
-
-      <!-- <div class=row>
-          <div class="col-md-6">
-            <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
-              <div class="resume-content">
-                <div class="row">
-                  <div class="col-md-10">
-                    <h3 class="mb-0">Member Name</h3>
-                  </div>
-                  <div class="col-md-2">
-                    <div class="row">
-                      <div class="col-md-1">
-                          <a href="" data-toggle="modal" data-target="#ourteamform"><i class="fa fa-pencil "></i></a>
-                        </div>
-                      <div class="col-md-1">
-                        <i class="fa fa-close"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="subheading mb-3">Member Designation, years</div>
-                  <p>email | linkedin</p>
-                  <p>Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.</p>
-                </div>
-              </div>
-              </div>
-
-              <div class="col-md-6">
-                <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
-                  <div class="resume-content">
-                    <div class="row">
-                      <div class="col-md-10">
-                        <h3 class="mb-0">Member Name</h3>
-                      </div>
-                      <div class="col-md-2">
-                        <div class="row">
-                          <div class="col-md-1">
-                              <a href="" data-toggle="modal" data-target="#ourteamform"><i class="fa fa-pencil "></i></a>
-                            </div>
-                          <div class="col-md-1">
-                            <i class="fa fa-close"></i>
-                          </div>
-                        </div>
-                      </div>
-                      </div>
-                    <div class="subheading mb-3">Member Designation, years</div>
-                      <p>email | linkedin</p>
-                      <p>Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop on focusing solely on the bottom line.</p>
-                    </div>
-                </div>
-              </div>
-            </div>
-
-      </div> -->
-      </div>
+</div>
 
     </section>
 
