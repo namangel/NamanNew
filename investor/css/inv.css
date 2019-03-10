@@ -218,7 +218,7 @@ section.resume-section .resume-item .resume-date{
    color:#0e3c58!important
 }
 a{
-   color:#0e3c58
+   color:#0e3c58;
 }
 a:active,a:focus,a:hover{
    color:#824027
@@ -281,3 +281,50 @@ a:active,a:focus,a:hover{
  .settings{ 
    font-size: 1.5rem;
  }
+ #LinkedIn, #Facebook, #Twitter, #Instagram, #Others{
+   display: none;
+   padding-top: 10px;
+ }
+ .imagebox {
+ /* background: black; */
+ padding: 0px;
+ position: relative;
+ text-align: center;
+ width: 100%;
+}
+
+.imagebox img {
+ opacity: 1;
+ transition: 0.5s opacity;
+}
+
+.imagebox .imagebox-desc {
+ /* background-color: rgba(0, 0, 0, 0.6); */
+ bottom: 0px; 
+ color: black;
+ font-size: 1.2em;
+ left: 0px; 
+ padding: 10px 15px;
+ position: absolute;
+ transition: 0.5s padding;
+ text-align: center;
+ width: 100%;
+}
+
+.imagebox-desc {
+ display: none;
+ color: black;
+ font-weight: bold;
+ text-decoration: none;
+}
+
+.imagebox:hover .imagebox-desc{
+ display: inline-block;}
+
+.imagebox:hover img {
+ opacity: 0.7;
+}
+
+.imagebox:hover .imagebox-desc {
+ padding-bottom: 10%;
+}

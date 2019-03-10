@@ -31,7 +31,7 @@
 	$q = "SELECT * FROM inv_uploads WHERE InvID='$u'";
   $results = mysqli_query($db, $q);
 	$row = mysqli_fetch_assoc($results);
-	$img = $row['ProfilePic']==""? '/NamanNew/Uploads/default.png':$row['ProfilePic'];
+	$img = $row['ProfilePic'];
 
 	if(isset($_POST["cbsave"])){
     $cbfname = mysqli_real_escape_string($db, $_POST['cbfname']);
@@ -199,6 +199,50 @@
       display: none;
       padding-top: 10px;
     }
+    .imagebox {
+    /* background: black; */
+    padding: 0px;
+    position: relative;
+    text-align: center;
+    width: 100%;
+  }
+
+  .imagebox img {
+    opacity: 1;
+    transition: 0.5s opacity;
+  }
+
+  .imagebox .imagebox-desc {
+    /* background-color: rgba(0, 0, 0, 0.6); */
+    bottom: 0px; 
+    color: black;
+    font-size: 1.2em;
+    left: 0px; 
+    padding: 10px 15px;
+    position: absolute;
+    transition: 0.5s padding;
+    text-align: center;
+    width: 100%;
+  }
+
+  .imagebox-desc {
+    display: none;
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+  }
+
+  .imagebox:hover .imagebox-desc{
+    display: inline-block;}
+
+  .imagebox:hover img {
+    opacity: 0.7;
+  }
+
+  .imagebox:hover .imagebox-desc {
+    padding-bottom: 10%;
+  }
+
   </style>
 
 </head>
@@ -235,7 +279,10 @@
     <a class="navbar-brand js-scroll-trigger" href="#page-top">
       <span class="d-block d-lg-none"><?= $fname ?>&nbsp;<?= $lname ?></span>
       <span class="d-none d-lg-block">
-        <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="../img/profile.jpg" alt="">
+      <div class="imagebox">
+        <?= "<img class='img-fluid img-profile rounded-circle mx-auto mb-2' src='../../".$img."' />";?>
+        <a class="imagebox-desc" href="" data-toggle="modal" data-target="#profileImageForm">Edit</a>
+      </div>
       </span>
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -286,7 +333,7 @@
             </button>
           </div>
           <div class="modal-body mx-3">
-            <form method="post">
+            <form method="post" action="index.php">
             <div class="accordion" id="accordionExample">
               <div class="card">
                 <h2 class="mb-0">
@@ -373,7 +420,7 @@
             </button>
           </div>
           <div class="modal-body mx-3">
-            <form method="POST">
+            <form method="POST" action="index.php">
             <div class="accordion" id="accordionExample">
               <div class="card">
                 <h2 class="mb-0">
@@ -470,7 +517,7 @@
             </button>
           </div>
           <div class="modal-body mx-3">
-            <form method="post" action='index.php'>
+            <form method="post" action="index.php">
               <div class="form-group">
                 <label>Startup Name</label>
                 <input type="text" class="form-control" name="piname">
@@ -510,6 +557,31 @@
             </div>
           </form>
         </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="profileImageForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header text-center">
+            <h4 class="modal-title w-100 font-weight-bold">Change Profile Image</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body mx-3">
+            <form method="post">
+            <div class="form-group">
+              <label>Profile Image</label>
+              <input class="row" type="file" name="cbpic" placeholder=" ">
+            </div>
+          </div>
+          <div class="modal-footer d-flex justify-content-center">
+            <button class="btn btn-unique ">Cancel </button>
+            <button class="btn btn-unique">Save </button>
+          </div>
+        </div>
+        </form>
       </div>
     </div>
 
