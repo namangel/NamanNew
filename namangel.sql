@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Mar 08, 2019 at 05:43 PM
--- Server version: 10.1.36-MariaDB
--- PHP Version: 7.2.10
+-- Host: 127.0.0.1
+-- Generation Time: Mar 10, 2019 at 05:04 AM
+-- Server version: 10.1.30-MariaDB
+-- PHP Version: 7.2.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -186,8 +186,8 @@ CREATE TABLE `inv_addetails` (
 --
 
 INSERT INTO `inv_addetails` (`InvID`, `IOI`, `Facebook`, `Twitter`, `LinkedIn`, `Instagram`, `Others`, `Role`, `Partner`, `InvRange`, `Summary`) VALUES
-('NAMIN0000001', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('NAMIN0000003', NULL, NULL, 'mukeshambani.com/twitter', 'mukeshambani.com/linkedin', 'mukeshambani.com/instagram', NULL, NULL, NULL, NULL, NULL),
+('NAMIN0000001', 'technology', '', NULL, NULL, NULL, NULL, NULL, NULL, '1,00,000 - 10,00,000', 'vcbvcbvcbvc'),
+('NAMIN0000003', 'sdsds', NULL, 'mukeshambani.com/twitter', 'mukeshambani.com/linkedin', 'mukeshambani.com/instagram', NULL, NULL, NULL, NULL, ''),
 ('NAMIN0000004', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
@@ -216,7 +216,7 @@ CREATE TABLE `inv_details` (
 --
 
 INSERT INTO `inv_details` (`InvID`, `CName`, `FName`, `LName`, `Email`, `Phone`, `Website`, `City`, `State`, `Country`, `AvgInvestment`, `Type`) VALUES
-('NAMIN0000001', 'Stark Enterprise', 'Tony', 'Stark', 'tony@stark.in', '9999999999', 'stark.in', 'New York City', 'Manhattan', 'United States', '100', 'Institution'),
+('NAMIN0000001', 'Stark Enterprise', 'Tony', 'Stark', 'tony@stark.in', '123456789', 'stark.com', 'New York City', 'Manhattan', 'United States', '100', 'Institution'),
 ('NAMIN0000003', NULL, 'Mukesh', 'Ambani', 'mambani@reliance.com', '9000000000', NULL, 'Mumbai', 'Maharashtra', 'India', '150', 'Individual'),
 ('NAMIN0000004', NULL, 'Bruce', 'Wayne', 'batman@gmail.com', '8082189673', NULL, 'Mumbai', 'Maharashtra', 'India', '2', 'Individual');
 
@@ -231,8 +231,19 @@ CREATE TABLE `inv_group` (
   `InvID` varchar(20) NOT NULL,
   `Name` varchar(200) NOT NULL,
   `Designation` varchar(200) NOT NULL,
-  `Experience` varchar(200) NOT NULL
+  `Email` varchar(200) NOT NULL,
+  `LinkedIn` varchar(200) NOT NULL,
+  `Years` int(50) NOT NULL,
+  `Expertise` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `inv_group`
+--
+
+INSERT INTO `inv_group` (`ID`, `InvID`, `Name`, `Designation`, `Email`, `LinkedIn`, `Years`, `Expertise`) VALUES
+(2, 'NAMIN0000001', 'Deepali Panda', 'Founder', 'deepali@gmail.com', 'deepali', 2, 'mkfgbmlgm gnldnfg fdgn'),
+(3, 'NAMIN0000001', 'Sonal Sharma', 'Co-founder', 'sonal@gmail.com', 'sonal', 2, 'sdfsdff dsfa sdfa');
 
 -- --------------------------------------------------------
 
@@ -250,6 +261,15 @@ CREATE TABLE `inv_previnvestment` (
   `Stake` varchar(200) NOT NULL,
   `Website` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `inv_previnvestment`
+--
+
+INSERT INTO `inv_previnvestment` (`ID`, `InvID`, `Name`, `Year`, `Amount`, `Stage`, `Stake`, `Website`) VALUES
+(1, 'NAMIN0000001', 'sda', '121212', '123123', 'affdafd', '12', 'adadsdd'),
+(2, 'NAMIN0000001', 'ewf', '2019', '32423', 'Select Stage', '34232', '32wew'),
+(5, 'NAMIN0000001', 'uewr', '2019', '76888', 'Concept Only', '88', 'jkjj');
 
 -- --------------------------------------------------------
 
@@ -367,7 +387,8 @@ CREATE TABLE `requests` (
 --
 
 INSERT INTO `requests` (`ReqID`, `Inv_ID`, `St_ID`, `Deal`, `Round`, `Amount`, `Date`, `Stakehold`) VALUES
-(4, 'NAMIN0000001', 'NAMST0000001', 0x31, 'Friends and Family', 12345, '2019-02-23', 13);
+(4, 'NAMIN0000001', 'NAMST0000001', 0x31, 'Friends and Family', 12345, '2019-02-23', 13),
+(5, 'NAMIN0000001', 'NAMST0000003', 0x01, 'Friends and Family', 50000, '21-03-2014', 23);
 
 -- --------------------------------------------------------
 
@@ -408,7 +429,7 @@ CREATE TABLE `siteinfo` (
 --
 
 INSERT INTO `siteinfo` (`ID`, `Counter`) VALUES
-(1, 51);
+(1, 54);
 
 -- --------------------------------------------------------
 
@@ -930,13 +951,13 @@ ALTER TABLE `annual_financial`
 -- AUTO_INCREMENT for table `inv_group`
 --
 ALTER TABLE `inv_group`
-  MODIFY `ID` int(50) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `inv_previnvestment`
 --
 ALTER TABLE `inv_previnvestment`
-  MODIFY `ID` int(50) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `namanteam`
@@ -948,13 +969,13 @@ ALTER TABLE `namanteam`
 -- AUTO_INCREMENT for table `requests`
 --
 ALTER TABLE `requests`
-  MODIFY `ReqID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `ReqID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `round_history`
 --
 ALTER TABLE `round_history`
-  MODIFY `HistID` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `HistID` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `siteinfo`
