@@ -430,7 +430,7 @@
                                 <div class="modal-body mx-3">
                                     <div class="form-group">
                                         <label>Upload new Profile Image</label>
-                                        <input class="form-control" type="file" name="cbpic" placeholder=" ">
+                                        <input class="row" type="file" name="cbpic" title="Choose file of type .jpeg, .png, .jpg of size less than 5MB!" placeholder=" ">
                                     </div>
                                 </div>
                             <div class="modal-footer d-flex justify-content-center">
