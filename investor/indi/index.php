@@ -291,7 +291,7 @@
           <a class="nav-link js-scroll-trigger" href="#membership">Membership</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="../browse/browsebyname.php" target="_blank">browse startups</a>
+          <a class="nav-link js-scroll-trigger" href="../browse/browsestartup.php" target="_blank">browse startups</a>
         </li>
         <li class="nav-item">
           <a class="nav-link js-scroll-trigger" href="#investment">Investments </a>
@@ -393,7 +393,6 @@
             </div>
           </div>
           <div class="modal-footer d-flex justify-content-center">
-            <button class="btn btn-unique">Cancel</button>
             <button class="btn btn-unique" name="cfsave">Save</i></button>
           </div>
         </form>
@@ -490,7 +489,6 @@
             </div>
             </div>
             <div class="modal-footer d-flex justify-content-center">
-              <button class="btn btn-unique">Cancel</button>
               <button class="btn btn-unique" name="cbsave">Save</button>
             </div>
           </form>
@@ -543,7 +541,6 @@
               </div>
             </div>
             <div class="modal-footer d-flex justify-content-center">
-              <button class="btn btn-unique">Cancel</button>
               <button class="btn btn-unique" name="pisave" type="submit">Save</button>
             </div>
           </form>
@@ -568,7 +565,6 @@
             </div>
           </div>
           <div class="modal-footer d-flex justify-content-center">
-            <button class="btn btn-unique ">Cancel </button>
             <button class="btn btn-unique" name="imgsave">Save </button>
           </div>
         </div>
@@ -586,7 +582,7 @@
                 </div>
 
                 <div class="text-right col-md-6">
-                    <button class="btn btn-member" onclick="window.open('../browse/browsebyname.php')">Browse Startups</button>
+                    <button class="btn btn-member" onclick="window.open('../browse/browsestartup.php')">Browse Startups</button>
                 </div>
             </div>  
 
@@ -806,7 +802,7 @@
 
     <hr class="m-0">
 
-    <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="browsestartup">
+    <!-- <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="browsestartup">
       <div class="w-100">
         <h2 class="mb-5">Browse Startups</h2>
         <p>Flip through the latest starups connected with Naman!</p>
@@ -818,10 +814,10 @@
               <div class="profile-item">
                 <div class="media">
                   <div class="media-body browse-icons">
-                      <a href="../browse/browsebyname.html" target="_blank">
+                      <a href="../browse/browsestartup.html" target="_blank">
                         <i class="fa fa-font"></i>
                       </a>
-                    <button class="btn btn-browse" onclick="window.open('../browse/browsebyname.html')">Browse by name</button>
+                    <button class="btn btn-browse" onclick="window.open('../browse/browsestartup.html')">Browse by name</button>
                   </div>
                 </div>
               </div>
@@ -841,7 +837,7 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
 
     <hr class="m-0">
   

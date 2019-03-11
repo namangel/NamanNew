@@ -400,7 +400,7 @@
                     <a class="nav-link js-scroll-trigger" href="#membership">Membership</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="../browse/browsebyname.php" target="_blank">browse startups</a>
+                    <a class="nav-link js-scroll-trigger" href="../browse/browsestartup.php" target="_blank">browse startups</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link js-scroll-trigger" href="#teams">Team</a>
@@ -442,7 +442,6 @@
                                     </div>
                                 </div>
                             <div class="modal-footer d-flex justify-content-center">
-                                <button class="btn btn-unique">Cancel </button>
                                 <button class="btn btn-unique" name="pimgsave">Save </button>
                             </div>
                         </div>
@@ -533,7 +532,6 @@
                                 </div>
                             </div>
                             <div class="modal-footer d-flex justify-content-center">
-                                <button class="btn btn-unique">Cancel</button>
                                 <button class="btn btn-unique" name="cfsave">Save</i></button>
                             </div>
                     </div>
@@ -586,7 +584,6 @@
                                 </div>
                             </div>
                             <div class="modal-footer d-flex justify-content-center">
-                                <button class="btn btn-unique" data-dismiss="modal" aria-label="Close">Cancel</button>
                                 <button class="btn btn-unique" name="pisave">Save</button>
                             </div>
                     </div>
@@ -683,7 +680,6 @@
                             </div>
                             </div>
                             <div class="modal-footer d-flex justify-content-center">
-                                <button class="btn btn-unique">Cancel</button>
                                 <button class="btn btn-unique" name="cbsave">Save</button>
                             </div>
                             </form>
@@ -736,7 +732,6 @@
                                 </div>
                             </div>
                             <div class="modal-footer d-flex justify-content-center">
-                                <button class="btn btn-unique">Cancel </button>
                                 <button class="btn btn-unique" name="gmsave">Save </button>
                             </div>
                         </form>
@@ -785,7 +780,6 @@
                             </div>
                         </div>
                         <div class="modal-footer d-flex justify-content-center">
-                            <button class="btn btn-unique">Cancel </button>
                             <button class="btn btn-unique">Save </button>
                         </div>
                     </div>
@@ -804,7 +798,7 @@
                 </div>
 
                 <div class="text-right col-md-6">
-                    <button class="btn btn-member" onclick="window.open('../browse/browsebyname.php')">Browse Startups</button>
+                    <button class="btn btn-member" onclick="window.open('../browse/browsestartup.php')">Browse Startups</button>
                 </div>
             </div>    
 

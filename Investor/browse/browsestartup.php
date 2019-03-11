@@ -6,7 +6,7 @@
     if(isset($_POST['submit'])){
         $_SESSION['searchbox'] = mysqli_real_escape_string($db, $_POST['searchkey']);
         $_SESSION['searchselect'] = mysqli_real_escape_string($db, $_POST['indsearchkey']);
-        header('location: browsebyname.php?pageno=1');
+        header('location: browsestartup.php?pageno=1');
     }
 
     // if(isset($_POST['indsubmit'])){
@@ -34,66 +34,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="../css/browse.css" rel="stylesheet">
-    <style>
-    
-    .card-footer, .card-header{
-        background-color: #e6e6e6;
-    }
-    .card-img-top {
-        width:10rem;
-        height:10rem;
-        margin: auto;
-        padding: 0.8rem;
-    }
-    .btn-viewprofile {
-        font-size: 0.7remem;
-        letter-spacing: 0.05rem;
-        padding: 0.5rem 0.75rem;
-        text-decoration: none;
-    }
-    .card{
-    box-shadow: 5px 5px #cccccc;
-    }
-    .button {
-    transition: all 0.5s;
-    cursor: pointer;
-    margin-top: 12px;
-    }
-
-    .button span {
-    cursor: pointer;
-    display: inline-block;
-    position: relative;
-    transition: 0.5s;
-    }
-
-    .button span:after {
-    content: '\00bb';
-    position: absolute;
-    opacity: 0;
-    top: 0;
-    right: -20px;
-    transition: 0.5s;
-    }
-
-    .button:hover span {
-    padding-right: 25px;
-
-    }
-
-    .button:hover span:after {
-    opacity: 1;
-    right: 0;
-    }
-    </style>
-
-
 </head>
 <body>
 <div class="container">
     <div class="row">
         <div class="col-12 col-md-10 col-lg-8">
-            <form class="text-align-center" action="browsebyname.php" method="post">
+            <form class="text-align-center" action="browsestartup.php" method="post">
                 <div class="card-body row no-gutters align-items-center">
                     <div class="col">
                         <input class="form-control form-control-md " name="searchkey" type="search" placeholder="Search topics or keywords">                        
@@ -252,9 +198,9 @@
                                         echo'<img class="card-img-top rounded-circle " src="../../'.$row['StpImg'].'" alt="StartUp Logo"  >';
                                         echo'<div class="card-body">';
                                             echo'<h4 class="card-title d-flex justify-content-center">'.$row['StpName'].'</h4>';
-                                            echo'<p class="card-text">Industry type: '.$row['Type'].'</p>';
-                                            echo'<p class="card-text">Founders: '.$row['FName'].'</p>';
-                                            echo'<p class="card-text">'.$row['SName'].'</p>';
+                                            echo'<p class="card-text text-center"><b>Industry type:</b> '.$row['Type'].'</p>';
+                                            echo'<p class="card-text text-center"><b>Founders:</b> '.$row['FName'].' ,</p>';
+                                            echo'<p class="card-text text-center">'.$row['SName'].'</p>';
                                         echo'</div>';
                                     echo'</div>';
                                 echo'</div>';
@@ -263,10 +209,10 @@
                                         echo'<div class="card-header">';
                                             echo'<h4 class="card-title d-flex justify-content-center">'.$row['StpName'].'</h4>';
                                         echo'</div>';
-                                        echo'<div class="card-body">';
+                                        echo'<div class="card-body pitch">';
                                             echo'<h4 class="card-title">One Line Pitch</h4>';
                                             echo'<p class="card-text">'.$row1['OLP'].'</p>';
-                                            echo'<p class="d-flex align-content-end flex-wrap"">View profile to get further details!</p>';
+                                            echo'<span class="d-flex align-content-end flex-wrap"">View profile to get further details!</span>';
                                         echo'</div>';
                                         // echo'<div class="card-footer btn btn-viewprofile">';
                                             $button = "";

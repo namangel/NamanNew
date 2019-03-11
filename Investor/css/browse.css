@@ -63,3 +63,61 @@
 .card, .card-img-top {
     border-radius: 0;
 }
+.card-footer, .card-header{
+    background-color: #e6e6e6;
+}
+.card-img-top {
+    width:10rem;
+    height:10rem;
+    margin: auto;
+    padding: 0.8rem;
+}
+.btn-viewprofile {
+    font-size: 0.7remem;
+    letter-spacing: 0.05rem;
+    padding: 0.5rem 0.75rem;
+    text-decoration: none;
+}
+.card{
+box-shadow: 5px 5px #cccccc;
+}
+.button {
+transition: all 0.5s;
+cursor: pointer;
+margin-top: 12px;
+}
+
+.button span {
+cursor: pointer;
+display: inline-block;
+position: relative;
+transition: 0.5s;
+}
+
+.button span:after {
+content: '\00bb';
+position: absolute;
+opacity: 0;
+top: 0;
+right: -20px;
+transition: 0.5s;
+}
+
+.button:hover span {
+padding-right: 25px;
+
+}
+
+.button:hover span:after {
+opacity: 1;
+right: 0;
+}
+
+.pitch {
+position: relative;
+}
+
+.pitch span {
+position: absolute;
+bottom: 0;
+}
