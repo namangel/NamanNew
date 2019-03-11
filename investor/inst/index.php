@@ -400,7 +400,7 @@
                     <a class="nav-link js-scroll-trigger" href="#membership">Membership</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="#browsestartup">browse startups</a>
+                    <a class="nav-link js-scroll-trigger" href="../browse/browsebyname.php" target="_blank">browse startups</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link js-scroll-trigger" href="#teams">Team</a>
@@ -796,11 +796,17 @@
 
         <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="home">
             <div class="w-100">
-                <div class="user-icons">
+            <div class="row">
+                <div class="user-icons col-md-6">
                     <a href="#">
                         <i class="fas fa-user-circle"></i>
                     </a>
                 </div>
+
+                <div class="text-right col-md-6">
+                    <button class="btn btn-member" onclick="window.open('../browse/browsebyname.php')">Browse Startups</button>
+                </div>
+            </div>    
 
                 <h1 class="mb-0">
                     <span class="text-primary">Hello <?=$cname?></span>
@@ -1024,7 +1030,7 @@
 
         <hr class="m-0">
 
-        <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="browsestartup">
+        <!-- <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="browsestartup">
                 <div class="w-100">
                     <h2 class="mb-5">Browse Startups</h2>
                     <p>Flip through the latest starups connected with Naman!</p>
@@ -1058,7 +1064,7 @@
                             </div>
                         </div>
                     </div>
-        </section>
+        </section> -->
 
         <hr class="m-0">
 

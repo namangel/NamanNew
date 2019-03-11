@@ -291,7 +291,7 @@
           <a class="nav-link js-scroll-trigger" href="#membership">Membership</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="#browsestartup">browse startups</a>
+          <a class="nav-link js-scroll-trigger" href="../browse/browsebyname.php" target="_blank">browse startups</a>
         </li>
         <li class="nav-item">
           <a class="nav-link js-scroll-trigger" href="#investment">Investments </a>
@@ -560,8 +560,8 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
+          <form method="post" action="index.php" enctype="multipart/form-data">
           <div class="modal-body mx-3">
-            <form method="post" action="index.php" enctype="multipart/form-data">
             <div class="form-group">
               <label>Profile Image</label>
               <input name="cbpic" class="row" type="file" title="Choose file of type .jpeg, .png, .jpg of size less than 5MB!">
@@ -578,11 +578,17 @@
 
     <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="home">
       <div class="w-100">
-        <div class="user-icons">
-          <a href="#">
-            <i class="fas fa-user-circle"></i>
-          </a>
-        </div>
+      <div class="row">
+                <div class="user-icons col-md-6">
+                    <a href="#">
+                        <i class="fas fa-user-circle"></i>
+                    </a>
+                </div>
+
+                <div class="text-right col-md-6">
+                    <button class="btn btn-member" onclick="window.open('../browse/browsebyname.php')">Browse Startups</button>
+                </div>
+            </div>  
 
         <h1 class="mb-0">
           <span class="text-primary">Hello <?= $fname ?></span>
