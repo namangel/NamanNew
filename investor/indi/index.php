@@ -263,9 +263,22 @@
         </div>
       </span>
     </a>
+    <div>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
+      <!-- <span class="navbar-toggler fa fa-home"></span> -->
     </button>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarhome" aria-controls="navbarhome" aria-expanded="false" aria-label="Toggle navigation">
+      <!-- <span class="navbar-toggler-icon"></span> -->
+      <a href="../../index.php" style="color:white"><span class="fa fa-home" ></span></a>
+    </button>
+    
+    </div>
+   
+
+
+
+
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav">
         <li class="nav-item">

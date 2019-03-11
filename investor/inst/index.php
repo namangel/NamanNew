@@ -377,9 +377,17 @@
             </div>
             </span>
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+        <div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+      <!-- <span class="navbar-toggler fa fa-home"></span> -->
+    </button>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarhome" aria-controls="navbarhome" aria-expanded="false" aria-label="Toggle navigation">
+      <!-- <span class="navbar-toggler-icon"></span> -->
+      <a href="../../index.php" style="color:white"><span class="fa fa-home" ></span></a>
+    </button>
+    
+    </div>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav">
                 <li class="nav-item">
@@ -959,6 +967,101 @@
 
     <hr class="m-0">
 
+    <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="membership">
+            <div class="w-100">
+                    <h2 class="mb-5">Membership</h2>
+                    <p class="lead mb-5">"A great business starts from small investment, whereas the small investments start from a big risk." </p>
+                    <div class="row">
+                        <div class="col-md-6" style="padding-top:20px">
+                            <div class="profile-item">
+                                <div class="media">
+                                    <div class="media-body">
+                                        <h3 class="media-heading">Why become a member?</h3>
+                                        <p class="lead">Becoming a member of Naman Angels enables you to explore the startups and look through their details before investing.
+                                        Become a member of Naman Angels network, browse through unlimited industries and get premium treatment.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6" style="padding-top:20px">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="profile-item">
+                                        <div class="media">
+                                            <div class="media-body im">
+                                                <img src="../img/Internet.png" height="100px">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="profile-item">
+                                        <div class="media">
+                                            <div class="media-body im">
+                                                <img src="../img/Food.png" height="100px">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="profile-item">
+                                        <div class="media">
+                                            <div class="media-body im">
+                                                <img src="../img/Education.png" height="100px">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="container-fluid">
+                            <button type="button" class="btn btn-member" onclick="location.href=#" style="margin:20px 50px 0px 50px">BECOME OUR MEMBER</button>
+                        </div>
+                    </div>
+    </section>
+
+        <hr class="m-0">
+
+        <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="browsestartup">
+                <div class="w-100">
+                    <h2 class="mb-5">Browse Startups</h2>
+                    <p>Flip through the latest starups connected with Naman!</p>
+                    <p class="mb-0">Explore the startups of your interest.</p>
+
+                <div class="col-md-12">
+                    <div class="row">
+                            <div class="col-md-6" style="padding-top:40px">
+                                <div class="profile-item">
+                                    <div class="media">
+                                        <div class="media-body browse-icons">
+                                                <a href="../browse/browsebyname.php" target="_blank">
+                                                    <i class="fa fa-font"></i>
+                                                </a>
+                                            <button class="btn btn-browse">Browse by name</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6" style="padding-top:40px">
+                                <div class="profile-item">
+                                    <div class="media">
+                                        <div class="media-body browse-icons">
+                                                <a href="../browse/browsebyindustry.html" target="_blank">
+                                                    <i class="fa fa-industry"></i>
+                                                </a>
+                                            <button class="btn btn-browse">Browse by Industry</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        </section>
+
+        <hr class="m-0">
+
     <section class="resume-section p-3 p-lg-5 d-flex justify-content-center" id="teams">
         <div class="w-100">
             <div class="row">
@@ -1024,11 +1127,11 @@
                             echo'</div>';
                         echo'</div>';
                     }
-?>
-</div>
-</div>
+            ?>
+            </div>
+            </div>
 
-        </section>
+    </section>
 
         <hr class="m-0">
 
@@ -1163,102 +1266,9 @@
 
         <hr class="m-0">
 
-        <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="membership">
-            <div class="w-100">
-                    <h2 class="mb-5">Membership</h2>
-                    <p class="lead mb-5">"A great business starts from small investment, whereas the small investments start from a big risk." </p>
-                    <div class="row">
-                        <div class="col-md-6" style="padding-top:20px">
-                            <div class="profile-item">
-                                <div class="media">
-                                    <div class="media-body">
-                                        <h3 class="media-heading">Why become a member?</h3>
-                                        <p class="lead">Becoming a member of Naman Angels enables you to explore the startups and look through their details before investing.
-                                        Become a member of Naman Angels network, browse through unlimited industries and get premium treatment.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6" style="padding-top:20px">
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <div class="profile-item">
-                                        <div class="media">
-                                            <div class="media-body im">
-                                                <img src="../img/Internet.png" height="100px">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="profile-item">
-                                        <div class="media">
-                                            <div class="media-body im">
-                                                <img src="../img/Food.png" height="100px">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="profile-item">
-                                        <div class="media">
-                                            <div class="media-body im">
-                                                <img src="../img/Education.png" height="100px">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="container-fluid">
-                            <button type="button" class="btn btn-member" onclick="location.href=#" style="margin:20px 50px 0px 50px">BECOME OUR MEMBER</button>
-                        </div>
-                    </div>
-            </section>
+       
 
-        <hr class="m-0">
-
-        <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="browsestartup">
-                <div class="w-100">
-                    <h2 class="mb-5">Browse Startups</h2>
-                    <p>Flip through the latest starups connected with Naman!</p>
-                    <p class="mb-0">Explore the startups of your interest.</p>
-
-                <div class="col-md-12">
-                    <div class="row">
-                            <div class="col-md-6" style="padding-top:40px">
-                                <div class="profile-item">
-                                    <div class="media">
-                                        <div class="media-body browse-icons">
-                                                <a href="../browse/browsebyname.html" target="_blank">
-                                                    <i class="fa fa-font"></i>
-                                                </a>
-                                            <button class="btn btn-browse">Browse by name</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6" style="padding-top:40px">
-                                <div class="profile-item">
-                                    <div class="media">
-                                        <div class="media-body browse-icons">
-                                                <a href="../browse/browsebyindustry.html" target="_blank">
-                                                    <i class="fa fa-industry"></i>
-                                                </a>
-                                            <button class="btn btn-browse">Browse by Industry</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-            </section>
-
-        <hr class="m-0">
-
-        <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="consultancy">
+    <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="consultancy">
         <div class="w-100">
                 <h2 class="mb-5">Contact Naman</h2>
             <div class="col-md-12">
@@ -1289,7 +1299,7 @@
                     </div>
                 </div>
             </div>
-        </section>
+    </section>
 
         <hr class="m-0">
 
