@@ -35,11 +35,56 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="../css/browse.css" rel="stylesheet">
     <style>
-    .img-profile{
-       max-width:10rem;
-       max-height:10rem;
-       border:.5rem solid rgba(255,255,255,.2)
-   }
+    
+    .card-footer, .card-header{
+        background-color: #e6e6e6;
+    }
+    .card-img-top {
+        width:10rem;
+        height:10rem;
+        margin: auto;
+        padding: 0.8rem;
+    }
+    .btn-viewprofile {
+        font-size: 0.7remem;
+        letter-spacing: 0.05rem;
+        padding: 0.5rem 0.75rem;
+        text-decoration: none;
+    }
+    .card{
+    box-shadow: 5px 5px #cccccc;
+    }
+    .button {
+    transition: all 0.5s;
+    cursor: pointer;
+    margin-top: 12px;
+    }
+
+    .button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+    }
+
+    .button span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+    }
+
+    .button:hover span {
+    padding-right: 25px;
+
+    }
+
+    .button:hover span:after {
+    opacity: 1;
+    right: 0;
+    }
     </style>
 
 
@@ -187,42 +232,50 @@
 
                     $sql = "SELECT * FROM Profile where StpName Like '%{$sname}%' AND Type LIKE '%{$sind}%' LIMIT $offset, $no_of_records_per_page";
                     $res_data = mysqli_query($db,$sql);
+
                     while($row = mysqli_fetch_array($res_data)){
-                        echo'<div class="col-md-3">';  
+
+                        $i=$row['StpID'];
+
+                        $sql1 = "SELECT * FROM st_description where StpID='$i';";
+                        $res_data1 = mysqli_query($db,$sql1);
+                        $row1 = mysqli_fetch_array($res_data1);
+
+                        echo'<div class="col-md-4">';  
                             echo'<div class="image-flip" ontouchstart="this.classList.toggle(';
                             echo"'hover'";
                             echo"');";
                             echo'">';
                             echo'<div class="mainflip">';
                                 echo'<div class="frontside">';
-                                    echo'<div class="card" style="width:15rem;">';
-                                        echo'<img class="card-img-top img- fluid img-profile rounded-circle " src="../../'.$row['StpImg'].'" alt="StartUp Logo"  >';
+                                    echo'<div class="card" style="width:18rem; height: 22rem;">';
+                                        echo'<img class="card-img-top rounded-circle " src="../../'.$row['StpImg'].'" alt="StartUp Logo"  >';
                                         echo'<div class="card-body">';
-                                            echo'<h4 class="card-title">'.$row['StpName'].'</h4>';
-                                            echo'<p class="card-text">'.$row['Type'].'</p>';
-                                            echo'<p class="card-text">'.$row['FName'].', '.$row['SName'].'</p>';
+                                            echo'<h4 class="card-title d-flex justify-content-center">'.$row['StpName'].'</h4>';
+                                            echo'<p class="card-text">Industry type: '.$row['Type'].'</p>';
+                                            echo'<p class="card-text">Founders: '.$row['FName'].'</p>';
                                             echo'<p class="card-text">'.$row['SName'].'</p>';
                                         echo'</div>';
                                     echo'</div>';
                                 echo'</div>';
                                 echo'<div class="backside">';
-                                    echo'<div class="card" style="width:15rem;">';
+                                    echo'<div class="card" style="width:18rem; height: 22rem;">';
                                         echo'<div class="card-header">';
-                                            echo'This is a Header';
+                                            echo'<h4 class="card-title d-flex justify-content-center">'.$row['StpName'].'</h4>';
                                         echo'</div>';
                                         echo'<div class="card-body">';
-                                            echo'<h4 class="card-title">Pitch</h4>';
-                                            echo'<p class="card-text">This is pitch.</p>';
-                                                $button = "";
-                                                if($memberstatus == 'NotMember'){
-                                                    $button = "<a href='../../../Profile/index.php?s=".$row['StpID']."' target='_blank'>
-                                                    <button type='submit' name='subinv' class='viewprofile' value='View Profile' action='index.php'>View Profile</button></a>";
-                                                }
-                                                echo $button;
+                                            echo'<h4 class="card-title">One Line Pitch</h4>';
+                                            echo'<p class="card-text">'.$row1['OLP'].'</p>';
+                                            echo'<p class="d-flex align-content-end flex-wrap"">View profile to get further details!</p>';
                                         echo'</div>';
-                                        echo'<div class="card-footer">';
-                                            echo'This is a Footer';
-                                        echo'</div>';
+                                        // echo'<div class="card-footer btn btn-viewprofile">';
+                                            $button = "";
+                                            if($memberstatus == 'NotMember'){
+                                                $button = "<a href='../../../Profile/index.php?s=".$row['StpID']."' target='_blank'>
+                                                <button type='submit' class='card-footer btn btn-viewprofile btn-lg btn-block button' name='subinv' value='View Profile' action='index.php'><span>View Profile</span></button></a>";
+                                            }
+                                            echo $button;
+                                        // echo'</div>';
                                     echo'</div>';
                                 echo'</div>';
                             echo'</div>';
