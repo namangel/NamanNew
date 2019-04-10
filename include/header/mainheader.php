@@ -37,13 +37,13 @@ Header
 
     <nav class="main-nav float-right d-none d-lg-block">
     <ul>
-        <li class="active"><a href="../home/index.php#intro">Home</a></li>
-        <li><a href="../home/index.php#about">About Us</a></li>
-        <li><a href="../home/index.php#startups">Startups</a></li>
-        <li><a href="../home/index.php#investors">Investors</a></li>
-        <li><a href="../home/index.php#contact">Contact Us</a></li>
+        <li class="active"><a href="index.php#intro">Home</a></li>
+        <li><a href="index.php#about">About Us</a></li>
+        <li><a href="index.php#startups">Startups</a></li>
+        <li><a href="index.php#investors">Investors</a></li>
+        <li><a href="index.php#contact">Contact Us</a></li>
         <div class="btn-group">
-        <li><button type="button" class="btn btn-primary" onclick="location.href = './Signing/login.php'" style="height:40px;">Sign In</a></button></li>
+        <li><button type="button" class="btn btn-primary" onclick="location.href = './Signing/login.php'"><a style="height:40px;">Sign In</a></button></li>
         <li>&nbsp;</li>
         <li><button type="button" class="btn btn-primary"><a style="height:40px;">Sign Up</a></button></li>
         </div>

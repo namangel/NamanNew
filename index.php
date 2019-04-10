@@ -111,7 +111,7 @@
         <h2>Connect with Entrepreneurs and Investors <br><span> on a single platform</span><br>to help startups grow!</h2>
         <div>
           <a href="#about" class="btn-get-started scrollto">Get Started</a>
-          <a href="#services" class="btn-services scrollto">Our Services</a>
+          <a href="#services" class="btn-services scrollto">Learn what We do</a>
         </div>
       </div>
 
@@ -211,7 +211,7 @@
     </section><!-- #about -->
 
     <!--==========================
-      Services Section
+      Not Services But Browse Section
     ============================-->
     <section id="services" class="section-bg">
       <div class="container">
@@ -289,7 +289,7 @@
             <div class="card wow bounceInUp">
                 <i class="fa fa-diamond"></i>
               <div class="card-body">
-                <h5 class="card-title">Corporis dolorem</h5>
+                <h5 class="card-title">IN-HOUSE EXPERTS</h5>
                 <p class="card-text">Deleniti optio et nisi dolorem debitis. Aliquam nobis est temporibus sunt ab inventore officiis aut voluptatibus.</p>
                 <a href="#" class="readmore">Read more </a>
               </div>
@@ -300,7 +300,7 @@
             <div class="card wow bounceInUp">
                 <i class="fa fa-language"></i>
               <div class="card-body">
-                <h5 class="card-title">Voluptates dolores</h5>
+                <h5 class="card-title">INDUSTRY CONNECT</h5>
                 <p class="card-text">Voluptates nihil et quis omnis et eaque omnis sint aut. Ducimus dolorum aspernatur.</p>
                 <a href="#" class="readmore">Read more </a>
               </div>
@@ -688,7 +688,7 @@
 
         <div class="row wow fadeInUp">
 
-          <div class="col-lg-6">
+          <div class="col-lg-5">
             <div class="map mb-4 mb-lg-0">
               <iframe src="https://www.google.com/maps/place/ZoomStart+India/@19.0243889,73.0292245,17z/data=!4m8!1m2!2m1!1szoom+media+tapaswi+group!3m4!1s0x3be7c3b0d6eb86df:0x9d4c87cc97d36b36!8m2!3d19.0243899!4d73.0314083" frameborder="0" style="border:0; width: 100%; height: 312px;" allowfullscreen></iframe>
             </div>
@@ -696,19 +696,19 @@
 
           <div class="col-lg-6">
             <div class="row">
-              <div class="col-md-5 info">
+              <div class="col-md-3 info">
                 <i class="ion-ios-location-outline"></i>
                 <p>
                   Plot No 37, Sector 26, <br>
-                    Parsik Hill, CBD Belapur,</p>
+                    Parsik Hill, CBD Belapur.</p>
+              </div>
+              <div class="col-md-5 info">
+                <i class="ion-ios-email-outline"></i>
+                <p>naman@namanangels.com</p>
               </div>
               <div class="col-md-4 info">
-                <i class="ion-ios-email-outline"></i>
-                <p>info@example.com</p>
-              </div>
-              <div class="col-md-3 info">
                 <i class="ion-ios-telephone-outline"></i>
-                <p>+91-90291 99771</p>
+                <p>+91 915 2095 991</p>
               </div>
             </div>
 
@@ -762,11 +762,11 @@
           <div class="col-lg-2 col-md-6 footer-links">
             <h4>Useful Links</h4>
             <ul>
-              <li><a href="#">Home</a></li>
-              <li><a href="#">About us</a></li>
-              <li><a href="#">Team</a></li>
-              <li><a href="#">Startups</a></li>
-              <li><a href="#">Investors</a></li>
+              <li><a href="index.php">Home</a></li>
+              <li><a href="#about">About us</a></li>
+              <li><a href="#team">Team</a></li>
+              <li><a href="#startups">Startups</a></li>
+              <li><a href="#investors">Investors</a></li>
             </ul>
           </div>
 
@@ -776,7 +776,8 @@
            
             <ul>
               <li><a href="#">Events</a></li>
-              <li><a href="#">Services</a></li>
+              <li><a href="faq.php">FAQs</a></li>
+              <li><a href="#services">Services</a></li>
               <li><a href="#">Terms of service</a></li>
               <li><a href="#">Privacy policy</a></li>
             </ul>
@@ -788,8 +789,8 @@
                 Plot No 37, Sector 26, <br>
                 Parsik Hill, CBD Belapur,<br>
                 Navi Mumbai, Maharashtra 400614 <br>
-              <strong>Phone:</strong> +91-90291 99771<br>
-              <strong>Email:</strong> info@example.com<br>
+              <strong>Phone:</strong>+91 915 2095 991<br>
+              <strong>Email:</strong>naman@namanangels.com<br>
             </p>
 
             <div class="social-links">

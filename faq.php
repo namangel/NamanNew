@@ -2,21 +2,20 @@
 <html lang="en">
 
 <head>
-    <link href="../investor/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="investor/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom fonts for this template -->
     <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet">
-    <link href="../investor/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link href="investor/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     
     <!-- Custom styles for this template -->
     <link href="css/resume.min.css" rel="stylesheet">
-    <link href="css/resume.min.new.css" rel="stylesheet">
 
 </head>
 <body>
-    <div><?php include('../include/header/mainheader.php');?></div>
+    <div><?php include('include/header/mainheader.php');?></div>
 
     <!--Accordion wrapper-->
     <div class="accordion md-accordion p-md-5 m-md-5" id="accordionEx" role="tablist" aria-multiselectable="true"> 
@@ -371,20 +370,20 @@
     </div>
     <!-- Accordion wrapper -->
 
-    <?php include('../include/footer/footer.php'); ?>
+    <?php include('include/footer/footer.php'); ?>
 
     <!-- Bootstrap core JavaScript -->
-    <script src="../investor/vendor/jquery/jquery.min.js"></script>
-    <script src="../investor/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="investor/vendor/jquery/jquery.min.js"></script>
+    <script src="investor/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Plugin JavaScript -->
-    <script src="../investor/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="investor/vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for this template -->
-    <script src="../investor/js/resume.min.js"></script>
+    <script src="investor/js/resume.min.js"></script>
 
     <!--owl carousal-->
-    <script src="../investor/js/owl.carousel.min.js"></script>
+    <script src="investor/js/owl.carousel.min.js"></script>
     <!--theme script-->
-    <script src="../investor/js/scripts.js"></script>
+    <script src="investor/js/scripts.js"></script>
 </body>
