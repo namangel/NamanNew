@@ -491,7 +491,18 @@
     <link href="css/stp.css" rel="stylesheet">
     <link href="css/owlcarousel.css" rel="stylesheet">
     <!-- <link href="css/style.css" rel="stylesheet"> -->
-
+<style>
+input.error {
+    border: 1px dotted red;
+}
+label.error{
+    width: 100%;
+    color: red;
+    font-style: italic;
+    margin-left: 20px;
+    margin-bottom: 5px;
+}
+</style>
 
 
 
@@ -745,7 +756,7 @@
                     </button>
                 </div>
                 <div class="modal-body mx-3">
-                    <form method="post" action="index.php#companybasics">
+                    <form name="company-basics" id="company-basics" method="post" action="index.php#companybasics">
                     <div class="accordion" id="accordionExample">
                         <div class="card">
                             <div class="card-body">
@@ -760,13 +771,13 @@
                                     <input type="text" class="form-control" name="cbfname"> -->
                                     <label for="stage">Company Stage</label><br>
                                     <select name="cbstage" class="form-control">
-                                        <option>--Select Stage--</option>
-                                        <option>Concept Only</option>
-                                        <option>Product in Development</option>
-                                        <option>Prototype ready</option>
-                                        <option>Full Product Ready</option>
-                                        <option>Early Revenue Stage</option>
-                                        <option>Growth Stage</option>
+                                        <option value="">--Select Stage--</option>
+                                        <option value="Concept Only">Concept Only</option>
+                                        <option value="Product in Development">Product in Development</option>
+                                        <option value="Prototype ready">Prototype ready</option>
+                                        <option value="Full Product Ready">Full Product Ready</option>
+                                        <option value="Early Revenue Stage">Early Revenue Stage</option>
+                                        <option value="Growth Stage">Growth Stage</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
@@ -1052,7 +1063,7 @@
                                 </div>
                                 <div class="form-group">
                                     <!-- <label>Country</label>
-                                    <input type="text" class="form-control" name="cbcountry"> -->
+                                    <input type="text" class="form-control" name="cbcountrys"> -->
                                     <label for="cbempnum">Number of Employees</label><br>
                                     <input name="cbempnum" class="form-control" type="number" placeholder="<?= $EmpNum?>">
                                 </div>
@@ -1079,7 +1090,7 @@
                                 <div class="form-group">
                                     <!-- <label>Country</label>
                                     <input type="text" class="form-control" name="cbcountry"> -->
-                                    <label for="cbsummary">Company Website</label><br>
+                                    <label for="cbsummary">Company Summary</label><br>
                                     <textarea class="form-control" rows=10 name="cbsummary" id="summ"><?= $Summary?></textarea>
                                 </div>
                             </div>
@@ -1182,7 +1193,7 @@
                     </button>
                 </div>
                 <div class="modal-body mx-3">
-                    <form method="post" action="index.php#overview">
+                    <form name="company-overview" id="company-overview" method="post" action="index.php#overview">
                         <div class="accordion" id="accordionExample">
                             <div class="card">
                                     <div class="card-body">
@@ -1215,13 +1226,13 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header text-center">
-                    <h4 class="modal-title w-100 font-weight-bold">Company AdvisorsForm</h4>
+                    <h4 class="modal-title w-100 font-weight-bold">Company Advisors Form</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body mx-3">
-                    <form method="post" action="index.php#overview">
+                    <form name="company-advisors" id="company-advisors" method="post" action="index.php#overview">
                         <div class="accordion" id="accordionExample">
                             <div class="card">
                                     <div class="card-body">
@@ -1256,7 +1267,7 @@
                     </button>
                 </div>
                 <div class="modal-body mx-3">
-                    <form method="post" action="index.php#overview">
+                    <form name="previous-inv" id="previous-inv" method="post" action="index.php#overview">
                         <div class="accordion" id="accordionExample">
                             <div class="card">
                                     <div class="card-body">
@@ -1578,7 +1589,7 @@
                 </div>
                 <small class='text-center'>You can save the form partially filled and continue filling later</small>
                 <div class="modal-body mx-3">
-                    <form method="post" action="index.php#executivesummary">
+                    <form name="executive-summary" id="executive-summary" method="post" action="index.php#executivesummary">
                         <div class="accordion" id="accordionExample">
                             <div class="card">
                                 <div class="card-body">
@@ -1765,13 +1776,13 @@
                     </button>
                 </div>
                 <div class="modal-body mx-3">
-                    <form method="post" action="index.php#financials">
+                    <form name="open-funding-round" id="open-funding-round" method="post" action="index.php#financials">
                         <div class="accordion" id="accordionExample">
                             <div class="card">
                                     <div class="card-body">
                                         <div class="form-group">
                                           <select name="round" class="form-control">
-                                                <option>Select Round</option>
+                                                <option value="">Select Round</option>
                                                 <option value="Founder">Founder</option>
                                                 <option value="Friends and Family">Friends and Family</option>
                                                 <option value="Angel">Angel</option>
@@ -1785,12 +1796,12 @@
                                         </div>
                                         <div class="form-group">
                                           <label>Security type</label>
-                          									<select name="security" name="sec" id="sec" class="form-control" onchange="valfunc()">
-                                                <option value="SecType" selected='selected'>Select Security Type</option>
+                          					<select name="security" name="sec" id="sec" class="form-control" onchange="valfunc()">
+                                                <option value="" selected='selected'>Select Security Type</option>
                                                 <option value="Preferred Equity">Preferred Equity</option>
                                                 <option value="Common Equity">Common Equity</option>
                                                 <option value="Convertible Notes">Convertible Notes</option>
-                          									</select>
+                          					</select>
                                         </div>
                                         <div class="form-group">
                                           <!-- <script>
@@ -1839,7 +1850,7 @@
                     </button>
                 </div>
                 <div class="modal-body mx-3">
-                    <form method="post" action="index.php#financials">
+                    <form name="close-round" id="close-round" method="post" action="index.php#financials">
                         <div class="accordion" id="accordionExample">
                             <div class="card">
                                     <div class="card-body">
@@ -2265,6 +2276,10 @@
   <script src="js/stpscripts.js"></script>
 
   <script src="js/finround.js"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.js"></script>
+<script src="js/validation.js"></script>
 
 
 
