@@ -1211,6 +1211,76 @@
         </div>
     </div>
 
+    <div class="modal fade" id="AddAdvisorsForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h4 class="modal-title w-100 font-weight-bold">Company AdvisorsForm</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body mx-3">
+                    <form method="post" action="index.php#overview">
+                        <div class="accordion" id="accordionExample">
+                            <div class="card">
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <label for="cdvname">Name</label><br>
+                                            <input type="text" name="cadvname" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="cadvemail">E-Mail</label><br>
+                                            <input type="email" name="cadvemail" class="form-control">
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer d-flex justify-content-center">
+                            <!-- <button class="btn btn-unique">Cancel <i class="fas fa-paper-plane-o ml-1"></i></button> -->
+                            <button class="btn btn-unique" name="cadvsave">Save <i class="fas fa-paper-plane-o ml-1"></i></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="AddPrevInvForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h4 class="modal-title w-100 font-weight-bold">Previous Investment</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body mx-3">
+                    <form method="post" action="index.php#overview">
+                        <div class="accordion" id="accordionExample">
+                            <div class="card">
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <label for="pinvname">Name</label><br>
+                                            <input type="text" name="pinvname" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="pinvemail">E-Mail</label><br>
+                                            <input type="email" name="pinvemail" class="form-control">
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer d-flex justify-content-center">
+                            <!-- <button class="btn btn-unique">Cancel <i class="fas fa-paper-plane-o ml-1"></i></button> -->
+                            <button class="btn btn-unique" name="pinvsave">Save <i class="fas fa-paper-plane-o ml-1"></i></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="overview">
         <div class="w-100">
             <div class="row">
@@ -1264,7 +1334,7 @@
             <div class="row" style="padding-top:20px">
               <div class="col-md-12">
                   <div class="text-right">
-                      <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#AdvisorsForm">Add</a>
+                      <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#AddAdvisorsForm">Add</a>
                   </div>
               </div>
                 <div class="col-md-3">
@@ -1274,7 +1344,29 @@
                 </div>
                 <div class="col-md-9">
                     <div class="row">
-                        <div class="col-md-6" style="padding-bottom:10px">
+                        <?php
+                        $q = "SELECT * FROM st_advisors where StpID = '$id'";
+                        $results=mysqli_query($db, $q);
+                        if (mysqli_num_rows($results) > 0) {
+                              while($row = mysqli_fetch_assoc($results)) {
+                                  echo '<div class="col-md-6" style="padding-bottom:10px">';
+                                      echo '<div class="profile-item">';
+                                          echo '<div class="media">';
+                                              echo '<div class="media-body">';
+                                                  echo '<h4 class="media-heading">'.$row['Name'].'</h4>';
+                                                  echo $row['Email'];
+                                              echo '</div>';
+                                          echo '</div>';
+                                      echo '</div>';
+                                  echo '</div>';
+                              }
+                            } else {
+                                echo '<img src="../img/Contact.png">';
+                            }
+
+                        ?>
+
+                        <!-- <div class="col-md-6" style="padding-bottom:10px">
                             <div class="profile-item">
                                 <div class="media">
                                     <div class="media-body">
@@ -1313,49 +1405,127 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
             <hr class="m-8">
             <div class="row" style="padding-top:20px">
-              <div class="col-md-12">
-                  <div class="text-right">
-                      <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#AdvisorsForm">Add</a>
-                  </div>
-              </div>
-            <div class="col-md-3">
-                <div class="section-title"><h3>Previous Investors</h3></div>
-            </div>
-            <div class="col-md-9">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="profile-item">
-                            <div class="media">
-                                <div class="media-body">
-                                    <h4 class="media-heading">ENVATO STUDIO</h4>
-                                    Seamlessly formulate covalent outsourcing vis-a-vis virtual resources. Distinctively conceptualize.
-                                </div>
-                            </div>
-                        </div>
+                <div class="col-md-12">
+                    <div class="text-right">
+                        <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#AddPrevInvForm">Add</a>
                     </div>
-                    <div class="col-md-6">
-                        <div class="profile-item">
-                            <div class="media">
-                                <div class="media-body">
-                                    <h4 class="media-heading">FREELANCER</h4>
-                                    Seamlessly formulate covalent outsourcing vis-a-vis virtual resources. Distinctively conceptualize.
+                </div>
+                <div class="col-md-3">
+                    <div class="section-title"><h3>Previous Investors</h3></div>
+                </div>
+                <div class="col-md-9">
+                    <div class="row">
+                        <?php
+                        $q = "SELECT * FROM st_previnvestment where StpID = '$id'";
+                        $results=mysqli_query($db, $q);
+                        if (mysqli_num_rows($results) > 0) {
+                              while($row = mysqli_fetch_assoc($results)) {
+                                  echo '<div class="col-md-6" style="padding-bottom:10px">';
+                                      echo '<div class="profile-item">';
+                                          echo '<div class="media">';
+                                              echo '<div class="media-body">';
+                                                  echo '<h4 class="media-heading">'.$row['Name'].'</h4>';
+                                                  echo $row['Email'];
+                                              echo '</div>';
+                                          echo '</div>';
+                                      echo '</div>';
+                                  echo '</div>';
+                              }
+                            } else {
+                                echo '<img src="../img/Contact.png">';
+                            }
+                        ?>
+
+
+
+                        <!-- <div class="col-md-6">
+                            <div class="profile-item">
+                                <div class="media">
+                                    <div class="media-body">
+                                        <h4 class="media-heading">ENVATO STUDIO</h4>
+                                        Seamlessly formulate covalent outsourcing vis-a-vis virtual resources. Distinctively conceptualize.
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                        <div class="col-md-6">
+                            <div class="profile-item">
+                                <div class="media">
+                                    <div class="media-body">
+                                        <h4 class="media-heading">FREELANCER</h4>
+                                        Seamlessly formulate covalent outsourcing vis-a-vis virtual resources. Distinctively conceptualize.
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
         </div>
-        </div>
     </section>
 
     <hr class="m-0">
+
+    <div class="modal fade" id="TeamForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h4 class="modal-title w-100 font-weight-bold">Team Member</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body mx-3">
+                    <form method="post" action="index.php#teams">
+                        <div class="accordion" id="accordionExample">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label for="tmfname">First Name</label><br>
+                                        <input type="text" name="tmfname" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="tmlname">Last Name</label><br>
+                                        <input type="text" name="tmlname" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="tmdsgn">Designation</label><br>
+                                        <input type="text" name="tmdsgn" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="tmexp">Experience</label><br>
+                                        <input type="text" name="tmexp" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="tmexpt">Expertise</label><br>
+                                        <textarea class="form-control" rows=2 name="tmexpt" ></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="tmemail">Email</label><br>
+                                        <input type="email" name="tmemail" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="tmlinkedin">LinkedIn</label><br>
+                                        <input type="email" name="tmlinkedin" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer d-flex justify-content-center">
+                            <!-- <button class="btn btn-unique">Cancel <i class="fas fa-paper-plane-o ml-1"></i></button> -->
+                            <button class="btn btn-unique" name="tmsave">Save <i class="fas fa-paper-plane-o ml-1"></i></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <section class="resume-section p-3 p-lg-5 d-flex justify-content-center" id="teams">
       <div class="w-100">
@@ -1365,7 +1535,7 @@
             </div>
             <div class="col-md-3">
                 <div class="text-right">
-                    <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalContactForm">Edit</a>
+                    <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#TeamForm">Edit</a>
                 </div>
             </div>
           </div>
@@ -1387,10 +1557,10 @@
                       echo '</div>';
                     echo '</div>';
                   }
-								} else {
-									echo '<img src="../img/Contact.png">';
-								}
-							?>
+				} else {
+					echo '<img src="../img/Contact.png">';
+				}
+			?>
 
     </section>
 
