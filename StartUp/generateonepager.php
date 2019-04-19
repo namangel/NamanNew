@@ -94,20 +94,32 @@ $pdf->AddPage();
     $pdf->cell(0, 10 , "Pre-money Valuation:", 0, 0, 'L');
     $pdf->SetXY(135,106);
     $pdf->cell(0, 10 , $row3['Premoney_val'], 0, 0, 'R');
-    $pdf->SetXY(135,115);
+
+    $x = 135;
+    $y = 115;
+    $pdf->SetXY($x,$y);
     $pdf->SetFont('Arial','B',11);
     $pdf->cell(0, 10 , "Advisors", 0, 0, 'L');
-    $pdf->SetXY(135,123);
-    $pdf->SetFont('Arial','',11);
     while($row5= mysqli_fetch_assoc($record5)){
-      $pdf->cell(0, 10 , $row5['Name'], 0, 0, 'L');
+        $x = 135;
+        $y = $y + 5;
+        $pdf->SetXY($x,$y);
+        $pdf->SetFont('Arial','',11);
+        $pdf->cell(0, 10 , $row5['Name'], 0, 0, 'L');
     }
-    $pdf->SetXY(135,131);
+
+    $x = 135;
+    $y = $y + 10;
+    $pdf->SetXY($x,$y);
     $pdf->SetFont('Arial','B',11);
     $pdf->cell(0, 10 , "Team", 0, 1, 'L');
-    $pdf->SetXY(135,139);
-    $pdf->SetFont('Arial','',11);
+    // $pdf->SetXY(135,139);
+    // $pdf->SetFont('Arial','',11);
     while($row11= mysqli_fetch_assoc($record11)){
+        $x = 135;
+        $y = $y + 5;
+        $pdf->SetXY($x,$y);
+        $pdf->SetFont('Arial','',11);
       $pdf->cell(0, 10 , $row11['FName']." ".$row11['LName'], 0, 0, 'L');
       $pdf->cell(0, 10 , $row11['Designation'], 0, 1, 'R');
     }
