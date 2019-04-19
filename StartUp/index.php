@@ -292,11 +292,13 @@
         $verifybutton = "VERIFY ME";
         $verifybuttonname = "verifyme";
         $verifyclass = '';
+        $verifydisable = '';
     }
     elseif ($rowverify["VerifyMe"] == 1) {
         $verifybutton = "VERIFICATION IN PROGRESS";
         $verifybuttonname = "verificationinprogress";
         $verifyclass = 'disabled';
+        $verifydisable = 'disabled';
     }
 
 
@@ -309,12 +311,14 @@
     if($rowverify['Verified'] == 0){
         $verify = '#cf1919';
         $acctype = "Verify Yourself";
+        $verifydisable = 'disabled';
         $message = 'Your Account is not yet verified By Naman Angels. Please continue to complete your profile and have an early verification.';
     }
     else{
         $verify = '#18c74d';
         $verifybutton = "Verified Account";
         $message = 'Verified';
+        $verifydisable = 'disabled';
     }
 
 
@@ -719,7 +723,7 @@
                       <div class="media">
                           <div class="media-body">
                               <form action="index.php#home" method="post">
-                                  <button class="btn btn-lg btn-block btn-login text-uppercase font-weight-bold mb-3 <?=$verifyclass?>" name="<?=$verifybuttonname?>" type="submit"><?=$verifybutton?></button>
+                                  <button class="btn btn-lg btn-block btn-login text-uppercase font-weight-bold mb-3 <?=$verifyclass?>" name="<?=$verifybuttonname?>" type="submit" <?=$verifydisable?>><?=$verifybutton?></button>
                               </form>
                           </div>
                       </div>
@@ -2092,12 +2096,13 @@
 
   <script src="js/finround.js"></script>
 
-  <script>
-  	if ( window.history.replaceState ) {
-  		window.history.replaceState( null, null, window.location.href );
-  	}
-  </script>
+
 
 </body>
 
 </html>
+<script>
+  	if ( window.history.replaceState ) {
+  		window.history.replaceState( null, null, window.location.href );
+  	}
+  </script>
