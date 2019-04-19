@@ -213,7 +213,7 @@
     <!--==========================
       Not Services But Browse Section
     ============================-->
-    <section id="services" class="section-bg">
+   <!-- <section id="services" class="section-bg">
       <div class="container">
 
         <header class="section-header">
@@ -271,7 +271,7 @@
         </div>
 
       </div>
-    </section><!-- #services -->
+    </section>--><!-- #services -->
 
     <!--==========================
       Why Us Section
@@ -287,33 +287,33 @@
 
           <div class="col-lg-4 mb-4">
             <div class="card wow bounceInUp">
-                <i class="fa fa-diamond"></i>
+                <i class="fa fa-sitemap"></i>
               <div class="card-body">
-                <h5 class="card-title">IN-HOUSE EXPERTS</h5>
-                <p class="card-text">Deleniti optio et nisi dolorem debitis. Aliquam nobis est temporibus sunt ab inventore officiis aut voluptatibus.</p>
-                <a href="#" class="readmore">Read more </a>
+                <h5 class="card-title">The Trusted Network</h5>
+                <p class="card-text">Tens of thousands of accredited investors worldwide use Naman. to connect and collaborate with startup companies.</p>
+                
               </div>
             </div>
           </div>
 
           <div class="col-lg-4 mb-4">
             <div class="card wow bounceInUp">
-                <i class="fa fa-language"></i>
+                <i class="fa fa-lock"></i>
               <div class="card-body">
-                <h5 class="card-title">INDUSTRY CONNECT</h5>
-                <p class="card-text">Voluptates nihil et quis omnis et eaque omnis sint aut. Ducimus dolorum aspernatur.</p>
-                <a href="#" class="readmore">Read more </a>
+                <h5 class="card-title">Robust Privacy Controls</h5>
+                <p class="card-text">Naman. enables you to control your privacy settings, profile visibility and who has access to your information. What's private stays private.</p>
+               
               </div>
             </div>
           </div>
 
           <div class="col-lg-4 mb-4">
             <div class="card wow bounceInUp">
-                <i class="fa fa-object-group"></i>
+                <i class="fa fa-industry"></i>
               <div class="card-body">
-                <h5 class="card-title">Eum ut aspernatur</h5>
-                <p class="card-text">Autem quod nesciunt eos ea aut amet laboriosam ab. Eos quis porro in non nemo ex. </p>
-                <a href="#" class="readmore">Read more </a>
+                <h5 class="card-title">The Industry Standards</h5>
+                <p class="card-text">Naman. is the global industry standard for early stage investing. </p>
+              
               </div>
             </div>
           </div>

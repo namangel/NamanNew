@@ -205,28 +205,7 @@
         </div>
         <!-- Accordion card -->
 
-        <!-- Accordion card -->
-        <div class="card">
-    
-            <!-- Card header -->
-            <div class="card-header" role="tab" id="headingThree9">
-                <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx" href="#collapseThree9"
-                aria-expanded="false" aria-controls="collapseThree9">
-                <h5 class="mb-0">
-                    What is the timeframe for investment? <i class="fas fa-angle-down rotate-icon"></i>
-                </h5>
-                </a>
-            </div>
-        
-            <!-- Card body -->
-            <div id="collapseThree9" class="collapse" role="tabpanel" aria-labelledby="headingThree9" data-parent="#accordionEx">
-                <div class="card-body">
-                    The typical timeframe for angel investments is around 3 months from the date of the first presentation. These could however vary depending on the amount to be raised, the time spent on negotiation, due diligence and legal documentation.
-                </div>
-            </div>
-                            
-        </div>
-        <!-- Accordion card -->
+      
 
         <!-- Accordion card -->
         <div class="card">
@@ -297,28 +276,7 @@
         </div>
         <!-- Accordion card -->
 
-        <!-- Accordion card -->
-        <div class="card">
-    
-                <!-- Card header -->
-                <div class="card-header" role="tab" id="headingThree13">
-                    <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx" href="#collapseThree13"
-                    aria-expanded="false" aria-controls="collapseThree13">
-                    <h5 class="mb-0">
-                        Do we need to engage a lawyer? <i class="fas fa-angle-down rotate-icon"></i>
-                    </h5>
-                    </a>
-                </div>
-            
-                <!-- Card body -->
-                <div id="collapseThree13" class="collapse" role="tabpanel" aria-labelledby="headingThree13" data-parent="#accordionEx">
-                    <div class="card-body">
-                        This is a decision the company has to take. However, since the terms are fairly standard and keeping the legal costs in mind, the company could take help from friends to understand the implications of the legal clauses if required.
-                    </div>
-                </div>
-                                            
-        </div>
-        <!-- Accordion card -->
+       
 
         <!-- Accordion card -->
         <div class="card">
