@@ -331,6 +331,17 @@
         padding-bottom: 10%;
     }
 
+
+input.error {
+    border: 1px dotted red;
+}
+label.error{
+    width: 100%;
+    color: red;
+    font-style: italic;
+    margin-left: 10px;
+    margin-bottom: 5px;
+}
     </style>
 
     <script>
@@ -459,7 +470,7 @@
                             </button>
                         </div>
                         <div class="modal-body mx-3">
-                            <form method="post" action="index.php">
+                            <form name="contact-social" id="contact-social" method="post" action="index.php">
                                 <div class="accordion" id="accordionExample">
                                     <div class="card">
                                         <h2 class="mb-0">
@@ -549,7 +560,7 @@
                             </button>
                         </div>
                         <div class="modal-body mx-3">
-                            <form method="post" action="index.php">
+                            <form name="previous-inv" id="previous-inv" method="post" action="index.php">
                                 <div class="form-group">
                                     <label>Startup Name</label>
                                     <input type="text" class="form-control" name="piname" >
@@ -565,13 +576,13 @@
                                 <div class="form-group">
                                     <label>Stage</label>
                                     <select class="custom-select" name="pistage" required>
-                                        <option>Select Stage</option>
-                                        <option>Concept Only</option>
-                                        <option>Product in Development</option>
-                                        <option>Prototype ready</option>
-                                        <option>Full Product Ready</option>
-                                        <option>Early Revenue Stage</option>
-                                        <option>Growth Stage</option>
+                                    <option value="">Select Stage</option>
+                                    <option value="Concept Only">Concept Only</option>
+                                    <option value="Product in Development">Product in Development</option>
+                                    <option value="Prototype ready">Prototype ready</option>
+                                    <option value="Full Product Ready">Full Product Ready</option>
+                                    <option value="Early Revenue Stage">Early Revenue Stage</option>
+                                    <option value="Growth Stage">Growth Stage</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
@@ -601,7 +612,7 @@
                             </button>
                         </div>
                         <div class="modal-body mx-3">
-                        <form method="POST" action="index.php">
+                        <form name="investor-basics" id="investor-basics" method="POST" action="index.php">
                             <div class="accordion" id="accordionExample">
                                 <div class="card">
                                     <h2 class="mb-0">
@@ -1369,6 +1380,11 @@
     <script src="../js/owlcarousel.js"></script>
     <!--theme script-->
     <script src="../js/invscripts.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.js"></script>
+  <script src="../js/validation.js"></script>
+  
 
 </body>
 

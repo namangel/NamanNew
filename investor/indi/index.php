@@ -222,6 +222,19 @@
   <!-- Custom styles for this template -->
   <link href="../css/inv.css" rel="stylesheet">
   <link href="../css/owlcarousel.css" rel="stylesheet">
+  
+<style>
+input.error {
+    border: 1px dotted red;
+}
+label.error{
+    width: 100%;
+    color: red;
+    font-style: italic;
+    margin-left: 10px;
+    margin-bottom: 5px;
+}
+</style>
 
 </head>
 
@@ -324,7 +337,7 @@
             </button>
           </div>
           <div class="modal-body mx-3">
-            <form method="post" action="index.php">
+            <form name="contact-social" id="contact-social"  method="post" action="index.php">
             <div class="accordion" id="accordionExample">
               <div class="card">
                 <h2 class="mb-0">
@@ -339,8 +352,8 @@
                       <input type="number" class="form-control" name="sfphone" placeholder="<?=$phone?>">
                     </div>
                     <div class="form-group">
-                      <label>Email</label>
-                      <input type="email" class="form-control" name="sfemail" placeholder="<?=$email?>">
+                      <label for="sfemail">Email</label>
+                      <input type="email" class="form-control" id="sfemail" name="sfemail" placeholder="<?=$email?>">
                     </div>
                   </div>
                 </div>
@@ -410,7 +423,7 @@
             </button>
           </div>
           <div class="modal-body mx-3">
-            <form method="POST" action="index.php">
+            <form name="investor-basics" id="investor-basics" method="POST" action="index.php">
             <div class="accordion" id="accordionExample">
               <div class="card">
                 <h2 class="mb-0">
@@ -422,7 +435,7 @@
                   <div class="card-body">
                     <div class="form-group">
                       <label>First Name</label>
-                      <input type="text" class="form-control" name="cbfname" placeholder="<?=$fname?>">
+                      <input type="text" class="form-control" name="cbfname" id="cbfname" placeholder="<?=$fname?>">
                     </div>
                     <div class="form-group">
                       <label>Last Name</label>
@@ -506,14 +519,14 @@
             </button>
           </div>
           <div class="modal-body mx-3">
-            <form method="post" action="index.php">
+            <form name="previous-inv" id="previous-inv" method="post" action="index.php">
               <div class="form-group">
                 <label>Startup Name</label>
                 <input type="text" class="form-control" name="piname">
               </div>
               <div class="form-group">
                 <label>Year of Investment</label>
-                <input type="number" min="2000" max="2099" step="1" class="form-control" name="piyear">
+                <input type="number" step="1" class="form-control" name="piyear">
               </div>
               <div class="form-group">
                 <label>Amount of Investment</label>
@@ -522,13 +535,13 @@
               <div class="form-group">
                 <label>Stage</label>
                 <select class="custom-select" name="pistage" required>
-                  <option>Select Stage</option>
-                  <option>Concept Only</option>
-                  <option>Product in Development</option>
-                  <option>Prototype ready</option>
-                  <option>Full Product Ready</option>
-                  <option>Early Revenue Stage</option>
-                  <option>Growth Stage</option>
+                  <option value="">Select Stage</option>
+                  <option value="Concept Only">Concept Only</option>
+                  <option value="Product in Development">Product in Development</option>
+                  <option value="Prototype ready">Prototype ready</option>
+                  <option value="Full Product Ready">Full Product Ready</option>
+                  <option value="Early Revenue Stage">Early Revenue Stage</option>
+                  <option value="Growth Stage">Growth Stage</option>
                 </select>
               </div>
               <div class="form-group">
@@ -1051,5 +1064,10 @@
   <script src="../js/owlcarousel.js"></script>
   <!--theme script-->
   <script src="../js/invscripts.js"></script>
+ 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.js"></script>
+  <script src="../js/validation.js"></script>
+  
   </body>
 </html>
