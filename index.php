@@ -201,7 +201,7 @@
                 Investors when onboard are provided with Investor Development Program (IDP) and opportunities to attend round table conferences
                  with fellow investors. Once the agreement is signed the investor becomes a certified NAMAN investor with recognition across social media.
                 </p>
-              <button type="button" class="btn btn-primary" onclick="location.href = './Signing/RegInv.php'">Register Now!</button>
+              <button type="button" class="btn btn-primary" onclick="location.href = './Signing/register_inv.php'">Register Now!</button>
               </div>
           </div>
           </section>
