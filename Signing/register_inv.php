@@ -1,10 +1,10 @@
-<!-- <?php require('../server.php');
+<?php require('../server.php');
 
 if(isset($_SESSION['InvID'])){
 	header('location: ../Investor/index.php');
 }
 // $_SESSION["type"]
-?> -->
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -84,8 +84,6 @@ if(isset($_SESSION['InvID'])){
                 <p>Investor Registration</p>
             </div>
 
-            <div id="errormessage"></div>
-
             <div class="form-content">
                 <div class="row">
                     <div class="col-md-12">
@@ -103,44 +101,40 @@ if(isset($_SESSION['InvID'])){
 
 
                 <div id="individual">
-                <form method="POST" name="register_inv" action="register_inv.php">
+                <form method="POST" name="register_inv" id="indi" action="register_inv.php">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <input name="fname" type="text" class="form-control" placeholder="First Name" required>
                             </div>
-                            <div class="validation"></div>
                             <div class="form-group">
                                 <input name="lname" type="text" class="form-control" placeholder="Last Name" required>
                             </div>
-                            <div class="validation"></div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <input name="phone" type="text" class="form-control" placeholder="Phone Number" required>
                             </div>
-                            <div class="validation"></div>
                             <div class="form-group">
                                 <input name="email" type="text" class="form-control" placeholder="Email Address" required>
                             </div>
-                            <div class="validation"></div>
                         </div>
                     </div>
                     <br>
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Country" required>
+                                <input type="text" name="country" class="form-control" placeholder="Country" required>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="State" required>
+                                <input type="text" name="state" class="form-control" placeholder="State" required>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="City" required>
+                                <input type="text" name="city" class="form-control" placeholder="City" required>
                             </div>
                         </div>
                     </div>
@@ -158,14 +152,13 @@ if(isset($_SESSION['InvID'])){
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <input name="avgcomp" type="text" class="form-control" placeholder="Avg. No. of Companies Invested per Year" required>
+                                <input name="average" type="text" class="form-control" placeholder="Avg. No. of Companies Invested per Year" required>
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
                                 <input name="cdesc" type="text" class="form-control" placeholder="Company Description - Describe yourself and the value of your company" required>
                             </div>
-                            <div class="validation"></div>
                         </div>
                     </div>
                     <br>
@@ -186,25 +179,28 @@ if(isset($_SESSION['InvID'])){
                             </div>
                         </div>
                     </div>
-                    <button type="button" class="btnSubmit">Submit</button>
+                    <button type="button" class="btnSubmit" name="reginv_ind">Submit</button>
                     </form>
                 </div>
 
 
                 <div id="institution">
-                <form method="POST" name="register_inv" action="register_inv.php">
+                <form method="POST" name="register_inv" id="inst" action="register_inv.php">
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="form-group">
-                                <input name="cname" type="text" class="form-control" placeholder="Company Name" required>
+                                <input name="iname" type="text" class="form-control" placeholder="Company Name" required>
                             </div>
-                            <div class="validation"></div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <input name="foundname" type="text" class="form-control" placeholder="Founder Name" required>
+                                <input name="fname" type="text" class="form-control" placeholder="First Name" required>
                             </div>
-                            <div class="validation"></div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input name="lname" type="text" class="form-control" placeholder="Last Name" required>
+                            </div>
                         </div>
                     </div>
                     <br>
@@ -213,36 +209,33 @@ if(isset($_SESSION['InvID'])){
                             <div class="form-group">
                                 <input name="phone" type="text" class="form-control" placeholder="Phone Number" required>
                             </div>
-                            <div class="validation"></div>
                             <div class="form-group">
                                 <input name="email" type="text" class="form-control" placeholder="Email Address" required>
                             </div>
-                            <div class="validation"></div>
                         </div>
                         <div class="col-md-6">
                         <!-- </div>
                         <div class="col-md-6"> -->
                             <div class="form-group">
-                                <input name="web" type="text" class="form-control" placeholder="Website" required>
+                                <input name="website" type="text" class="form-control" placeholder="Website" required>
                             </div>
-                            <div class="validation"></div>
                         </div>
                     </div>
                     <br>
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Country" required>
+                                <input type="text" name="country" class="form-control" placeholder="Country" required>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="State" required>
+                                <input type="text" name="state" class="form-control" placeholder="State" required>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="City" required>
+                                <input type="text" name="city" class="form-control" placeholder="City" required>
                             </div>
                         </div>
                     </div>
@@ -260,14 +253,13 @@ if(isset($_SESSION['InvID'])){
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <input name="avgcomp" type="text" class="form-control" placeholder="Avg. No. of Companies Invested per Year" required>
+                                <input name="average" type="text" class="form-control" placeholder="Avg. No. of Companies Invested per Year" required>
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
                                 <input name="cdesc" type="text" class="form-control" placeholder="Company Description" required>
                             </div>
-                            <div class="validation"></div>
                         </div>
                     </div>
                     <br>
@@ -279,28 +271,21 @@ if(isset($_SESSION['InvID'])){
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <input name="pass" type="text" class="form-control" placeholder="Password" required>
+                                <input name="password_1" type="text" class="form-control" placeholder="Password" required>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <input name="confpass" type="text" class="form-control" placeholder="Confirm Password" required>
+                                <input name="password_2" type="text" class="form-control" placeholder="Confirm Password" required>
                             </div>
                         </div>
                     </div>
-                    <button type="button" class="btnSubmit">Submit</button>
+                    <button type="button" class="btnSubmit" name="reginv_inst">Submit</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-
-    <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Plugin JavaScript -->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.js"></script>

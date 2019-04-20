@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $("#individual").validate({
+    $("#indi").validate({
         rules: {
             fname: {
                 minlength: 2
@@ -28,11 +28,10 @@ $(document).ready(function() {
                 minlength: "Your name must consist of at least 2 characters"
             },
             email: {
-                required: "Please fill this field",
                 email: "Please enter valid email"
             },
             phone: {
-                number: "Please enter numerc value",
+                number: "Please enter numeric value",
                 minlength: "Please enter valid input"
             },
             cdesc: {
@@ -44,18 +43,21 @@ $(document).ready(function() {
 });
 
 $(document).ready(function() {
-    $("#institution").validate({
+    $("#inst").validate({
         rules: {
-            cname: {
+            iname: {
                 minlength: 2
             },
-            foundname: {
+            fname: {
+                minlength: 2
+            },
+            lname: {
                 minlength: 2
             },
             email: {
                 email: true
             },
-            web: {
+            website: {
                 url: true
             },
             cdesc: {
@@ -65,10 +67,13 @@ $(document).ready(function() {
             
         },
         messages: {         
-            cname: {
+            iname: {
                 minlength: "Your name must consist of at least 2 characters"
             },
-            foundname: {
+            fname: {
+                minlength: "Your name must consist of at least 2 characters"
+            },
+            lname: {
                 minlength: "Your name must consist of at least 2 characters"
             },
             cdesc: {
@@ -76,10 +81,9 @@ $(document).ready(function() {
                 maxlength: "Your description can contain upto 250 characters"
             },
             email: {
-                required: "Please fill this field",
                 email: "Please enter valid email"
             },
-            web: {
+            website: {
                 url: "Please enter valid website"
             }        
         }
