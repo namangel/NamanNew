@@ -270,10 +270,13 @@
             <li><a href="../#investors">Investors</a></li>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
             <li><a href="../#contact">Contact Us</a></li>
             <div class="btn-group">
               <!-- <li><button type="button" class="btn btn-primary" onclick="location.href = './Signing/login.php'"><a style="height:40px;">Sign In</a></button></li> -->
 =======
+=======
+>>>>>>> 580983eeeae78599cb3608e1a2a27e7af1763752
             <li><a href="#contact">Contact Us</a></li>
             <!-- <div class="btn-group">
               <li><button type="button" class="btn btn-primary" onclick="location.href = './Signing/login.php'"><a style="height:40px;">Sign In</a></button></li>
