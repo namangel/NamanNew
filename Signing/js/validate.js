@@ -24,16 +24,35 @@ $(document).ready(function(){
             },
             inv:{
                 required: true,
-                number: true,
-                range:[0,5] 
+                digits: true,
+                minvalue:0,
+                maxvalue:5
             },
             industry:{
                 required:true,
-            }
+            },
         },
+        messages: {         
+            stname: {
+                minlength: "Your name must consist of at least 2 characters"
+            },
+            ffname: {
+                minlength: "Your name must consist of at least 2 characters"
+            },
+            sfname: {
+                minlength: "Your name must consist of at least 2 characters"
+            },
+            inv: {
+                minvalue: "Your description must consist of at least 5 characters",
+                maxvalue: "Your description can contain upto 250 characters"
+            },
+            email: {
+                email: "Please enter valid email"
+            },
+            website: {
+                url: "Please enter valid website"
+            }  
+        }
 
-    })
-}
-
-
-)
+    });
+});
