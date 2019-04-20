@@ -38,8 +38,8 @@ $(document).ready(function() {
             phone: {
                 number: "Please enter numeric value",
                 digits: "Please enter valid phone number",
-                minlength: "Please enter valid input",
-                minlength: "Please enter valid input"
+                minlength: "Please enter valid phone number",
+                maxlength: "Please enter valid phone number"
             },
             cdesc: {
                 minlength: "Your description must consist of at least 5 characters",
@@ -76,7 +76,13 @@ $(document).ready(function() {
             },
             average: {
                 digits: true,
-            }
+            },
+            phone: {
+                number: true,
+                digits: true,
+                minlength: 10,
+                maxlength: 10
+            },
             
         },
         messages: {         
@@ -101,7 +107,13 @@ $(document).ready(function() {
             },
             average:{
                 digits: "Please enter valid input"
-            }    
+            },
+            phone: {
+                number: "Please enter numeric value",
+                digits: "Please enter valid phone number",
+                minlength: "Please enter valid phone number",
+                maxlength: "Please enter valid phone number"
+            },
         }
     });
 });
