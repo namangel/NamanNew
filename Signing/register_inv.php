@@ -147,7 +147,14 @@ if(isset($_SESSION['InvID'])){
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <input name="invrange" type="text" class="form-control" placeholder="Investment Range" required>
+                                <select class="form-control" name="invrange" required>
+                                    <option>Select Investment range</option>
+                                    <option>0 - 1,00,000</option>
+                                    <option>1,00,000 - 10,00,000</option>
+                                    <option>10,00,000 - 50,00,000</option>
+                                    <option>50,00,000 - 1,00,00,000</option>
+                                    <option>More than 1,00,00,000</option>
+                                </select>
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -170,12 +177,12 @@ if(isset($_SESSION['InvID'])){
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <input name="pass" type="text" class="form-control" placeholder="Password" required>
+                                <input name="password_1" type="password" class="form-control" placeholder="Password" required>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <input name="confpass" type="text" class="form-control" placeholder="Confirm Password" required>
+                                <input name="password_2" type="password" class="form-control" placeholder="Confirm Password" required>
                             </div>
                         </div>
                     </div>
@@ -248,7 +255,14 @@ if(isset($_SESSION['InvID'])){
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <input name="invrange" type="text" class="form-control" placeholder="Investment Range" required>
+                            <select class="form-control" name="invrange">
+                                <option>Select Investment range</option>
+                                <option>0 - 1,00,000</option>
+                                <option>1,00,000 - 10,00,000</option>
+                                <option>10,00,000 - 50,00,000</option>
+                                <option>50,00,000 - 1,00,00,000</option>
+                                <option>More than 1,00,00,000</option>
+                            </select>
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -271,12 +285,12 @@ if(isset($_SESSION['InvID'])){
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <input name="password_1" type="text" class="form-control" placeholder="Password" required>
+                                <input name="password_1" type="password" class="form-control" placeholder="Password" required>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <input name="password_2" type="text" class="form-control" placeholder="Confirm Password" required>
+                                <input name="password_2" type="password" class="form-control" placeholder="Confirm Password" required>
                             </div>
                         </div>
                     </div>

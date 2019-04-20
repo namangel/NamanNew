@@ -22,7 +22,14 @@ $(document).ready(function() {
             },
             average: {
                 digits: true,
-            }
+            },
+            password_1: {
+                minlength: 8,
+                pwcheck: true,
+            },
+            // password_2: {
+            //     equalTo: "#password_1"
+            // }
             
         },
         messages: {         
@@ -47,8 +54,19 @@ $(document).ready(function() {
             },
             average: {
                 digits: "Please enter valid input"
-            }  
+            },
+            password_1: {
+                minlength: "Password must be of minimum 8 characters",
+                pwcheck: "Password must have 1 digit, 1 uppercase & 1 special character",
+            }
         }
+    });
+
+    $.validator.addMethod("pwcheck", function(value) {
+        return /^[A-Za-z0-9\d=!\-@$#%^&~._*]*$/.test(value) // consists of only these
+            && /[A-Z]/.test(value) // has a uppercase letter
+            && /\d/.test(value) // has a digit
+            && /[=!\-@$#%^&~._*]/.test(value)
     });
 });
 
@@ -83,7 +101,13 @@ $(document).ready(function() {
                 minlength: 10,
                 maxlength: 10
             },
-            
+            password_1: {
+                minlength: 8,
+                pwcheck: true,
+            },
+            // password_2: {
+            //     equalTo: "#password_1"
+            // }
         },
         messages: {         
             iname: {
@@ -114,6 +138,17 @@ $(document).ready(function() {
                 minlength: "Please enter valid phone number",
                 maxlength: "Please enter valid phone number"
             },
+            password_1: {
+                minlength: "Password must contain min 8 characters",
+                pwcheck: "Password must have 1 digit, 1 uppercase & 1 special character",
+            }
         }
+    });
+
+    $.validator.addMethod("pwcheck", function(value) {
+        return /^[A-Za-z0-9\d=!\-@$#%^&~._*]*$/.test(value) // consists of only these
+            && /[A-Z]/.test(value) // has a uppercase letter
+            && /\d/.test(value) // has a digit
+            && /[=!\-@$#%^&~._*]/.test(value)
     });
 });
