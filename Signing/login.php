@@ -138,11 +138,11 @@
             <li><a href="#investors">Investors</a></li>
 
             <li><a href="#contact">Contact Us</a></li>
-            <div class="btn-group">
+            <!-- <div class="btn-group">
               <li><button type="button" class="btn btn-primary" onclick="location.href = './Signing/login.php'"><a style="height:40px;">Sign In</a></button></li>
               <li>&nbsp;</li>
               <li><button type="button" class="btn btn-primary" onclick="location.href = './Signing/register.php'"><a style="height:40px;">Sign Up</a></button></li>
-            </div>
+            </div> -->
           </ul>
         </nav><!-- .main-nav -->
 

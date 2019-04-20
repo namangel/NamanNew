@@ -237,10 +237,10 @@ if (isset($_POST['login_inv'])) {
         $type = $row['Type'];
 
         if($type == "Individual"){
-          header('location: Investor/indi');
+          header('location: ../Investor/indi');
         }
         else{
-          header('location: Investor/inst');
+          header('location: ../Investor/inst');
         }
 
   	}else {
