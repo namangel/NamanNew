@@ -12,11 +12,16 @@ $(document).ready(function() {
             },
             phone: {
                 number: true,
+                digits: true,
+                minlength: 10,
                 maxlength: 10
             },
             cdesc: {
                 minlength: 5,
                 maxlength: 250
+            },
+            average: {
+                digits: true,
             }
             
         },
@@ -32,12 +37,17 @@ $(document).ready(function() {
             },
             phone: {
                 number: "Please enter numeric value",
+                digits: "Please enter valid phone number",
+                minlength: "Please enter valid input",
                 minlength: "Please enter valid input"
             },
             cdesc: {
                 minlength: "Your description must consist of at least 5 characters",
                 maxlength: "Your description can contain upto 250 characters"
-            }   
+            },
+            average: {
+                digits: "Please enter valid input"
+            }  
         }
     });
 });
@@ -63,6 +73,9 @@ $(document).ready(function() {
             cdesc: {
                 minlength: 5,
                 maxlength: 250
+            },
+            average: {
+                digits: true,
             }
             
         },
@@ -85,7 +98,10 @@ $(document).ready(function() {
             },
             website: {
                 url: "Please enter valid website"
-            }        
+            },
+            average:{
+                digits: "Please enter valid input"
+            }    
         }
     });
 });
