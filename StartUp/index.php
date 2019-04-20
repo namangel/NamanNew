@@ -552,7 +552,7 @@ label.error{
                     <a class="nav-link js-scroll-trigger" href="#consultancy">Consultancy</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="#">Settings</a>
+                    <a class="nav-link " href="account.php" target="_blank">Settings</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="../logout.php">Logout</a>

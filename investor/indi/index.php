@@ -314,7 +314,7 @@ label.error{
         </li>
         </li>
         <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="#settings">Account settings</a>
+          <a class="nav-link js-scroll-trigger" href="account.php" target="_blank">Account settings</a>
         </li>
         </li>
         <li class="nav-item">

@@ -52,6 +52,11 @@ if (isset($_POST['reginv_ind'])) {
     $phone = mysqli_real_escape_string($db, $_POST['phone']);
     $password_1 = mysqli_real_escape_string($db, $_POST['password_1']);
 
+    $ioi = mysqli_real_escape_string($db, $_POST['ioi']);
+    $summary = mysqli_real_escape_string($db, $_POST['cdesc']);
+    $invrange = mysqli_real_escape_string($db, $_POST['invrange']);
+
+
     $user_check_query = "SELECT * FROM userinv WHERE Username='$username'";
     $result = mysqli_query($db, $user_check_query);
     $user = mysqli_fetch_assoc($result);
@@ -79,7 +84,7 @@ if (isset($_POST['reginv_ind'])) {
         VALUES('$userid', null , '$fname', '$lname', '$email', '$phone', null , '$city', '$state', '$country', '$avg', '$type')";
         mysqli_query($db, $query);
 
-        $query = "INSERT INTO inv_addetails (InvID) values ('$userid')";
+        $query = "INSERT INTO inv_addetails (InvID, IOI, InvRange, Summary) values ('$userid','$ioi','$invrange','$summary')";
         mysqli_query($db, $query);
         $query = "INSERT INTO inv_uploads (InvID) values ('$userid')";
         mysqli_query($db, $query);
@@ -107,6 +112,10 @@ if (isset($_POST['reginv_inst'])) {
   $phone = mysqli_real_escape_string($db, $_POST['phone']);
   $password_1 = mysqli_real_escape_string($db, $_POST['password_1']);
 
+  $ioi = mysqli_real_escape_string($db, $_POST['ioi']);
+  $summary = mysqli_real_escape_string($db, $_POST['cdesc']);
+  $invrange = mysqli_real_escape_string($db, $_POST['invrange']);
+
   $user_check_query = "SELECT * FROM userinv WHERE Username='$username'";
   $result = mysqli_query($db, $user_check_query);
   $user = mysqli_fetch_assoc($result);
@@ -133,7 +142,7 @@ if (isset($_POST['reginv_inst'])) {
       VALUES('$userid', '$cname' , '$fname', '$lname', '$email', '$phone', '$website' , '$city', '$state', '$country', '$avg', '$type')";
       mysqli_query($db, $query);
 
-      $query = "INSERT INTO inv_addetails (InvID) values ('$userid')";
+      $query = "INSERT INTO inv_addetails (InvID, IOI, InvRange, Summary) values ('$userid','$ioi','$invrange','$summary')";
       mysqli_query($db, $query);
       $query = "INSERT INTO inv_uploads (InvID) values ('$userid')";
       mysqli_query($db, $query);
@@ -237,10 +246,10 @@ if (isset($_POST['login_inv'])) {
         $type = $row['Type'];
 
         if($type == "Individual"){
-          header('location: Investor/indi');
+          header('location: ../Investor/indi');
         }
         else{
-          header('location: Investor/inst');
+          header('location: ../Investor/inst');
         }
 
   	}else {
