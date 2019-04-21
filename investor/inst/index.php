@@ -513,13 +513,13 @@ label.error{
                     <a class="nav-link js-scroll-trigger" href="#consultancy">Consultancy</a>
                 </li>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link js-scroll-trigger" href="account.php" target="_blank">Account settings</a>
                 </li>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link js-scroll-trigger" href="../../logout.php">log out</a>
-                </li>
+                </li> -->
             </ul>
         </div>
     </nav>
@@ -894,7 +894,22 @@ label.error{
                 </div>
             </div>
 
-
+            <section class="sticky-top shadow p-2 bg-white d-none d-lg-block ">
+                <div class="row">
+                    <div class="col-12 text-right">
+                    <button class="btn btn-member" >NAMAN</button>
+                        <button class="btn btn-member dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-user" style="font-size:20px;color:white"></i>
+                        </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <a class="dropdown-item" href="account.php" target="_blank">Account Settings</a>
+                        <a class="dropdown-item" href="../../logout.php">Logout</a>
+                    </div>
+                    
+                    <!-- <button class="btn btn-member" onclick="window.open('../browse/browsestartup.php')"><i class="fa fa-navicon" style="font-size:20px;color:white"></i></button> -->
+                    </div>
+                </div>
+            </section>
         <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="home">
             <div class="w-100">
             <div class="row">

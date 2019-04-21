@@ -405,13 +405,13 @@ label.error{
           <a class="nav-link js-scroll-trigger" href="#consultancy">Consultancy</a>
         </li>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link js-scroll-trigger" href="account.php" target="_blank">Account settings</a>
         </li>
         </li>
         <li class="nav-item">
           <a class="nav-link js-scroll-trigger" href="../../logout.php">log out</a>
-        </li>
+        </li> -->
       </ul>
     </div>
   </nav>
@@ -683,9 +683,26 @@ label.error{
       </div>
     </div>
 
+    <section class="sticky-top shadow p-2 bg-white d-none d-lg-block ">
+      <div class="row">
+        <div class="col-12 text-right">
+        <button class="btn btn-member" >NAMAN</button>
+            <button class="btn btn-member dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-user" style="font-size:20px;color:white"></i>
+            </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <a class="dropdown-item" href="account.php" target="_blank">Account Settings</a>
+              <a class="dropdown-item" href="../../logout.php">Logout</a>
+          </div>
+        
+        <!-- <button class="btn btn-member" onclick="window.open('../browse/browsestartup.php')"><i class="fa fa-navicon" style="font-size:20px;color:white"></i></button> -->
+        </div>
+      </div>
+    </section>
+
     <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="home">
       <div class="w-100">
-      <div class="row">
+      <!-- <div class="row">
                 <div class="user-icons col-md-6">
                     <a href="#">
                         <i class="fas fa-user-circle"></i>
@@ -695,11 +712,16 @@ label.error{
                 <div class="text-right col-md-6">
                     <button class="btn btn-member" onclick="window.open('../browse/browsestartup.php')">Browse Startups</button>
                 </div>
-            </div>  
-
+            </div>   -->
+      <div class="row">
         <h1 class="mb-0">
           <span class="text-primary">Hello <?= $fname ?></span>
         </h1>
+        <div class="text-right col-md-6">
+          <button class="btn btn-member" onclick="window.open('../browse/browsestartup.php')">Browse Startups</button>
+        </div>
+      </div>
+
         <div class="subheading mb-5">GET STARTED.
         <!-- <a href="mailto:name@email.com">name@email.com</a> -->
         </div>
