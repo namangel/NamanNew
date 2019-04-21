@@ -103,7 +103,7 @@
     <div class="container">
 
       <div class="intro-img">
-        <img src="img/intro-img.svg" alt="" class="img-fluid">
+        <img src="img/intro.png" alt="" class="img-fluid">
       </div>
 
       <div class="intro-info">
@@ -160,13 +160,14 @@
           </div>
 
           <div class="col-lg-6 background order-lg-2 order-1 wow fadeInUp">
-            <img src="img/about-img.svg" class="img-fluid" alt="">
+            <img src="img/featured.png" class="img-fluid" alt="">
+
           </div>
         </div>
       <section id="startups">
         <div class="row about-extra">
           <div class="col-lg-6 wow fadeInUp">
-            <img src="img/about-extra-1.svg" class="img-fluid" alt="">
+            <img src="img/startup.png" class="img-fluid" alt="">
           </div>
           <div class="col-lg-6 wow fadeInUp pt-5 pt-lg-0">
             <h2>Startups.</h2>
@@ -189,7 +190,7 @@
       <section id="investors">
         <div class="row about-extra">
           <div class="col-lg-6 wow fadeInUp order-1 order-lg-2">
-            <img src="img/about-extra-2.svg" class="img-fluid" alt="">
+            <img src="img/investors.png" class="img-fluid" alt="">
           </div>
 
           <div class="col-lg-6 wow fadeInUp pt-4 pt-lg-0 order-2 order-lg-1">
