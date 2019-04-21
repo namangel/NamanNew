@@ -30,6 +30,7 @@ $(document).ready(function() {
                 digits: true,
             },
             password_1: {
+                required: true,
                 minlength: 8,
                 pwcheck: true,
             },
@@ -68,6 +69,7 @@ $(document).ready(function() {
                 digits: "Please enter valid input"
             },
             password_1: {
+                required: "Please fill this field",
                 minlength: "Password must be of minimum 8 characters",
                 pwcheck: "Password must have 1 digit, 1 uppercase & 1 special character",
             }
@@ -121,6 +123,7 @@ $(document).ready(function() {
                 maxlength: 10
             },
             password_1: {
+                required: true,
                 minlength: 8,
                 pwcheck: true,
             },
@@ -165,6 +168,7 @@ $(document).ready(function() {
                 maxlength: "Please enter valid phone number"
             },
             password_1: {
+                required: "Please fill this field",
                 minlength: "Password must contain min 8 characters",
                 pwcheck: "Password must have 1 digit, 1 uppercase & 1 special character",
             }

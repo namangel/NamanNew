@@ -1,9 +1,13 @@
 <?php require('../server.php');
 
 if(isset($_SESSION['InvID'])){
-	header('location: ../Investor/index.php');
+
+    if($_SESSION["type"] == "Individual")    
+        header('location: ../Investor/indi/');
+    else
+        header('location: ../Investor/inst/');
 }
-// $_SESSION["type"]
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -45,6 +49,7 @@ if(isset($_SESSION['InvID'])){
             display: none;
         }
 
+
         input.error {
             border: 1px dotted red;
         }
@@ -67,12 +72,10 @@ if(isset($_SESSION['InvID'])){
         document.getElementById("individual").style.display = "NONE";
     }
     else if(type == "Institution"){
-        document.getElementById("about").style.display = "NONE";
         document.getElementById("individual").style.display = "NONE";
         document.getElementById("institution").style.display = "block";
     }
     else if(type == "Individual"){
-        document.getElementById("about").style.display = "NONE";
         document.getElementById("institution").style.display = "NONE";
         document.getElementById("individual").style.display = "block";
     }
@@ -90,16 +93,12 @@ if(isset($_SESSION['InvID'])){
                     <div class="col-md-12">
                         <div class="form-group">
                             <form method="POST" name="register_inv_select">
-                                <select class="form-control" name="type" onchange="show()" id="selecttype" required>
+                                <select class="form-control" name="type" onchange="show()" id="selecttype">
                                     <option value="NULL">--Select Type of Investor--</option>
                                     <option value="Individual">Individual Investor</option>
-                                    <option value="Institution">Institutional Investor</option>
+                                    <option value="Institution">Institution Investor</option>
                                 </select>
                             </form>
-                        </div>
-                        <div id="about" class="col-md-12">
-                            <p>Individual investor?</p>
-                            <p>Institutional investor?</p>
                         </div>
                     </div>
                 </div>
@@ -152,7 +151,7 @@ if(isset($_SESSION['InvID'])){
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <select class="form-control" name="invrange" required>
+                                <select class="form-control" name="invrange">
                                     <option>Select Investment range</option>
                                     <option>0 - 1,00,000</option>
                                     <option>1,00,000 - 10,00,000</option>
@@ -167,11 +166,11 @@ if(isset($_SESSION['InvID'])){
                                 <input name="average" type="text" class="form-control" placeholder="Avg. No. of Companies Invested per Year">
                             </div>
                         </div>
-                        <!-- <div class="col-md-12">
+                        <div class="col-md-12">
                             <div class="form-group">
-                                <input name="cdesc" type="text" class="form-control" placeholder="Company Description - Describe yourself and the value of your company" required>
+                                <input name="cdesc" type="text" class="form-control" placeholder="Company Description - Describe yourself and the value of your company">
                             </div>
-                        </div> -->
+                        </div>
                     </div>
                     <br>
                     <div class="row">
@@ -182,16 +181,16 @@ if(isset($_SESSION['InvID'])){
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <input name="password_1" type="password" class="form-control" placeholder="Password" required>
+                                <input name="password_1" type="password" class="form-control" placeholder="Password">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <input name="password_2" type="password" class="form-control" placeholder="Confirm Password" required>
+                                <input name="password_2" type="password" class="form-control" placeholder="Confirm Password">
                             </div>
                         </div>
                     </div>
-                    <button type="button" class="btnSubmit" name="reginv_ind">Submit</button>
+                    <input type="submit" class="btnSubmit" name="reginv_ind">
                     </form>
                 </div>
 
@@ -206,12 +205,12 @@ if(isset($_SESSION['InvID'])){
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <input name="fname" type="text" class="form-control" placeholder="Founder's First Name">
+                                <input name="fname" type="text" class="form-control" placeholder="First Name">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <input name="lname" type="text" class="form-control" placeholder="Founder's Last Name">
+                                <input name="lname" type="text" class="form-control" placeholder="Last Name">
                             </div>
                         </div>
                     </div>
@@ -290,22 +289,24 @@ if(isset($_SESSION['InvID'])){
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <input name="password_1" type="password" class="form-control" placeholder="Password" required>
+                                <input name="password_1" type="password" class="form-control" placeholder="Password">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <input name="password_2" type="password" class="form-control" placeholder="Confirm Password" required>
+                                <input name="password_2" type="password" class="form-control" placeholder="Confirm Password">
                             </div>
                         </div>
                     </div>
-                    <button type="button" class="btnSubmit" name="reginv_inst">Submit</button>
+                    <input type="submit" class="btnSubmit" name="reginv_inst">
                     </form>
                 </div>
             </div>
         </div>
-    </div>
+    </div>   
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.js"></script>
-<script src="js/validation.js"></script>
+<script src="js/validation.js"></script> 
+
+
