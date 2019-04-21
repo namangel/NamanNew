@@ -70,14 +70,17 @@ if(isset($_SESSION['InvID'])){
     if(type == "NULL"){
         document.getElementById("institution").style.display = "NONE";
         document.getElementById("individual").style.display = "NONE";
+        document.getElementById("info").style.display = "block";
     }
     else if(type == "Institution"){
         document.getElementById("individual").style.display = "NONE";
         document.getElementById("institution").style.display = "block";
+        document.getElementById("info").style.display = "NONE";
     }
     else if(type == "Individual"){
         document.getElementById("institution").style.display = "NONE";
         document.getElementById("individual").style.display = "block";
+        document.getElementById("info").style.display = "NONE";
     }
     }
 
@@ -93,7 +96,7 @@ if(isset($_SESSION['InvID'])){
                     <div class="col-md-12">
                         <div class="form-group">
                             <form method="POST" name="register_inv_select">
-                                <select class="form-control" name="type" onchange="show()" id="selecttype">
+                                <select id="forfocus" class="form-control" name="type" onchange="show()" id="selecttype">
                                     <option value="NULL">--Select Type of Investor--</option>
                                     <option value="Individual">Individual Investor</option>
                                     <option value="Institution">Institution Investor</option>
@@ -101,6 +104,23 @@ if(isset($_SESSION['InvID'])){
                             </form>
                         </div>
                     </div>
+
+
+                    <section id="info">
+                        <div class="row about-extra">
+                        <div class="col-lg-6 wow fadeInUp">
+                            <img src="../img/5 copy.png" class="img-fluid" alt="">
+                        </div>
+                        <div class="col-lg-6 wow fadeInUp pt-5 pt-lg-0">
+                            <h3>What's the right choice for you?</h3>
+                            <p><b>Institutional Investor</b></p> 
+                            <p>Institutional Investor is a nonbank person or organization that trades securities in large enough share quantities or dollar amounts that it qualifies for preferential treatment and lower commissions, that is, it is an organization that invests on their behalf of its members</p>
+
+                            <p><b>Individual Investor</b></p> 
+                            <p>Individual Investor is an individual who purchases securities for his or her own personal account rather than for an organization.</p>
+                        </div>
+                        </div>
+                    </section>
                 </div>
 
 

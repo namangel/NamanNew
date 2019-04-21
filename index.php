@@ -765,7 +765,7 @@
             <ul>
               <li><a href="index.php">Home</a></li>
               <li><a href="#about">About us</a></li>
-              <li><a href="#team">Team</a></li>
+              <li><a href="include/about/team.php">Team</a></li>
               <li><a href="#startups">Startups</a></li>
               <li><a href="#investors">Investors</a></li>
             </ul>
@@ -779,8 +779,8 @@
               <li><a href="#">Events</a></li>
               <li><a href="faq.php">FAQs</a></li>
               <li><a href="#services">Services</a></li>
-              <li><a href="#">Terms of service</a></li>
-              <li><a href="#">Privacy policy</a></li>
+              <li><a href="include/about/terms.php">Terms of service</a></li>
+              <li><a href="include/about/privacy.php">Privacy policy</a></li>
             </ul>
           </div>
 
