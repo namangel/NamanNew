@@ -111,7 +111,7 @@
         <h2>Connect with Entrepreneurs and Investors <br><span> on a single platform</span><br>to help startups grow!</h2>
         <div>
           <a href="#about" class="btn-get-started scrollto">Get Started</a>
-          <a href="#services" class="btn-services scrollto">Learn what We do</a>
+          <a href="steps.php" class="btn-services scrollto">Learn what We do</a>
         </div>
       </div>
 
