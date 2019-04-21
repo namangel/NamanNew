@@ -255,7 +255,7 @@ label.error{
        if(id == 'country')
        {
            
-         html_code += '<option value="'+value.id+'">'+value.name+'</option>';
+         html_code += '<option value="'+value.name+'" id="'+value.id+'">'+value.name+'</option>';
        }
        else if(id == 'state')
        { 
@@ -291,7 +291,7 @@ label.error{
     }
    
     $(document).on('change', '#country', function(){
-     var country_id = $(this).val();
+     var country_id = $('#country option:selected').attr('id');
      //console.log("Hello"+country_id);
      if(country_id != '')
      {
@@ -306,7 +306,7 @@ label.error{
     $(document).on('change', '#state', function(){
 
        var e = document.getElementById("country");
-       var country_id = e.options[e.selectedIndex].value;
+       var country_id = $('#country option:selected').attr('id');
 
        //console.log("dafafafadfa"+country_id);
 
