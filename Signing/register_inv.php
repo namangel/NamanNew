@@ -96,7 +96,7 @@ if(isset($_SESSION['InvID'])){
                     <div class="col-md-12">
                         <div class="form-group">
                             <form method="POST" name="register_inv_select">
-                                <select id="forfocus" class="form-control" name="type" onchange="show()" id="selecttype">
+                                <select class="form-control" name="type" onchange="show()" id="selecttype">
                                     <option value="NULL">--Select Type of Investor--</option>
                                     <option value="Individual">Individual Investor</option>
                                     <option value="Institution">Institution Investor</option>
