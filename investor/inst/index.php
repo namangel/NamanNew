@@ -397,7 +397,7 @@ label.error{
       <!-- <span class="navbar-toggler-icon"></span> -->
       <a href="../../index.php" style="color:white"><span class="fa fa-home" ></span></a>
     </button>
-    
+
     </div>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav">
@@ -811,7 +811,7 @@ label.error{
                 <div class="text-right col-md-6">
                     <button class="btn btn-member" onclick="window.open('../browse/browsestartup.php')">Browse Startups</button>
                 </div>
-            </div>    
+            </div>
 
                 <h1 class="mb-0">
                     <span class="text-primary">Hello <?=$cname?></span>
@@ -1106,8 +1106,8 @@ label.error{
                                             echo '</div>';
                                             echo '<div class="col-md-2">';
                                                 echo '<div class="row">';
-                                                    echo '<div class="col-md-1">';
-                                                        echo '<a href="" data-toggle="modal" data-target="#updateTeamForm"><i class="fa fa-pencil "></i></a></div>';
+                                                    // echo '<div class="col-md-1">';
+                                                        // echo '<a href="" data-toggle="modal" data-target="#updateTeamForm"><i class="fa fa-pencil "></i></a></div>';
                                                             echo '<div class="col-md-1">';
                                                                 echo '<form method="post" action="index.php">
                                                                             <input class="member" type="number" name="member" value="'.$row['ID'].'">
@@ -1277,7 +1277,7 @@ label.error{
 
         <hr class="m-0">
 
-       
+
 
     <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="consultancy">
         <div class="w-100">
@@ -1384,7 +1384,7 @@ label.error{
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.js"></script>
   <script src="../js/validation.js"></script>
-  
+
 
 </body>
 
