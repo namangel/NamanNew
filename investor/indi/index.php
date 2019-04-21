@@ -222,6 +222,8 @@
   <!-- Custom styles for this template -->
   <link href="../css/inv.css" rel="stylesheet">
   <link href="../css/owlcarousel.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
   
 <style>
 input.error {
@@ -235,6 +237,96 @@ label.error{
     margin-bottom: 5px;
 }
 </style>
+
+<script>
+    $(document).ready(function(){
+    
+    load_json_data('country');
+   
+    function load_json_data(id,parent_id,state_id)
+    {
+       //console.log(parent_id);
+       //console.log(id);
+     var html_code = '';
+     $.getJSON('../json/location.json', function(data){
+   
+      html_code += '<option value="">Select '+id+'</option>';
+      $.each(data, function(key, value){
+       if(id == 'country')
+       {
+           
+         html_code += '<option value="'+value.id+'">'+value.name+'</option>';
+       }
+       else if(id == 'state')
+       { 
+           if(value.id == parent_id)
+           {    
+               $.each(data[parent_id-1].states, function(key, value){ 
+               html_code += '<option value="'+key+'">'+key+'</option>';
+           });
+           }
+       }
+       else
+       {
+           // console.log("Parent_id"+parent_id);
+           // console.log("State_id"+state_id);
+
+           if(value.id == parent_id)
+           {
+               $.each(data[parent_id-1].states, function(key, value){ 
+               if(key == state_id)
+               {
+                   for (var i = 0;i < value.length;i++)
+                   {
+                       html_code += '<option value="'+value[i]+'">'+value[i]+'</option>';
+                   }
+               }
+           });
+       }
+       }
+      });
+      $('#'+id).html(html_code);
+     });
+   
+    }
+   
+    $(document).on('change', '#country', function(){
+     var country_id = $(this).val();
+     //console.log("Hello"+country_id);
+     if(country_id != '')
+     {
+      load_json_data('state',country_id);
+     }
+     else
+     {
+      $('#state').html('<option value="">Select state</option>');
+      $('#city').html('<option value="">Select city</option>');
+     }
+    });
+    $(document).on('change', '#state', function(){
+
+       var e = document.getElementById("country");
+       var country_id = e.options[e.selectedIndex].value;
+
+       //console.log("dafafafadfa"+country_id);
+
+       var e = document.getElementById("state");
+       var state_id = e.options[e.selectedIndex].text;
+
+   //   var state_id = $(this).val();
+   //   var state_id = "Maharashtra";
+
+     if(state_id != '')
+     {
+      load_json_data('city',country_id,state_id);
+     }
+     else
+     {
+      $('#city').html('<option value="">Select city</option>');
+     }
+    });
+   });
+    </script>
 
 </head>
 
@@ -442,16 +534,22 @@ label.error{
                       <input type="text" class="form-control" name="cblname" placeholder="<?=$lname?>">
                     </div>
                     <div class="form-group">
-                        <label>City</label>
-                        <input type="text" class="form-control" name="cbcity" placeholder="<?=$city?>">
+                      <label>Country</label>
+                        <select class="custom-select" name="cbcountry" id="country">
+                        <option value="">Select country</option>
+                        </select>
                     </div>
                     <div class="form-group">
                       <label>State</label>
-                      <input type="text" class="form-control" name="cbstate" placeholder="<?=$state?>">
+                        <select class="custom-select" name="cbstate" id="state">
+                        <option value="">Select state</option>
+                        </select>
                     </div>
                     <div class="form-group">
-                        <label>Country</label>
-                        <input type="text" class="form-control" name="cbcountry" placeholder="<?=$country?>">
+                      <label>City</label>
+                        <select class="custom-select" name="cbcity" id="city">
+                        <option value="">Select city</option>
+                        </select>
                     </div>
                   </div>
                 </div>
@@ -814,45 +912,6 @@ label.error{
     </section>
 
     <hr class="m-0">
-
-    <!-- <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="browsestartup">
-      <div class="w-100">
-        <h2 class="mb-5">Browse Startups</h2>
-        <p>Flip through the latest starups connected with Naman!</p>
-        <p class="mb-0">Explore the startups of your interest.</p>
-
-      <div class="col-md-12">
-        <div class="row">
-            <div class="col-md-6" style="padding-top:40px">
-              <div class="profile-item">
-                <div class="media">
-                  <div class="media-body browse-icons">
-                      <a href="../browse/browsestartup.html" target="_blank">
-                        <i class="fa fa-font"></i>
-                      </a>
-                    <button class="btn btn-browse" onclick="window.open('../browse/browsestartup.html')">Browse by name</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6" style="padding-top:40px">
-              <div class="profile-item">
-                <div class="media">
-                  <div class="media-body browse-icons">
-                      <a href="../browse/browsebyindustry.html" target="_blank">
-                        <i class="fa fa-industry"></i>
-                      </a>
-                    <button class="btn btn-browse" onclick="window.open('../browse/browsebyindustry.html')">Browse by Industry</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section> -->
-
-    <hr class="m-0">
   
     <section class="resume-section p-3 p-lg-5 d-flex justify-content-center" id="investment">
       <div class="w-100">
@@ -1001,53 +1060,6 @@ label.error{
 
     <hr class="m-0">
 
-    <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="settings">
-      <div class="w-100">
-        <h3 class="mb-5">Change Contact Information</h3>
-        <div class="col-md-12">
-          <div class="row">
-            <div class="col-md-6">
-              <p class="settings">First Name:</p>
-            </div>
-            <div class="col-md-6">
-              <p class="settings">Last Name:</p>
-            </div>
-          </div>
-        </div>
-      <div class="w-100">
-        <div class="col-md-12">
-          <div class="row">
-            <div class="col-md-6">
-              <p class="settings">Email:</p>
-            </div>
-            <div class="col-md-6">
-              <p class="settings">Phone Number:</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="w-100" style="padding-top: 60px">
-          <h3 class="mb-5">Change Password</h3>
-            <div class="col-md-12">
-              <div class="row">
-                <div class="col-md-6">
-                  <p class="settings">Current Password:</p>
-                </div>
-              </div>
-          </div>
-          <div class="w-100">
-            <div class="col-md-12">
-              <div class="row">
-                <div class="col-md-6">
-                  <p class="settings">New Password:</p>
-                </div>
-                <div class="col-md-6">
-                  <p class="settings">Confirm Password:</p>
-                </div>
-              </div>
-            </div>
-          </div>
-    </section>
 
   </div>
   <!-- Bootstrap core JavaScript -->
