@@ -38,15 +38,15 @@
 <body>
 <div class="container">
     <div class="row">
-        <div class="col-12 col-md-10 col-lg-8">
+        <div class="col-12 col-md-12 col-lg-12">
             <form class="text-align-center" action="browsestartup.php" method="post">
                 <div class="card-body row no-gutters align-items-center">
-                    <div class="col">
-                        <input class="form-control form-control-md " name="searchkey" type="search" placeholder="Search topics or keywords">                        
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                        <input class="form-control form-control-md " name="searchkey" type="search" placeholder="Search Startup name">                        
                     </div>
-                    <div class="input-group-append">
+                    <div class="input-group-append col-lg-6 col-md-6 col-sm-12">
                         <select class="custom-select" id="inputGroupSelect01" name="indsearchkey">
-                            <option value="">Select Industry</option>
+                            <option value="">Select Industry Type</option>
                             <option value="Advertising">Advertising</option>
                             <option value="Agriculture">Agriculture</option>
                             <option value="Analytics">Analytics</option>
@@ -187,7 +187,7 @@
                         $res_data1 = mysqli_query($db,$sql1);
                         $row1 = mysqli_fetch_array($res_data1);
 
-                        echo'<div class="col-md-4">';  
+                        echo'<div class="col-md-3 ml-5">';  
                             echo'<div class="image-flip" ontouchstart="this.classList.toggle(';
                             echo"'hover'";
                             echo"');";
