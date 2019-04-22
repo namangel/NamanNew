@@ -1,131 +1,77 @@
-<html>
 <head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<style>
-        .list{
-            background-color: white;
-        }
-        .list li{
-            display: inline-block;
-            background-color: white;
-        }
-        #icon{
-            display: inline-block;
-            font-size: 20px;
-            color:#9cc5e0;
-            margin-right:10px;
-        }
-        #icon:hover{
-            cursor:pointer;
-            color:black;
-        }
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 
-        #mainNav1{
-          font-family:"arial";
-          text-align: center;
-          background-color: white;
-          /* font-weight:bold; */
-        }
-        #mainNav1 ul {
-          list-style: none;
-          margin:0;
-          text-align:center;
-        }
-        #mainNav1 ul li {
-          display: inline-block;
-          display:inline;
-          margin: 20px;
-          text-align:center;
-        }
-        #mainNav1 ul li a {
-          padding-bottom: 10px;
-          text-decoration: none;
-          color: black;
-          text-align:center;
-        }
-        #mainNav1 ul li a,
-        #mainNav1 ul li a:after,
-        #mainNav1 ul li a:before {
-          transition: all .5s;
-        }
-        #mainNav1 ul li a:hover {
-          color:#0A2B40;
-        }
+    <style>
+        /*footer*/
+        .col_white_amrc { color:#FFF;}
+        footer { width:100%; background-color:#ffffff; min-height:150px; padding:10px 0px 25px 0px ;}
+        .pt2 { padding-top:40px ; margin-bottom:20px ;}
+        footer p { font-size:13px; color:#CCC; padding-bottom:0px; margin-bottom:8px;}
+        .mb10 { padding-bottom:15px ;}
+        .footer_ul_amrc { margin:0px ; list-style-type:none ; font-size:14px; padding:0px 0px 10px 0px ; }
+        .footer_ul_amrc li {padding:0px 0px 5px 0px;}
+        .footer_ul_amrc li a{ color:#CCC;}
+        .footer_ul_amrc li a:hover{ color:#fff; text-decoration:none;}
+        .fleft { float:left;}
+        .padding-right { padding-right:10px; }
 
-        /* stroke */
-        #mainNav1.stroke ul li a{
-          position: relative;
-        }
-        #mainNav1.stroke ul li a:after, #mainNav1 ul li a:after {
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          right: 0;
-          margin: auto;
-          width: 0%;
-          content: '.';
-          color: transparent;
-          background:#0A2B40;
-          height: 1px;
-        }
-        #mainNav1.stroke ul li a:hover:after {
-          width: 100%;
-        }
+        .footer_ul2_amrc {margin:0px; list-style-type:none; padding:0px;}
+        .footer_ul2_amrc li p { display:table; }
+        .footer_ul2_amrc li a:hover { text-decoration:none;}
+        .footer_ul2_amrc li i { margin-top:5px;}
 
-        #mainNav1 ul li a {
-          transition: all 1s;
+        .bottom_border { border-bottom:1px solid #323f45; padding-bottom:20px;}
+        .foote_bottom_ul_amrc {
+            list-style-type:none;
+            padding:0px;
+            display:table;
+            margin-top: 10px;
+            margin-right: auto;
+            margin-bottom: 10px;
+            margin-left: auto;
         }
+        .foote_bottom_ul_amrc li { display:inline;}
+        .foote_bottom_ul_amrc li a { color:#999; margin:0 12px;}
 
-        #mainNav1 ul li a:after {
-          text-align: center;
-          content: '.';
-          margin: 0;
-          opacity: 0;
-        }
-        #mainNav1 ul li a:hover {
-          color: #008CBA;
-          z-index: 1;
-        }
-        #mainNav1 ul li a:hover:after {
-          z-index: -10;
-          animation: fill 1s forwards;
-          opacity: 1;
-        }
+        .social_footer_ul { display:table; margin:15px auto 0 auto; list-style-type:none;  }
+        .social_footer_ul li { padding-left:20px; padding-top:10px; float:left; }
+        .social_footer_ul li a { color:#CCC; border:1px solid #CCC; padding:8px;border-radius:50%;}
+        .social_footer_ul li i {  width:20px; height:20px; text-align:center;}
     </style>
 </head>
-<body>
-    <div class="list">
-        <center>
-            <br>
-            <hr width=80%>
-            <nav id="mainNav1" class="stroke">
-                <ul type="none">
-                    <li><a href="/NamanNew/include/about/team.php" class="foota1"> Our Team</a></li>
-                    <li><a class="foota2" href="#">Terms of Service </a></li>
-                    <li><a href="/NamanNew/include/about/about.php#fstp" class="foota1">For Startups</a></li>
-                    <li><a class="foota2" href="#"> Privacy </a></li>
-                    <li>
-                    <a href="/NamanNew/include/about/about.php#finv" class="foota1">For Investors</a></li>
-                    <li>
-                    <a class="foota2" href="#" > License </a>
-                    </li>
-                    <li>
-                    <a href="/NamanNew/include/about/about.php#cont" class="foota1"> Support </a>
-                    </li>
-                    <li>
-                    <a href="/NamanNew/include/about/about.php#cont" class="foota1"> Contact Us</a>
-                    </li>
-                </ul>
-            </nav>
-            <p class="media" style="line-height:25px;">
-                <i class="fa fa-facebook-official" id="icon"></i>
-                <i class="fa fa-linkedin-square" id="icon"></i>
-                <i class="fa fa-twitter-square" id="icon"></i>
-                <i class="fa fa-instagram" id="icon"></i>
-            </p>
 
-        </center>
+<body>
+    <!--footer starts from here-->
+    <footer class="footer">
+    <div class="container">
+        <ul class="foote_bottom_ul_amrc">
+        <li><a href="http://webenlance.com">Home</a></li>
+        <li><a href="http://webenlance.com">About</a></li>
+        <li><a href="http://webenlance.com">Services</a></li>
+        <li><a href="http://webenlance.com">Privacy policy</a></li>
+        <li><a href="http://webenlance.com">FAQs</a></li>
+        <li><a href="http://webenlance.com">Contact</a></li>
+        </ul>
+        <!--foote_bottom_ul_amrc ends here-->
+        <p class="text-center">Copyright @2019 | Designed With by <a href="#">Your Company Name</a></p>
+
+        <ul class="social_footer_ul">
+        <li><a href="http://webenlance.com"><i class="fab fa-facebook-f"></i></a></li>
+        <li><a href="http://webenlance.com"><i class="fab fa-twitter"></i></a></li>
+        <li><a href="http://webenlance.com"><i class="fab fa-linkedin"></i></a></li>
+        <li><a href="http://webenlance.com"><i class="fab fa-instagram"></i></a></li>
+        </ul>
+    <!--social_footer_ul ends here-->
     </div>
+    </footer>
 </body>
-</html>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
