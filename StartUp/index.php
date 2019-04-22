@@ -464,8 +464,17 @@
 		}
 		header('location: index.php');
   }
+  
+  $q = "SELECT * FROM tools_used WHERE StpID = '$id';";
+  $results = mysqli_query($db, $q);
+  $i=-1;
 
-
+  while($row = mysqli_fetch_array($results))
+  {
+      $i++;
+      $tool[$i]=$row['TID'];
+  }
+  $notool = $i+1;
 
 ?>
 <!DOCTYPE html>
@@ -2176,13 +2185,28 @@
                         $q = "SELECT * FROM tools";
                         $result = mysqli_query($db, $q);
                         while($row = mysqli_fetch_assoc($result)){
+                          $buy = 0;
+                          for($i = 0;$i<$notool;$i++)
+                          {
+                            if($row['ID'] == $tool[$i])
+                            {
+                              $buy = 1;
+                            }
+                          }
                             echo '<div class="col-md-4" style="padding-top:20px">';
                               echo '<div class="card" style="width: 18rem;">';
                                   echo '<div class="card-body">';
                                     echo '<h5 class="card-title">'.$row['Name'].'</h5>';
                                     echo '<h6 class="card-subtitle mb-2 text-muted">'.$row['Cost'].'</h6>';
                                     echo '<p class="card-text">'.$row['Description'].'</p>';
-                                    echo '<button class="btn btn-lg btn-block btn-login text-uppercase font-weight-bold mb-3" type="submit">Buy</button>';
+                                    if($buy == 1){
+                                      $BuyBtn="PAID";
+                                    echo '<a href="" class="btn btn-lg btn-block btn-login text-uppercase font-weight-bold mb-3" style="background-color:green" type="submit">'.$BuyBtn.'</a>';
+                                  }
+                                  else{
+                                      $BuyBtn="BUY";
+                                      echo '<a href="payment.php?tid='.$row['ID'].'" class="btn btn-lg btn-block btn-login text-uppercase font-weight-bold mb-3" type="submit">'.$BuyBtn.'</a>';
+                                  }
                                   echo '</div>';
                                 echo '</div>';
                             echo '</div>';
