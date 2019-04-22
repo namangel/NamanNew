@@ -646,7 +646,7 @@
 
           <div class="col-lg-5">
             <div class="map mb-4 mb-lg-0">
-              <iframe src="https://www.google.com/maps/place/ZoomStart+India/@19.0243889,73.0292245,17z/data=!4m8!1m2!2m1!1szoom+media+tapaswi+group!3m4!1s0x3be7c3b0d6eb86df:0x9d4c87cc97d36b36!8m2!3d19.0243899!4d73.0314083" frameborder="0" style="border:0; width: 100%; height: 312px;" allowfullscreen></iframe>
+              <iframe src="http://localhost/NamanNew/#intro" frameborder="1" style="border:2; width: 100%; height: 312px;" allowfullscreen></iframe>
             </div>
           </div>
 
