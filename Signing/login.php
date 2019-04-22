@@ -8,7 +8,7 @@
 
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <link href="../css/style.css" rel="stylesheet">
         <!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> -->
@@ -18,6 +18,13 @@
 
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <style>
+            html,body
+            {
+                width: 100%;
+                margin: 0px;
+                padding: 0px;
+                overflow-x: hidden;
+            }
             .container1 {
                 padding: 10%;
                 min-height:110%;
@@ -158,7 +165,6 @@
     				</div>
     			</div>
     		</div>
-            <br><br><br>
         </div>
 
 
@@ -173,10 +179,10 @@
                         <div class="col-2 d-inline">
                             <a href="../#about" class="text-dark">About</a>
                         </div>
-                        <div class="col-2 d-inline">
+                        <div class="col-md-2 d-inline">
                             <a href="#" class="text-dark">Services</a>
                         </div>
-                        <div class="col-2 d-inline">
+                        <div class="col-md-2 d-inline">
                             <a href="#" class="text-dark">Privacy policy</a>
                         </div>
                         <div class="col-2 d-inline">
@@ -191,37 +197,27 @@
                 <div class="row">
                     <div class="col-md-12 text-center p-1">
                         <div class="col-md-12 d-block">
-                            Copyright @2019 | Designed With by CONTENT AND TECHNICAL TEAM CESS
+                            Copyright @2019 | Designed by Bronn Of Blackwater
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12 text-center p-1">
-                        <div class="col-1 d-inline">
+                        <div class="col-md-1 d-inline">
                             <a href="#" class="text-dark"><i class="fa fa-facebook-f"></i></a>
                         </div>
-                        <div class="col-1 d-inline">
+                        <div class="col-md-1 d-inline">
                             <a href="#" class="text-dark"><i class="fa fa-twitter"></i></a>
                         </div>
-                        <div class="col-1 d-inline">
+                        <div class="col-md-1 d-inline">
                             <a href="#" class="text-dark"><i class="fa fa-linkedin"></i></a>
                         </div>
 
-                        <div class="col-1 d-inline">
+                        <div class="col-md-1 d-inline">
                             <a href="#" class="text-dark"><i class="fa fa-instagram"></i></a>
                         </div>
                     </div>
                 </div>
-
-
-
-
-
-
-
-
-
-                </ul>
             </div>
           </div>
         </section>
