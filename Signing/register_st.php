@@ -48,7 +48,7 @@
             <h2>Register - Startup</h2>
              <hr>
             </div>
-            
+
             <form method="post" action="register_st.php" name="register_st">
              <div class="content">
                	<div class="input-group">
@@ -159,7 +159,7 @@
                        <option value="Video Games">Video Games</option>
                        <option value="Web Design">Web Design</option>
                        <option value="Web Development">Web Development</option>
-            
+
                      </select>
                  </div>
                  <div class="input-group">
@@ -429,8 +429,8 @@
             								            <option value="Zimbabwe">Zimbabwe</option>
                    </select>
                	</div>
-            
-            
+
+
                  <div class="input-group">
                	  <label>Website</label>
                	  <input type="text" name="website" required>
@@ -450,7 +450,7 @@
                    <label>Username</label>
                    <input type="text" name="username" required>
                  </div>
-            
+
                	<div class="input-group">
             <label>Password</label>
             <input type="password" name="password_1" required>
@@ -884,7 +884,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <input type="password" class="form-control" name="password_1" placeholder="Password *" >
-                                    
+
                                 </div>
                             </div>
                         </div>
@@ -894,7 +894,7 @@
             </form>
         </div>
         <p  style="font-size:15px">
-            Already a member? <a href="login_st.php">Sign in</a>
+            Already a member? <a href="login.php">Sign in</a>
         </p>
         </div>
         <?php require "../include/footer/footersmall.php"?>

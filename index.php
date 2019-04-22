@@ -1,12 +1,12 @@
 <?php
  require 'server.php';
- $sql = "SELECT * FROM home;";  
- $result = mysqli_query($db, $sql); 
+ $sql = "SELECT * FROM home;";
+ $result = mysqli_query($db, $sql);
  while($row= mysqli_fetch_array($result))
  {
   $tagline = $row['tagline'];
   $abt_us = $row['abt_us'];
- 
+
  }
 
 ?>
@@ -129,11 +129,11 @@
             <p>
                 Building a successful business requires more than just capital – a motivated team, a business edge, mentoring,
                  technological support and networks NAMAN nurtures the idea of start-ups,
-                 helps them grow with proper mentoring and provides varied investment opportunities for the investors. 
+                 helps them grow with proper mentoring and provides varied investment opportunities for the investors.
                 </p>
                 <p>
-                NAMAN ensures that quality startups are given the support they need in the form of capital, tech support and mentoring. 
-                NAMAN carefully curate startups and hand-hold them through the entire process of angel investing. 
+                NAMAN ensures that quality startups are given the support they need in the form of capital, tech support and mentoring.
+                NAMAN carefully curate startups and hand-hold them through the entire process of angel investing.
                 The startups choose by NAMAN and they have an overall access to all amenities of our incubation center, networks and technology support.
                 </p>
           <button type="button" class="btn btn-primary" onclick="location.href = './Signing/register_st.php'"   >Register Now!</button>
@@ -247,7 +247,7 @@
               <div class="card-body">
                 <h5 class="card-title">The Trusted Network</h5>
                 <p class="card-text">Tens of thousands of accredited investors worldwide use Naman. to connect and collaborate with startup companies.</p>
-                
+
               </div>
             </div>
           </div>
@@ -258,7 +258,7 @@
               <div class="card-body">
                 <h5 class="card-title">Robust Privacy Controls</h5>
                 <p class="card-text">Naman. enables you to control your privacy settings, profile visibility and who has access to your information. What's private stays private.</p>
-               
+
               </div>
             </div>
           </div>
@@ -269,7 +269,7 @@
               <div class="card-body">
                 <h5 class="card-title">The Industry Standards</h5>
                 <p class="card-text">Naman. is the global industry standard for early stage investing. </p>
-              
+
               </div>
             </div>
           </div>
@@ -729,29 +729,30 @@
   <!-- Template Main Javascript File -->
   <script src="js/mainhome.js"></script>
   <script>
-  $(document).ready(function(){  
-   
-    $(document).on('click', '.abt_us', function(){  
-        var abt_us = $('#abt_us').text();  
-        
-        $.ajax({  
-            url:'edit.php',  
-            method:"POST",  
-            data:{abt_us:abt_us},  
-            dataType:"text",  
-            success:function(data)  
-            {  
-                alert(data);  
-                fetch_data();  
-            }  
-        })  
-    });  
-    $(document).on('blur', '.abt_us', function(){  
-      
-        var abt_us = $(this).text();  
-        edit_data(abt_us, "abt_us");  
-    }); 
-    
+    $(document).ready(function(){
+
+    $(document).on('click', '.abt_us', function(){
+        var abt_us = $('#abt_us').text();
+
+        $.ajax({
+            url:'edit.php',
+            method:"POST",
+            data:{abt_us:abt_us},
+            dataType:"text",
+            success:function(data)
+            {
+                alert(data);
+                fetch_data();
+            }
+        })
+    });
+    $(document).on('blur', '.abt_us', function(){
+
+        var abt_us = $(this).text();
+        edit_data(abt_us, "abt_us");
+    });
+});
+
     </script>
 
 </body>
