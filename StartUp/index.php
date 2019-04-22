@@ -554,17 +554,17 @@ label.error{
                     <a class="nav-link js-scroll-trigger" href="#consultancy">Consultancy</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="account.php" target="_blank">Settings</a>
+                    <a class="nav-link d-lg-none d-xl-none d-md-block d-sm-block" href="account.php" target="_blank">Settings</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../logout.php">Logout</a>
+                    <a class="nav-link d-lg-none d-xl-none d-md-block d-sm-block" href="../logout.php">Logout</a>
                 </li>
             </ul>
         </div>
     </nav>
 
     <!-- <div class="container-fluid p-0"> -->
-    <section class="sticky-top shadow p-2 bg-white d-none d-lg-block ">
+    <section class="sticky-top shadow p-2 bg-white d-block d-lg-block ">
       <div class="row">
         <div class="col-12 text-right">
         <button class="btn btn-member" >NAMAN</button>
