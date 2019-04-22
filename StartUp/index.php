@@ -486,6 +486,8 @@
     <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet">
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 
     <!-- Custom styles for this template -->
     <link href="css/stp.css" rel="stylesheet">
@@ -561,31 +563,47 @@ label.error{
         </div>
     </nav>
 
-    <div class="container-fluid p-0">
+    <!-- <div class="container-fluid p-0"> -->
+    <section class="sticky-top shadow p-2 bg-white d-none d-lg-block ">
+      <div class="row">
+        <div class="col-12 text-right">
+        <button class="btn btn-member" >NAMAN</button>
+            <button class="btn btn-member dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-user" style="font-size:20px"></i>
+            </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <a class="dropdown-item" href="account.php" target="_blank">Account Settings</a>
+              <a class="dropdown-item" href="../logout.php">Logout</a>
+          </div>
 
-        <div class="modal fade" id="profileImageForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header text-center">
-                        <h4 class="modal-title w-100 font-weight-bold">Update Logo</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <form method="post" action="index.php" enctype="multipart/form-data">
-                        <div class="modal-body mx-3">
-                            <div class="form-group">
-                                <label>Upload New Logo</label>
-                                <input class="form-control" type="file" name="cbpic" placeholder=" ">
-                            </div>
-                        </div>
-                        <div class="modal-footer d-flex justify-content-center">
-                            <button class="btn btn-unique" name="pimgsave">Save</button>
-                        </div>
-                    </form>
+        <!-- <button class="btn btn-member" onclick="window.open('../browse/browsestartup.php')"><i class="fa fa-navicon" style="font-size:20px;color:white"></i></button> -->
+        </div>
+      </div>
+    </section>
+
+    <div class="modal fade" id="profileImageForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h4 class="modal-title w-100 font-weight-bold">Update Logo</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
+                <form method="post" action="index.php" enctype="multipart/form-data">
+                    <div class="modal-body mx-3">
+                        <div class="form-group">
+                            <label>Upload New Logo</label>
+                            <input class="form-control" type="file" name="cbpic" placeholder=" ">
+                        </div>
+                    </div>
+                    <div class="modal-footer d-flex justify-content-center">
+                        <button class="btn btn-unique" name="pimgsave">Save</button>
+                    </div>
+                </form>
             </div>
         </div>
+    </div>
 
     <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="home">
         <div class="w-100">
@@ -1564,7 +1582,7 @@ label.error{
                         echo '<p>'.$row["Expertise"].'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate</p>';
                       echo '</div>';
                       echo '<div class="resume-date text-md-right">';
-                        echo '<span class="text-primary">'.$row["Email"].'</span>';
+                        echo '<span class="text-primary"><a href="mailto:'.$row["Email"].'" target="_top">'.$row["Email"].'</a></span>';
                       echo '</div>';
                     echo '</div>';
                   }
@@ -2154,7 +2172,27 @@ label.error{
         <div class="row" style="padding-top:20px">
             <div class="col-md-12">
                 <div class="row">
-                    <div class="col-md-4" style="padding-top:20px">
+                    <?php
+                        $q = "SELECT * FROM tools";
+                        $result = mysqli_query($db, $q);
+                        while($row = mysqli_fetch_assoc($result)){
+                            echo '<div class="col-md-4" style="padding-top:20px">';
+                              echo '<div class="card" style="width: 18rem;">';
+                                  echo '<div class="card-body">';
+                                    echo '<h5 class="card-title">'.$row['Name'].'</h5>';
+                                    echo '<h6 class="card-subtitle mb-2 text-muted">'.$row['Cost'].'</h6>';
+                                    echo '<p class="card-text">'.$row['Description'].'</p>';
+                                    echo '<button class="btn btn-lg btn-block btn-login text-uppercase font-weight-bold mb-3" type="submit">Buy</button>';
+                                  echo '</div>';
+                                echo '</div>';
+                            echo '</div>';
+                        }
+
+
+                    ?>
+
+
+                    <!-- <div class="col-md-4" style="padding-top:20px">
                       <div class="card" style="width: 18rem;">
                           <div class="card-body">
                             <h5 class="card-title">Tool Name</h5>
@@ -2163,57 +2201,7 @@ label.error{
                             <button class="btn btn-lg btn-block btn-login text-uppercase font-weight-bold mb-3" type="submit">Buy</button>
                           </div>
                         </div>
-                    </div>
-                    <div class="col-md-4" style="padding-top:20px">
-                      <div class="card" style="width: 18rem;">
-                          <div class="card-body">
-                            <h5 class="card-title">Tool Name</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">Tool Price</h6>
-                            <p class="card-text">Description Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                            <button class="btn btn-lg btn-block btn-login text-uppercase font-weight-bold mb-3" type="submit">Buy</button>
-                          </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4" style="padding-top:20px">
-                      <div class="card" style="width: 18rem;">
-                          <div class="card-body">
-                            <h5 class="card-title">Tool Name</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">Tool Price</h6>
-                            <p class="card-text">Description Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                            <button class="btn btn-lg btn-block btn-login text-uppercase font-weight-bold mb-3" type="submit">Buy</button>
-                          </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4" style="padding-top:20px">
-                      <div class="card" style="width: 18rem;">
-                          <div class="card-body">
-                            <h5 class="card-title">Tool Name</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">Tool Price</h6>
-                            <p class="card-text">Description Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                            <button class="btn btn-lg btn-block btn-login text-uppercase font-weight-bold mb-3" type="submit">Buy</button>
-                          </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4" style="padding-top:20px">
-                      <div class="card" style="width: 18rem;">
-                          <div class="card-body">
-                            <h5 class="card-title">Tool Name</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">Tool Price</h6>
-                            <p class="card-text">Description Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                            <button class="btn btn-lg btn-block btn-login text-uppercase font-weight-bold mb-3" type="submit">Buy</button>
-                          </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4" style="padding-top:20px">
-                      <div class="card" style="width: 18rem;">
-                          <div class="card-body">
-                            <h5 class="card-title">Tool Name</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">Tool Price</h6>
-                            <p class="card-text">Description Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                            <button class="btn btn-lg btn-block btn-login text-uppercase font-weight-bold mb-3" type="submit">Buy</button>
-                          </div>
-                        </div>
-                    </div>
+                    </div> -->
 
                 </div>
             </div>

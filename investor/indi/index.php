@@ -85,7 +85,7 @@
 			$q = "UPDATE inv_details set Website='$cbweb' where InvID='$u';";
 			mysqli_query($db, $q);
     }
-    
+
     if(summary != "")
 	  {
 			$q = "UPDATE inv_addetails set Summary='$summary' where InvID='$u'";
@@ -151,15 +151,15 @@
 		$pistage = mysqli_real_escape_string($db, $_POST['pistage']);
 		$pistake = mysqli_real_escape_string($db, $_POST['pistake']);
     $piweb = mysqli_real_escape_string($db, $_POST['piweb']);
-    
+
 		$q = "INSERT INTO inv_previnvestment (InvID, Name, Year,Amount, Stage, Stake, Website) VALUES ('$u', '$piname', '$piyear', '$piamount','$pistage','$pistake','$piweb');";
 		mysqli_query($db, $q);
 
 		header('location: index.php');
   }
-  
+
   if(isset($_POST['imgsave'])){
-  
+
     $check = getimagesize($_FILES["cbpic"]["tmp_name"]);
 		if($check != false)
 		{
@@ -190,7 +190,7 @@
           mysqli_query($db, $q);
           echo "<script>alert('Successfully Uploaded')</script>";
 				}
-			}		
+			}
     }
   }
   header('location: index.php');
@@ -203,130 +203,130 @@
 
 <head>
 
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
 
-  <title>Resume - Start Bootstrap Theme</title>
+	<title>Resume - Start Bootstrap Theme</title>
 
-  <!-- Bootstrap core CSS -->
-  <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Bootstrap core CSS -->
+	<link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-  <!-- Custom fonts for this template -->
-  <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet">
-  <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<!-- Custom fonts for this template -->
+	<link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet">
+	<link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-  <!-- Custom styles for this template -->
-  <link href="../css/inv.css" rel="stylesheet">
-  <link href="../css/owlcarousel.css" rel="stylesheet">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	<!-- Custom styles for this template -->
+	<link href="../css/inv.css" rel="stylesheet">
+	<link href="../css/owlcarousel.css" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 
-  
-<style>
-input.error {
-    border: 1px dotted red;
-}
-label.error{
-    width: 100%;
-    color: red;
-    font-style: italic;
-    margin-left: 10px;
-    margin-bottom: 5px;
-}
-</style>
 
-<script>
-    $(document).ready(function(){
-    
-    load_json_data('country');
-   
-    function load_json_data(id,parent_id,state_id)
-    {
-       //console.log(parent_id);
-       //console.log(id);
-     var html_code = '';
-     $.getJSON('../json/location.json', function(data){
-   
-      html_code += '<option value="">Select '+id+'</option>';
-      $.each(data, function(key, value){
-       if(id == 'country')
-       {
-           
-         html_code += '<option value="'+value.name+'" id="'+value.id+'">'+value.name+'</option>';
-       }
-       else if(id == 'state')
-       { 
-           if(value.id == parent_id)
-           {    
-               $.each(data[parent_id-1].states, function(key, value){ 
-               html_code += '<option value="'+key+'">'+key+'</option>';
-           });
-           }
-       }
-       else
-       {
-           // console.log("Parent_id"+parent_id);
-           // console.log("State_id"+state_id);
+	<style>
+		input.error {
+		    border: 1px dotted red;
+		}
+		label.error{
+		    width: 100%;
+		    color: red;
+		    font-style: italic;
+		    margin-left: 10px;
+		    margin-bottom: 5px;
+		}
+	</style>
 
-           if(value.id == parent_id)
-           {
-               $.each(data[parent_id-1].states, function(key, value){ 
-               if(key == state_id)
-               {
-                   for (var i = 0;i < value.length;i++)
-                   {
-                       html_code += '<option value="'+value[i]+'">'+value[i]+'</option>';
-                   }
-               }
-           });
-       }
-       }
-      });
-      $('#'+id).html(html_code);
-     });
-   
-    }
-   
-    $(document).on('change', '#country', function(){
-     var country_id = $('#country option:selected').attr('id');
-     //console.log("Hello"+country_id);
-     if(country_id != '')
-     {
-      load_json_data('state',country_id);
-     }
-     else
-     {
-      $('#state').html('<option value="">Select state</option>');
-      $('#city').html('<option value="">Select city</option>');
-     }
-    });
-    $(document).on('change', '#state', function(){
+	<script>
+	    $(document).ready(function(){
 
-       var e = document.getElementById("country");
-       var country_id = $('#country option:selected').attr('id');
+	    load_json_data('country');
 
-       //console.log("dafafafadfa"+country_id);
+	    function load_json_data(id,parent_id,state_id)
+	    {
+	       //console.log(parent_id);
+	       //console.log(id);
+	     var html_code = '';
+	     $.getJSON('../json/location.json', function(data){
 
-       var e = document.getElementById("state");
-       var state_id = e.options[e.selectedIndex].text;
+	      html_code += '<option value="">Select '+id+'</option>';
+	      $.each(data, function(key, value){
+	       if(id == 'country')
+	       {
 
-   //   var state_id = $(this).val();
-   //   var state_id = "Maharashtra";
+	         html_code += '<option value="'+value.name+'" id="'+value.id+'">'+value.name+'</option>';
+	       }
+	       else if(id == 'state')
+	       {
+	           if(value.id == parent_id)
+	           {
+	               $.each(data[parent_id-1].states, function(key, value){
+	               html_code += '<option value="'+key+'">'+key+'</option>';
+	           });
+	           }
+	       }
+	       else
+	       {
+	           // console.log("Parent_id"+parent_id);
+	           // console.log("State_id"+state_id);
 
-     if(state_id != '')
-     {
-      load_json_data('city',country_id,state_id);
-     }
-     else
-     {
-      $('#city').html('<option value="">Select city</option>');
-     }
-    });
-   });
-    </script>
+	           if(value.id == parent_id)
+	           {
+	               $.each(data[parent_id-1].states, function(key, value){
+	               if(key == state_id)
+	               {
+	                   for (var i = 0;i < value.length;i++)
+	                   {
+	                       html_code += '<option value="'+value[i]+'">'+value[i]+'</option>';
+	                   }
+	               }
+	           });
+	       }
+	       }
+	      });
+	      $('#'+id).html(html_code);
+	     });
+
+	    }
+
+	    $(document).on('change', '#country', function(){
+	     var country_id = $('#country option:selected').attr('id');
+	     //console.log("Hello"+country_id);
+	     if(country_id != '')
+	     {
+	      load_json_data('state',country_id);
+	     }
+	     else
+	     {
+	      $('#state').html('<option value="">Select state</option>');
+	      $('#city').html('<option value="">Select city</option>');
+	     }
+	    });
+	    $(document).on('change', '#state', function(){
+
+	       var e = document.getElementById("country");
+	       var country_id = $('#country option:selected').attr('id');
+
+	       //console.log("dafafafadfa"+country_id);
+
+	       var e = document.getElementById("state");
+	       var state_id = e.options[e.selectedIndex].text;
+
+	   //   var state_id = $(this).val();
+	   //   var state_id = "Maharashtra";
+
+	     if(state_id != '')
+	     {
+	      load_json_data('city',country_id,state_id);
+	     }
+	     else
+	     {
+	      $('#city').html('<option value="">Select city</option>');
+	     }
+	    });
+	   });
+	</script>
 
 </head>
 
@@ -377,9 +377,9 @@ label.error{
       <!-- <span class="navbar-toggler-icon"></span> -->
       <a href="../../index.php" style="color:white"><span class="fa fa-home" ></span></a>
     </button>
-    
+
     </div>
-   
+
 
 
 
@@ -687,14 +687,14 @@ label.error{
       <div class="row">
         <div class="col-12 text-right">
         <button class="btn btn-member" >NAMAN</button>
-            <button class="btn btn-member dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fa fa-user" style="font-size:20px;color:white"></i>
-            </button>
+        <button class="btn btn-member dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="fa fa-user" style="font-size:20px;color:white"></i>
+        </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
               <a class="dropdown-item" href="account.php" target="_blank">Account Settings</a>
               <a class="dropdown-item" href="../../logout.php">Logout</a>
           </div>
-        
+
         <!-- <button class="btn btn-member" onclick="window.open('../browse/browsestartup.php')"><i class="fa fa-navicon" style="font-size:20px;color:white"></i></button> -->
         </div>
       </div>
@@ -934,7 +934,7 @@ label.error{
     </section>
 
     <hr class="m-0">
-  
+
     <section class="resume-section p-3 p-lg-5 d-flex justify-content-center" id="investment">
       <div class="w-100">
         <div class="row">
@@ -985,7 +985,7 @@ label.error{
                 }
             ?>
           </div>
-        
+
         <div class="row">
             <div class="col-md-3">
               <div class="section-title">
@@ -1017,7 +1017,7 @@ label.error{
                           echo 'Invested';
                           echo 'Amount: '.$row['Amount'];
                           echo 'Stakeholding: '.$row['Stakehold'];
-                          echo 'Date: '.$row['Date']; 
+                          echo 'Date: '.$row['Date'];
                         }
                         echo'</div>';
                         echo'</div>';
@@ -1098,10 +1098,10 @@ label.error{
   <script src="../js/owlcarousel.js"></script>
   <!--theme script-->
   <script src="../js/invscripts.js"></script>
- 
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.js"></script>
   <script src="../js/validation.js"></script>
-  
+
   </body>
 </html>
