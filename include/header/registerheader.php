@@ -1,5 +1,5 @@
 
-    <header id="header" class="fixed-top">
+    <header id="header" class="sticky-top">
       <div class="container">
         <div class="logo float-left">
           <a href="#intro" class="scrollto"><img src="../img/logo.png" alt="" class="img-fluid"></a>

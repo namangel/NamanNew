@@ -8,7 +8,7 @@
 
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <link href="../css/style.css" rel="stylesheet">
         <!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> -->
@@ -18,6 +18,13 @@
 
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <style>
+            html,body
+            {
+                width: 100%;
+                margin: 0px;
+                padding: 0px;
+                overflow-x: hidden;
+            }
             .container1 {
                 padding: 10%;
                 min-height:110%;
@@ -158,7 +165,6 @@
     				</div>
     			</div>
     		</div>
-            <br><br><br>
         </div>
 
 
@@ -212,16 +218,6 @@
                         </div>
                     </div>
                 </div>
-
-
-
-
-
-
-
-
-
-                </ul>
             </div>
           </div>
         </section>
