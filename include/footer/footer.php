@@ -20,7 +20,7 @@ Footer
         <ul>
             <li><a href="#">Home</a></li>
             <li><a href="#">About us</a></li>
-            <li><a href="#">Team</a></li>
+            <li><a href="../../team.php">Team</a></li>
             <li><a href="#">Startups</a></li>
             <li><a href="#">Investors</a></li>
         </ul>
@@ -40,12 +40,13 @@ Footer
 
         <div class="col-lg-4 col-md-6 footer-contact">
         <h4>Contact Us</h4>
+
         <p>
             Plot No 37, Sector 26, <br>
             Parsik Hill, CBD Belapur,<br>
             Navi Mumbai, Maharashtra 400614 <br>
             <strong>Phone:</strong> +91-90291 99771<br>
-            <strong>Email:</strong> info@example.com<br>
+            <strong>Email:</strong>naman@namanangels.com<br>
         </p>
 
         <div class="social-links">

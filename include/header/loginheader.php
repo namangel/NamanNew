@@ -1,7 +1,7 @@
  <header id="header" class="sticky-top d-block">
       <div class="container">
         <div class="logo float-left">
-          <img src="../img/logo.png" alt="" class="img-fluid">
+     <!--     <img src="../img/logo.png" alt="" class="img-fluid">-->
         </div>
 
         <nav class="main-nav float-right d-none d-lg-block">

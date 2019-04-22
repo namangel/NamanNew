@@ -168,10 +168,10 @@
                 <div class="row">
                     <div class="col-md-12 text-center p-1">
                         <div class="col-2 d-inline">
-                            <a href="#" class="text-dark">Home</a>
+                            <a href="../#intro" class="text-dark">Home</a>
                         </div>
                         <div class="col-2 d-inline">
-                            <a href="#" class="text-dark">About</a>
+                            <a href="../#about" class="text-dark">About</a>
                         </div>
                         <div class="col-2 d-inline">
                             <a href="#" class="text-dark">Services</a>
@@ -180,10 +180,10 @@
                             <a href="#" class="text-dark">Privacy policy</a>
                         </div>
                         <div class="col-2 d-inline">
-                            <a href="#" class="text-dark">FAQs</a>
+                            <a href="../faq.php" class="text-dark">FAQs</a>
                         </div>
                         <div class="col-2 d-inline">
-                            <a href="#" class="text-dark">Contact</a>
+                            <a href="../#contact" class="text-dark">Contact</a>
                         </div>
                     </div>
                 </div>

@@ -2,7 +2,7 @@
     <header id="header" class="fixed-top">
       <div class="container">
         <div class="logo float-left">
-          <a href="#intro" class="scrollto"><img src="../img/logo.png" alt="" class="img-fluid"></a>
+        <!--  <a href="#intro" class="scrollto"><img src="../img/logo.png" alt="" class="img-fluid"></a>-->
         </div>
 
         <nav class="main-nav float-right d-none d-lg-block">

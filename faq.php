@@ -12,6 +12,10 @@
     
     <!-- Custom styles for this template -->
     <link href="css/resume.min.css" rel="stylesheet">
+     <!-- Bootstrap CSS File -->
+  <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+      <!-- Main Stylesheet File -->
+  <link href="css/style.css" rel="stylesheet">
 
 </head>
 <body>
@@ -328,7 +332,69 @@
     </div>
     <!-- Accordion wrapper -->
 
-    <?php include('include/footer/footer.php'); ?>
+    <section class="sticky-bottom shadow p-1 bg-light">
+          <div class="row" style="font-size:12px">
+            <div class="col-md-12 text-center p-2">
+                <div class="row">
+                    <div class="col-md-12 text-center p-1">
+                        <div class="col-2 d-inline">
+                            <a href="./#intro" class="text-dark">Home</a>
+                        </div>
+                        <div class="col-2 d-inline">
+                            <a href="./#about" class="text-dark">About</a>
+                        </div>
+                        <div class="col-2 d-inline">
+                            <a href="#" class="text-dark">Services</a>
+                        </div>
+                        <div class="col-2 d-inline">
+                            <a href="#" class="text-dark">Privacy policy</a>
+                        </div>
+                        <div class="col-2 d-inline">
+                            <a href="#" class="text-dark">FAQs</a>
+                        </div>
+                        <div class="col-2 d-inline">
+                            <a href="../#contact" class="text-dark">Contact</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12 text-center p-1">
+                        <div class="col-md-12 d-block">
+                            Copyright @2019 | Designed With by CONTENT AND TECHNICAL TEAM CESS
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-center p-1">
+                        <div class="col-1 d-inline">
+                            <a href="#" class="text-dark"><i class="fa fa-facebook-f"></i></a>
+                        </div>
+                        <div class="col-1 d-inline">
+                            <a href="#" class="text-dark"><i class="fa fa-twitter"></i></a>
+                        </div>
+                        <div class="col-1 d-inline">
+                            <a href="#" class="text-dark"><i class="fa fa-linkedin"></i></a>
+                        </div>
+
+                        <div class="col-1 d-inline">
+                            <a href="#" class="text-dark"><i class="fa fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+
+                </ul>
+            </div>
+          </div>
+        </section>
 
     <!-- Bootstrap core JavaScript -->
     <script src="investor/vendor/jquery/jquery.min.js"></script>
@@ -344,4 +410,5 @@
     <script src="investor/js/owl.carousel.min.js"></script>
     <!--theme script-->
     <script src="investor/js/scripts.js"></script>
+    <script src="lib/mobile-nav/mobile-nav.js"></script>
 </body>
