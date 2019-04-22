@@ -493,18 +493,18 @@
     <link href="css/stp.css" rel="stylesheet">
     <link href="css/owlcarousel.css" rel="stylesheet">
     <!-- <link href="css/style.css" rel="stylesheet"> -->
-<style>
-input.error {
-    border: 1px dotted red;
-}
-label.error{
-    width: 100%;
-    color: red;
-    font-style: italic;
-    margin-left: 20px;
-    margin-bottom: 5px;
-}
-</style>
+    <style>
+        input.error {
+            border: 1px dotted red;
+        }
+        label.error{
+            width: 100%;
+            color: red;
+            font-style: italic;
+            margin-left: 20px;
+            margin-bottom: 5px;
+        }
+    </style>
 
 
 

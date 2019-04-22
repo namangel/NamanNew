@@ -1,4 +1,4 @@
- <header id="header" class="fixed-top">
+ <header id="header" class="sticky-top d-block">
       <div class="container">
         <div class="logo float-left">
           <img src="../img/logo.png" alt="" class="img-fluid">
