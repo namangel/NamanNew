@@ -11,6 +11,7 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     
         <style>
+            .main{margin-top: 100px;}
             a{text-decoration:none}
             h4{text-align:center;margin:30px 0;color:#444}
             .main-timeline{position:relative}
@@ -74,10 +75,13 @@
             }
 
         </style>
+
+        <link href="css/style.css" rel="stylesheet">
+        <link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet">
     </head>
     <body>
     <?php require "include/header/mainheader.php"?>
-        <div class="container">
+        <div class="container main">
             <h4>Learn what we do in just a few simple steps:</h4>
             <div class="row">
                 <div class="col-md-12">
