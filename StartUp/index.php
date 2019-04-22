@@ -564,7 +564,7 @@ label.error{
     </nav>
 
     <!-- <div class="container-fluid p-0"> -->
-    <section class="sticky-top shadow p-2 bg-white d-block d-lg-block ">
+    <section class="sticky-top shadow p-2 bg-white d-sm-none d-lg-block ">
       <div class="row">
         <div class="col-12 text-right">
         <button class="btn btn-member" >NAMAN</button>
