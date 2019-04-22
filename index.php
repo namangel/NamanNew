@@ -136,7 +136,7 @@
                 NAMAN carefully curate startups and hand-hold them through the entire process of angel investing. 
                 The startups choose by NAMAN and they have an overall access to all amenities of our incubation center, networks and technology support.
                 </p>
-          <button type="button" class="btn btn-primary">Register Now!</button>
+          <button type="button" class="btn btn-primary" onclick="location.href = './Signing/register_st.php'"   >Register Now!</button>
           </div>
         </div>
       </section>
