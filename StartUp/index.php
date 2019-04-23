@@ -2185,6 +2185,7 @@
                         $q = "SELECT * FROM tools";
                         $result = mysqli_query($db, $q);
                         while($row = mysqli_fetch_assoc($result)){
+                          if($row['status'] == 1){
                           $buy = 0;
                           for($i = 0;$i<$notool;$i++)
                           {
@@ -2211,7 +2212,7 @@
                                 echo '</div>';
                             echo '</div>';
                         }
-
+                      }
 
                     ?>
 

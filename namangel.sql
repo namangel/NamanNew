@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.8.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 10, 2019 at 05:04 AM
--- Server version: 10.1.30-MariaDB
--- PHP Version: 7.2.1
+-- Generation Time: Apr 23, 2019 at 06:14 AM
+-- Server version: 10.1.33-MariaDB
+-- PHP Version: 7.2.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -652,22 +652,43 @@ CREATE TABLE `tools` (
   `Name` varchar(200) NOT NULL,
   `Image` varchar(200) NOT NULL DEFAULT 'uploads/tools/tool.png',
   `Cost` varchar(200) NOT NULL,
-  `Description` varchar(200) NOT NULL
+  `Description` varchar(200) NOT NULL,
+  `status` int(10) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tools`
 --
 
-INSERT INTO `tools` (`ID`, `Name`, `Image`, `Cost`, `Description`) VALUES
-(1, 'Tool1', 'uploads/tools/tool.png', '100', 'Tool1 Description\r\nHello World 1\r\nABC 1\r\n'),
-(2, 'Tool2', 'uploads/tools/tool.png', '200', 'Tool2 Description\r\nHello World 2\r\nABC 2\r\n'),
-(3, 'Tool3', 'uploads/tools/tool.png', '200', 'Tool3Description\r\nHello World 3\r\nABC 3'),
-(4, 'Tool4', 'uploads/tools/tool.png', '200', 'Tool4 Description\r\nHello World 4\r\nABC 4'),
-(5, 'Tool5', 'uploads/tools/tool.png', '200', 'Tool5 Description\r\nHello World 5\r\nABC 5'),
-(6, 'Tool6', 'uploads/tools/tool.png', '200', 'Tool6 Description\r\nHello World 6\r\nABC 6'),
-(7, 'Tool7', 'uploads/tools/tool.png', '700', 'Tool7 Description  Hello World 7  ABC  7'),
-(8, 'Tool8', 'uploads/tools/tool.png', '800', 'Tool8 Description Hello World 8 ABC 8');
+INSERT INTO `tools` (`ID`, `Name`, `Image`, `Cost`, `Description`, `status`) VALUES
+(1, 'Tool1', 'uploads/tools/tool.png', '100', 'Tool1 Description\r\nHello World 1\r\nABC 1\r\n', 1),
+(2, 'Tool2', 'uploads/tools/tool.png', '200', 'Tool2 Description\r\nHello World 2\r\nABC 2\r\n', 1),
+(3, 'Tool3', 'uploads/tools/tool.png', '200', 'Tool3Description\r\nHello World 3\r\nABC 3', 1),
+(4, 'Tool4', 'uploads/tools/tool.png', '200', 'Tool4 Description\r\nHello World 4\r\nABC 4', 1),
+(5, 'Tool5', 'uploads/tools/tool.png', '200', 'Tool5 Description\r\nHello World 5\r\nABC 5', 1),
+(6, 'Tool6', 'uploads/tools/tool.png', '200', 'Tool6 Description\r\nHello World 6\r\nABC 6', 1),
+(7, 'Tool7', 'uploads/tools/tool.png', '700', 'Tool7 Description  Hello World 7  ABC  7', 1),
+(8, 'Tool8', 'uploads/tools/tool.png', '800', 'Tool8 Description Hello World 8 ABC 8', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tools_used`
+--
+
+CREATE TABLE `tools_used` (
+  `ID` int(100) NOT NULL,
+  `TID` int(100) NOT NULL,
+  `StpID` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tools_used`
+--
+
+INSERT INTO `tools_used` (`ID`, `TID`, `StpID`) VALUES
+(2, 5, 'NAMST0000001'),
+(3, 3, 'NAMST0000001');
 
 -- --------------------------------------------------------
 
@@ -909,6 +930,12 @@ ALTER TABLE `tools`
   ADD PRIMARY KEY (`ID`);
 
 --
+-- Indexes for table `tools_used`
+--
+ALTER TABLE `tools_used`
+  ADD PRIMARY KEY (`ID`);
+
+--
 -- Indexes for table `userbinv`
 --
 ALTER TABLE `userbinv`
@@ -1006,6 +1033,12 @@ ALTER TABLE `st_team`
 --
 ALTER TABLE `tools`
   MODIFY `ID` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `tools_used`
+--
+ALTER TABLE `tools_used`
+  MODIFY `ID` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `userbinv`
