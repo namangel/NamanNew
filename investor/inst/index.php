@@ -289,60 +289,60 @@
                 background-color:#eee;
             }
             .imagebox {
-        /* background: black; */
-        padding: 0px;
-        position: relative;
-        text-align: center;
-        width: 100%;
-    }
+                /* background: black; */
+                padding: 0px;
+                position: relative;
+                text-align: center;
+                width: 100%;
+            }
 
-    .imagebox img {
-        opacity: 1;
-        transition: 0.5s opacity;
-    }
+            .imagebox img {
+                opacity: 1;
+                transition: 0.5s opacity;
+            }
 
-    .imagebox .imagebox-desc {
-        /* background-color: rgba(0, 0, 0, 0.6); */
-        bottom: 0px;
-        color: black;
-        font-size: 1.2em;
-        left: 0px;
-        padding: 10px 15px;
-        position: absolute;
-        transition: 0.5s padding;
-        text-align: center;
-        width: 100%;
-    }
+            .imagebox .imagebox-desc {
+                /* background-color: rgba(0, 0, 0, 0.6); */
+                bottom: 0px;
+                color: black;
+                font-size: 1.2em;
+                left: 0px;
+                padding: 10px 15px;
+                position: absolute;
+                transition: 0.5s padding;
+                text-align: center;
+                width: 100%;
+            }
 
-    .imagebox-desc {
-        display: none;
-        color: black;
-        font-weight: bold;
-        text-decoration: none;
-    }
+            .imagebox-desc {
+                display: none;
+                color: black;
+                font-weight: bold;
+                text-decoration: none;
+            }
 
-    .imagebox:hover .imagebox-desc{
-        display: inline-block;}
+            .imagebox:hover .imagebox-desc{
+                display: inline-block;}
 
-    .imagebox:hover img {
-        opacity: 0.7;
-    }
+            .imagebox:hover img {
+                opacity: 0.7;
+            }
 
-    .imagebox:hover .imagebox-desc {
-        padding-bottom: 10%;
-    }
+            .imagebox:hover .imagebox-desc {
+                padding-bottom: 10%;
+            }
 
 
-input.error {
-    border: 1px dotted red;
-}
-label.error{
-    width: 100%;
-    color: red;
-    font-style: italic;
-    margin-left: 10px;
-    margin-bottom: 5px;
-}
+        input.error {
+            border: 1px dotted red;
+        }
+        label.error{
+            width: 100%;
+            color: red;
+            font-style: italic;
+            margin-left: 10px;
+            margin-bottom: 5px;
+        }
     </style>
 
     <script>
@@ -371,93 +371,93 @@ label.error{
         }
 
     
-    $(document).ready(function(){
-    
-     load_json_data('country');
-    
-     function load_json_data(id,parent_id,state_id)
-     {
-        //console.log(parent_id);
-        //console.log(id);
-      var html_code = '';
-      $.getJSON('../json/location.json', function(data){
-    
-       html_code += '<option value="">Select '+id+'</option>';
-       $.each(data, function(key, value){
-        if(id == 'country')
+        $(document).ready(function(){
+        
+        load_json_data('country');
+        
+        function load_json_data(id,parent_id,state_id)
         {
-            
-            html_code += '<option value="'+value.name+'" id="'+value.id+'">'+value.name+'</option>';
-        }
-        else if(id == 'state')
-        { 
-            if(value.id == parent_id)
-            {    
-                $.each(data[parent_id-1].states, function(key, value){ 
-                html_code += '<option value="'+key+'">'+key+'</option>';
-            });
+            //console.log(parent_id);
+            //console.log(id);
+        var html_code = '';
+        $.getJSON('../json/location.json', function(data){
+        
+        html_code += '<option value="">Select '+id+'</option>';
+        $.each(data, function(key, value){
+            if(id == 'country')
+            {
+                
+                html_code += '<option value="'+value.name+'" id="'+value.id+'">'+value.name+'</option>';
             }
+            else if(id == 'state')
+            { 
+                if(value.id == parent_id)
+                {    
+                    $.each(data[parent_id-1].states, function(key, value){ 
+                    html_code += '<option value="'+key+'">'+key+'</option>';
+                });
+                }
+            }
+            else
+            {
+                // console.log("Parent_id"+parent_id);
+                // console.log("State_id"+state_id);
+
+                if(value.id == parent_id)
+                {
+                    $.each(data[parent_id-1].states, function(key, value){ 
+                    if(key == state_id)
+                    {
+                        for (var i = 0;i < value.length;i++)
+                        {
+                            html_code += '<option value="'+value[i]+'">'+value[i]+'</option>';
+                        }
+                    }
+                });
+            }
+            }
+        });
+        $('#'+id).html(html_code);
+        });
+        
+        }
+        
+        $(document).on('change', '#country', function(){
+            var country_id = $('#country option:selected').attr('id');
+        //console.log("Hello"+country_id);
+        if(country_id != '')
+        {
+        load_json_data('state',country_id);
         }
         else
         {
-            // console.log("Parent_id"+parent_id);
-            // console.log("State_id"+state_id);
-
-            if(value.id == parent_id)
-            {
-                $.each(data[parent_id-1].states, function(key, value){ 
-                if(key == state_id)
-                {
-                    for (var i = 0;i < value.length;i++)
-                    {
-                        html_code += '<option value="'+value[i]+'">'+value[i]+'</option>';
-                    }
-                }
-            });
+        $('#state').html('<option value="">Select state</option>');
+        $('#city').html('<option value="">Select city</option>');
         }
+        });
+        $(document).on('change', '#state', function(){
+
+            var e = document.getElementById("country");
+            var country_id = $('#country option:selected').attr('id');
+
+            //console.log("dafafafadfa"+country_id);
+
+            var e = document.getElementById("state");
+            var state_id = e.options[e.selectedIndex].text;
+
+        //   var state_id = $(this).val();
+        //   var state_id = "Maharashtra";
+
+        if(state_id != '')
+        {
+        load_json_data('city',country_id,state_id);
         }
-       });
-       $('#'+id).html(html_code);
-      });
-    
-     }
-    
-     $(document).on('change', '#country', function(){
-        var country_id = $('#country option:selected').attr('id');
-      //console.log("Hello"+country_id);
-      if(country_id != '')
-      {
-       load_json_data('state',country_id);
-      }
-      else
-      {
-       $('#state').html('<option value="">Select state</option>');
-       $('#city').html('<option value="">Select city</option>');
-      }
-     });
-     $(document).on('change', '#state', function(){
-
-        var e = document.getElementById("country");
-        var country_id = $('#country option:selected').attr('id');
-
-        //console.log("dafafafadfa"+country_id);
-
-        var e = document.getElementById("state");
-        var state_id = e.options[e.selectedIndex].text;
-
-    //   var state_id = $(this).val();
-    //   var state_id = "Maharashtra";
-
-      if(state_id != '')
-      {
-       load_json_data('city',country_id,state_id);
-      }
-      else
-      {
-       $('#city').html('<option value="">Select city</option>');
-      }
-     });
-    });
+        else
+        {
+        $('#city').html('<option value="">Select city</option>');
+        }
+        });
+        });
     </script>
 
 
@@ -481,12 +481,10 @@ label.error{
         <div>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
-      <!-- <span class="navbar-toggler fa fa-home"></span> -->
     </button>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarhome" aria-controls="navbarhome" aria-expanded="false" aria-label="Toggle navigation">
-      <!-- <span class="navbar-toggler-icon"></span> -->
+    <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarhome" aria-controls="navbarhome" aria-expanded="false" aria-label="Toggle navigation">
       <a href="../../index.php" style="color:white"><span class="fa fa-home" ></span></a>
-    </button>
+    </button> -->
 
     </div>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -513,13 +511,12 @@ label.error{
                     <a class="nav-link js-scroll-trigger" href="#consultancy">Consultancy</a>
                 </li>
                 </li>
-                <!-- <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="account.php" target="_blank">Account settings</a>
-                </li>
+                <li class="nav-item">
+                    <a class="nav-link d-lg-none d-xl-none d-md-block d-sm-block" href="account.php" target="_blank"> Acconut Settings</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="../../logout.php">log out</a>
-                </li> -->
+                    <a class="nav-link d-lg-none d-xl-none d-md-block d-sm-block" href="../logout.php">Logout</a>
+                </li>
             </ul>
         </div>
     </nav>
@@ -897,38 +894,28 @@ label.error{
             <section class="sticky-top shadow p-2 bg-white d-none d-lg-block ">
                 <div class="row">
                     <div class="col-12 text-right">
-                    <button class="btn btn-member" >NAMAN</button>
-                        <button class="btn btn-member dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-user" style="font-size:20px;color:white"></i>
-                        </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item" href="account.php" target="_blank">Account Settings</a>
-                        <a class="dropdown-item" href="../../logout.php">Logout</a>
-                    </div>
-                    
-                    <!-- <button class="btn btn-member" onclick="window.open('../browse/browsestartup.php')"><i class="fa fa-navicon" style="font-size:20px;color:white"></i></button> -->
+                        <button class="btn" >NAMAN</button>
+                            <button class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-user" style="font-size:20px"></i>
+                            </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <a class="dropdown-item" href="account.php" target="_blank">Account Settings</a>
+                            <a class="dropdown-item" href="../../logout.php">Logout</a>
+                        </div>
                     </div>
                 </div>
             </section>
         <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="home">
             <div class="w-100">
-            <div class="row">
-                <div class="user-icons col-md-6">
-                    <a href="#">
-                        <i class="fas fa-user-circle"></i>
-                    </a>
-                </div>
-
-                <div class="text-right col-md-6">
-                    <button class="btn btn-member" onclick="window.open('../browse/browsestartup.php')">Browse Startups</button>
-                </div>
-            </div>
-
-                <h1 class="mb-0">
+                <h1 class="mb-0 mt-0">
                     <span class="text-primary">Hello <?=$cname?></span>
                 </h1>
-                <div class="subheading mb-5">GET STARTED.
-                    <!-- <a href="mailto:name@email.com">name@email.com</a> -->
+                <div class="row">
+                    <div class="subheading mb-5 col-md-9">GET STARTED.
+                    </div>
+                    <div class="text-right col-md-3">
+                        <button class="btn btn-member" onclick="window.open('../browse/browsestartup.php')">Browse Startups</button>
+                    </div>
                 </div>
                 <p class="lead mb-2">Thank you for your interest in Naman!
                         Our team will contact you shortly to discuss your needs and schedulea demo. In the meantime,

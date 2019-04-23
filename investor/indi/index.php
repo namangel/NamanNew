@@ -371,12 +371,10 @@
     <div>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
-      <!-- <span class="navbar-toggler fa fa-home"></span> -->
     </button>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarhome" aria-controls="navbarhome" aria-expanded="false" aria-label="Toggle navigation">
-      <!-- <span class="navbar-toggler-icon"></span> -->
+    <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarhome" aria-controls="navbarhome" aria-expanded="false" aria-label="Toggle navigation">
       <a href="../../index.php" style="color:white"><span class="fa fa-home" ></span></a>
-    </button>
+    </button> -->
 
     </div>
 
@@ -405,13 +403,12 @@
           <a class="nav-link js-scroll-trigger" href="#consultancy">Consultancy</a>
         </li>
         </li>
-        <!-- <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="account.php" target="_blank">Account settings</a>
-        </li>
+        <li class="nav-item">
+          <a class="nav-link d-lg-none d-xl-none d-md-block d-sm-block" href="account.php" target="_blank"> Acconut Settings</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="../../logout.php">log out</a>
-        </li> -->
+          <a class="nav-link d-lg-none d-xl-none d-md-block d-sm-block" href="../logout.php">Logout</a>
+        </li>
       </ul>
     </div>
   </nav>
@@ -686,44 +683,30 @@
     <section class="sticky-top shadow p-2 bg-white d-none d-lg-block ">
       <div class="row">
         <div class="col-12 text-right">
-        <button class="btn btn-member" >NAMAN</button>
-        <button class="btn btn-member dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <button class="btn" >NAMAN</button>
+        <button class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <i class="fa fa-user" style="font-size:20px;color:white"></i>
         </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
               <a class="dropdown-item" href="account.php" target="_blank">Account Settings</a>
               <a class="dropdown-item" href="../../logout.php">Logout</a>
           </div>
-
-        <!-- <button class="btn btn-member" onclick="window.open('../browse/browsestartup.php')"><i class="fa fa-navicon" style="font-size:20px;color:white"></i></button> -->
         </div>
       </div>
     </section>
 
     <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="home">
       <div class="w-100">
-      <!-- <div class="row">
-                <div class="user-icons col-md-6">
-                    <a href="#">
-                        <i class="fas fa-user-circle"></i>
-                    </a>
-                </div>
-
-                <div class="text-right col-md-6">
-                    <button class="btn btn-member" onclick="window.open('../browse/browsestartup.php')">Browse Startups</button>
-                </div>
-            </div>   -->
       <div class="row">
-        <h1 class="mb-0">
+        <h1 class="mb-0 col-md-9">
           <span class="text-primary">Hello <?= $fname ?></span>
         </h1>
-        <div class="text-right col-md-6">
+        <div class="text-right col-md-3">
           <button class="btn btn-member" onclick="window.open('../browse/browsestartup.php')">Browse Startups</button>
         </div>
       </div>
 
         <div class="subheading mb-5">GET STARTED.
-        <!-- <a href="mailto:name@email.com">name@email.com</a> -->
         </div>
         <p class="lead mb-2">Thank you for your interest in Naman!
           Our team will contact you shortly to discuss your needs and schedulea demo. In the meantime,
