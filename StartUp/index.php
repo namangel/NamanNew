@@ -464,7 +464,7 @@
 		}
 		header('location: index.php');
   }
-  
+
   $q = "SELECT * FROM tools_used WHERE StpID = '$id';";
   $results = mysqli_query($db, $q);
   $i=-1;
@@ -2202,11 +2202,12 @@
                                     echo '<p class="card-text">'.$row['Description'].'</p>';
                                     if($buy == 1){
                                       $BuyBtn="PAID";
-                                    echo '<a href="" class="btn btn-lg btn-block btn-login text-uppercase font-weight-bold mb-3" style="background-color:green" type="submit">'.$BuyBtn.'</a>';
+                                    echo '<button href="#" class="btn btn-primary btn-block btn-lg active"  type="submit" disabled>'.$BuyBtn.'</button>';
                                   }
                                   else{
                                       $BuyBtn="BUY";
-                                      echo '<a href="payment.php?tid='.$row['ID'].'" class="btn btn-lg btn-block btn-login text-uppercase font-weight-bold mb-3" type="submit">'.$BuyBtn.'</a>';
+                                      $redirect = 'payment.php?tid='.$row['ID'];
+                                      echo '<button onclick="location.href=\''.$redirect.'\'" class="btn btn-lg btn-block btn-success text-uppercase font-weight-bold mb-3" type="submit">'.$BuyBtn.'</button>';
                                   }
                                   echo '</div>';
                                 echo '</div>';
