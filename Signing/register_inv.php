@@ -11,98 +11,179 @@ if(isset($_SESSION['InvID'])){
 ?>
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>Investor | Registration Form</title>
 
-<head>
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <style>
-        .note
-        {
-            text-align: center;
-            height: 80px;
-            background: -webkit-linear-gradient(left, #0072ff, #8811c5);
-            color: #fff;
-            font-weight: bold;
-            line-height: 80px;
-        }
-        .form-content
-        {
-            padding: 5%;
-            border: 1px solid #ced4da;
-            margin-bottom: 2%;
-        }
-        .form-control{
-            border-radius:1.5rem;
-        }
-        .btnSubmit
-        {
-            border:none;
-            border-radius:1.5rem;
-            padding: 1%;
-            width: 20%;
-            cursor: pointer;
-            background: #0062cc;
-            color: #fff;
-        }
-        #individual, #institution{
-            display: none;
-        }
+        <!-- Bootstrap -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
 
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
-        input.error {
-            border: 1px dotted red;
-        }
-        label.error{
-            width: 100%;
-            color: red;
-            font-style: italic;
-            margin-left: 20px;
-            margin-bottom: 5px;
-        }
-    </style>
-</head>
+        <link href="../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-<body>
-<script>
-    function show(){
-    var type = document.getElementById("selecttype").value;
-    if(type == "NULL"){
-        document.getElementById("institution").style.display = "NONE";
-        document.getElementById("individual").style.display = "NONE";
-        document.getElementById("info").style.display = "block";
-    }
-    else if(type == "Institution"){
-        document.getElementById("individual").style.display = "NONE";
-        document.getElementById("institution").style.display = "block";
-        document.getElementById("info").style.display = "NONE";
-    }
-    else if(type == "Individual"){
-        document.getElementById("institution").style.display = "NONE";
-        document.getElementById("individual").style.display = "block";
-        document.getElementById("info").style.display = "NONE";
-    }
-    }
+        <style type="text/css">
+            .form-content
+            {
+                padding: 5%;
+            }
+            #individual, #institution{
+                display: none;
+            }
+            input.error {
+		    border: 1px dotted red;
+            }
+            label.error{
+                width: 100%;
+                color: red;
+                font-style: italic;
+                margin-left: 10px;
+                margin-bottom: 5px;
+            }
+        </style>
 
-</script>
-    <div class="container register-form">
-        <div class="form">
-            <div class="note">
-                <p>Investor Registration</p>
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="js/jquery-1.12.4.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="js/bootstrap.min.js"></script>
+
+        <script>
+            $(document).ready(function(){
+
+                load_json_data('country');
+
+                function load_json_data(id,parent_id,state_id)
+                {
+                //console.log(parent_id);
+                //console.log(id);
+                var html_code = '';
+                $.getJSON('json/location.json', function(data){
+
+                html_code += '<option value="">Select '+id+'</option>';
+                $.each(data, function(key, value){
+                if(id == 'country')
+                {
+
+                    html_code += '<option value="'+value.name+'" id="'+value.id+'">'+value.name+'</option>';
+                }
+                else if(id == 'state')
+                {
+                    if(value.id == parent_id)
+                    {
+                        $.each(data[parent_id-1].states, function(key, value){
+                        html_code += '<option value="'+key+'">'+key+'</option>';
+                    });
+                    }
+                }
+                else
+                {
+                    // console.log("Parent_id"+parent_id);
+                    // console.log("State_id"+state_id);
+
+                    if(value.id == parent_id)
+                    {
+                        $.each(data[parent_id-1].states, function(key, value){
+                        if(key == state_id)
+                        {
+                            for (var i = 0;i < value.length;i++)
+                            {
+                                html_code += '<option value="'+value[i]+'">'+value[i]+'</option>';
+                            }
+                        }
+                    });
+                }
+                }
+                });
+                $('#'+id).html(html_code);
+                });
+
+                }
+
+                $(document).on('change', '#country', function(){
+                var country_id = $('#country option:selected').attr('id');
+                //console.log("Hello"+country_id);
+                if(country_id != '')
+                {
+                load_json_data('state',country_id);
+                }
+                else
+                {
+                $('#state').html('<option value="">Select state</option>');
+                $('#city').html('<option value="">Select city</option>');
+                }
+                });
+                $(document).on('change', '#state', function(){
+
+                var e = document.getElementById("country");
+                var country_id = $('#country option:selected').attr('id');
+
+                //console.log("dafafafadfa"+country_id);
+
+                var e = document.getElementById("state");
+                var state_id = e.options[e.selectedIndex].text;
+
+            //   var state_id = $(this).val();
+            //   var state_id = "Maharashtra";
+
+                if(state_id != '')
+                {
+                load_json_data('city',country_id,state_id);
+                }
+                else
+                {
+                $('#city').html('<option value="">Select city</option>');
+                }
+                });
+            });
+        </script>
+
+        <script>
+            function show(){
+                var type = document.getElementById("selecttype").value;
+                if(type == "NULL"){
+                    document.getElementById("institution").style.display = "NONE";
+                    document.getElementById("individual").style.display = "NONE";
+                    document.getElementById("info").style.display = "block";
+                }
+                else if(type == "Institution"){
+                    document.getElementById("individual").style.display = "NONE";
+                    document.getElementById("institution").style.display = "block";
+                    document.getElementById("info").style.display = "NONE";
+                }
+                else if(type == "Individual"){
+                    document.getElementById("institution").style.display = "NONE";
+                    document.getElementById("individual").style.display = "block";
+                    document.getElementById("info").style.display = "NONE";
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div class="panel panel-primary" style="margin:20px;">
+            <div class="panel-heading">
+                    <h3 class="panel-title">Registration Form</h3>
             </div>
-
             <div class="form-content">
                 <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <form method="POST" name="register_inv_select">
-                                <select class="form-control" name="type" onchange="show()" id="selecttype">
-                                    <option value="NULL">--Select Type of Investor--</option>
-                                    <option value="Individual">Individual Investor</option>
-                                    <option value="Institution">Institution Investor</option>
-                                </select>
-                            </form>
-                        </div>
+                    <div class="form-group col-md-12 col-sm-12">
+                        <form method="POST" name="register_inv_select">
+                            <select class="form-control input-sm" name="type" onchange="show()" id="selecttype">
+                                <option value="NULL">--Select Type of Investor--</option>
+                                <option value="Individual">Individual Investor</option>
+                                <option value="Institution">Institution Investor</option>
+                            </select>
+                        </form>
                     </div>
 
 
@@ -122,211 +203,205 @@ if(isset($_SESSION['InvID'])){
                         </div>
                     </section>
                 </div>
-
-
-                <div id="individual">
+            </div>
+            <div class="panel-body" id="individual">
                 <form method="POST" name="register_inv" id="indi" action="register_inv.php">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <input name="fname" type="text" class="form-control" placeholder="First Name">
-                            </div>
-                            <div class="form-group">
-                                <input name="lname" type="text" class="form-control" placeholder="Last Name">
-                            </div>
+                    <div class="col-md-12 col-sm-12">
+                        <div class="form-group col-md-6 col-sm-6">
+                            <label for="fname">First Name	</label>
+                            <input type="text" class="form-control input-sm" name="fname" placeholder="">
                         </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <input name="phone" type="text" class="form-control" placeholder="Phone Number">
-                            </div>
-                            <div class="form-group">
-                                <input name="email" type="text" class="form-control" placeholder="Email Address">
-                            </div>
+                        <div class="form-group col-md-6 col-sm-6">
+                            <label for="lname">Last Name	</label>
+                            <input type="text" class="form-control input-sm" name="lname" placeholder="">
                         </div>
-                    </div>
-                    <br>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <input type="text" name="country" class="form-control" placeholder="Country">
-                            </div>
+                        <div class="form-group col-md-6 col-sm-6">
+                            <label for="email">Email Address</label>
+                            <input type="email" class="form-control input-sm" name="email" placeholder="">
                         </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <input type="text" name="state" class="form-control" placeholder="State">
-                            </div>
+
+                        <div class="form-group col-md-6 col-sm-6">
+                            <label for="phone">Phone Number</label>
+                            <input type="text" class="form-control input-sm" name="phone" placeholder="">
                         </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <input type="text" name="city" class="form-control" placeholder="City">
-                            </div>
+                        
+                        <div class="form-group col-md-6 col-sm-6">
+                            <label for="country">Country</label>
+                            <select class="form-control input-sm custom-select" name="country" id="country">
+                                <option value="">Select country</option>
+                            </select>
                         </div>
-                    </div>
-                    <br>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <input name="ioi" type="text" class="form-control" placeholder="Industry of Interest">
-                            </div>
+                        
+                        <div class="form-group col-md-6 col-sm-6">
+                            <label for="state">State</label>
+                            <select class="form-control input-sm custom-select " name="state" id="state">
+                                <option value="">Select state</option>
+                            </select>
                         </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <select class="form-control" name="invrange">
+
+                        <div class="form-group col-md-6 col-sm-6">
+                            <label for="city">City</label>
+                            <select class="form-control input-sm custom-select" name="city" id="city">
+                                <option value="">Select city</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group col-md-6 col-sm-6">
+                            <label for="ioi">Industry of Interest</label>
+                            <input type="text" class="form-control input-sm" name="ioi" placeholder="">
+                        </div>
+
+                        <div class="form-group col-md-6 col-sm-6">
+                            <label for="average">Avg. No. of Companies Invested per Year</label>
+                            <input type="text" class="form-control input-sm" name="average" placeholder="">
+                        </div>
+
+                        <div class = "form-group col-md-6 col-sm-6">
+                            <label for="invrange">Investment range</label>	 
+                            <select class="form-control input-sm" name="invrange">
                                     <option>Select Investment range</option>
                                     <option>0 - 1,00,000</option>
                                     <option>1,00,000 - 10,00,000</option>
                                     <option>10,00,000 - 50,00,000</option>
                                     <option>50,00,000 - 1,00,00,000</option>
                                     <option>More than 1,00,00,000</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <input name="average" type="text" class="form-control" placeholder="Avg. No. of Companies Invested per Year">
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <input name="cdesc" type="text" class="form-control" placeholder="Company Description - Describe yourself and the value of your company">
-                            </div>
-                        </div>
-                    </div>
-                    <br>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <input name="username" type="text" class="form-control" placeholder="Username">
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <input name="password_1" type="password" class="form-control" placeholder="Password">
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <input name="password_2" type="password" class="form-control" placeholder="Confirm Password">
-                            </div>
-                        </div>
-                    </div>
-                    <input type="submit" class="btnSubmit" name="reginv_ind">
-                    </form>
-                </div>
-
-
-                <div id="institution">
-                <form method="POST" name="register_inv" id="inst" action="register_inv.php">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <input name="iname" type="text" class="form-control" placeholder="Company Name">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <input name="fname" type="text" class="form-control" placeholder="First Name">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <input name="lname" type="text" class="form-control" placeholder="Last Name">
-                            </div>
-                        </div>
-                    </div>
-                    <br>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <input name="phone" type="text" class="form-control" placeholder="Phone Number">
-                            </div>
-                            <div class="form-group">
-                                <input name="email" type="text" class="form-control" placeholder="Email Address">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                        <!-- </div>
-                        <div class="col-md-6"> -->
-                            <div class="form-group">
-                                <input name="website" type="text" class="form-control" placeholder="Website">
-                            </div>
-                        </div>
-                    </div>
-                    <br>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <input type="text" name="country" class="form-control" placeholder="Country">
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <input type="text" name="state" class="form-control" placeholder="State">
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <input type="text" name="city" class="form-control" placeholder="City">
-                            </div>
-                        </div>
-                    </div>
-                    <br>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <input name="ioi" type="text" class="form-control" placeholder="Industry of Interest">
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                            <select class="form-control" name="invrange">
-                                <option>Select Investment range</option>
-                                <option>0 - 1,00,000</option>
-                                <option>1,00,000 - 10,00,000</option>
-                                <option>10,00,000 - 50,00,000</option>
-                                <option>50,00,000 - 1,00,00,000</option>
-                                <option>More than 1,00,00,000</option>
                             </select>
-                            </div>
                         </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <input name="average" type="text" class="form-control" placeholder="Avg. No. of Companies Invested per Year">
-                            </div>
+     
+                        <div class="form-group col-md-6 col-sm-6">
+                            <label for="address">Company Description</label>
+                            <span class="help-block">Describe yourself and the value of your company</span>
+                            <textarea class="form-control input-sm" name="address" rows="3"></textarea>
                         </div>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <input name="cdesc" type="text" class="form-control" placeholder="Company Description">
-                            </div>
+
+                        <div class="form-group col-md-6 col-sm-6">
+                            <label for="username">Username</label>
+                            <input type="text" class="form-control input-sm" id="username" placeholder="">
+                        </div>
+                        
+                        <div class="form-group col-md-6 col-sm-6">
+                            <label for="password_1">Password</label>
+                            <input type="password" class="form-control input-sm" name="password_1" placeholder="">
+                        </div>
+
+                        <div class="form-group col-md-6 col-sm-6">
+                            <label for="password_2">Confirm Password</label>
+                            <input type="password" class="form-control input-sm" name="password_2" placeholder="">
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-12 col-sm-12">
+                        <div class="form-group col-md-12 col-sm-12 pull-right" >
+                            <input type="submit" class="btn btn-primary" value="Register" name="reginv_ind">
                         </div>
                     </div>
-                    <br>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <input name="username" type="text" class="form-control" placeholder="Username">
-                            </div>
+                </form>
+            </div>
+            <div class="panel-body" id="institution">
+                <form method="POST" name="register_inv" id="inst" action="register_inv.php">
+                    <div class="col-md-12 col-sm-12">
+                        <div class="form-group col-md-6 col-sm-6">
+                            <label for="fname">Company Name </label>
+                            <input type="text" class="form-control input-sm" name="iname" placeholder="">
                         </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <input name="password_1" type="password" class="form-control" placeholder="Password">
-                            </div>
+                        <div class="form-group col-md-6 col-sm-6">
+                            <label for="fname">First Name	</label>
+                            <input type="text" class="form-control input-sm" name="fname" placeholder="">
                         </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <input name="password_2" type="password" class="form-control" placeholder="Confirm Password">
-                            </div>
+                        <div class="form-group col-md-6 col-sm-6">
+                            <label for="lname">Last Name	</label>
+                            <input type="text" class="form-control input-sm" name="lname" placeholder="">
+                        </div>
+                        <div class="form-group col-md-6 col-sm-6">
+                            <label for="email">Email Address</label>
+                            <input type="email" class="form-control input-sm" name="email" placeholder="">
+                        </div>
+
+                        <div class="form-group col-md-6 col-sm-6">
+                            <label for="phone">Phone Number</label>
+                            <input type="text" class="form-control input-sm" name="phone" placeholder="">
+                        </div>
+                        
+                        <div class="form-group col-md-6 col-sm-6">
+                            <label for="country">Country</label>
+                            <select class="form-control input-sm custom-select " name="country" id="country">
+                                <option value="">Select country</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group col-md-6 col-sm-6">
+                            <label for="state">State</label>
+                            <select class="form-control input-sm custom-select " name="state" id="state">
+                                <option value="">Select state</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group col-md-6 col-sm-6">
+                            <label for="city">City</label>
+                            <select class="form-control input-sm custom-select " name="city" id="city">
+                                <option value="">Select city</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group col-md-6 col-sm-6">
+                            <label for="ioi">Industry of Interest</label>
+                            <input type="text" class="form-control input-sm" name="ioi" placeholder="">
+                        </div>
+
+                        <div class="form-group col-md-6 col-sm-6">
+                            <label for="average">Avg. No. of Companies Invested per Year</label>
+                            <input type="text" class="form-control input-sm" name="average" placeholder="">
+                        </div>
+
+                        <div class = "form-group col-md-6 col-sm-6">
+                            <label for="invrange">Investment range</label>	 
+                            <select class="form-control input-sm" name="invrange">
+                                    <option>Select Investment range</option>
+                                    <option>0 - 1,00,000</option>
+                                    <option>1,00,000 - 10,00,000</option>
+                                    <option>10,00,000 - 50,00,000</option>
+                                    <option>50,00,000 - 1,00,00,000</option>
+                                    <option>More than 1,00,00,000</option>
+                            </select>
+                        </div>
+     
+                        <div class="form-group col-md-6 col-sm-6">
+                            <label for="address">Company Description</label>
+                            <span class="help-block">Describe yourself and the value of your company</span>
+                            <textarea class="form-control input-sm" name="address" rows="3"></textarea>
+                        </div>
+
+                        <div class="form-group col-md-6 col-sm-6">
+                            <label for="username">Username</label>
+                            <input type="text" class="form-control input-sm" id="username" placeholder="">
+                        </div>
+                        
+                        <div class="form-group col-md-6 col-sm-6">
+                            <label for="password_1">Password</label>
+                            <input type="password" class="form-control input-sm" name="password_1" placeholder="">
+                        </div>
+
+                        <div class="form-group col-md-6 col-sm-6">
+                            <label for="password_2">Confirm Password</label>
+                            <input type="password" class="form-control input-sm" name="password_2" placeholder="">
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-12 col-sm-12">
+                        <div class="form-group col-md-12 col-sm-12 pull-right" >
+                            <input type="submit" class="btn btn-primary" value="Register" name="reginv_inst">
                         </div>
                     </div>
-                    <input type="submit" class="btnSubmit" name="reginv_inst">
-                    </form>
-                </div>
+                </form>
             </div>
         </div>
-    </div>   
-</body>
+    </body>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.js"></script>
 <script src="js/validation.js"></script> 
-
-
+</html>
