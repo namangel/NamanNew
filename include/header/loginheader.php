@@ -6,7 +6,7 @@
 
         <nav class="main-nav float-right d-none d-lg-block">
             <ul>
-                <li><a href="../#intro">Home</a></li>
+               <li><a href="../#intro">Home</a></li>
                 <li><a href="../#about">About Us</a></li>
                 <li><a href="../#startups">Startups</a></li>
                 <li><a href="../#investors">Investors</a></li>
