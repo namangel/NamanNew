@@ -235,7 +235,34 @@
 		    font-style: italic;
 		    margin-left: 10px;
 		    margin-bottom: 5px;
-		}
+    }
+    
+    @media (max-width: 768px) {
+            .back-to-top {
+                bottom: 15px;
+            }
+        }
+        .back-to-top {
+            position: fixed;
+            display: none;
+            background: #0e3c58;
+            color: #fff;
+            width: 44px;
+            height: 44px;
+            text-align: center;
+            line-height: 1;
+            font-size: 16px;
+            border-radius: 50%;
+            right: 15px;
+            bottom: 15px;
+            transition: background 0.5s;
+            z-index: 11;
+        }
+
+        .back-to-top i {
+            padding-top: 12px;
+            color: #fff;
+        } 
 	</style>
 
 	<script>
@@ -325,7 +352,20 @@
 	      $('#city').html('<option value="">Select city</option>');
 	     }
 	    });
-	   });
+     });
+     
+     // Back to top button
+     $(window).scroll(function() {
+            if ($(this).scrollTop() > 100) {
+            $('.back-to-top').fadeIn('slow');
+            } else {
+            $('.back-to-top').fadeOut('slow');
+            }
+        });
+        $('.back-to-top').click(function(){
+            $('html, body').animate({scrollTop : 0},1500, 'easeInOutExpo');
+            return false;
+        });
 	</script>
 
 </head>
@@ -354,6 +394,8 @@
       document.getElementById("Others").style.display = "inline-block";
     }
   }
+
+
 </script>
 
 <body id="page-top">
@@ -404,7 +446,7 @@
         </li>
         </li>
         <li class="nav-item">
-          <a class="nav-link d-lg-none d-xl-none d-md-block d-sm-block" href="account.php" target="_blank"> Acconut Settings</a>
+          <a class="nav-link d-lg-none d-xl-none d-md-block d-sm-block" href="account.php" target="_blank"> Account Settings</a>
         </li>
         <li class="nav-item">
           <a class="nav-link d-lg-none d-xl-none d-md-block d-sm-block" href="../logout.php">Logout</a>
@@ -685,7 +727,7 @@
         <div class="col-12 text-right">
         <button class="btn" >NAMAN</button>
         <button class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <i class="fa fa-user" style="font-size:20px;color:white"></i>
+        <i class="fa fa-user" style="font-size:20px"></i>
         </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
               <a class="dropdown-item" href="account.php" target="_blank">Account Settings</a>
@@ -1067,6 +1109,8 @@
 
 
   </div>
+  <a href="#" class="back-to-top" style="display:inline"><i class="fa fa-chevron-up"></i></a>
+
   <!-- Bootstrap core JavaScript -->
   <script src="../vendor/jquery/jquery.min.js"></script>
   <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
