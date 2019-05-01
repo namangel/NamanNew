@@ -8,7 +8,16 @@
     $CName = $row['CName'];
     $Email = $row['Email'];
 	$Phone = $row['Phone'];
-	$Website = $row['Website'];
+    $Website = $row['Website'];
+    
+    $qu = "SELECT * FROM inv_addetails WHERE InvID='$id'";
+    $results = mysqli_query($db, $qu);
+	$row = mysqli_fetch_assoc($results);
+	$facebook=$row['Facebook']==""? '--':$row['Facebook'];
+	$twitter=$row['Twitter']==""? '--':$row['Twitter'];
+	$linkedin=$row['LinkedIn']==""? '--':$row['LinkedIn'];
+	$instagram=$row['Instagram']==""? '--':$row['Instagram'];
+	$others = $row['Others']==""? '--':$row['Others'];
 
 
     $q = "SELECT * FROM inv_uploads WHERE InvID = '$id';";
@@ -53,9 +62,9 @@
 
     if(isset($_POST['company_save'])){
         $cname = mysqli_real_escape_string($db, $_POST['company_name']);
-		$cweb = mysqli_real_escape_string($db, $_POST['cwebsite']);
-		$cphone = mysqli_real_escape_string($db, $_POST['cphone']);
-		$cemail = mysqli_real_escape_string($db, $_POST['cemail']);
+		$cweb = mysqli_real_escape_string($db, $_POST['website']);
+		$cphone = mysqli_real_escape_string($db, $_POST['phone']);
+		$cemail = mysqli_real_escape_string($db, $_POST['email']);
 
         if($cname != "")
 		{
@@ -116,6 +125,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
@@ -127,14 +137,13 @@
             width: 100%;
             color: red;
             font-style: italic;
-            margin-left: 10px;
-            margin-bottom: 5px;
+            /* margin-left: 10px; */
+            /* margin-bottom: 5px; */
             }
         </style>
 
     </head>
     <body>
-        <hr>
         <div class="container bootstrap snippet">
             <div class="row">
                 <div class="col-sm-10"><h1><?=$CName?></h1></div>
@@ -183,11 +192,13 @@
                     </div>
                     <hr><br>
                     <ul class="list-group">
-                        <li class="list-group-item text-muted">Social presence <i class="fa fa-dashboard fa-1x"></i></li>
-                        <li class="list-group-item text-right"><span class="pull-left"><strong>Shares</strong></span> 125</li>
-                        <li class="list-group-item text-right"><span class="pull-left"><strong>Likes</strong></span> 13</li>
-                        <li class="list-group-item text-right"><span class="pull-left"><strong>Posts</strong></span> 37</li>
-                        <li class="list-group-item text-right"><span class="pull-left"><strong>Followers</strong></span> 78</li>
+                        <li class="list-group-item text-muted">Social presence </li>
+                        <li class="list-group-item text-right"><span class="pull-left"><strong><i class="fa fa-linkedin"></i></strong></span> <?=$linkedin?></li>
+                        <li class="list-group-item text-right"><span class="pull-left"><strong><i class="fa fa-facebook"></i></strong></span> <?=$facebook?></li>
+                        <li class="list-group-item text-right"><span class="pull-left"><strong><i class="fa fa-instagram"></i></strong></span> <?=$instagram?></li>
+                        <li class="list-group-item text-right"><span class="pull-left"><strong><i class="fa fa-twitter"></i></strong></span> <?=$twitter?></li>
+                        <li class="list-group-item text-right"><span class="pull-left"><strong><i class="fa fa-globe"></i></strong></span> <?=$others?></li>
+
                     </ul>
                 </div><!--/col-3-->
                 <div class="col-sm-8">
@@ -209,21 +220,21 @@
                                 <div class="form-group">
                                     <div class="col-xs-6">
                                         <label for="first_name"><h4>Website</h4></label>
-                                        <input type="text" class="form-control" name="cwebsite" id="website" placeholder="<?=$Website?>" title="Enter your website">
+                                        <input type="text" class="form-control" name="website" id="website" placeholder="<?=$Website?>" title="Enter your website">
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <div class="col-xs-6">
                                         <label for="phone"><h4>Phone</h4></label>
-                                        <input type="text" class="form-control" name="cphone" id="phone" placeholder="<?=$Phone?>" title="Enter your phone number">
+                                        <input type="text" class="form-control" name="phone" id="phone" placeholder="<?=$Phone?>" title="Enter your phone number">
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <div class="col-xs-6">
                                         <label for="mobile"><h4>Email Address</h4></label>
-                                        <input type="text" class="form-control" name="cemail" id="email" placeholder="<?=$Email?>" title="Enter your email address">
+                                        <input type="text" class="form-control" name="email" id="email" placeholder="<?=$Email?>" title="Enter your email address">
                                     </div>
                                 </div>
 

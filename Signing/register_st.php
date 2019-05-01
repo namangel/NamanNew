@@ -22,7 +22,7 @@ if(isset($_SESSION['StpID'])){
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
         <link href="../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-       
+
         <link href="../css/style.css" rel="stylesheet">
 
         <style type="text/css">
@@ -169,7 +169,7 @@ if(isset($_SESSION['StpID'])){
     </head>
     <body>
     <?php require "../include/header/registerheader.php"?>
-    
+
         <div class="panel panel-primary" style="margin:20px;">
             <div class="panel-heading">
                     <h3 class="panel-title"> Startup Registration Form</h3>
@@ -311,8 +311,8 @@ if(isset($_SESSION['StpID'])){
                                 <option value="">Select city</option>
                             </select>
                         </div>
-                       
-                        
+
+
                         <div class="form-group col-md-6 col-sm-6">
                             <label for="website">Website</label>
                             <input type="text" class="form-control input-sm" name="website" placeholder="">
@@ -322,7 +322,7 @@ if(isset($_SESSION['StpID'])){
                             <label for="average">Investment Received Till date</label>
                             <input type="number" class="form-control input-sm" name="inv" placeholder="">
                         </div>
-                        
+
                         <div class="form-group col-md-6 col-sm-6">
                             <label for="username">Username</label>
                             <input type="text" class="form-control input-sm" id="username" name="username"placeholder="">
@@ -352,7 +352,7 @@ if(isset($_SESSION['StpID'])){
                     </div>
                 </form>
             </div>
-           
+
                     </div>
                 </form>
             </div>
@@ -415,5 +415,5 @@ if(isset($_SESSION['StpID'])){
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.js"></script>
-<script src="js/validate.js"></script> 
+<script src="js/validate.js"></script>
 </html>

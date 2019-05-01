@@ -9,7 +9,17 @@
     $LName = $row['LName'];
     $Email = $row['Email'];
 	$Phone = $row['Phone'];
-	$Website = $row['Website'];
+    $Website = $row['Website'];
+    
+    $qu = "SELECT * FROM inv_addetails WHERE InvID='$id'";
+    $results = mysqli_query($db, $qu);
+	$row = mysqli_fetch_assoc($results);
+	$facebook=$row['Facebook']==""? '--':$row['Facebook'];
+	$twitter=$row['Twitter']==""? '--':$row['Twitter'];
+	$linkedin=$row['LinkedIn']==""? '--':$row['LinkedIn'];
+	$instagram=$row['Instagram']==""? '--':$row['Instagram'];
+	$others = $row['Others']==""? '--':$row['Others'];
+
 
 
     $q = "SELECT * FROM inv_uploads WHERE InvID = '$id';";
@@ -184,11 +194,12 @@
                 </div>
                 <hr><br>
                 <ul class="list-group">
-                    <li class="list-group-item text-muted">Social presence <i class="fa fa-dashboard fa-1x"></i></li>
-                    <li class="list-group-item text-right"><span class="pull-left"><strong>Shares</strong></span> 125</li>
-                    <li class="list-group-item text-right"><span class="pull-left"><strong>Likes</strong></span> 13</li>
-                    <li class="list-group-item text-right"><span class="pull-left"><strong>Posts</strong></span> 37</li>
-                    <li class="list-group-item text-right"><span class="pull-left"><strong>Followers</strong></span> 78</li>
+                    <li class="list-group-item text-muted">Social presence </li>
+                    <li class="list-group-item text-right"><span class="pull-left"><strong><i class="fa fa-linkedin"></i></strong></span> <?=$linkedin?></li>
+                        <li class="list-group-item text-right"><span class="pull-left"><strong><i class="fa fa-facebook"></i></strong></span> <?=$facebook?></li>
+                        <li class="list-group-item text-right"><span class="pull-left"><strong><i class="fa fa-instagram"></i></strong></span> <?=$instagram?></li>
+                        <li class="list-group-item text-right"><span class="pull-left"><strong><i class="fa fa-twitter"></i></strong></span> <?=$twitter?></li>
+                        <li class="list-group-item text-right"><span class="pull-left"><strong><i class="fa fa-globe"></i></strong></span> <?=$others?></li>
                 </ul>
             </div><!--/col-3-->
     	<div class="col-sm-8">

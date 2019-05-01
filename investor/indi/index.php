@@ -681,7 +681,7 @@
     </div>
 
     <section class="sticky-top shadow p-2 bg-white d-none d-lg-block ">
-      <div class="row">
+      <div class="row m-0">
         <div class="col-12 text-right">
         <button class="btn" >NAMAN</button>
         <button class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -1017,7 +1017,7 @@
                       echo'<div class="review-text">';
                       echo'Start browsing startups and invest now!!';
                       echo'<br>';
-                      echo'<a class="nav-link" href="#browsestartup">Browse Startups</a>';
+                      echo'<a class="nav-link" target="_blank" href="../browse/browsestartup.php">Browse Startups</a>';
                     echo'</div>';
                   echo'</div>';
                 }
