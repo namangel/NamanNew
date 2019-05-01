@@ -130,67 +130,107 @@ $(document).ready(function() {
     $("#contactForm").validate({
         rules: {
             first_name: {
-                required: true,
                 minlength: 2
             },
             company_name: {
-                required: true,
                 minlength: 2
             },
             last_name: {
-                required: true,
                 minlength: 2
             },
             summary: {
-                required: true,
                 minlength: 5,
                 maxlength: 250
             },
             phone: {
-                required: true,
                 minlength: 10,
                 maxlength: 10,
                 digits: true,
             },
             email: {
-                required: true,
                 email: true
             },
             website: {
-                required: true,
                 url: true
             }
     
         },
         messages: {         
             first_name: {
-                required: "Please fill this field",
                 minlength: "Your name must consist of at least 2 characters"
             },
             company_name: {
-                required: "Please fill this field",
                 minlength: "Your name must consist of at least 2 characters"
             },
             last_name: {
-                required: "Please fill this field",
                 minlength: "Your name must consist of at least 2 characters"
             },
             phone: {
-                required: "Please fill this field",
                 digits: "Please enter valid phone number",
                 minlength: "Please enter valid phone number",
                 maxlength: "Please enter valid phone number"
             }, 
             email: {
-                required: "Please fill this field",
                 email: "Please enter valid email"
             },
             website: {
-                required: "Please fill this field",
                 url: "Please enter valid input"
             }
         }
     });
+});
+
+$(document).ready(function() {
+    $("#team-member").validate({
+        rules: {
+            tmname: {
+                required: true, 
+                minlength: 2
+            },
+            tmdesig: {
+                required: true,
+                minlength: 2
+            },
+            tmemail: {
+                required: true,
+                email: true
+            },
+            tmlinkedin: {
+                url: true
+            },
+            tmyears: {
+                required: true,
+                number: true
+            },
+            tmexp: {
+                required: true,
+            }
+        },
+        messages: {         
+            tmname: {
+                required: "Please fill this field", 
+                minlength: "Your name must consists of atleast 2 characters"
+            },
+            tmdesig: {
+                required: "Please fill this field", 
+                minlength: "Please enter valid input"
+            },
+            tmemail: {
+                required: "Please fill this field", 
+                email: "Please enter valid email"
+            },
+            tmlinkedin: {
+                url: "Please enter valid input"
+            },
+            tmyears: {
+                required: "Please fill this field", 
+                number: "Please enter numeric values"
+            },
+            tmexp: {
+                required: "Please fill this field", 
+            }
+        }
+    });  
 });
 $(document).ready(function() {
     $("#accountForm").validate({

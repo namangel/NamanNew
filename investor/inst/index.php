@@ -791,7 +791,7 @@
                     </div>
             </div>
 
-            <div class="modal fade" id="addTeamForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal fade" name="addTeamForm" id="addTeamForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header text-center">
@@ -802,34 +802,34 @@
                             </button>
                         </div>
                         <div class="modal-body mx-3">
-                            <form method="post" action="index.php" >
+                            <form method="post" action="index.php" name="team-member" id="team-member" >
                                 <div class="card">
                                     <div id="basics" aria-labelledby="headingOne">
                                         <div class="card-body">
                                             <form>
                                                 <div class="form-group">
                                                     <label>Member Name</label>
-                                                    <input type="text" class="form-control" name="tmname" placeholder="">
+                                                    <input type="text" class="form-control" name="tmname" id="tmname" placeholder="Enter name">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Member Designation</label>
-                                                    <input type="text" class="form-control" name="tmdesig"    placeholder="">
+                                                    <input type="text" class="form-control" name="tmdesig" id="tmdesig" placeholder="Enter designation">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Email</label>
-                                                    <input type="text" class="form-control" name="tmemail" placeholder="">
+                                                    <input type="text" class="form-control" name="tmemail" id="tmemail" placeholder="Enter email address">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Linkedin</label>
-                                                    <input type="text" class="form-control" name="tmlinkedin" placeholder="">
+                                                    <input type="text" class="form-control" name="tmlinkedin" id="tmlinkedin" placeholder="Enter linkedin id">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Experience(in yrs)</label>
-                                                    <input type="text" class="form-control" name="tmyears" placeholder="">
+                                                    <input type="text" class="form-control" name="tmyears" id="tmyears" placeholder="Enter experience">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Expertise</label>
-                                                    <input type="text" class="form-control" name="tmexp" placeholder="">
+                                                    <input type="text" class="form-control" name="tmexp" id="tmexp" placeholder="Enter expertise">
                                                 </div>
                                         </div>
                                     </div>
@@ -843,12 +843,12 @@
                 </div>
             </div>
 
-            <div class="modal fade" id="updateTeamForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <!-- <div class="modal fade" id="updateTeamForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header text-center">
                             <h4 class="modal-title w-100 font-weight-bold">Update Group member's Details</h4>
-                                <!-- <p>Your Group is one of the most influential factors driving the investment process.</p> -->
+                                <p>Your Group is one of the most influential factors driving the investment process.</p>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                                 </button>
@@ -889,10 +889,10 @@
                     </div>
                     </form>
                 </div>
-            </div>
+            </div> -->
 
             <section class="sticky-top shadow p-2 bg-white d-none d-lg-block ">
-                <div class="row">
+                <div class="row m-0">
                     <div class="col-12 text-right">
                         <button class="btn" >NAMAN</button>
                             <button class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -905,6 +905,7 @@
                     </div>
                 </div>
             </section>
+
         <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="home">
             <div class="w-100">
                 <h1 class="mb-0 mt-0">
@@ -1156,7 +1157,7 @@
 					if (mysqli_num_rows($results) > 0) {
                         while($row = mysqli_fetch_assoc($results)) {
                             echo '<div class="col-md-6">';
-                                echo '<div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">';
+                                // echo '<div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">';
                                     echo '<div class="resume-content">';
                                         echo '<div class="row">';
                                             echo '<div class="col-md-10">';
@@ -1182,7 +1183,7 @@
                                                     echo '<p>' .$row["Email"]. " | " .$row["LinkedIn"]. '</p>';
                                                     echo '<p>' .$row["Expertise"]. '</p>';
                                                 echo '</div>';
-                                            echo '</div>';
+                                            // echo '</div>';
                                         echo '</div>';
                                     }
                                 }
@@ -1324,7 +1325,7 @@
                                                     echo'<div class="review-text">';
                                                     echo'Start browsing startups and invest now!!';
                                                     echo'<br>';
-                                                    echo'<a class="nav-link" href="#browsestartup">Browse Startups</a>';
+                                                    echo'<a class="nav-link" target="_blank" href="../browse/browsestartup.php">Browse Startups</a>';
                                                 echo'</div>';
                                             echo'</div>';
                                         }
