@@ -173,7 +173,7 @@ if(isset($_SESSION['InvID'])){
     <?php require "../include/header/registerheader.php"?>
         <div class="panel panel-primary" style="margin:20px;">
             <div class="panel-heading">
-                    <h3 class="panel-title">Registration Form</h3>
+                    <h3 class="panel-title"> Investor Registration Form</h3>
             </div>
             <div class="form-content">
                 <div class="row">
@@ -490,59 +490,8 @@ if(isset($_SESSION['InvID'])){
                 </form>
             </div>
         </div>
-        <section class="sticky-bottom shadow p-1 bg-light">
-          <div class="row" style="font-size:12px">
-            <div class="col-md-12 col-sm-12 text-center p-2">
-                <div class="row">
-                    <div class="col-md-12 text-center p-1">
-                        <div class="col-2 d-inline">
-                            <a href="../#intro" class="text-dark">Home</a>
-                        </div>
-                        <div class="col-2 d-inline">
-                            <a href="../#about" class="text-dark">About</a>
-                        </div>
-                        <div class="col-md-2 d-inline">
-                            <a href="#" class="text-dark">Services</a>
-                        </div>
-                        <div class="col-md-2 d-inline">
-                            <a href="#" class="text-dark">Privacy policy</a>
-                        </div>
-                        <div class="col-2 d-inline">
-                            <a href="../faq.php" class="text-dark">FAQs</a>
-                        </div>
-                        <div class="col-2 d-inline">
-                            <a href="../#contact" class="text-dark">Contact</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-12 text-center p-1">
-                        <div class="col-md-12 d-block">
-                            Copyright @2019 | Designed by Bronn Of Blackwater
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12 text-center p-1">
-                        <div class="col-md-1 d-inline">
-                            <a href="#" class="text-dark"><i class="fa fa-facebook-f"></i></a>
-                        </div>
-                        <div class="col-md-1 d-inline">
-                            <a href="#" class="text-dark"><i class="fa fa-twitter"></i></a>
-                        </div>
-                        <div class="col-md-1 d-inline">
-                            <a href="#" class="text-dark"><i class="fa fa-linkedin"></i></a>
-                        </div>
-
-                        <div class="col-md-1 d-inline">
-                            <a href="#" class="text-dark"><i class="fa fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-          </div>
-        </section>
+          
+        <?php require "../include/footer/regfooter.php"?>
     </body>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>

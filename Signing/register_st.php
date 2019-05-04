@@ -24,26 +24,12 @@ if(isset($_SESSION['StpID'])){
         <link href="../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
         <link href="../css/style.css" rel="stylesheet">
+        <link href="css/regform.css" rel="stylesheet">
+       
 
-        <style type="text/css">
-            .form-content
-            {
-                padding: 5%;
-            }
-            #individual, #institution{
-                display: none;
-            }
-            input.error {
-		    border: 1px dotted red;
-            }
-            label.error{
-                width: 100%;
-                color: red;
-                font-style: italic;
-                margin-left: 10px;
-                margin-bottom: 5px;
-            }
-        </style>
+        <?php require "../include/header/registerheader.php"?>
+
+     
 
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -55,120 +41,11 @@ if(isset($_SESSION['StpID'])){
         <script src="js/jquery-1.12.4.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script src="js/bootstrap.min.js"></script>
+        <script src="js/location.js"></script>
 
-        <script>
-            $(document).ready(function(){
-
-                load_json_data('country');
-
-                function load_json_data(id,parent_id,state_id)
-                {
-                //console.log(parent_id);
-                //console.log(id);
-                var html_code = '';
-                $.getJSON('json/location.json', function(data){
-
-                html_code += '<option value="">Select '+id+'</option>';
-                $.each(data, function(key, value){
-                if(id == 'country')
-                {
-
-                    html_code += '<option value="'+value.name+'" id="'+value.id+'">'+value.name+'</option>';
-                }
-                else if(id == 'state')
-                {
-                    if(value.id == parent_id)
-                    {
-                        $.each(data[parent_id-1].states, function(key, value){
-                        html_code += '<option value="'+key+'">'+key+'</option>';
-                    });
-                    }
-                }
-                else
-                {
-                    // console.log("Parent_id"+parent_id);
-                    // console.log("State_id"+state_id);
-
-                    if(value.id == parent_id)
-                    {
-                        $.each(data[parent_id-1].states, function(key, value){
-                        if(key == state_id)
-                        {
-                            for (var i = 0;i < value.length;i++)
-                            {
-                                html_code += '<option value="'+value[i]+'">'+value[i]+'</option>';
-                            }
-                        }
-                    });
-                }
-                }
-                });
-                $('#'+id).html(html_code);
-                });
-
-                }
-
-                $(document).on('change', '#country', function(){
-                var country_id = $('#country option:selected').attr('id');
-                //console.log("Hello"+country_id);
-                if(country_id != '')
-                {
-                load_json_data('state',country_id);
-                }
-                else
-                {
-                $('#state').html('<option value="">Select state</option>');
-                $('#city').html('<option value="">Select city</option>');
-                }
-                });
-                $(document).on('change', '#state', function(){
-
-                var e = document.getElementById("country");
-                var country_id = $('#country option:selected').attr('id');
-
-                //console.log("dafafafadfa"+country_id);
-
-                var e = document.getElementById("state");
-                var state_id = e.options[e.selectedIndex].text;
-
-            //   var state_id = $(this).val();
-            //   var state_id = "Maharashtra";
-
-                if(state_id != '')
-                {
-                load_json_data('city',country_id,state_id);
-                }
-                else
-                {
-                $('#city').html('<option value="">Select city</option>');
-                }
-                });
-            });
-        </script>
-
-        <script>
-            function show(){
-                var type = document.getElementById("selecttype").value;
-                if(type == "NULL"){
-                    document.getElementById("institution").style.display = "NONE";
-                    document.getElementById("individual").style.display = "NONE";
-                    document.getElementById("info").style.display = "block";
-                }
-                else if(type == "Institution"){
-                    document.getElementById("individual").style.display = "NONE";
-                    document.getElementById("institution").style.display = "block";
-                    document.getElementById("info").style.display = "NONE";
-                }
-                else if(type == "Individual"){
-                    document.getElementById("institution").style.display = "NONE";
-                    document.getElementById("individual").style.display = "block";
-                    document.getElementById("info").style.display = "NONE";
-                }
-            }
-        </script>
-    </head>
-    <body>
-    <?php require "../include/header/registerheader.php"?>
+</head>
+ <body>
+   
 
         <div class="panel panel-primary" style="margin:20px;">
             <div class="panel-heading">
@@ -357,63 +234,17 @@ if(isset($_SESSION['StpID'])){
                 </form>
             </div>
         </div>
-        <section class="sticky-bottom shadow p-1 bg-light">
-          <div class="row" style="font-size:12px">
-            <div class="col-md-12 col-sm-12 text-center p-2">
-                <div class="row">
-                    <div class="col-md-12 text-center p-1">
-                        <div class="col-2 d-inline">
-                            <a href="../#intro" class="text-dark">Home</a>
-                        </div>
-                        <div class="col-2 d-inline">
-                            <a href="../#about" class="text-dark">About</a>
-                        </div>
-                        <div class="col-md-2 d-inline">
-                            <a href="#" class="text-dark">Services</a>
-                        </div>
-                        <div class="col-md-2 d-inline">
-                            <a href="#" class="text-dark">Privacy policy</a>
-                        </div>
-                        <div class="col-2 d-inline">
-                            <a href="../faq.php" class="text-dark">FAQs</a>
-                        </div>
-                        <div class="col-2 d-inline">
-                            <a href="../#contact" class="text-dark">Contact</a>
-                        </div>
-                    </div>
-                </div>
+        <br>
+        <br>
+  
+        <?php require "../include/footer/regfooter.php"?>
 
-                <div class="row">
-                    <div class="col-md-12 text-center p-1">
-                        <div class="col-md-12 d-block">
-                            Copyright @2019 | Designed by Bronn Of Blackwater
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12 text-center p-1">
-                        <div class="col-md-1 d-inline">
-                            <a href="#" class="text-dark"><i class="fa fa-facebook-f"></i></a>
-                        </div>
-                        <div class="col-md-1 d-inline">
-                            <a href="#" class="text-dark"><i class="fa fa-twitter"></i></a>
-                        </div>
-                        <div class="col-md-1 d-inline">
-                            <a href="#" class="text-dark"><i class="fa fa-linkedin"></i></a>
-                        </div>
 
-                        <div class="col-md-1 d-inline">
-                            <a href="#" class="text-dark"><i class="fa fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-          </div>
-        </section>
 
     </body>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.js"></script>
 <script src="js/validate.js"></script>
+
 </html>

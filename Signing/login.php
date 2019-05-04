@@ -16,47 +16,12 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
         <link href="../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-       
+        
        <link href="../css/style.css" rel="stylesheet">
+       <link href="css/login-form.css" rel="stylesheet">
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <style>
-            html,body
-            {
-                width: 100%;
-                margin: 0px;
-                padding: 0px;
-                overflow-x: hidden;
-            }
-            .container1 {
-                padding: 10%;
-                min-height:110%;
-                background-image: linear-gradient(to bottom right,#e6f5ff, #ccebff, #66c2ff);
-            }
-            .panel-login {
-                border-color: #ccc;
-                -webkit-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
-                -moz-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
-                box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
-            }
-            .panel-login>.panel-heading {
-                color: #00415d;
-                background-color: #fff;
-                border-color: #fff;
-                text-align:center;
-            }
-            .panel-login>.panel-heading a{
-                text-decoration: none;
-                color: #666;
-                font-weight: bold;
-                font-size: 15px;
-                -webkit-transition: all 0.1s linear;
-                -moz-transition: all 0.1s linear;
-                transition: all 0.1s linear;
-            }
-            .panel-login>.panel-heading a.active{
-                color: #0066ff;
-                font-size: 18px;
-            }
+  
 
 
 
@@ -170,59 +135,8 @@
         </div>
 
 
-        <section class="sticky-bottom shadow p-1 bg-light">
-          <div class="row" style="font-size:12px">
-            <div class="col-md-12 text-center p-2">
-                <div class="row">
-                    <div class="col-md-12 text-center p-1">
-                        <div class="col-2 d-inline">
-                            <a href="../#intro" class="text-dark">Home</a>
-                        </div>
-                        <div class="col-2 d-inline">
-                            <a href="../#about" class="text-dark">About</a>
-                        </div>
-                        <div class="col-md-2 d-inline">
-                            <a href="#" class="text-dark">Services</a>
-                        </div>
-                        <div class="col-md-2 d-inline">
-                            <a href="#" class="text-dark">Privacy policy</a>
-                        </div>
-                        <div class="col-2 d-inline">
-                            <a href="../faq.php" class="text-dark">FAQs</a>
-                        </div>
-                        <div class="col-2 d-inline">
-                            <a href="../#contact" class="text-dark">Contact</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-12 text-center p-1">
-                        <div class="col-md-12 d-block">
-                            Copyright @2019 | Designed by Bronn Of Blackwater
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12 text-center p-1">
-                        <div class="col-md-1 d-inline">
-                            <a href="#" class="text-dark"><i class="fa fa-facebook-f"></i></a>
-                        </div>
-                        <div class="col-md-1 d-inline">
-                            <a href="#" class="text-dark"><i class="fa fa-twitter"></i></a>
-                        </div>
-                        <div class="col-md-1 d-inline">
-                            <a href="#" class="text-dark"><i class="fa fa-linkedin"></i></a>
-                        </div>
-
-                        <div class="col-md-1 d-inline">
-                            <a href="#" class="text-dark"><i class="fa fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-          </div>
-        </section>
+        
+        <?php require "../include/footer/regfooter.php"?>
 
     </body>
 
