@@ -2301,7 +2301,19 @@
 
 </html>
 <script>
-  	if ( window.history.replaceState ) {
-  		window.history.replaceState( null, null, window.location.href );
-  	}
-  </script>
+	if ( window.history.replaceState ) {
+		window.history.replaceState( null, null, window.location.href );
+	}
+</script>
+<script type="text/javascript">
+  inactivityTimeout = false;
+  resetTimeout();
+  function onUserInactivity() {
+     window.location.href = "../logoutwarned.php";
+  }
+  function resetTimeout() {
+     clearTimeout(inactivityTimeout);
+     inactivityTimeout = setTimeout(onUserInactivity, 1000 * 600);
+  }
+  window.onmousemove = resetTimeout;
+</script>
