@@ -646,7 +646,7 @@
 
           <div class="col-lg-5">
             <div class="map mb-4 mb-lg-0">
-              <iframe src="http://localhost/NamanNew/#intro" frameborder="1" style="border:2; width: 100%; height: 312px;" allowfullscreen></iframe>
+              <iframe src="" frameborder="1" style="border:2; width: 100%; height: 312px;" allowfullscreen></iframe>
             </div>
           </div>
 

@@ -1,13 +1,13 @@
 
 <html>
     <head>
-
+<!--
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
+<!- Include the above in your HEAD tag ---------->
 
-<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+<!-- <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" -->
 </head>
 <style>
 
@@ -24,7 +24,7 @@
     padding-bottom: 25px;
     border-top: 1px solid #2f2f33 ;
     background: #0d85d8;
-    
+
 }
 .copyright-text p {
     color: white;
@@ -36,17 +36,17 @@
 .copyright-text a {
     color: white;
     margin: 0px 10px 0px 10px;
-    
+
 }
 .copyright-text a:hover {
     color: #aece61  ;
-    
-    
+
+
 }
 /* Social Icons */
 
 .social-icons{
-    
+
     margin: 0;
     padding: 0;
     font-size : 10px;
@@ -74,7 +74,7 @@
      color: #f39c12;
      transition:all .25s;
  }
- 
+
  .footer-four > img {
      width:80%;
  }
@@ -93,8 +93,8 @@
 						<div class="col-sm-6  ">
 						    <div class="copyright-text pull-right">
 								<p> <a href="#">Team</a> | <a href="#">FAQS</a> |<a href="#">Terms & Conditions</a> | <a href="#">Refund Policy</a>|<a href="#">Blog</a> </p>
-							</div>					
-													
+							</div>
+
 						</div> <!-- End Col -->
 					</div>
 				</div>
