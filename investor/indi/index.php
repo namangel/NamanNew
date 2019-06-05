@@ -47,8 +47,8 @@
     $cblname = mysqli_real_escape_string($db, $_POST['cblname']);
     $cbcity = mysqli_real_escape_string($db, $_POST['cbcity']);
     $cbstate = mysqli_real_escape_string($db, $_POST['cbstate']);
-	$cbcountry = mysqli_real_escape_string($db, $_POST['cbcountry']);
-	$cbioi = mysqli_real_escape_string($db, $_POST['cbioi']);
+	  $cbcountry = mysqli_real_escape_string($db, $_POST['cbcountry']);
+	  $cbioi = mysqli_real_escape_string($db, $_POST['cbioi']);
     $cbrange = mysqli_real_escape_string($db, $_POST['cbrange']);
     $summary = mysqli_real_escape_string($db, $_POST['summary']);
 
@@ -477,7 +477,7 @@
             </button>
           </div>
           <div class="modal-body mx-3">
-            <form name="contact-social" id="contact-social"  method="post" action="index.php">
+            <form name="contact-social" id="contact-social"  method="post" action="index.php#investorbasics">
             <div class="accordion" id="accordionExample">
               <div class="card">
                 <h2 class="mb-0">
@@ -563,7 +563,7 @@
             </button>
           </div>
           <div class="modal-body mx-3">
-            <form name="investor-basics" id="investor-basics" method="POST" action="index.php">
+            <form name="investor-basics" id="investor-basics" method="POST" action="index.php#investorbasics">
             <div class="accordion" id="accordionExample">
               <div class="card">
                 <h2 class="mb-0">
@@ -665,7 +665,7 @@
             </button>
           </div>
           <div class="modal-body mx-3">
-            <form name="previous-inv" id="previous-inv" method="post" action="index.php">
+            <form name="previous-inv" id="previous-inv" method="post" action="index.php#investment">
               <div class="form-group">
                 <label>Startup Name</label>
                 <input type="text" class="form-control" name="piname">
@@ -716,7 +716,7 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <form method="post" action="index.php" enctype="multipart/form-data">
+          <form method="post" action="index.php#home" enctype="multipart/form-data">
           <div class="modal-body mx-3">
             <div class="form-group">
               <label>Profile Image</label>

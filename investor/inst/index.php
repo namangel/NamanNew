@@ -589,7 +589,7 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form method="post" action="index.php" enctype="multipart/form-data">
+                    <form method="post" action="index.php#home" enctype="multipart/form-data">
                         <div class="modal-body mx-3">
                             <div class="form-group">
                                 <label>Upload new Profile Image</label>
@@ -614,7 +614,7 @@
                         </button>
                     </div>
                     <div class="modal-body mx-3">
-                        <form name="contact-social" id="contact-social" method="post" action="index.php">
+                        <form name="contact-social" id="contact-social" method="post" action="index.php#companybasics">
                             <div class="accordion" id="accordionExample">
                                 <div class="card">
                                     <h2 class="mb-0">
@@ -704,7 +704,7 @@
                         </button>
                     </div>
                     <div class="modal-body mx-3">
-                        <form name="previous-inv" id="previous-inv" method="post" action="index.php">
+                        <form name="previous-inv" id="previous-inv" method="post" action="index.php#investment">
                             <div class="form-group">
                                 <label>Startup Name</label>
                                 <input type="text" class="form-control" name="piname" >
@@ -756,7 +756,7 @@
                         </button>
                     </div>
                     <div class="modal-body mx-3">
-                    <form name="investor-basics" id="investor-basics" method="POST" action="index.php">
+                    <form name="investor-basics" id="investor-basics" method="POST" action="index.php#comapnybasics">
                         <div class="accordion" id="accordionExample">
                             <div class="card">
                                 <h2 class="mb-0">
@@ -859,7 +859,7 @@
                         </button>
                     </div>
                     <div class="modal-body mx-3">
-                        <form method="post" action="index.php" name="team-member" id="team-member" >
+                        <form method="post" action="index.php#teams" name="team-member" id="team-member" >
                             <div class="card">
                                 <div id="basics" aria-labelledby="headingOne">
                                     <div class="card-body">
