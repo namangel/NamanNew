@@ -245,33 +245,28 @@ if (isset($_POST['login_inv'])) {
         $results = mysqli_query($db, $qu);
         $row = mysqli_fetch_assoc($results);
         $type = $row['Type'];
-        
-        $q1 = "SELECT * FROM membership WHERE InvID='$u'";
+
+        $q1 = "SELECT * FROM membership WHERE InvID='$u' AND Active = 1";
         $res = mysqli_query($db, $q1);
         $row = mysqli_fetch_assoc($res);
         if (mysqli_num_rows($res) == 1){
-          $exp = $row['ExpDate'];
-          $date = date("y-m-d");
-          
-          $dif = $date-$exp;
-          if(($dif / (60 * 60 * 24)) < 0 )
+          $_SESSION['memexp'] = "ACTIVE";
+
+          $exp = date_create($row['ExpDate']);
+          $date = date_create(date("y-m-d"));
+
+          $diff=date_diff($date,$exp);
+          $dif = $diff->format("%R%a");
+          if($dif < 0 )
           {
-            $_SESSION['memexp'] = 1;
+              $_SESSION['memexp'] = "EXPIRED";
+              $q1 = "UPDATE membership set Active = 0 WHERE InvID='$u' and Active = 1";
+              $res = mysqli_query($db, $q1);
           }
-          else if(($dif / (60 * 60 * 24)) < 30)
+          else if($dif <= 30)
           {
-            $_SESSION['memexp'] = 2;
+              $_SESSION['memexp'] = "MONTHLEFT";
           }
-          
-          if($_SESSION['memexp'] == 1){
-            
-            //PHP
-          }
-          // if(strtotime($exp) < strtotime($date))
-          // {
-          //   //PHP to remove
-          // }
-          // if
         }
 
         if($type == "Individual"){

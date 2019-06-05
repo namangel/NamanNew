@@ -1,23 +1,23 @@
 <?php
 	require '../../server.php';
 	if(!isset($_SESSION['InvID'])){
-    header('location: ../pageerror.php');
-  }
+		header('location: ../pageerror.php');
+	}
 	$u = $_SESSION['InvID'];
 	$qu = "SELECT * FROM inv_details WHERE InvID='$u'";
-  $results = mysqli_query($db, $qu);
+	$results = mysqli_query($db, $qu);
 	$row = mysqli_fetch_assoc($results);
 	$fname = $row['FName'];
-  $lname = $row['LName'];
-  $web = $row['Website'];
-  $city = $row['City'];
-  $state = $row['State'];
+	$lname = $row['LName'];
+	$web = $row['Website'];
+	$city = $row['City'];
+	$state = $row['State'];
 	$country = $row['Country'];
 	$phone = $row['Phone'];
-  $email = $row['Email'];
+	$email = $row['Email'];
 
-  $qu = "SELECT * FROM inv_addetails WHERE InvID='$u'";
-  $results = mysqli_query($db, $qu);
+	$qu = "SELECT * FROM inv_addetails WHERE InvID='$u'";
+	$results = mysqli_query($db, $qu);
 	$row = mysqli_fetch_assoc($results);
 	$indOfInt=$row['IOI']==""? '--':$row['IOI'];
 	$facebook=$row['Facebook']==""? '--':$row['Facebook'];
@@ -26,20 +26,29 @@
 	$instagram=$row['Instagram']==""? '--':$row['Instagram'];
 	$others = $row['Others']==""? '--':$row['Others'];
 	$invrange = $row['InvRange']==""? '--':$row['InvRange'];
-  $summary=$row['Summary']==""? 'Describe yourself and the value of your investment.':$row['Summary'];
+	$summary=$row['Summary']==""? 'Describe yourself and the value of your investment.':$row['Summary'];
 
 	$q = "SELECT * FROM inv_uploads WHERE InvID='$u'";
-  $results = mysqli_query($db, $q);
+	$results = mysqli_query($db, $q);
 	$row = mysqli_fetch_assoc($results);
 	$img = $row['ProfilePic'];
+
+	$q = "SELECT * FROM membership WHERE InvID='$u'";
+	$memresults = mysqli_query($db, $q);
+	$memrow = mysqli_fetch_assoc($memresults);
+	$member = 0;
+	if(mysqli_num_rows($memresults) > 0){
+		$member = 1;
+		$memid = $memrow['MemID'];
+	}
 
 	if(isset($_POST["cbsave"])){
     $cbfname = mysqli_real_escape_string($db, $_POST['cbfname']);
     $cblname = mysqli_real_escape_string($db, $_POST['cblname']);
     $cbcity = mysqli_real_escape_string($db, $_POST['cbcity']);
     $cbstate = mysqli_real_escape_string($db, $_POST['cbstate']);
-		$cbcountry = mysqli_real_escape_string($db, $_POST['cbcountry']);
-		$cbioi = mysqli_real_escape_string($db, $_POST['cbioi']);
+	$cbcountry = mysqli_real_escape_string($db, $_POST['cbcountry']);
+	$cbioi = mysqli_real_escape_string($db, $_POST['cbioi']);
     $cbrange = mysqli_real_escape_string($db, $_POST['cbrange']);
     $summary = mysqli_real_escape_string($db, $_POST['summary']);
 
@@ -49,7 +58,7 @@
 			mysqli_query($db, $q);
         }
 
-    if($cblname != "")
+    	if($cblname != "")
 		{
 			$q = "UPDATE inv_details set LName ='$cblname' where InvID='$u';";
 			mysqli_query($db, $q);
@@ -84,24 +93,24 @@
 		{
 			$q = "UPDATE inv_details set Website='$cbweb' where InvID='$u';";
 			mysqli_query($db, $q);
-    }
+	    }
 
-    if(summary != "")
-	  {
-			$q = "UPDATE inv_addetails set Summary='$summary' where InvID='$u'";
-			mysqli_query($db, $q);
-    }
+	    if($summary != "")
+		  {
+				$q = "UPDATE inv_addetails set Summary='$summary' where InvID='$u'";
+				mysqli_query($db, $q);
+	    }
 		header('location: index.php');
 	}
 
 
-  if(isset($_POST["cfsave"])){
+	if(isset($_POST["cfsave"])){
 		$sllinkin = mysqli_real_escape_string($db, $_POST['sflinkedin']);
 		$sltwit = mysqli_real_escape_string($db, $_POST['sftwitter']);
 		$slfb = mysqli_real_escape_string($db, $_POST['sffacebook']);
 		$slinst = mysqli_real_escape_string($db, $_POST['sfinstagram']);
-    $slots = mysqli_real_escape_string($db, $_POST['sfothers']);
-    $sfemail = mysqli_real_escape_string($db, $_POST['sfemail']);
+		$slots = mysqli_real_escape_string($db, $_POST['sfothers']);
+		$sfemail = mysqli_real_escape_string($db, $_POST['sfemail']);
 		$sfphone = mysqli_real_escape_string($db, $_POST['sfphone']);
 
 		if($sfemail != NULL)
@@ -140,9 +149,9 @@
 		{
 			$q = "UPDATE inv_addetails set Others='$slots' where InvID='$u'";
 			mysqli_query($db, $q);
-     }
+		}
 		header('location: index.php');
-  }
+	}
 
 	if(isset($_POST['pisave'])){
 		$piname = mysqli_real_escape_string($db, $_POST['piname']);
@@ -150,17 +159,17 @@
 		$piamount = mysqli_real_escape_string($db, $_POST['piamount']);
 		$pistage = mysqli_real_escape_string($db, $_POST['pistage']);
 		$pistake = mysqli_real_escape_string($db, $_POST['pistake']);
-    $piweb = mysqli_real_escape_string($db, $_POST['piweb']);
+    	$piweb = mysqli_real_escape_string($db, $_POST['piweb']);
 
 		$q = "INSERT INTO inv_previnvestment (InvID, Name, Year,Amount, Stage, Stake, Website) VALUES ('$u', '$piname', '$piyear', '$piamount','$pistage','$pistake','$piweb');";
 		mysqli_query($db, $q);
 
 		header('location: index.php');
-  }
+  	}
 
-  if(isset($_POST['imgsave'])){
+  	if(isset($_POST['imgsave'])){
 
-    $check = getimagesize($_FILES["cbpic"]["tmp_name"]);
+    	$check = getimagesize($_FILES["cbpic"]["tmp_name"]);
 		if($check != false)
 		{
 			$file_name = $fname."_".$lname."_".$_FILES['cbpic']['name'];
@@ -186,15 +195,15 @@
 					$uploadas = "uploads/investor/".$file_name;
 					$upload = "../../uploads/investor/".$file_name;
 					if(move_uploaded_file($file_tmp, $upload)){
-					$q = "UPDATE inv_uploads set ProfilePic='$uploadas' where InvID='$u';";
-          mysqli_query($db, $q);
-          echo "<script>alert('Successfully Uploaded')</script>";
+						$q = "UPDATE inv_uploads set ProfilePic='$uploadas' where InvID='$u';";
+						mysqli_query($db, $q);
+						echo "<script>alert('Successfully Uploaded')</script>";
+					}
 				}
-			}
-    }
-  }
-  header('location: index.php');
-}
+    		}
+  		}
+  		header('location: index.php');
+	}
 
 ?>
 
@@ -236,7 +245,7 @@
 		    margin-left: 10px;
 		    margin-bottom: 5px;
     }
-    
+
     @media (max-width: 768px) {
             .back-to-top {
                 bottom: 15px;
@@ -262,7 +271,7 @@
         .back-to-top i {
             padding-top: 12px;
             color: #fff;
-        } 
+        }
 	</style>
 
 	<script>
@@ -353,7 +362,7 @@
 	     }
 	    });
      });
-     
+
      // Back to top button
      $(window).scroll(function() {
             if ($(this).scrollTop() > 100) {
@@ -739,17 +748,37 @@
 
     <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="home">
       <div class="w-100">
-      <div class="row">
-        <h1 class="mb-0 col-md-9">
-          <span class="text-primary">Hello <?= $fname ?></span>
-        </h1>
-        <div class="text-right col-md-3">
-          <button class="btn btn-member" onclick="window.open('../browse/browsestartup.php')">Browse Startups</button>
-        </div>
-      </div>
+	      <div class="row">
+	        <h1 class="mb-0 col-md-9">
+	          <span class="text-primary">Hello <?= $fname ?></span>
+	        </h1>
+	        <div class="text-right col-md-3">
+	          <button class="btn btn-member" onclick="window.open('../browse/browsestartup.php')">Browse Startups</button>
+	        </div>
+	      </div>
 
         <div class="subheading mb-5">GET STARTED.
         </div>
+		<p class="lead mb-2">
+			<?php
+				if($member == 0){
+					echo "<a class='btn btn-member' href='#'>Become a member</a>";
+				}
+				else{
+					if($_SESSION['memexp'] == "EXPIRED"){
+						echo "<p class='text-danger'>You're Membership has expired. Please renew asap.</p>";
+					}
+					else if($_SESSION['memexp'] == "MONTHLEFT"){
+						echo "<p class='text-warning'>You're Membership expires within a month. Please contact Naman for renewal purposes</p>";
+					}
+					echo "Membership ID :- ".$memid;
+				}
+
+
+			?>
+
+
+		</p>
         <p class="lead mb-2">Thank you for your interest in Naman!
           Our team will contact you shortly to discuss your needs and schedulea demo. In the meantime,
           take a look at some startups in your area.

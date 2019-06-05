@@ -37,6 +37,17 @@
 	$row = mysqli_fetch_assoc($results);
 	$img = $row['ProfilePic'];
 
+
+	$q = "SELECT * FROM membership WHERE InvID='$u'";
+    $memresults = mysqli_query($db, $q);
+	$memrow = mysqli_fetch_assoc($memresults);
+	$member = 0;
+	if(mysqli_num_rows($memresults) > 0){
+		$member = 1;
+		$memid = $memrow['MemID'];
+	}
+
+
 	if(isset($_POST["cbsave"])){
         $cbfname = mysqli_real_escape_string($db, $_POST['cbfname']);
         $cblname = mysqli_real_escape_string($db, $_POST['cblname']);
@@ -206,8 +217,9 @@
 		header('location:index.php');
     }
 
-	if(isset($_POST["pimgsave"])){
-    $check = getimagesize($_FILES["cbpic"]["tmp_name"]);
+	if(isset($_POST["pimgsave"]))
+	{
+    	$check = getimagesize($_FILES["cbpic"]["tmp_name"]);
 		if($check != false)
 		{
 			$file_name = $fname."_".$lname."_".$_FILES['cbpic']['name'];
@@ -270,6 +282,11 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+	<?php
+
+			echo "<script>alert(\'".$_SESSION['memexp']."\')</script>"
+
+	?>
 
 
     <!-- Custom styles for this template -->
@@ -368,7 +385,7 @@
         .back-to-top i {
             padding-top: 12px;
             color: #fff;
-        } 
+        }
 
     </style>
 
@@ -397,30 +414,30 @@
             }
         }
 
-    
+
         $(document).ready(function(){
-        
+
         load_json_data('country');
-        
+
         function load_json_data(id,parent_id,state_id)
         {
             //console.log(parent_id);
             //console.log(id);
         var html_code = '';
         $.getJSON('../json/location.json', function(data){
-        
+
         html_code += '<option value="">Select '+id+'</option>';
         $.each(data, function(key, value){
             if(id == 'country')
             {
-                
+
                 html_code += '<option value="'+value.name+'" id="'+value.id+'">'+value.name+'</option>';
             }
             else if(id == 'state')
-            { 
+            {
                 if(value.id == parent_id)
-                {    
-                    $.each(data[parent_id-1].states, function(key, value){ 
+                {
+                    $.each(data[parent_id-1].states, function(key, value){
                     html_code += '<option value="'+key+'">'+key+'</option>';
                 });
                 }
@@ -432,7 +449,7 @@
 
                 if(value.id == parent_id)
                 {
-                    $.each(data[parent_id-1].states, function(key, value){ 
+                    $.each(data[parent_id-1].states, function(key, value){
                     if(key == state_id)
                     {
                         for (var i = 0;i < value.length;i++)
@@ -446,9 +463,9 @@
         });
         $('#'+id).html(html_code);
         });
-        
+
         }
-        
+
         $(document).on('change', '#country', function(){
             var country_id = $('#country option:selected').attr('id');
         //console.log("Hello"+country_id);
@@ -485,7 +502,7 @@
         }
         });
         });
-    
+
         // Back to top button
         $(window).scroll(function() {
             if ($(this).scrollTop() > 100) {
@@ -498,7 +515,7 @@
             $('html, body').animate({scrollTop : 0},1500, 'easeInOutExpo');
             return false;
         });
-        
+
     </script>
 
 
@@ -519,14 +536,14 @@
             </span>
         </a>
         <div>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarhome" aria-controls="navbarhome" aria-expanded="false" aria-label="Toggle navigation">
-      <a href="../../index.php" style="color:white"><span class="fa fa-home" ></span></a>
-    </button> -->
+		    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		      <span class="navbar-toggler-icon"></span>
+		    </button>
+		    <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarhome" aria-controls="navbarhome" aria-expanded="false" aria-label="Toggle navigation">
+		      <a href="../../index.php" style="color:white"><span class="fa fa-home" ></span></a>
+		    </button> -->
 
-    </div>
+    	</div>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav">
                 <li class="nav-item">
@@ -563,217 +580,57 @@
 
     <div class="container-fluid p-0">
 
-                <div class="modal fade" id="profileImageForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header text-center">
-                                <h4 class="modal-title w-100 font-weight-bold">investor Basics</h4>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <form method="post" action="index.php" enctype="multipart/form-data">
-                                <div class="modal-body mx-3">
-                                    <div class="form-group">
-                                        <label>Upload new Profile Image</label>
-                                        <input class="row" type="file" name="cbpic" title="Choose file of type .jpeg, .png, .jpg of size less than 5MB!" placeholder=" ">
-                                    </div>
-                                </div>
-                            <div class="modal-footer d-flex justify-content-center">
-                                <button class="btn btn-unique" name="pimgsave">Save </button>
-                            </div>
-                        </div>
-                        </form>
-                    </div>
-            </div>
-
-            <div class="modal fade" id="modalContactForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header text-center">
-                            <h4 class="modal-title w-100 font-weight-bold">Contact and Social Presence</h4>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body mx-3">
-                            <form name="contact-social" id="contact-social" method="post" action="index.php">
-                                <div class="accordion" id="accordionExample">
-                                    <div class="card">
-                                        <h2 class="mb-0">
-                                        <button class="btn btn-light btn-block btn-lg" type="button" data-toggle="collapse" data-target="#contact" aria-expanded="true" aria-controls="collapseOne">
-                                            Contact Details
-                                        </button>
-                                        </h2>
-                                        <div id="contact" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-                                            <div class="card-body">
-                                                <div class="form-group">
-                                                    <label>Phone</label>
-                                                    <input type="number" class="form-control" name="sfphone" placeholder="<?=$phone?>">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Email</label>
-                                                    <input type="email" class="form-control" name="$sfemail" placeholder="<?=$email?>">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card">
-                                        <div>
-                                            <h2 class="mb-0">
-                                            <button class="btn btn-light btn-block btn-lg collapsed" type="button" data-toggle="collapse" data-target="#social" aria-expanded="false" aria-controls="collapseTwo">
-                                            Social Presence
-                                            </button>
-                                            </h2>
-                                        </div>
-                                        <div id="social" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                                            <div class="card-body">
-                                                <div class="form-group">
-                                                    <label>Website</label>
-                                                    <input type="text" class="form-control" placeholder="<?=$website?>" name="sfwebsite">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Social Media</label>
-                                                        <select class="custom-select" name="sfsocialmedia" id="soc" required onchange="social()">
-                                                            <option>Select Social media</option>
-                                                            <option value="LinkedIn">LinkedIn</option>
-                                                            <option value="Facebook">Facebook</option>
-                                                            <option value="Instagram">Instagram</option>
-                                                            <option value="Twitter">Twitter</option>
-                                                            <option value="Others">Others</option>
-                                                        </select>
-
-                                                        <div id="LinkedIn" class="form-group">
-                                                            <i class="fa fa-linkedin">&nbsp;&nbsp;
-                                                            <input type="text" class="form-control" name="sflinkedin" placeholder="<?=$linkedin?>"></i>
-                                                        </div>
-                                                        <div id="Facebook" class="form-group">
-                                                            <i class="fa fa-facebook">&nbsp;&nbsp;
-                                                            <input type="text" class="form-control" name="sffacebook" placeholder="<?=$facebook?>"></i>
-                                                        </div>
-                                                        <div id="Instagram" class="form-group">
-                                                            <i class="fa fa-instagram">&nbsp;&nbsp;
-                                                            <input type="text" class="form-control" name="sfinstagram" placeholder="<?=$instagram?>"></i>
-                                                        </div>
-                                                        <div id="Twitter" class="form-group">
-                                                            <i class="fa fa-twitter">&nbsp;&nbsp;
-                                                            <input type="text" class="form-control" name="sftwitter" placeholder="<?=$twitter?>"></i>
-                                                        </div>
-                                                        <div id="Others" class="form-group">
-                                                            <i class="fa fa-globe">&nbsp;&nbsp;
-                                                            <input type="text" class="form-control" name="sfothers" placeholder="<?=$others?>"></i>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="modal-footer d-flex justify-content-center">
-                                <button class="btn btn-unique" name="cfsave">Save</i></button>
-                            </div>
-                    </div>
-                    </form>
-                </div>
-            </div>
-
-            <div class="modal fade" id="modalInvestmentForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header text-center">
-                            <h4 class="modal-title w-100 font-weight-bold">Add a previous investment(max 3)</h4>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body mx-3">
-                            <form name="previous-inv" id="previous-inv" method="post" action="index.php">
-                                <div class="form-group">
-                                    <label>Startup Name</label>
-                                    <input type="text" class="form-control" name="piname" >
-                                </div>
-                                <div class="form-group">
-                                    <label>Year of Investment</label>
-                                    <input type="number" min="2000" max="2099" step="1" class="form-control" name="piyear">
-                                </div>
-                                <div class="form-group">
-                                    <label>Amount of Investment</label>
-                                    <input type="number" class="form-control" name="piamount">
-                                </div>
-                                <div class="form-group">
-                                    <label>Stage</label>
-                                    <select class="custom-select" name="pistage" required>
-                                    <option value="">Select Stage</option>
-                                    <option value="Concept Only">Concept Only</option>
-                                    <option value="Product in Development">Product in Development</option>
-                                    <option value="Prototype ready">Prototype ready</option>
-                                    <option value="Full Product Ready">Full Product Ready</option>
-                                    <option value="Early Revenue Stage">Early Revenue Stage</option>
-                                    <option value="Growth Stage">Growth Stage</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label>Stake holding(%)</label>
-                                    <input type="number" class="form-control" name="pistake">
-                                </div>
-                                <div class="form-group">
-                                    <label>Website of Startup</label>
-                                    <input type="text" class="form-control" name="piweb">
-                                </div>
-                            </div>
-                            <div class="modal-footer d-flex justify-content-center">
-                                <button class="btn btn-unique" name="pisave">Save</button>
-                            </div>
-                    </div>
-                    </form>
-                </div>
-            </div>
-
-            <div class="modal fade" id="modalBasicForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header text-center">
-                            <h4 class="modal-title w-100 font-weight-bold">Investor Basics</h4>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <div class="modal fade" id="profileImageForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header text-center">
+                        <h4 class="modal-title w-100 font-weight-bold">investor Basics</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
+                        </button>
+                    </div>
+                    <form method="post" action="index.php" enctype="multipart/form-data">
                         <div class="modal-body mx-3">
-                        <form name="investor-basics" id="investor-basics" method="POST" action="index.php">
+                            <div class="form-group">
+                                <label>Upload new Profile Image</label>
+                                <input class="row" type="file" name="cbpic" title="Choose file of type .jpeg, .png, .jpg of size less than 5MB!" placeholder=" ">
+                            </div>
+                        </div>
+                    <div class="modal-footer d-flex justify-content-center">
+                        <button class="btn btn-unique" name="pimgsave">Save </button>
+                    </div>
+                </div>
+                </form>
+            </div>
+    	</div>
+
+        <div class="modal fade" id="modalContactForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header text-center">
+                        <h4 class="modal-title w-100 font-weight-bold">Contact and Social Presence</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body mx-3">
+                        <form name="contact-social" id="contact-social" method="post" action="index.php">
                             <div class="accordion" id="accordionExample">
                                 <div class="card">
                                     <h2 class="mb-0">
-                                    <button class="btn btn-light btn-block btn-lg" type="button" data-toggle="collapse" data-target="#basics" aria-expanded="true" aria-controls="collapseOne">
-                                    Company Details
+                                    <button class="btn btn-light btn-block btn-lg" type="button" data-toggle="collapse" data-target="#contact" aria-expanded="true" aria-controls="collapseOne">
+                                        Contact Details
                                     </button>
                                     </h2>
-                                    <div id="basics" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                    <div id="contact" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
                                         <div class="card-body">
                                             <div class="form-group">
-                                                <label>First Name</label>
-                                                <input type="text" class="form-control" name="cbfname" placeholder="<?=$fname?>">
+                                                <label>Phone</label>
+                                                <input type="number" class="form-control" name="sfphone" placeholder="<?=$phone?>">
                                             </div>
                                             <div class="form-group">
-                                                <label>Last Name</label>
-                                                <input type="text" class="form-control" name="cblname" placeholder="<?=$lname?>">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Country</label>
-                                                <select class="custom-select" name="cbcountry" id="country">
-                                                    <option value="">Select country</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>State</label>
-                                                <select class="custom-select" name="cbstate" id="state">
-                                                    <option value="">Select state</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>City</label>
-                                                <select class="custom-select" name="cbcity" id="city">
-                                                    <option value="">Select city</option>
-                                                </select>
+                                                <label>Email</label>
+                                                <input type="email" class="form-control" name="$sfemail" placeholder="<?=$email?>">
                                             </div>
                                         </div>
                                     </div>
@@ -781,109 +638,269 @@
                                 <div class="card">
                                     <div>
                                         <h2 class="mb-0">
-                                        <button class="btn btn-light btn-block btn-lg collapsed" type="button" data-toggle="collapse" data-target="#industry" aria-expanded="false" aria-controls="collapseTwo">
-                                        Industry details
+                                        <button class="btn btn-light btn-block btn-lg collapsed" type="button" data-toggle="collapse" data-target="#social" aria-expanded="false" aria-controls="collapseTwo">
+                                        Social Presence
                                         </button>
                                         </h2>
                                     </div>
-                                    <div id="industry" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                                    <div id="social" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                                         <div class="card-body">
                                             <div class="form-group">
-                                                <label>Industry of Interest</label>
-                                                <input type="text" class="form-control" name="cbioi" placeholder="<?=$indOfInt?>">
+                                                <label>Website</label>
+                                                <input type="text" class="form-control" placeholder="<?=$website?>" name="sfwebsite">
                                             </div>
                                             <div class="form-group">
-                                                <label>Investment range</label>
-                                                    <select class="custom-select" name="cbrange">
-                                                        <option>Select Investment</option>
-                                                        <option>0 - 1,00,000</option>
-                                                        <option>1,00,000 - 10,00,000</option>
-                                                        <option>10,00,000 - 50,00,000</option>
-                                                        <option>50,00,000 - 1,00,00,000</option>
-                                                        <option>More than 1,00,00,000</option>
+                                                <label>Social Media</label>
+                                                    <select class="custom-select" name="sfsocialmedia" id="soc" required onchange="social()">
+                                                        <option>Select Social media</option>
+                                                        <option value="LinkedIn">LinkedIn</option>
+                                                        <option value="Facebook">Facebook</option>
+                                                        <option value="Instagram">Instagram</option>
+                                                        <option value="Twitter">Twitter</option>
+                                                        <option value="Others">Others</option>
                                                     </select>
+
+                                                    <div id="LinkedIn" class="form-group">
+                                                        <i class="fa fa-linkedin">&nbsp;&nbsp;
+                                                        <input type="text" class="form-control" name="sflinkedin" placeholder="<?=$linkedin?>"></i>
+                                                    </div>
+                                                    <div id="Facebook" class="form-group">
+                                                        <i class="fa fa-facebook">&nbsp;&nbsp;
+                                                        <input type="text" class="form-control" name="sffacebook" placeholder="<?=$facebook?>"></i>
+                                                    </div>
+                                                    <div id="Instagram" class="form-group">
+                                                        <i class="fa fa-instagram">&nbsp;&nbsp;
+                                                        <input type="text" class="form-control" name="sfinstagram" placeholder="<?=$instagram?>"></i>
+                                                    </div>
+                                                    <div id="Twitter" class="form-group">
+                                                        <i class="fa fa-twitter">&nbsp;&nbsp;
+                                                        <input type="text" class="form-control" name="sftwitter" placeholder="<?=$twitter?>"></i>
+                                                    </div>
+                                                    <div id="Others" class="form-group">
+                                                        <i class="fa fa-globe">&nbsp;&nbsp;
+                                                        <input type="text" class="form-control" name="sfothers" placeholder="<?=$others?>"></i>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card">
+                            </div>
+                        </div>
+                        <div class="modal-footer d-flex justify-content-center">
+                            <button class="btn btn-unique" name="cfsave">Save</i></button>
+                        </div>
+                </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="modal fade" id="modalInvestmentForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header text-center">
+                        <h4 class="modal-title w-100 font-weight-bold">Add a previous investment(max 3)</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body mx-3">
+                        <form name="previous-inv" id="previous-inv" method="post" action="index.php">
+                            <div class="form-group">
+                                <label>Startup Name</label>
+                                <input type="text" class="form-control" name="piname" >
+                            </div>
+                            <div class="form-group">
+                                <label>Year of Investment</label>
+                                <input type="number" min="2000" max="2099" step="1" class="form-control" name="piyear">
+                            </div>
+                            <div class="form-group">
+                                <label>Amount of Investment</label>
+                                <input type="number" class="form-control" name="piamount">
+                            </div>
+                            <div class="form-group">
+                                <label>Stage</label>
+                                <select class="custom-select" name="pistage" required>
+                                <option value="">Select Stage</option>
+                                <option value="Concept Only">Concept Only</option>
+                                <option value="Product in Development">Product in Development</option>
+                                <option value="Prototype ready">Prototype ready</option>
+                                <option value="Full Product Ready">Full Product Ready</option>
+                                <option value="Early Revenue Stage">Early Revenue Stage</option>
+                                <option value="Growth Stage">Growth Stage</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Stake holding(%)</label>
+                                <input type="number" class="form-control" name="pistake">
+                            </div>
+                            <div class="form-group">
+                                <label>Website of Startup</label>
+                                <input type="text" class="form-control" name="piweb">
+                            </div>
+                        </div>
+                        <div class="modal-footer d-flex justify-content-center">
+                            <button class="btn btn-unique" name="pisave">Save</button>
+                        </div>
+                </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="modal fade" id="modalBasicForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header text-center">
+                        <h4 class="modal-title w-100 font-weight-bold">Investor Basics</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body mx-3">
+                    <form name="investor-basics" id="investor-basics" method="POST" action="index.php">
+                        <div class="accordion" id="accordionExample">
+                            <div class="card">
+                                <h2 class="mb-0">
+                                <button class="btn btn-light btn-block btn-lg" type="button" data-toggle="collapse" data-target="#basics" aria-expanded="true" aria-controls="collapseOne">
+                                Company Details
+                                </button>
+                                </h2>
+                                <div id="basics" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <label>First Name</label>
+                                            <input type="text" class="form-control" name="cbfname" placeholder="<?=$fname?>">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Last Name</label>
+                                            <input type="text" class="form-control" name="cblname" placeholder="<?=$lname?>">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Country</label>
+                                            <select class="custom-select" name="cbcountry" id="country">
+                                                <option value="">Select country</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>State</label>
+                                            <select class="custom-select" name="cbstate" id="state">
+                                                <option value="">Select state</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>City</label>
+                                            <select class="custom-select" name="cbcity" id="city">
+                                                <option value="">Select city</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div>
                                     <h2 class="mb-0">
-                                    <button class="btn btn-light btn-block btn-lg collapsed" type="button" data-toggle="collapse" data-target="#description" aria-expanded="false" aria-controls="collapseTwo">
-                                        Company Description
+                                    <button class="btn btn-light btn-block btn-lg collapsed" type="button" data-toggle="collapse" data-target="#industry" aria-expanded="false" aria-controls="collapseTwo">
+                                    Industry details
                                     </button>
                                     </h2>
-                                    <div id="description" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                                        <div class="card-body">
-                                            <div class="form-group">
-                                                <label>Description</label>
-                                                <textarea row="3" class="form-control" name="summary" placeholder="<?=$summary?>"></textarea>
-                                            </div>
+                                </div>
+                                <div id="industry" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <label>Industry of Interest</label>
+                                            <input type="text" class="form-control" name="cbioi" placeholder="<?=$indOfInt?>">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Investment range</label>
+                                                <select class="custom-select" name="cbrange">
+                                                    <option>Select Investment</option>
+                                                    <option>0 - 1,00,000</option>
+                                                    <option>1,00,000 - 10,00,000</option>
+                                                    <option>10,00,000 - 50,00,000</option>
+                                                    <option>50,00,000 - 1,00,00,000</option>
+                                                    <option>More than 1,00,00,000</option>
+                                                </select>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            </div>
-                            <div class="modal-footer d-flex justify-content-center">
-                                <button class="btn btn-unique" name="cbsave">Save</button>
-                            </div>
-                            </form>
-                        </div>
-                    </div>
-            </div>
-
-            <div class="modal fade" name="addTeamForm" id="addTeamForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header text-center">
-                            <h4 class="modal-title w-100 font-weight-bold">Add Group member (max 6)</h4>
-                            <!-- <p>Your Group is one of the most influential factors driving the investment process.</p> -->
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body mx-3">
-                            <form method="post" action="index.php" name="team-member" id="team-member" >
-                                <div class="card">
-                                    <div id="basics" aria-labelledby="headingOne">
-                                        <div class="card-body">
-                                            <form>
-                                                <div class="form-group">
-                                                    <label>Member Name</label>
-                                                    <input type="text" class="form-control" name="tmname" id="tmname" placeholder="Enter name">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Member Designation</label>
-                                                    <input type="text" class="form-control" name="tmdesig" id="tmdesig" placeholder="Enter designation">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Email</label>
-                                                    <input type="text" class="form-control" name="tmemail" id="tmemail" placeholder="Enter email address">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Linkedin</label>
-                                                    <input type="text" class="form-control" name="tmlinkedin" id="tmlinkedin" placeholder="Enter linkedin id">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Experience(in yrs)</label>
-                                                    <input type="text" class="form-control" name="tmyears" id="tmyears" placeholder="Enter experience">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Expertise</label>
-                                                    <input type="text" class="form-control" name="tmexp" id="tmexp" placeholder="Enter expertise">
-                                                </div>
+                            <div class="card">
+                                <h2 class="mb-0">
+                                <button class="btn btn-light btn-block btn-lg collapsed" type="button" data-toggle="collapse" data-target="#description" aria-expanded="false" aria-controls="collapseTwo">
+                                    Company Description
+                                </button>
+                                </h2>
+                                <div id="description" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <label>Description</label>
+                                            <textarea row="3" class="form-control" name="summary" placeholder="<?=$summary?>"></textarea>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="modal-footer d-flex justify-content-center">
-                                <button class="btn btn-unique" name="gmsave">Save </button>
-                            </div>
+                        </div>
+                        </div>
+                        <div class="modal-footer d-flex justify-content-center">
+                            <button class="btn btn-unique" name="cbsave">Save</button>
+                        </div>
                         </form>
                     </div>
                 </div>
-            </div>
+        </div>
 
-            <!-- <div class="modal fade" id="updateTeamForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal fade" name="addTeamForm" id="addTeamForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header text-center">
+                        <h4 class="modal-title w-100 font-weight-bold">Add Group member (max 6)</h4>
+                        <!-- <p>Your Group is one of the most influential factors driving the investment process.</p> -->
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body mx-3">
+                        <form method="post" action="index.php" name="team-member" id="team-member" >
+                            <div class="card">
+                                <div id="basics" aria-labelledby="headingOne">
+                                    <div class="card-body">
+                                        <form>
+                                            <div class="form-group">
+                                                <label>Member Name</label>
+                                                <input type="text" class="form-control" name="tmname" id="tmname" placeholder="Enter name">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Member Designation</label>
+                                                <input type="text" class="form-control" name="tmdesig" id="tmdesig" placeholder="Enter designation">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Email</label>
+                                                <input type="text" class="form-control" name="tmemail" id="tmemail" placeholder="Enter email address">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Linkedin</label>
+                                                <input type="text" class="form-control" name="tmlinkedin" id="tmlinkedin" placeholder="Enter linkedin id">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Experience(in yrs)</label>
+                                                <input type="text" class="form-control" name="tmyears" id="tmyears" placeholder="Enter experience">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Expertise</label>
+                                                <input type="text" class="form-control" name="tmexp" id="tmexp" placeholder="Enter expertise">
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer d-flex justify-content-center">
+                            <button class="btn btn-unique" name="gmsave">Save </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- <div class="modal fade" id="updateTeamForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header text-center">
@@ -931,20 +948,20 @@
                 </div>
             </div> -->
 
-            <section class="sticky-top shadow p-2 bg-white d-none d-lg-block ">
-                <div class="row m-0">
-                    <div class="col-12 text-right">
-                        <button class="btn" >NAMAN</button>
-                            <button class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fa fa-user" style="font-size:20px"></i>
-                            </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <a class="dropdown-item" href="account.php" target="_blank">Account Settings</a>
-                            <a class="dropdown-item" href="../../logout.php">Logout</a>
-                        </div>
+        <section class="sticky-top shadow p-2 bg-white d-none d-lg-block ">
+            <div class="row m-0">
+                <div class="col-12 text-right">
+                    <button class="btn" >NAMAN</button>
+                        <button class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-user" style="font-size:20px"></i>
+                        </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <a class="dropdown-item" href="account.php" target="_blank">Account Settings</a>
+                        <a class="dropdown-item" href="../../logout.php">Logout</a>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
 
         <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="home">
             <div class="w-100">
@@ -952,75 +969,100 @@
                     <span class="text-primary">Hello <?=$cname?></span>
                 </h1>
                 <div class="row">
+
                     <div class="subheading mb-5 col-md-9">GET STARTED.
                     </div>
-                    <div class="text-right col-md-3">
+					<div class="text-right col-md-3">
                         <button class="btn btn-member" onclick="window.open('../browse/browsestartup.php')">Browse Startups</button>
                     </div>
+
                 </div>
-                <p class="lead mb-2">Thank you for your interest in Naman!
-                        Our team will contact you shortly to discuss your needs and schedulea demo. In the meantime,
-                        take a look at some startups in your area.
+
+				<p class="lead mb-2">
+					<?php
+						if($member == 0){
+							echo "<a class='btn btn-member' href='#'>Become a member</a>";
+						}
+						else{
+							if($_SESSION['memexp'] == "EXPIRED"){
+								echo "<p class='text-danger'>You're Membership has expired. Please renew asap.</p>";
+							}
+							else if($_SESSION['memexp'] == "MONTHLEFT"){
+								echo "<p class='text-warning'>You're Membership expires within a month. Please contact Naman for renewal purposes</p>";
+							}
+							echo "Membership ID :- ".$memid;
+						}
+
+
+					?>
+
+
+				</p>
+
+                <p class="lead mb-2">
+					Thank you for your interest in Naman!
+                    Our team will contact you shortly to discuss your needs and schedulea demo. In the meantime,
+                    take a look at some startups in your area.
                 </p>
 
                 <div class="row" style="padding-top:10px">
+					<div class="col-md-12">
+						<div class="row">
+							<div class="col-md-12" style="padding-top:20px">
+								<div class="profile-item">
+									<div class="media">
+										<div class="media-body">
+											<h4 class="media-heading">Next Steps</h4>
+											Follow the next steps to invest in starups of your interest.
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
                     <div class="col-md-12">
                         <div class="row">
-                            <div class="col-md-12" style="padding-top:20px">
+                            <div class="col-md-4" style="padding-top:20px">
                                 <div class="profile-item">
                                     <div class="media">
-                                        <div class="media-body">
-                                            <h4 class="media-heading">Next Steps</h4>
-                                            Follow the next steps to invest in starups of your interest.
+                                        <div class="media-body step-icons">
+                                                <a href="#">
+                                                    <i class="fa fa-calendar"></i>
+                                                </a>
+                                            <button class="btn btn-steps">Schedule a demo</button>
+                                            <p>Schedule an introductory call or demo</p>
                                         </div>
                                     </div>
-                            </div>
-                    </div>
-            </div>
-        </div>
-                        <div class="col-md-12">
-                                <div class="row">
-                                        <div class="col-md-4" style="padding-top:20px">
-                                            <div class="profile-item">
-                                                <div class="media">
-                                                    <div class="media-body step-icons">
-                                                            <a href="#">
-                                                                <i class="fa fa-calendar"></i>
-                                                            </a>
-                                                        <button class="btn btn-steps">Schedule a demo</button>
-                                                        <p>Schedule an introductory call or demo</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4" style="padding-top:20px">
-                                            <div class="profile-item">
-                                                <div class="media">
-                                                    <div class="media-body step-icons">
-                                                            <a href="#">
-                                                                <i class="fa fa-registered"></i>
-                                                            </a>
-                                                        <button class="btn btn-steps">Get Registered</button>
-                                                        <p>Complete your enterprise registration</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4" style="padding-top:20px">
-                                            <div class="profile-item">
-                                                <div class="media">
-                                                    <div class="media-body step-icons">
-                                                            <a href="#">
-                                                                <i class="fa fa-address-book"></i>
-                                                            </a>
-                                                        <button class="btn btn-steps">Browse Startups</button>
-                                                        <p>Explore latest startups</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
                                 </div>
+                            </div>
+                            <div class="col-md-4" style="padding-top:20px">
+                                <div class="profile-item">
+                                    <div class="media">
+                                        <div class="media-body step-icons">
+                                                <a href="#">
+                                                    <i class="fa fa-registered"></i>
+                                                </a>
+                                            <button class="btn btn-steps">Get Registered</button>
+                                            <p>Complete your enterprise registration</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4" style="padding-top:20px">
+                                <div class="profile-item">
+                                    <div class="media">
+                                        <div class="media-body step-icons">
+                                                <a href="#">
+                                                    <i class="fa fa-address-book"></i>
+                                                </a>
+                                            <button class="btn btn-steps">Browse Startups</button>
+                                            <p>Explore latest startups</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+                    </div>
                 </div>
                 <!-- <div class="social-icons" style="padding-top: 50px">
                     <a href="#">
@@ -1035,385 +1077,388 @@
                     <a href="#">
                         <i class="fab fa-facebook-f"></i>
                     </a>
-                </div>
-            </div> -->
+                </div>-->
+            </div>
         </section>
 
-    <hr class="m-0">
+		<hr class="m-0">
 
-    <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="companybasics">
-            <div class="w-100">
-                <div class="row">
-                    <div class="col-md-9">
-                            <h1 class="mb-0">
-                                    <span class="text-primary"><?=$cname?></span>
-                                </h1>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="text-right">
-                            <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalBasicForm">Edit</a>
-                        </div>
-                    </div>
-                </div>
-                    <div class="subheading"><?= $city ?> ,&nbsp;<?= $state ?> ,&nbsp;<?= $country ?>.
-                    </div>
-                    <div class="subheading mb-5"><?= $fname ?>&nbsp;<?= $lname ?>
-                    </div>
-                    <div class="row" >
-                            <div class="col-md-12">
-                                    <div class="section-title"><h3>Industry of interest    :     <?= $indOfInt ?></h3></div>
-                            </div>
-                    </div>
-                    <div class="row" >
-                            <div class="col-md-12">
-                                    <div class="section-title"><h3>Investment range    :     <?= $invrange ?></h3></div>
-                            </div>
-                    </div>
-                    <div class="row" >
-                            <div class="col-md-12">
-                                    <div class="section-title" style="padding-top:50px"><h3>Company description</h3></div>
-                            </div>
-                    </div>
-                    <p class="lead mb-5">Company description ----<?php echo $summary;?></p>
-                    <div class="row">
-                            <div class="col-md-9">
-                                    <div class="section-title"><h3>Email    :    <?=$email?></h3></div>
-                            </div>
-                            <div class="col-md-3">
-                                    <div class="text-right">
-                                        <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalContactForm">Edit</a>
-                                    </div>
-                                </div>
-                    </div>
-                    <div class="row" >
-                            <div class="col-md-4">
-                                    <div class="section-title"><h3>Contact    : <?=$phone?></h3></div>
-                            </div>
-                    </div>
-                    <div class="row" >
-                            <div class="col-md-4">
-                                    <div class="section-title"><h3>Website    : <?=$website?></h3></div>
-                            </div>
-                    </div>
-                    <div class="social-icons">
-                        <a href="#">
-                            <i class='fab fa-react'></i>
-                        </a>
-                        <a href="#">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="#">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="#">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                    </div>
-                </div>
-    </section>
+		<section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="companybasics">
+		<div class="w-100">
+		    <div class="row">
+		        <div class="col-md-9">
+		                <h1 class="mb-0">
+		                        <span class="text-primary"><?=$cname?></span>
+		                    </h1>
+		        </div>
+		        <div class="col-md-3">
+		            <div class="text-right">
+		                <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalBasicForm">Edit</a>
+		            </div>
+		        </div>
+		    </div>
+		        <div class="subheading"><?= $city ?> ,&nbsp;<?= $state ?> ,&nbsp;<?= $country ?>.
+		        </div>
+		        <div class="subheading mb-5"><?= $fname ?>&nbsp;<?= $lname ?>
+		        </div>
+		        <div class="row" >
+		                <div class="col-md-12">
+		                        <div class="section-title"><h3>Industry of interest    :     <?= $indOfInt ?></h3></div>
+		                </div>
+		        </div>
+		        <div class="row" >
+		                <div class="col-md-12">
+		                        <div class="section-title"><h3>Investment range    :     <?= $invrange ?></h3></div>
+		                </div>
+		        </div>
+		        <div class="row" >
+		                <div class="col-md-12">
+		                        <div class="section-title" style="padding-top:50px"><h3>Company description</h3></div>
+		                </div>
+		        </div>
+		        <p class="lead mb-5">Company description ----<?php echo $summary;?></p>
+		        <div class="row">
+		                <div class="col-md-9">
+		                        <div class="section-title"><h3>Email    :    <?=$email?></h3></div>
+		                </div>
+		                <div class="col-md-3">
+		                        <div class="text-right">
+		                            <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalContactForm">Edit</a>
+		                        </div>
+		                    </div>
+		        </div>
+		        <div class="row" >
+		                <div class="col-md-4">
+		                        <div class="section-title"><h3>Contact    : <?=$phone?></h3></div>
+		                </div>
+		        </div>
+		        <div class="row" >
+		                <div class="col-md-4">
+		                        <div class="section-title"><h3>Website    : <?=$website?></h3></div>
+		                </div>
+		        </div>
+		        <div class="social-icons">
+		            <a href="#">
+		                <i class='fab fa-react'></i>
+		            </a>
+		            <a href="#">
+		                <i class="fab fa-linkedin-in"></i>
+		            </a>
+		            <a href="#">
+		                <i class="fab fa-github"></i>
+		            </a>
+		            <a href="#">
+		                <i class="fab fa-twitter"></i>
+		            </a>
+		            <a href="#">
+		                <i class="fab fa-facebook-f"></i>
+		            </a>
+		        </div>
+		    </div>
+		</section>
 
-    <hr class="m-0">
+		<hr class="m-0">
 
-    <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="membership">
-            <div class="w-100">
-                    <h2 class="mb-5">Membership</h2>
-                    <p class="lead mb-5">"A great business starts from small investment, whereas the small investments start from a big risk." </p>
-                    <div class="row">
-                        <div class="col-md-6" style="padding-top:20px">
-                            <div class="profile-item">
-                                <div class="media">
-                                    <div class="media-body">
-                                        <h3 class="media-heading">Why become a member?</h3>
-                                        <p class="lead">Becoming a member of Naman Angels enables you to explore the startups and look through their details before investing.
-                                        Become a member of Naman Angels network, browse through unlimited industries and get premium treatment.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6" style="padding-top:20px">
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <div class="profile-item">
-                                        <div class="media">
-                                            <div class="media-body im">
-                                                <img src="../img/Internet.png" height="100px">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="profile-item">
-                                        <div class="media">
-                                            <div class="media-body im">
-                                                <img src="../img/Food.png" height="100px">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="profile-item">
-                                        <div class="media">
-                                            <div class="media-body im">
-                                                <img src="../img/Education.png" height="100px">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="container-fluid">
-                            <button type="button" class="btn btn-member" onclick="location.href=#" style="margin:20px 50px 0px 50px">BECOME OUR MEMBER</button>
-                        </div>
-                    </div>
-    </section>
+		<section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="membership">
+			<div class="w-100">
+				<h2 class="mb-5">Membership</h2>
+				<p class="lead mb-5">"A great business starts from small investment, whereas the small investments start from a big risk." </p>
+				<div class="row">
+				    <div class="col-md-6" style="padding-top:20px">
+				        <div class="profile-item">
+				            <div class="media">
+				                <div class="media-body">
+				                    <h3 class="media-heading">Why become a member?</h3>
+				                    <p class="lead">Becoming a member of Naman Angels enables you to explore the startups and look through their details before investing.
+				                    Become a member of Naman Angels network, browse through unlimited industries and get premium treatment.</p>
+				                </div>
+				            </div>
+				        </div>
+				    </div>
+				    <div class="col-md-6" style="padding-top:20px">
+				        <div class="row">
+				            <div class="col-md-3">
+				                <div class="profile-item">
+				                    <div class="media">
+				                        <div class="media-body im">
+				                            <img src="../img/Internet.png" height="100px">
+				                        </div>
+				                    </div>
+				                </div>
+				            </div>
+				            <div class="col-md-3">
+				                <div class="profile-item">
+				                    <div class="media">
+				                        <div class="media-body im">
+				                            <img src="../img/Food.png" height="100px">
+				                        </div>
+				                    </div>
+				                </div>
+				            </div>
+				            <div class="col-md-3">
+				                <div class="profile-item">
+				                    <div class="media">
+				                        <div class="media-body im">
+				                            <img src="../img/Education.png" height="100px">
+				                        </div>
+				                    </div>
+				                </div>
+				            </div>
+				        </div>
+				    </div>
+				</div>
+				<div class="row">
+			    <div class="container-fluid">
+			        <button type="button" class="btn btn-member" onclick="location.href=#" style="margin:20px 50px 0px 50px">BECOME OUR MEMBER</button>
+			    </div>
+			</div>
+			</div>
+		</section>
 
-        <hr class="m-0">
+		<hr class="m-0">
 
-    <section class="resume-section p-3 p-lg-5 d-flex justify-content-center" id="teams">
-        <div class="w-100">
-            <div class="row">
-                <div class="col-md-9">
-                    <h2 class="mb-5">
-                        Our Team
-                    </h2>
-                </div>
-                <div class="col-md-3">
-                    <div class="text-right">
-                        <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#addTeamForm">ADD</a>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class=row>
-            <?php
-			        	$q = "SELECT * FROM inv_group where InvID='$u';";
-		        		$results=mysqli_query($db, $q);
-					if (mysqli_num_rows($results) > 0) {
-                        while($row = mysqli_fetch_assoc($results)) {
-                            echo '<div class="col-md-6">';
-                                // echo '<div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">';
-                                    echo '<div class="resume-content">';
-                                        echo '<div class="row">';
-                                            echo '<div class="col-md-10">';
-                                                echo '<h3 class="mb-0">';
-                                                    echo $row["Name"] ;
-                                                echo '</h3>';
-                                            echo '</div>';
-                                            echo '<div class="col-md-2">';
-                                                echo '<div class="row">';
-                                                    // echo '<div class="col-md-1">';
-                                                        // echo '<a href="" data-toggle="modal" data-target="#updateTeamForm"><i class="fa fa-pencil "></i></a></div>';
-                                                            echo '<div class="col-md-1">';
-                                                                echo '<form method="post" action="index.php">
-                                                                            <input class="member" type="number" name="member" value="'.$row['ID'].'">
-                                                                            <button name="rem_mem" value="rem_mem" type="submit" class="rem_mem"    ><i class="fa fa-close"></i></button>
-                                                                            </form>';
-                                                            echo '</div>';
-                                                        echo '</div>';
-                                                    echo '</div>';
-                                                echo '</div>';
-                                                echo '<div class="subheading mb-3">';
-                                                    echo $row["Designation"]. "," .$row["Years"].'</div>';
-                                                    echo '<p>' .$row["Email"]. " | " .$row["LinkedIn"]. '</p>';
-                                                    echo '<p>' .$row["Expertise"]. '</p>';
-                                                echo '</div>';
-                                            // echo '</div>';
-                                        echo '</div>';
-                                    }
-                                }
-                     else{
-                        echo'<div class="col-md-4">';
-                        echo'<div class="profile-item">';
-                            echo'<div class="media">';
-                                echo'<div class="media-body">';
-                                    echo '<h3 class="subheading">Add group members!</h3>';
-                                    echo '<p>Mention four group members</p>';
-                                    echo'</div>';
-                                echo'</div>';
-                            echo'</div>';
-                        echo'</div>';
-                    }
-            ?>
-            </div>
-            </div>
-
-    </section>
-
-        <hr class="m-0">
-
-        <section class="resume-section p-3 p-lg-5 d-flex justify-content-center" id="investment">
-            <div class="w-100">
-                    <div class="row">
-                        <div class="col-md-9">
-                            <h2 class="mb-5">
-                                Previous Investments
-                            </h2>
-                        </div>
-                        <div class="col-md-3">
-                                <div class="text-right">
-                                    <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalInvestmentForm">Add</a>
-                                </div>
-                        </div>
-                    </div>
-
-                    <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
-                        <div class="col-md-12">
-                            <div class="row">
-                                <?php
-                                $q = "SELECT * FROM inv_previnvestment where InvID='$u';";
-                                $results=mysqli_query($db, $q);
-                                if (mysqli_num_rows($results) > 0) {
-                                    while($row = mysqli_fetch_assoc($results)) {
-
-                                echo'<div class="col-md-3">
-                                    <div class="profile-item">
-                                        <div class="media">
-                                            <div class="media-body">
-                                                <h3 class="media-heading">';
-                                                echo $row["Name"];
-                                                echo '</h3>';
-                                                echo '<div class="subheading">'.$row["Website"].'</div>';
-                                                echo '<p>'.$row["Stage"].'</p>';
-                                                echo '<p>'.$row["Stake"].'</p>';
-                                                echo '<p>'.$row["Amount"].'</p>';
-                                                echo '<p>'.$row["Year"].'</p>';
-                                            echo '</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-1">
-                                <form method="post" action="index.php">
-                                <input class="invest" type="number" name="invest" value="'.$row['ID'].'">
-                                <button name="rem_inv" value="rem_inv" type="submit" class="rem_inv" ><i class="fa fa-close"></i></button>
-                                </form>
-                                </div>';
-                                    }
-                                }
-                                else{
-                                    echo'<div class="col-md-4">';
-                                        echo'<div class="profile-item">';
-                                            echo'<div class="media">';
-                                                echo'<div class="media-body">';
-                                                    echo '<h3 class="subheading">Add your previous investments!</h3>';
-                                                    echo '<p>Mention the best three investments done and its details.</p>';
-                                                    echo'</div>';
-                                                echo'</div>';
-                                            echo'</div>';
-                                        echo'</div>';
-                                }
-                                ?>
-                        </div>
-                    </div>
-                </div>
-
-            <div class="w-100">
-                <div class="row">
-                        <div class="col-md-3">
-                            <div class="section-title">
-                                <h3>Investments Through Naman</h3>
-                            </div>
-                        </div>
-
-                        <div class="col-md-9">
-                            <div id="review">
-
-                            <?php
-                                $q = "SELECT * FROM requests where Inv_ID='$u';";
-                                $results=mysqli_query($db, $q);
-                                if (mysqli_num_rows($results) > 0) {
-                                    while($row = mysqli_fetch_assoc($results)) {
-                                        $stid=$row['St_ID'];
-                                        $qu = "SELECT * FROM st_details where StpID='$stid';";
-                                        $result = mysqli_query($db, $qu);
-                                        $row1= mysqli_fetch_assoc($result);
-                                            echo '<div class="item">';
-                                                echo '<div class="media">';
-                                                    echo '<div class="media-body">';
-                                                        echo '<div class="user-name">'.$row1["Stname"].'</div>';
-                                                    echo '</div>';
-                                                echo '</div>';
-                                                echo'<div class="review-text">';
-                                                    if($row['Deal'] == 0){
-                                                        echo 'Transaction in progress';
-                                                    }
-                                                    if($row['Deal'] == 1){
-                                                        echo 'Invested';
-                                                         echo 'Amount: '.$row['Amount'];
-                                                echo '<br>';
-                                                echo 'Stakeholding: '.$row['Stakehold'];
-                                                echo '<br>';
-                                                echo 'Date: '.$row['Date'];
-                                                };
-                                                echo'</div>';
-                                                echo'</div>';
-                                            }
-                                        }
-                                        else{
-                                            echo'<div id="review">';
-                                                echo'<div class="item">';
-                                                    echo'<div class="media">';
-                                                        echo'<div class="media-body">';
-                                                            echo'<div class="user-name">Hello '.$fname.'</div>';
-                                                        echo'</div>';
-                                                    echo'</div>';
-                                                    echo'<div class="review-text">';
-                                                    echo'Start browsing startups and invest now!!';
-                                                    echo'<br>';
-                                                    echo'<a class="nav-link" target="_blank" href="../browse/browsestartup.php">Browse Startups</a>';
-                                                echo'</div>';
-                                            echo'</div>';
-                                        }
-                                        ?>
-                            </div>
-                        </div>
-            </div>
-
-        </section>
-
-        <hr class="m-0">
+		<section class="resume-section p-3 p-lg-5 d-flex justify-content-center" id="teams">
+		<div class="w-100">
+		<div class="row">
+		    <div class="col-md-9">
+		        <h2 class="mb-5">
+		            Our Team
+		        </h2>
+		    </div>
+		    <div class="col-md-3">
+		        <div class="text-right">
+		            <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#addTeamForm">ADD</a>
+		        </div>
+		    </div>
+		</div>
 
 
+		<div class="row">
+		<?php
+		        	$q = "SELECT * FROM inv_group where InvID='$u';";
+		    		$results=mysqli_query($db, $q);
+				if (mysqli_num_rows($results) > 0) {
+		            while($row = mysqli_fetch_assoc($results)) {
+		                echo '<div class="col-md-6">';
+		                    // echo '<div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">';
+		                        echo '<div class="resume-content">';
+		                            echo '<div class="row">';
+		                                echo '<div class="col-md-10">';
+		                                    echo '<h3 class="mb-0">';
+		                                        echo $row["Name"] ;
+		                                    echo '</h3>';
+		                                echo '</div>';
+		                                echo '<div class="col-md-2">';
+		                                    echo '<div class="row">';
+		                                        // echo '<div class="col-md-1">';
+		                                            // echo '<a href="" data-toggle="modal" data-target="#updateTeamForm"><i class="fa fa-pencil "></i></a></div>';
+		                                                echo '<div class="col-md-1">';
+		                                                    echo '<form method="post" action="index.php">
+		                                                                <input class="member" type="number" name="member" value="'.$row['ID'].'">
+		                                                                <button name="rem_mem" value="rem_mem" type="submit" class="rem_mem"    ><i class="fa fa-close"></i></button>
+		                                                                </form>';
+		                                                echo '</div>';
+		                                            echo '</div>';
+		                                        echo '</div>';
+		                                    echo '</div>';
+		                                    echo '<div class="subheading mb-3">';
+		                                        echo $row["Designation"]. "," .$row["Years"].'</div>';
+		                                        echo '<p>' .$row["Email"]. " | " .$row["LinkedIn"]. '</p>';
+		                                        echo '<p>' .$row["Expertise"]. '</p>';
+		                                    echo '</div>';
+		                                // echo '</div>';
+		                            echo '</div>';
+		                        }
+		                    }
+		         else{
+		            echo'<div class="col-md-4">';
+		            echo'<div class="profile-item">';
+		                echo'<div class="media">';
+		                    echo'<div class="media-body">';
+		                        echo '<h3 class="subheading">Add group members!</h3>';
+		                        echo '<p>Mention four group members</p>';
+		                        echo'</div>';
+		                    echo'</div>';
+		                echo'</div>';
+		            echo'</div>';
+		        }
+		?>
+		</div>
+		</div>
 
-    <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="consultancy">
-        <div class="w-100">
-                <h2 class="mb-5">Contact Naman</h2>
-            <div class="col-md-12">
-                <div class="row">
-                    <div class="col-md-6" style="padding-top:10px">
-                        <div class="media-body step-icons">
-                                <a href="#">
-                                    <i class="fa fa-phone"></i>
-                                </a>
-                            <button class="btn btn-steps">Introductory call</button>
-                            <div><img src="../img/Call.png" height="250px" width="350px"></div>
-                                <br>
-                                <i class="fa fa-phone" style="font-size:20px"> +91 9876543211</i><br>
-                                <i class="fa fa-phone" style="font-size:20px"> +91 9876543211</i>
-                                <p>Contact us on any of these numbers for an introductory call.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-6" style="padding-top:10px">
-                        <div class="media-body step-icons">
-                                <a href="#">
-                                    <i class="fa fa-comments"></i>
-                                </a>
-                            <button class="btn btn-steps">Schedule a meeting</button>
-                            <div><img src="../img/Meet.png" height="300px" width="350px"></div>
-                            <br>
-                            <button class="btn btn-meetus">Meet us</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-    </section>
+		</section>
 
-        <hr class="m-0">
+		<hr class="m-0">
+
+		<section class="resume-section p-3 p-lg-5 d-flex justify-content-center" id="investment">
+		<div class="w-100">
+		        <div class="row">
+		            <div class="col-md-9">
+		                <h2 class="mb-5">
+		                    Previous Investments
+		                </h2>
+		            </div>
+		            <div class="col-md-3">
+		                    <div class="text-right">
+		                        <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalInvestmentForm">Add</a>
+		                    </div>
+		            </div>
+		        </div>
+
+		        <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
+		            <div class="col-md-12">
+		                <div class="row">
+		                    <?php
+		                    $q = "SELECT * FROM inv_previnvestment where InvID='$u';";
+		                    $results=mysqli_query($db, $q);
+		                    if (mysqli_num_rows($results) > 0) {
+		                        while($row = mysqli_fetch_assoc($results)) {
+
+		                    echo'<div class="col-md-3">
+		                        <div class="profile-item">
+		                            <div class="media">
+		                                <div class="media-body">
+		                                    <h3 class="media-heading">';
+		                                    echo $row["Name"];
+		                                    echo '</h3>';
+		                                    echo '<div class="subheading">'.$row["Website"].'</div>';
+		                                    echo '<p>'.$row["Stage"].'</p>';
+		                                    echo '<p>'.$row["Stake"].'</p>';
+		                                    echo '<p>'.$row["Amount"].'</p>';
+		                                    echo '<p>'.$row["Year"].'</p>';
+		                                echo '</div>
+		                            </div>
+		                        </div>
+		                    </div>
+		                    <div class="col-md-1">
+		                    <form method="post" action="index.php">
+		                    <input class="invest" type="number" name="invest" value="'.$row['ID'].'">
+		                    <button name="rem_inv" value="rem_inv" type="submit" class="rem_inv" ><i class="fa fa-close"></i></button>
+		                    </form>
+		                    </div>';
+		                        }
+		                    }
+		                    else{
+		                        echo'<div class="col-md-4">';
+		                            echo'<div class="profile-item">';
+		                                echo'<div class="media">';
+		                                    echo'<div class="media-body">';
+		                                        echo '<h3 class="subheading">Add your previous investments!</h3>';
+		                                        echo '<p>Mention the best three investments done and its details.</p>';
+		                                        echo'</div>';
+		                                    echo'</div>';
+		                                echo'</div>';
+		                            echo'</div>';
+		                    }
+		                    ?>
+		            </div>
+		        </div>
+		    </div>
+
+		    <div class="row">
+		        <div class="col-md-3">
+		            <div class="section-title">
+		                <h3>Investments Through Naman</h3>
+		            </div>
+		        </div>
+
+		        <div class="col-md-9">
+		            <div id="review">
+
+		                <?php
+		                    $q = "SELECT * FROM requests where Inv_ID='$u';";
+		                    $results=mysqli_query($db, $q);
+		                    if (mysqli_num_rows($results) > 0) {
+		                        while($row = mysqli_fetch_assoc($results)) {
+		                            $stid=$row['St_ID'];
+		                            $qu = "SELECT * FROM st_details where StpID='$stid';";
+		                            $result = mysqli_query($db, $qu);
+		                            $row1= mysqli_fetch_assoc($result);
+		                                echo '<div class="item">';
+		                                    echo '<div class="media">';
+		                                        echo '<div class="media-body">';
+		                                            echo '<div class="user-name">'.$row1["Stname"].'</div>';
+		                                        echo '</div>';
+		                                    echo '</div>';
+		                                    echo'<div class="review-text">';
+		                                        if($row['Deal'] == 0){
+		                                            echo 'Transaction in progress';
+		                                        }
+		                                        if($row['Deal'] == 1){
+		                                            echo 'Invested';
+		                                             echo 'Amount: '.$row['Amount'];
+		                                    echo '<br>';
+		                                    echo 'Stakeholding: '.$row['Stakehold'];
+		                                    echo '<br>';
+		                                    echo 'Date: '.$row['Date'];
+		                                    };
+		                                    echo'</div>';
+		                                echo'</div>';
+		                            }
+		                        }
+		                        else{
+		                            echo'<div id="review">';
+		                                echo'<div class="item">';
+		                                    echo'<div class="media">';
+		                                        echo'<div class="media-body">';
+		                                            echo'<div class="user-name">Hello '.$fname.'</div>';
+		                                        echo'</div>';
+		                                    echo'</div>';
+		                                    echo'<div class="review-text">';
+		                                    	echo'Start browsing startups and invest now!!';
+		                                        echo'<br>';
+		                                        echo'<a class="nav-link" target="_blank" href="../browse/browsestartup.php">Browse Startups</a>';
+		                                	echo'</div>';
+		                            	echo'</div>';
+									echo'</div>';
+		                        }
+		                        ?>
+		        	</div>
+		    	</div>
+			</div>
+		</div>
+
+		</section>
+
+		<hr class="m-0">
+
+
+
+		<section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="consultancy">
+		<div class="w-100">
+		    <h2 class="mb-5">Contact Naman</h2>
+		<div class="col-md-12">
+		    <div class="row">
+		        <div class="col-md-6" style="padding-top:10px">
+		            <div class="media-body step-icons">
+		                    <a href="#">
+		                        <i class="fa fa-phone"></i>
+		                    </a>
+		                <button class="btn btn-steps">Introductory call</button>
+		                <div><img src="../img/Call.png" height="250px" width="350px"></div>
+		                    <br>
+		                    <i class="fa fa-phone" style="font-size:20px"> +91 9876543211</i><br>
+		                    <i class="fa fa-phone" style="font-size:20px"> +91 9876543211</i>
+		                    <p>Contact us on any of these numbers for an introductory call.</p>
+		            </div>
+		        </div>
+		        <div class="col-md-6" style="padding-top:10px">
+		            <div class="media-body step-icons">
+		                    <a href="#">
+		                        <i class="fa fa-comments"></i>
+		                    </a>
+		                <button class="btn btn-steps">Schedule a meeting</button>
+		                <div><img src="../img/Meet.png" height="300px" width="350px"></div>
+		                <br>
+		                <button class="btn btn-meetus">Meet us</button>
+		            </div>
+		        </div>
+		    </div>
+		</div>
+		</div>
+		</section>
+
+		<hr class="m-0">
 
 
 
@@ -1436,8 +1481,8 @@
     <script src="../js/invscripts.js"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.js"></script>
-  <script src="../js/validation.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.js"></script>
+	<script src="../js/validation.js"></script>
 
 
 </body>

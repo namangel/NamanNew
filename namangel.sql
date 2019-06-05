@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.1
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Apr 23, 2019 at 06:14 AM
--- Server version: 10.1.33-MariaDB
--- PHP Version: 7.2.6
+-- Host: localhost
+-- Generation Time: Jun 05, 2019 at 04:27 PM
+-- Server version: 10.1.38-MariaDB
+-- PHP Version: 7.3.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -298,18 +298,20 @@ INSERT INTO `inv_uploads` (`InvID`, `ProfilePic`) VALUES
 --
 
 CREATE TABLE `membership` (
+  `ID` int(5) NOT NULL,
   `InvID` varchar(20) NOT NULL,
   `MemID` varchar(20) NOT NULL,
   `StDate` date NOT NULL,
-  `ExpDate` date NOT NULL
+  `ExpDate` date NOT NULL,
+  `Active` int(5) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `membership`
 --
 
-INSERT INTO `membership` (`InvID`, `MemID`, `StDate`, `ExpDate`) VALUES
-('NAMBIN000001', 'MEM2AD207EC', '2019-02-26', '2019-02-28');
+INSERT INTO `membership` (`ID`, `InvID`, `MemID`, `StDate`, `ExpDate`, `Active`) VALUES
+(1, 'NAMIN0000001', 'MEMDA39A3EE', '2019-06-09', '2019-08-02', 1);
 
 -- --------------------------------------------------------
 
@@ -688,7 +690,9 @@ CREATE TABLE `tools_used` (
 
 INSERT INTO `tools_used` (`ID`, `TID`, `StpID`) VALUES
 (2, 5, 'NAMST0000001'),
-(3, 3, 'NAMST0000001');
+(3, 3, 'NAMST0000001'),
+(4, 1, 'NAMST0000001'),
+(5, 2, 'NAMST0000001');
 
 -- --------------------------------------------------------
 
@@ -734,7 +738,7 @@ CREATE TABLE `userinv` (
 --
 
 INSERT INTO `userinv` (`Entry`, `InvID`, `MemID`, `Username`, `Password`) VALUES
-(1, 'NAMIN0000001', NULL, 'xyz123', '5f2b8374d197548aa0c1bd765ffc3464605cf51c'),
+(1, 'NAMIN0000001', 'MEMDA39A3EE', 'xyz123', '5f2b8374d197548aa0c1bd765ffc3464605cf51c'),
 (3, 'NAMIN0000003', NULL, 'ambani', '02b1f3c5352c6b4884d7bbda007e2c323e3c5fe2'),
 (4, 'NAMIN0000004', NULL, 'batman123', 'b09833cec69eff1bb667940a45e311262e85a422');
 
@@ -855,7 +859,7 @@ ALTER TABLE `inv_uploads`
 -- Indexes for table `membership`
 --
 ALTER TABLE `membership`
-  ADD PRIMARY KEY (`InvID`);
+  ADD PRIMARY KEY (`ID`);
 
 --
 -- Indexes for table `namanteam`
@@ -987,6 +991,12 @@ ALTER TABLE `inv_previnvestment`
   MODIFY `ID` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
+-- AUTO_INCREMENT for table `membership`
+--
+ALTER TABLE `membership`
+  MODIFY `ID` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `namanteam`
 --
 ALTER TABLE `namanteam`
@@ -1038,7 +1048,7 @@ ALTER TABLE `tools`
 -- AUTO_INCREMENT for table `tools_used`
 --
 ALTER TABLE `tools_used`
-  MODIFY `ID` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `userbinv`
