@@ -1084,77 +1084,77 @@
 		<hr class="m-0">
 
 		<section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="companybasics">
-		<div class="w-100">
-		    <div class="row">
-		        <div class="col-md-9">
-		                <h1 class="mb-0">
-		                        <span class="text-primary"><?=$cname?></span>
-		                    </h1>
-		        </div>
-		        <div class="col-md-3">
-		            <div class="text-right">
-		                <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalBasicForm">Edit</a>
-		            </div>
-		        </div>
-		    </div>
-		        <div class="subheading"><?= $city ?> ,&nbsp;<?= $state ?> ,&nbsp;<?= $country ?>.
-		        </div>
-		        <div class="subheading mb-5"><?= $fname ?>&nbsp;<?= $lname ?>
-		        </div>
-		        <div class="row" >
-		                <div class="col-md-12">
-		                        <div class="section-title"><h3>Industry of interest    :     <?= $indOfInt ?></h3></div>
-		                </div>
-		        </div>
-		        <div class="row" >
-		                <div class="col-md-12">
-		                        <div class="section-title"><h3>Investment range    :     <?= $invrange ?></h3></div>
-		                </div>
-		        </div>
-		        <div class="row" >
-		                <div class="col-md-12">
-		                        <div class="section-title" style="padding-top:50px"><h3>Company description</h3></div>
-		                </div>
-		        </div>
-		        <p class="lead mb-5">Company description ----<?php echo $summary;?></p>
-		        <div class="row">
-		                <div class="col-md-9">
-		                        <div class="section-title"><h3>Email    :    <?=$email?></h3></div>
-		                </div>
-		                <div class="col-md-3">
-		                        <div class="text-right">
-		                            <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalContactForm">Edit</a>
-		                        </div>
-		                    </div>
-		        </div>
-		        <div class="row" >
-		                <div class="col-md-4">
-		                        <div class="section-title"><h3>Contact    : <?=$phone?></h3></div>
-		                </div>
-		        </div>
-		        <div class="row" >
-		                <div class="col-md-4">
-		                        <div class="section-title"><h3>Website    : <?=$website?></h3></div>
-		                </div>
-		        </div>
-		        <div class="social-icons">
-		            <a href="#">
-		                <i class='fab fa-react'></i>
-		            </a>
-		            <a href="#">
-		                <i class="fab fa-linkedin-in"></i>
-		            </a>
-		            <a href="#">
-		                <i class="fab fa-github"></i>
-		            </a>
-		            <a href="#">
-		                <i class="fab fa-twitter"></i>
-		            </a>
-		            <a href="#">
-		                <i class="fab fa-facebook-f"></i>
-		            </a>
-		        </div>
-		    </div>
+			<div class="w-100">
+			    <div class="row">
+			        <div class="col-md-9">
+			                <h1 class="mb-0">
+			                        <span class="text-primary"><?=$cname?></span>
+			                    </h1>
+			        </div>
+			        <div class="col-md-3">
+			            <div class="text-right">
+			                <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalBasicForm">Edit</a>
+			            </div>
+			        </div>
+			    </div>
+			        <div class="subheading"><?= $city ?> ,&nbsp;<?= $state ?> ,&nbsp;<?= $country ?>.
+			        </div>
+			        <div class="subheading mb-5"><?= $fname ?>&nbsp;<?= $lname ?>
+			        </div>
+			        <div class="row" >
+			                <div class="col-md-12">
+			                        <div class="section-title"><h3>Industry of interest    :     <?= $indOfInt ?></h3></div>
+			                </div>
+			        </div>
+			        <div class="row" >
+			                <div class="col-md-12">
+			                        <div class="section-title"><h3>Investment range    :     <?= $invrange ?></h3></div>
+			                </div>
+			        </div>
+			        <div class="row" >
+			                <div class="col-md-12">
+			                        <div class="section-title" style="padding-top:50px"><h3>Company description</h3></div>
+			                </div>
+			        </div>
+			        <p class="lead mb-5">Company description ----<?php echo $summary;?></p>
+			        <div class="row">
+			                <div class="col-md-9">
+			                        <div class="section-title"><h3>Email    :    <?=$email?></h3></div>
+			                </div>
+			                <div class="col-md-3">
+			                        <div class="text-right">
+			                            <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalContactForm">Edit</a>
+			                        </div>
+			                    </div>
+			        </div>
+			        <div class="row" >
+			                <div class="col-md-4">
+			                        <div class="section-title"><h3>Contact    : <?=$phone?></h3></div>
+			                </div>
+			        </div>
+			        <div class="row" >
+			                <div class="col-md-4">
+			                        <div class="section-title"><h3>Website    : <?=$website?></h3></div>
+			                </div>
+			        </div>
+			        <div class="social-icons">
+			            <a href="#">
+			                <i class='fab fa-react'></i>
+			            </a>
+			            <a href="#">
+			                <i class="fab fa-linkedin-in"></i>
+			            </a>
+			            <a href="#">
+			                <i class="fab fa-github"></i>
+			            </a>
+			            <a href="#">
+			                <i class="fab fa-twitter"></i>
+			            </a>
+			            <a href="#">
+			                <i class="fab fa-facebook-f"></i>
+			            </a>
+			        </div>
+			    </div>
 		</section>
 
 		<hr class="m-0">
@@ -1218,205 +1218,205 @@
 		<hr class="m-0">
 
 		<section class="resume-section p-3 p-lg-5 d-flex justify-content-center" id="teams">
-		<div class="w-100">
-		<div class="row">
-		    <div class="col-md-9">
-		        <h2 class="mb-5">
-		            Our Team
-		        </h2>
-		    </div>
-		    <div class="col-md-3">
-		        <div class="text-right">
-		            <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#addTeamForm">ADD</a>
-		        </div>
-		    </div>
-		</div>
-
-
-		<div class="row">
-		<?php
-		        	$q = "SELECT * FROM inv_group where InvID='$u';";
-		    		$results=mysqli_query($db, $q);
-				if (mysqli_num_rows($results) > 0) {
-		            while($row = mysqli_fetch_assoc($results)) {
-		                echo '<div class="col-md-6">';
-		                    // echo '<div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">';
-		                        echo '<div class="resume-content">';
-		                            echo '<div class="row">';
-		                                echo '<div class="col-md-10">';
-		                                    echo '<h3 class="mb-0">';
-		                                        echo $row["Name"] ;
-		                                    echo '</h3>';
-		                                echo '</div>';
-		                                echo '<div class="col-md-2">';
-		                                    echo '<div class="row">';
-		                                        // echo '<div class="col-md-1">';
-		                                            // echo '<a href="" data-toggle="modal" data-target="#updateTeamForm"><i class="fa fa-pencil "></i></a></div>';
-		                                                echo '<div class="col-md-1">';
-		                                                    echo '<form method="post" action="index.php">
-		                                                                <input class="member" type="number" name="member" value="'.$row['ID'].'">
-		                                                                <button name="rem_mem" value="rem_mem" type="submit" class="rem_mem"    ><i class="fa fa-close"></i></button>
-		                                                                </form>';
-		                                                echo '</div>';
-		                                            echo '</div>';
-		                                        echo '</div>';
-		                                    echo '</div>';
-		                                    echo '<div class="subheading mb-3">';
-		                                        echo $row["Designation"]. "," .$row["Years"].'</div>';
-		                                        echo '<p>' .$row["Email"]. " | " .$row["LinkedIn"]. '</p>';
-		                                        echo '<p>' .$row["Expertise"]. '</p>';
-		                                    echo '</div>';
-		                                // echo '</div>';
-		                            echo '</div>';
-		                        }
-		                    }
-		         else{
-		            echo'<div class="col-md-4">';
-		            echo'<div class="profile-item">';
-		                echo'<div class="media">';
-		                    echo'<div class="media-body">';
-		                        echo '<h3 class="subheading">Add group members!</h3>';
-		                        echo '<p>Mention four group members</p>';
-		                        echo'</div>';
-		                    echo'</div>';
-		                echo'</div>';
-		            echo'</div>';
-		        }
-		?>
-		</div>
-		</div>
-
-		</section>
-
-		<hr class="m-0">
-
-		<section class="resume-section p-3 p-lg-5 d-flex justify-content-center" id="investment">
-		<div class="w-100">
-		        <div class="row">
-		            <div class="col-md-9">
-		                <h2 class="mb-5">
-		                    Previous Investments
-		                </h2>
-		            </div>
-		            <div class="col-md-3">
-		                    <div class="text-right">
-		                        <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalInvestmentForm">Add</a>
-		                    </div>
-		            </div>
-		        </div>
-
-		        <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
-		            <div class="col-md-12">
-		                <div class="row">
-		                    <?php
-		                    $q = "SELECT * FROM inv_previnvestment where InvID='$u';";
-		                    $results=mysqli_query($db, $q);
-		                    if (mysqli_num_rows($results) > 0) {
-		                        while($row = mysqli_fetch_assoc($results)) {
-
-		                    echo'<div class="col-md-3">
-		                        <div class="profile-item">
-		                            <div class="media">
-		                                <div class="media-body">
-		                                    <h3 class="media-heading">';
-		                                    echo $row["Name"];
-		                                    echo '</h3>';
-		                                    echo '<div class="subheading">'.$row["Website"].'</div>';
-		                                    echo '<p>'.$row["Stage"].'</p>';
-		                                    echo '<p>'.$row["Stake"].'</p>';
-		                                    echo '<p>'.$row["Amount"].'</p>';
-		                                    echo '<p>'.$row["Year"].'</p>';
-		                                echo '</div>
-		                            </div>
-		                        </div>
-		                    </div>
-		                    <div class="col-md-1">
-		                    <form method="post" action="index.php">
-		                    <input class="invest" type="number" name="invest" value="'.$row['ID'].'">
-		                    <button name="rem_inv" value="rem_inv" type="submit" class="rem_inv" ><i class="fa fa-close"></i></button>
-		                    </form>
-		                    </div>';
-		                        }
-		                    }
-		                    else{
-		                        echo'<div class="col-md-4">';
-		                            echo'<div class="profile-item">';
-		                                echo'<div class="media">';
-		                                    echo'<div class="media-body">';
-		                                        echo '<h3 class="subheading">Add your previous investments!</h3>';
-		                                        echo '<p>Mention the best three investments done and its details.</p>';
-		                                        echo'</div>';
-		                                    echo'</div>';
-		                                echo'</div>';
-		                            echo'</div>';
-		                    }
-		                    ?>
-		            </div>
-		        </div>
-		    </div>
-
-		    <div class="row">
-		        <div class="col-md-3">
-		            <div class="section-title">
-		                <h3>Investments Through Naman</h3>
-		            </div>
-		        </div>
-
-		        <div class="col-md-9">
-		            <div id="review">
-
-		                <?php
-		                    $q = "SELECT * FROM requests where Inv_ID='$u';";
-		                    $results=mysqli_query($db, $q);
-		                    if (mysqli_num_rows($results) > 0) {
-		                        while($row = mysqli_fetch_assoc($results)) {
-		                            $stid=$row['St_ID'];
-		                            $qu = "SELECT * FROM st_details where StpID='$stid';";
-		                            $result = mysqli_query($db, $qu);
-		                            $row1= mysqli_fetch_assoc($result);
-		                                echo '<div class="item">';
-		                                    echo '<div class="media">';
-		                                        echo '<div class="media-body">';
-		                                            echo '<div class="user-name">'.$row1["Stname"].'</div>';
-		                                        echo '</div>';
-		                                    echo '</div>';
-		                                    echo'<div class="review-text">';
-		                                        if($row['Deal'] == 0){
-		                                            echo 'Transaction in progress';
-		                                        }
-		                                        if($row['Deal'] == 1){
-		                                            echo 'Invested';
-		                                             echo 'Amount: '.$row['Amount'];
-		                                    echo '<br>';
-		                                    echo 'Stakeholding: '.$row['Stakehold'];
-		                                    echo '<br>';
-		                                    echo 'Date: '.$row['Date'];
-		                                    };
-		                                    echo'</div>';
-		                                echo'</div>';
-		                            }
-		                        }
-		                        else{
-		                            echo'<div id="review">';
-		                                echo'<div class="item">';
-		                                    echo'<div class="media">';
-		                                        echo'<div class="media-body">';
-		                                            echo'<div class="user-name">Hello '.$fname.'</div>';
-		                                        echo'</div>';
-		                                    echo'</div>';
-		                                    echo'<div class="review-text">';
-		                                    	echo'Start browsing startups and invest now!!';
-		                                        echo'<br>';
-		                                        echo'<a class="nav-link" target="_blank" href="../browse/browsestartup.php">Browse Startups</a>';
-		                                	echo'</div>';
-		                            	echo'</div>';
-									echo'</div>';
-		                        }
-		                        ?>
-		        	</div>
-		    	</div>
+			<div class="w-100">
+			<div class="row">
+			    <div class="col-md-9">
+			        <h2 class="mb-5">
+			            Our Team
+			        </h2>
+			    </div>
+			    <div class="col-md-3">
+			        <div class="text-right">
+			            <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#addTeamForm">ADD</a>
+			        </div>
+			    </div>
 			</div>
-		</div>
+
+
+			<div class="row">
+			<?php
+			        	$q = "SELECT * FROM inv_group where InvID='$u';";
+			    		$results=mysqli_query($db, $q);
+					if (mysqli_num_rows($results) > 0) {
+			            while($row = mysqli_fetch_assoc($results)) {
+			                echo '<div class="col-md-6">';
+			                    // echo '<div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">';
+			                        echo '<div class="resume-content">';
+			                            echo '<div class="row">';
+			                                echo '<div class="col-md-10">';
+			                                    echo '<h3 class="mb-0">';
+			                                        echo $row["Name"] ;
+			                                    echo '</h3>';
+			                                echo '</div>';
+			                                echo '<div class="col-md-2">';
+			                                    echo '<div class="row">';
+			                                        // echo '<div class="col-md-1">';
+			                                            // echo '<a href="" data-toggle="modal" data-target="#updateTeamForm"><i class="fa fa-pencil "></i></a></div>';
+			                                                echo '<div class="col-md-1">';
+			                                                    echo '<form method="post" action="index.php#membership">
+			                                                                <input class="member" type="number" name="member" value="'.$row['ID'].'">
+			                                                                <button name="rem_mem" value="rem_mem" type="submit" class="rem_mem"    ><i class="fa fa-close"></i></button>
+			                                                                </form>';
+			                                                echo '</div>';
+			                                            echo '</div>';
+			                                        echo '</div>';
+			                                    echo '</div>';
+			                                    echo '<div class="subheading mb-3">';
+			                                        echo $row["Designation"]. "," .$row["Years"].'</div>';
+			                                        echo '<p>' .$row["Email"]. " | " .$row["LinkedIn"]. '</p>';
+			                                        echo '<p>' .$row["Expertise"]. '</p>';
+			                                    echo '</div>';
+			                                // echo '</div>';
+			                            echo '</div>';
+			                        }
+			                    }
+			         else{
+			            echo'<div class="col-md-4">';
+			            echo'<div class="profile-item">';
+			                echo'<div class="media">';
+			                    echo'<div class="media-body">';
+			                        echo '<h3 class="subheading">Add group members!</h3>';
+			                        echo '<p>Mention four group members</p>';
+			                        echo'</div>';
+			                    echo'</div>';
+			                echo'</div>';
+			            echo'</div>';
+			        }
+			?>
+			</div>
+			</div>
+
+			</section>
+
+			<hr class="m-0">
+
+			<section class="resume-section p-3 p-lg-5 d-flex justify-content-center" id="investment">
+			<div class="w-100">
+			        <div class="row">
+			            <div class="col-md-9">
+			                <h2 class="mb-5">
+			                    Previous Investments
+			                </h2>
+			            </div>
+			            <div class="col-md-3">
+			                    <div class="text-right">
+			                        <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalInvestmentForm">Add</a>
+			                    </div>
+			            </div>
+			        </div>
+
+			        <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
+			            <div class="col-md-12">
+			                <div class="row">
+			                    <?php
+			                    $q = "SELECT * FROM inv_previnvestment where InvID='$u';";
+			                    $results=mysqli_query($db, $q);
+			                    if (mysqli_num_rows($results) > 0) {
+			                        while($row = mysqli_fetch_assoc($results)) {
+
+			                    echo'<div class="col-md-3">
+			                        <div class="profile-item">
+			                            <div class="media">
+			                                <div class="media-body">
+			                                    <h3 class="media-heading">';
+			                                    echo $row["Name"];
+			                                    echo '</h3>';
+			                                    echo '<div class="subheading">'.$row["Website"].'</div>';
+			                                    echo '<p>'.$row["Stage"].'</p>';
+			                                    echo '<p>'.$row["Stake"].'</p>';
+			                                    echo '<p>'.$row["Amount"].'</p>';
+			                                    echo '<p>'.$row["Year"].'</p>';
+			                                echo '</div>
+			                            </div>
+			                        </div>
+			                    </div>
+			                    <div class="col-md-1">
+			                    <form method="post" action="index.php#investment">
+			                    <input class="invest" type="number" name="invest" value="'.$row['ID'].'">
+			                    <button name="rem_inv" value="rem_inv" type="submit" class="rem_inv" ><i class="fa fa-close"></i></button>
+			                    </form>
+			                    </div>';
+			                        }
+			                    }
+			                    else{
+			                        echo'<div class="col-md-4">';
+			                            echo'<div class="profile-item">';
+			                                echo'<div class="media">';
+			                                    echo'<div class="media-body">';
+			                                        echo '<h3 class="subheading">Add your previous investments!</h3>';
+			                                        echo '<p>Mention the best three investments done and its details.</p>';
+			                                        echo'</div>';
+			                                    echo'</div>';
+			                                echo'</div>';
+			                            echo'</div>';
+			                    }
+			                    ?>
+			            </div>
+			        </div>
+			    </div>
+
+			    <div class="row">
+			        <div class="col-md-3">
+			            <div class="section-title">
+			                <h3>Investments Through Naman</h3>
+			            </div>
+			        </div>
+
+			        <div class="col-md-9">
+			            <div id="review">
+
+			                <?php
+			                    $q = "SELECT * FROM requests where Inv_ID='$u';";
+			                    $results=mysqli_query($db, $q);
+			                    if (mysqli_num_rows($results) > 0) {
+			                        while($row = mysqli_fetch_assoc($results)) {
+			                            $stid=$row['St_ID'];
+			                            $qu = "SELECT * FROM st_details where StpID='$stid';";
+			                            $result = mysqli_query($db, $qu);
+			                            $row1= mysqli_fetch_assoc($result);
+			                                echo '<div class="item">';
+			                                    echo '<div class="media">';
+			                                        echo '<div class="media-body">';
+			                                            echo '<div class="user-name">'.$row1["Stname"].'</div>';
+			                                        echo '</div>';
+			                                    echo '</div>';
+			                                    echo'<div class="review-text">';
+			                                        if($row['Deal'] == 0){
+			                                            echo 'Transaction in progress';
+			                                        }
+			                                        if($row['Deal'] == 1){
+			                                            echo 'Invested';
+			                                             echo 'Amount: '.$row['Amount'];
+			                                    echo '<br>';
+			                                    echo 'Stakeholding: '.$row['Stakehold'];
+			                                    echo '<br>';
+			                                    echo 'Date: '.$row['Date'];
+			                                    };
+			                                    echo'</div>';
+			                                echo'</div>';
+			                            }
+			                        }
+			                        else{
+			                            echo'<div id="review">';
+			                                echo'<div class="item">';
+			                                    echo'<div class="media">';
+			                                        echo'<div class="media-body">';
+			                                            echo'<div class="user-name">Hello '.$fname.'</div>';
+			                                        echo'</div>';
+			                                    echo'</div>';
+			                                    echo'<div class="review-text">';
+			                                    	echo'Start browsing startups and invest now!!';
+			                                        echo'<br>';
+			                                        echo'<a class="nav-link" target="_blank" href="../browse/browsestartup.php">Browse Startups</a>';
+			                                	echo'</div>';
+			                            	echo'</div>';
+										echo'</div>';
+			                        }
+			                        ?>
+			        	</div>
+			    	</div>
+				</div>
+			</div>
 
 		</section>
 
@@ -1425,37 +1425,37 @@
 
 
 		<section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="consultancy">
-		<div class="w-100">
-		    <h2 class="mb-5">Contact Naman</h2>
-		<div class="col-md-12">
-		    <div class="row">
-		        <div class="col-md-6" style="padding-top:10px">
-		            <div class="media-body step-icons">
-		                    <a href="#">
-		                        <i class="fa fa-phone"></i>
-		                    </a>
-		                <button class="btn btn-steps">Introductory call</button>
-		                <div><img src="../img/Call.png" height="250px" width="350px"></div>
-		                    <br>
-		                    <i class="fa fa-phone" style="font-size:20px"> +91 9876543211</i><br>
-		                    <i class="fa fa-phone" style="font-size:20px"> +91 9876543211</i>
-		                    <p>Contact us on any of these numbers for an introductory call.</p>
-		            </div>
-		        </div>
-		        <div class="col-md-6" style="padding-top:10px">
-		            <div class="media-body step-icons">
-		                    <a href="#">
-		                        <i class="fa fa-comments"></i>
-		                    </a>
-		                <button class="btn btn-steps">Schedule a meeting</button>
-		                <div><img src="../img/Meet.png" height="300px" width="350px"></div>
-		                <br>
-		                <button class="btn btn-meetus">Meet us</button>
-		            </div>
-		        </div>
-		    </div>
-		</div>
-		</div>
+			<div class="w-100">
+			    <h2 class="mb-5">Contact Naman</h2>
+			<div class="col-md-12">
+			    <div class="row">
+			        <div class="col-md-6" style="padding-top:10px">
+			            <div class="media-body step-icons">
+			                    <a href="#">
+			                        <i class="fa fa-phone"></i>
+			                    </a>
+			                <button class="btn btn-steps">Introductory call</button>
+			                <div><img src="../img/Call.png" height="250px" width="350px"></div>
+			                    <br>
+			                    <i class="fa fa-phone" style="font-size:20px"> +91 9876543211</i><br>
+			                    <i class="fa fa-phone" style="font-size:20px"> +91 9876543211</i>
+			                    <p>Contact us on any of these numbers for an introductory call.</p>
+			            </div>
+			        </div>
+			        <div class="col-md-6" style="padding-top:10px">
+			            <div class="media-body step-icons">
+			                    <a href="#">
+			                        <i class="fa fa-comments"></i>
+			                    </a>
+			                <button class="btn btn-steps">Schedule a meeting</button>
+			                <div><img src="../img/Meet.png" height="300px" width="350px"></div>
+			                <br>
+			                <button class="btn btn-meetus">Meet us</button>
+			            </div>
+			        </div>
+			    </div>
+			</div>
+			</div>
 		</section>
 
 		<hr class="m-0">
