@@ -234,6 +234,7 @@ if (isset($_POST['login_inv'])) {
   	$query = "SELECT * FROM userinv WHERE Username='$username' AND Password='$fpass'";
   	$results = mysqli_query($db, $query);
     $row = mysqli_fetch_assoc($results);
+    $_SESSION['memexp'] = 0;
 
   	if (mysqli_num_rows($results) == 1) {
         $_SESSION['InvID'] = $row['InvID'];
@@ -244,6 +245,34 @@ if (isset($_POST['login_inv'])) {
         $results = mysqli_query($db, $qu);
         $row = mysqli_fetch_assoc($results);
         $type = $row['Type'];
+        
+        $q1 = "SELECT * FROM membership WHERE InvID='$u'";
+        $res = mysqli_query($db, $q1);
+        $row = mysqli_fetch_assoc($res);
+        if (mysqli_num_rows($res) == 1){
+          $exp = $row['ExpDate'];
+          $date = date("y-m-d");
+          
+          $dif = $date-$exp;
+          if(($dif / (60 * 60 * 24)) < 0 )
+          {
+            $_SESSION['memexp'] = 1;
+          }
+          else if(($dif / (60 * 60 * 24)) < 30)
+          {
+            $_SESSION['memexp'] = 2;
+          }
+          
+          if($_SESSION['memexp'] == 1){
+            
+            //PHP
+          }
+          // if(strtotime($exp) < strtotime($date))
+          // {
+          //   //PHP to remove
+          // }
+          // if
+        }
 
         if($type == "Individual"){
           header('location: ../Investor/indi');
