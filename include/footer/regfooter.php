@@ -92,7 +92,7 @@
 						</div> <!-- End Col -->
 						<div class="col-sm-6  ">
 						    <div class="copyright-text pull-right">
-								<p> <a href="#">Team</a> | <a href="#">FAQS</a> |<a href="#">Terms & Conditions</a> | <a href="#">Refund Policy</a>|<a href="#">Blog</a> </p>
+								<p> <a href="../include/about/team.php">Team</a> | <a href="../faq.php">FAQS</a> |<a href="../include/about/terms.php">Terms & Conditions</a> | <a href="../include/about/privacy.php">Privacy Policy</a>|<a href="../#contact">Contact</a> </p>
 							</div>
 
 						</div> <!-- End Col -->

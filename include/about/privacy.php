@@ -28,6 +28,7 @@
   <link href="css/style.css" rel="stylesheet">
 </head>
 <body>
+
 <section class="wow fadeIn">
     <div class="container">
         <header class="section-header">
@@ -59,5 +60,59 @@
             </div>
         </div>
     </div>
+</section>
+
+<section class="sticky-bottom shadow p-1 bg-light">
+        <div class="row" style="font-size:12px">
+            <div class="col-md-12 text-center p-2">
+                <div class="row">
+                    <div class="col-md-12 text-center p-1">
+                        <div class="col-2 d-inline">
+                            <a href="../../#intro" class="text-dark">Home</a>
+                        </div>
+                        <div class="col-2 d-inline">
+                            <a href="../../#about" class="text-dark">About</a>
+                        </div>
+                        <div class="col-2 d-inline">
+                            <a href="terms.php" class="text-dark">Terms and Conditions</a>
+                        </div>
+                        <div class="col-2 d-inline">
+                            <a href="privacy.php" class="text-dark">Privacy Policy</a>
+                        </div>
+                        <div class="col-2 d-inline">
+                            <a href="../../faq.php" class="text-dark">FAQs</a>
+                        </div>
+                        <div class="col-2 d-inline">
+                            <a href="../../#contact" class="text-dark">Contact</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12 text-center p-1">
+                        <div class="col-md-12 d-block">
+                            Copyright @2019 | Designed With by CONTENT AND TECHNICAL TEAM CESS
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-center p-1">
+                        <div class="col-1 d-inline">
+                            <a href="#" class="text-dark"><i class="fa fa-facebook-f"></i></a>
+                        </div>
+                        <div class="col-1 d-inline">
+                            <a href="#" class="text-dark"><i class="fa fa-twitter"></i></a>
+                        </div>
+                        <div class="col-1 d-inline">
+                            <a href="#" class="text-dark"><i class="fa fa-linkedin"></i></a>
+                        </div>
+
+                        <div class="col-1 d-inline">
+                            <a href="#" class="text-dark"><i class="fa fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 </section>
 </body>
