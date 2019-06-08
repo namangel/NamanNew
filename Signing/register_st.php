@@ -4,6 +4,34 @@ if(isset($_SESSION['StpID'])){
     header('location: ../StartUp/index.php');
 }
 
+if(isset($_POST["reg_st"]))  
+ {  
+      if(empty($_POST["name"]))  
+      {  
+        echo "<script>alert('Specify industry type')</script>";
+      }  
+      else  
+      {  
+           if(file_exists('json/industry.json'))  
+           {  
+                $current_data = file_get_contents('json/industry.json');  
+                $array_data = json_decode($current_data, true);  
+                $extra = array( 
+                     'name'               =>     $_POST['name'],  
+                );  
+                $array_data[] = $extra;  
+                $final_data = json_encode($array_data);  
+                if(file_put_contents('json/industry.json', $final_data))  
+                {  
+                    echo "<script>alert('Industry appended')</script>";
+                }  
+           }  
+           else  
+           {  
+                echo "<script>alert('JSON file not found')</script>";
+        }  
+      }  
+ }  
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -43,6 +71,62 @@ if(isset($_SESSION['StpID'])){
         <script src="js/bootstrap.min.js"></script>
         <script src="js/location.js"></script>
 
+        <script>
+
+            $(document).ready(function(){
+                load_json_data('type');
+                
+                function load_json_data(id){
+                    var html_code = '';
+                    $.getJSON('json/industry.json', function(data){
+                        
+                        function SortByName(x,y){
+                            return (((x.name).toLowerCase() == (y.name).toLowerCase()) ? 0 : (((x.name).toLowerCase() > (y.name).toLowerCase()) ? 1 : -1 ));
+                        }
+
+                        // Call Sort By Name
+                        data.sort(SortByName);
+
+                        function removeDumplicateValue(myArray){ 
+                            var newArray = [];
+    
+                            $.each(myArray, function(key, value) {
+                                var exists = false;
+                                $.each(newArray, function(k, val2) {
+                                    if(value.name == val2.name){ exists = true }; 
+                                });
+                                if(exists == false && value.name != "") { newArray.push(value); }
+                            });
+   
+                            return newArray;
+                        }
+    
+                        data = removeDumplicateValue(data);
+                        var count = Object.keys(data).length;
+                        console.log(count);
+
+                        html_code += '<option value="">Select '+id+'</option>';
+                        $.each(data, function(key, value){
+                            if(value.name != "Others")
+                                html_code += '<option value="'+value.name+'" id="'+value.name+'">'+value.name+'</option>';
+                        });
+                        html_code += '<option value="Others" id="Others">Others</option>';
+
+                        $('#'+id).html(html_code);
+                    });    
+                }     
+            });
+
+            function CheckInd(val){
+                var element=document.getElementById("name");
+                if(val=="Others")
+                    element.style.display="block";
+                else  
+                    element.style.display="none";
+            }
+
+</script>
+
 </head>
  <body>
    
@@ -73,99 +157,12 @@ if(isset($_SESSION['StpID'])){
                         </div>
                         <div class="form-group col-md-6 col-sm-6">
                             <label for="type">Choose Industry</label>
-                            <select class="form-control input-sm" name="type" id="type">
-                            <option value=""></option>
-                                        <option value="Advertising">Advertising</option>
-                                        <option value="Agriculture">Agriculture</option>
-                                        <option value="Analytics">Analytics</option>
-                                        <option value="Android">Android</option>
-                                        <option value="Apps">Apps</option>
-                                        <option value="Art">Art</option>
-                                        <option value="Automotive">Automotive</option>
-                                        <option value="B2B">B2B</option>
-                                        <option value="Big Data">Big Data</option>
-                                        <option value="Big Data Analytics">Big Data Analytics</option>
-                                        <option value="Brand Marketing">Brand Marketing</option>
-                                        <option value="Business Development">Business Development</option>
-                                        <option value="Business Services">Business Services</option>
-                                        <option value="Clean Energy">Clean Energy</option>
-                                        <option value="Clean Technology">Clean Technology</option>
-                                        <option value="Cloud Computing">Cloud Computing</option>
-                                        <option value="Commercial Real Estate">Commercial Real Estate</option>
-                                        <option value="Consulting">Consulting</option>
-                                        <option value="Consumer Electronics">Consumer Electronics</option>
-                                        <option value="Consumer Goods">Consumer Goods</option>
-                                        <option value="Consumer Internet">Consumer Internet</option>
-                                        <option value="Consumers">Consumers</option>
-                                        <option value="Crowdfunding">Crowdfunding</option>
-                                        <option value="Design">Design</option>
-                                        <option value="Digital Marketing">Digital Marketing</option>
-                                        <option value="Digital Media">Digital Media</option>
-                                        <option value="E-Commerce">E-Commerce</option>
-                                        <option value="E-Commerce Platforms">E-Commerce Platforms</option>
-                                        <option value="Education">Education</option>
-                                        <option value="Enterprise Software">Enterprise Software</option>
-                                        <option value="Entertainment">Entertainment</option>
-                                        <option value="Events">Events</option>
-                                        <option value="Fashion">Fashion</option>
-                                        <option value="Finance">Finance</option>
-                                        <option value="Fitness">Fitness</option>
-                                        <option value="Food and Beverages">Food and Beverages</option>
-                                        <option value="Games">Games</option>
-                                        <option value="Hardware">Hardware</option>
-                                        <option value="Health and Wellness">Health and Wellness</option>
-                                        <option value="Hospitality">Hospitality</option>
-                                        <option value="Human Resources">Human Resources</option>
-                                        <option value="Information Technology">Information Technology</option>
-                                        <option value="Internet">Internet</option>
-                                        <option value="iOS">iOS</option>
-                                        <option value="Location Based Services">Location Based Services</option>
-                                        <option value="Manufacturing">Manufacturing</option>
-                                        <option value="Marketing">Marketing</option>
-                                        <option value="Marketplaces">Marketplaces</option>
-                                        <option value="Media">Media</option>
-                                        <option value="Medical Devices">Medical Devices</option>
-                                        <option value="Mobile">Mobile</option>
-                                        <option value="Mobile Advertising">Mobile Advertising</option>
-                                        <option value="Mobile Application">Mobile Application</option>
-                                        <option value="Mobile Commerce">Mobile Commerce</option>
-                                        <option value="Mobile Games">Mobile Games</option>
-                                        <option value="Mobile Health">Mobile Health</option>
-                                        <option value="Mobile Payments">Mobile Payments</option>
-                                        <option value="Music">Music</option>
-                                        <option value="Nonprofits">Nonprofits</option>
-                                        <option value="Online Travel">Online Travel</option>
-                                        <option value="Payments">Payments</option>
-                                        <option value="Personal Health">Personal Health</option>
-                                        <option value="Publishing">Publishing</option>
-                                        <option value="Real Estate">Real Estate</option>
-                                        <option value="Recruiting">Recruiting</option>
-                                        <option value="Restaurants">Restaurants</option>
-                                        <option value="Retail">Retail</option>
-                                        <option value="Retail Technology">Retail Technology</option>
-                                        <option value="SaaS">SaaS</option>
-                                        <option value="Sales and Marketing">Sales and Marketing</option>
-                                        <option value="Security">Security</option>
-                                        <option value="Small and Medium Businesses">Small and Medium Businesses</option>
-                                        <option value="Social Commerce">Social Commerce</option>
-                                        <option value="Social Games">Social Games</option>
-                                        <option value="Social Media">Social Media</option>
-                                        <option value="Social Media Marketing">Social Media Marketing</option>
-                                        <option value="Software">Software</option>
-                                        <option value="Sports">Sports</option>
-                                        <option value="Technology">Technology</option>
-                                        <option value="Telecommunications">Telecommunications</option>
-                                        <option value="Transportation">Transportation</option>
-                                        <option value="Travel">Travel</option>
-                                        <option value="User Experience Design">User Experience Design</option>
-                                        <option value="Venture Capital">Venture Capital</option>
-                                        <option value="Video">Video</option>
-                                        <option value="Video Games">Video Games</option>
-                                        <option value="Web Design">Web Design</option>
-                                        <option value="Web Development">Web Development</option>
-                            </select>
-
-                        </div>
+                            <select class="form-control input-sm" name="type" id="type" onchange="CheckInd(this.value);">
+                            <option value="">Select industry</option>
+                            </select><br>
+                            <input type="text" name="name" id="name" class="form-control" style="display:none;" placeholder="Specify Industry type"  /><br />  
+                        </div>    
+                            
                         <div class="form-group col-md-6 col-sm-6">
                             <label for="address">Address</label>
                             <input type="text" name="address"class="form-control" placeholder="Address*" value=""/>
