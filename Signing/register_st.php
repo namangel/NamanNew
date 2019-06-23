@@ -1,37 +1,37 @@
 <?php require('../server.php');
 
-if(isset($_SESSION['StpID'])){
-    header('location: ../StartUp/index.php');
-}
+  if(isset($_SESSION['StpID'])){
+      header('location: ../StartUp/index.php');
+  }
 
-if(isset($_POST["reg_st"]))  
- {  
-      if(empty($_POST["name"]))  
-      {  
+  if(isset($_POST["reg_st"]))
+   {
+      if(empty($_POST["name"]))
+      {
         echo "<script>alert('Specify industry type')</script>";
-      }  
-      else  
-      {  
-           if(file_exists('json/industry.json'))  
-           {  
-                $current_data = file_get_contents('json/industry.json');  
-                $array_data = json_decode($current_data, true);  
-                $extra = array( 
-                     'name'               =>     $_POST['name'],  
-                );  
-                $array_data[] = $extra;  
-                $final_data = json_encode($array_data);  
-                if(file_put_contents('json/industry.json', $final_data))  
-                {  
+      }
+      else
+      {
+           if(file_exists('json/industry.json'))
+           {
+                $current_data = file_get_contents('json/industry.json');
+                $array_data = json_decode($current_data, true);
+                $extra = array(
+                     'name'               =>     $_POST['name'],
+                );
+                $array_data[] = $extra;
+                $final_data = json_encode($array_data);
+                if(file_put_contents('json/industry.json', $final_data))
+                {
                     echo "<script>alert('Industry appended')</script>";
-                }  
-           }  
-           else  
-           {  
+                }
+           }
+           else
+           {
                 echo "<script>alert('JSON file not found')</script>";
-        }  
-      }  
- }  
+        }
+      }
+ }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -53,11 +53,11 @@ if(isset($_POST["reg_st"]))
 
         <link href="../css/style.css" rel="stylesheet">
         <link href="css/regform.css" rel="stylesheet">
-       
+
 
         <?php require "../include/header/registerheader.php"?>
 
-     
+
 
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -75,11 +75,11 @@ if(isset($_POST["reg_st"]))
 
             $(document).ready(function(){
                 load_json_data('type');
-                
+
                 function load_json_data(id){
                     var html_code = '';
                     $.getJSON('json/industry.json', function(data){
-                        
+
                         function SortByName(x,y){
                             return (((x.name).toLowerCase() == (y.name).toLowerCase()) ? 0 : (((x.name).toLowerCase() > (y.name).toLowerCase()) ? 1 : -1 ));
                         }
@@ -87,20 +87,20 @@ if(isset($_POST["reg_st"]))
                         // Call Sort By Name
                         data.sort(SortByName);
 
-                        function removeDumplicateValue(myArray){ 
+                        function removeDumplicateValue(myArray){
                             var newArray = [];
-    
+
                             $.each(myArray, function(key, value) {
                                 var exists = false;
                                 $.each(newArray, function(k, val2) {
-                                    if(value.name == val2.name){ exists = true }; 
+                                    if(value.name == val2.name){ exists = true };
                                 });
                                 if(exists == false && value.name != "") { newArray.push(value); }
                             });
-   
+
                             return newArray;
                         }
-    
+
                         data = removeDumplicateValue(data);
                         var count = Object.keys(data).length;
                         console.log(count);
@@ -113,23 +113,112 @@ if(isset($_POST["reg_st"]))
                         html_code += '<option value="Others" id="Others">Others</option>';
 
                         $('#'+id).html(html_code);
-                    });    
-                }     
+                    });
+                }
             });
 
             function CheckInd(val){
                 var element=document.getElementById("name");
                 if(val=="Others")
                     element.style.display="block";
-                else  
+                else
                     element.style.display="none";
             }
 
-</script>
+            //country dropdown
+      	    $(document).ready(function(){
 
-</head>
- <body>
-   
+      	    load_json_data('country');
+
+      	    function load_json_data(id,parent_id,state_id)
+      	    {
+      	       //console.log(parent_id);
+      	       //console.log(id);
+      	     var html_code = '';
+      	     $.getJSON('json/location.json', function(data){
+
+      	      html_code += '<option value="">Select '+id+'</option>';
+      	      $.each(data, function(key, value){
+      	       if(id == 'country')
+      	       {
+
+      	         html_code += '<option value="'+value.name+'" id="'+value.id+'">'+value.name+'</option>';
+      	       }
+      	       else if(id == 'state')
+      	       {
+      	           if(value.id == parent_id)
+      	           {
+      	               $.each(data[parent_id-1].states, function(key, value){
+      	               html_code += '<option value="'+key+'">'+key+'</option>';
+      	           });
+      	           }
+      	       }
+      	       else
+      	       {
+      	           // console.log("Parent_id"+parent_id);
+      	           // console.log("State_id"+state_id);
+
+      	           if(value.id == parent_id)
+      	           {
+      	               $.each(data[parent_id-1].states, function(key, value){
+      	               if(key == state_id)
+      	               {
+      	                   for (var i = 0;i < value.length;i++)
+      	                   {
+      	                       html_code += '<option value="'+value[i]+'">'+value[i]+'</option>';
+      	                   }
+      	               }
+      	           });
+      	       }
+      	       }
+      	      });
+      	      $('#'+id).html(html_code);
+      	     });
+
+      	    }
+
+      	    $(document).on('change', '#country', function(){
+      	     var country_id = $('#country option:selected').attr('id');
+      	     //console.log("Hello"+country_id);
+      	     if(country_id != '')
+      	     {
+      	      load_json_data('state',country_id);
+      	     }
+      	     else
+      	     {
+      	      $('#state').html('<option value="">Select state</option>');
+      	      $('#city').html('<option value="">Select city</option>');
+      	     }
+      	    });
+      	    $(document).on('change', '#state', function(){
+
+      	       var e = document.getElementById("country");
+      	       var country_id = $('#country option:selected').attr('id');
+
+      	       //console.log("dafafafadfa"+country_id);
+
+      	       var e = document.getElementById("state");
+      	       var state_id = e.options[e.selectedIndex].text;
+
+      	   //   var state_id = $(this).val();
+      	   //   var state_id = "Maharashtra";
+
+      	     if(state_id != '')
+      	     {
+      	      load_json_data('city',country_id,state_id);
+      	     }
+      	     else
+      	     {
+      	      $('#city').html('<option value="">Select city</option>');
+      	     }
+      	    });
+           });
+
+        </script>
+
+  </head>
+  <body>
+
 
         <div class="panel panel-primary" style="margin:20px;">
             <div class="panel-heading">
@@ -160,9 +249,9 @@ if(isset($_POST["reg_st"]))
                             <select class="form-control input-sm" name="type" id="type" onchange="CheckInd(this.value);">
                             <option value="">Select industry</option>
                             </select><br>
-                            <input type="text" name="name" id="name" class="form-control" style="display:none;" placeholder="Specify Industry type"  /><br />  
-                        </div>    
-                            
+                            <input type="text" name="name" id="name" class="form-control" style="display:none;" placeholder="Specify Industry type"  /><br />
+                        </div>
+
                         <div class="form-group col-md-6 col-sm-6">
                             <label for="address">Address</label>
                             <input type="text" name="address"class="form-control" placeholder="Address*" value=""/>
@@ -233,10 +322,8 @@ if(isset($_POST["reg_st"]))
         </div>
         <br>
         <br>
-  
+
         <?php require "../include/footer/regfooter.php"?>
-
-
 
     </body>
 

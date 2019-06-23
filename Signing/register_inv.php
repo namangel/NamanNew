@@ -1,12 +1,12 @@
 <?php require('../server.php');
 
-if(isset($_SESSION['InvID'])){
+  if(isset($_SESSION['InvID'])){
 
-    if($_SESSION["type"] == "Individual")    
-        header('location: ../Investor/indi/');
-    else
-        header('location: ../Investor/inst/');
-}
+      if($_SESSION["type"] == "Individual")
+          header('location: ../Investor/indi/');
+      else
+          header('location: ../Investor/inst/');
+  }
 
 ?>
 <!DOCTYPE html>
@@ -195,10 +195,10 @@ if(isset($_SESSION['InvID'])){
                         </div>
                         <div class="col-lg-6 wow fadeInUp pt-5 pt-lg-0">
                             <h3>What's the right choice for you?</h3>
-                            <p><b>Institutional Investor</b></p> 
+                            <p><b>Institutional Investor</b></p>
                             <p>Institutional Investor is a nonbank person or organization that trades securities in large enough share quantities or dollar amounts that it qualifies for preferential treatment and lower commissions, that is, it is an organization that invests on their behalf of its members</p>
 
-                            <p><b>Individual Investor</b></p> 
+                            <p><b>Individual Investor</b></p>
                             <p>Individual Investor is an individual who purchases securities for his or her own personal account rather than for an organization.</p>
                         </div>
                         </div>
@@ -225,14 +225,14 @@ if(isset($_SESSION['InvID'])){
                             <label for="phone">Phone Number</label>
                             <input type="text" class="form-control input-sm" name="phone" placeholder="">
                         </div>
-                        
+
                         <div class="form-group col-md-6 col-sm-6">
                             <label for="country">Country</label>
                             <select class="form-control input-sm custom-select" name="country" id="country">
                                 <option value="">Select country</option>
                             </select>
                         </div>
-                        
+
                         <div class="form-group col-md-6 col-sm-6">
                             <label for="state">State</label>
                             <select class="form-control input-sm custom-select " name="state" id="state">
@@ -348,7 +348,7 @@ if(isset($_SESSION['InvID'])){
                         </div>
 
                         <div class = "form-group col-md-6 col-sm-6">
-                            <label for="invrange">Investment range</label>	 
+                            <label for="invrange">Investment range</label>
                             <select class="form-control input-sm" name="invrange">
                                     <option>Select Investment range</option>
                                     <option>0 - 1,00,000</option>
@@ -358,7 +358,7 @@ if(isset($_SESSION['InvID'])){
                                     <option>More than 1,00,00,000</option>
                             </select>
                         </div>
-     
+
                         <div class="form-group col-md-6 col-sm-6">
                             <label for="address">Company Description</label>
                             <span class="help-block">Describe yourself and the value of your company</span>
@@ -369,7 +369,7 @@ if(isset($_SESSION['InvID'])){
                             <label for="username">Username</label>
                             <input type="text" class="form-control input-sm" id="username" placeholder="">
                         </div>
-                        
+
                         <div class="form-group col-md-6 col-sm-6">
                             <label for="password_1">Password</label>
                             <input type="password" class="form-control input-sm" name="password_1" placeholder="">
@@ -414,14 +414,14 @@ if(isset($_SESSION['InvID'])){
                             <label for="phone">Phone Number</label>
                             <input type="text" class="form-control input-sm" name="phone" placeholder="">
                         </div>
-                        
+
                         <div class="form-group col-md-6 col-sm-6">
                             <label for="country">Country</label>
                             <select class="form-control input-sm custom-select " name="country" id="country">
                                 <option value="">Select country</option>
                             </select>
                         </div>
-                        
+
                         <div class="form-group col-md-6 col-sm-6">
                             <label for="state">State</label>
                             <select class="form-control input-sm custom-select " name="state" id="state">
@@ -447,7 +447,7 @@ if(isset($_SESSION['InvID'])){
                         </div>
 
                         <div class = "form-group col-md-6 col-sm-6">
-                            <label for="invrange">Investment range</label>	 
+                            <label for="invrange">Investment range</label>
                             <select class="form-control input-sm" name="invrange">
                                     <option>Select Investment range</option>
                                     <option>0 - 1,00,000</option>
@@ -457,7 +457,7 @@ if(isset($_SESSION['InvID'])){
                                     <option>More than 1,00,00,000</option>
                             </select>
                         </div>
-     
+
                         <div class="form-group col-md-6 col-sm-6">
                             <label for="address">Company Description</label>
                             <span class="help-block">Describe yourself and the value of your company</span>
@@ -468,7 +468,7 @@ if(isset($_SESSION['InvID'])){
                             <label for="username">Username</label>
                             <input type="text" class="form-control input-sm" id="username" placeholder="">
                         </div>
-                        
+
                         <div class="form-group col-md-6 col-sm-6">
                             <label for="password_1">Password</label>
                             <input type="password" class="form-control input-sm" name="password_1" placeholder="">
@@ -490,11 +490,11 @@ if(isset($_SESSION['InvID'])){
                 </form>
             </div>
         </div>
-          
+
         <?php require "../include/footer/regfooter.php"?>
     </body>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.js"></script>
-<script src="js/validation.js"></script> 
+<script src="js/validation.js"></script>
 </html>
