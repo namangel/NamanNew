@@ -4,18 +4,18 @@
         header('location: ../pageerror.php');
     }
 	$id = $_SESSION['StpID'];
-  
+
   $toolid = $_GET['tid'];
-  
+
   echo $toolid;
-  
+
   if(isset($_POST['paid'])){
     $q = "INSERT INTO tools_used(TID,StpID) values('$toolid','$id')";
     mysqli_query($db, $q);
     header('location:index.php');
   }
-  
-  
+
+
   ?>
   <!DOCTYPE html>
   <html lang="en">
@@ -25,7 +25,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>My Dashboard</title>
+    <title>Payment | Naman Angels India Foundation</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">

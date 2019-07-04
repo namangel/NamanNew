@@ -486,7 +486,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>My Dashboard</title>
+    <title><?=$Stname?>'s Dashboard | Naman Angels India Foundation</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">

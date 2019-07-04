@@ -1,8 +1,8 @@
 <?php
 	require '../../server.php';
 	if(!isset($_SESSION['InvID'])){
-                header('location: ../pageerror.php');
-        }
+		header('location: ../../Signing/login.php');
+	}
 	$u = $_SESSION['InvID'];
 	$qu = "SELECT * FROM inv_details WHERE InvID='$u'";
     $results = mysqli_query($db, $qu);
@@ -265,7 +265,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Resume - Start Bootstrap Theme</title>
+    <title><?=$cname?>'s Dashboard | Naman Angels India Foundation</title>
 
 
 
