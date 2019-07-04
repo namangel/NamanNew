@@ -43,7 +43,7 @@ $pdf= new PDF('p','mm','A4');
 
 $pdf->AddPage();
 
-
+    $pdf->SetTitle('One Pager');
 
     $row1= mysqli_fetch_array($record1);
     $row2= mysqli_fetch_array($record2);
@@ -285,6 +285,7 @@ $pdf->AddPage();
         $pdf->cell(25,10,$pro,1,0,'L');
     }
     $pdf->Ln();
+
 
 $pdf->OutPut();
 ?>

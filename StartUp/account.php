@@ -115,7 +115,8 @@
 ?>
 <html>
     <head>
-        <title>Account Settings</title>
+        <title><?=$Stname?>'s Account Settings | Naman Angels India Foundation</title>
+        <link href="../img/naman.png" rel="icon">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">

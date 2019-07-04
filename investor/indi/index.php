@@ -1,7 +1,7 @@
 <?php
 	require '../../server.php';
 	if(!isset($_SESSION['InvID'])){
-		header('location: ../pageerror.php');
+		header('location: ../../Signing/login.php');
 	}
 	$u = $_SESSION['InvID'];
 	$qu = "SELECT * FROM inv_details WHERE InvID='$u'";
@@ -216,8 +216,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="description" content="">
 	<meta name="author" content="">
+	<link href="../../img/naman.png" rel="icon">
 
-	<title>Resume - Start Bootstrap Theme</title>
+	<title><?=$fname?>'s Dashboard | Naman Angels India Foundation</title>
 
 	<!-- Bootstrap core CSS -->
 	<link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -758,7 +759,7 @@
 	      </div>
 
         <div class="subheading mb-5">GET STARTED.
-        
+
 		<p class="subheading mb-6">
 			<?php
 				if($member == 0){

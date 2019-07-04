@@ -1,8 +1,8 @@
 <?php require('../server.php') ?>
 <html>
 <head>
-  <title>Individual Investor Membership | NAMAN</title>
-  <link rel="icon" href="../img/favicon.jpg" type="image/jpg" sizes="16x16">
+  <title>Individual Investor Membership | Naman Angels India Foundation</title>
+  <link href="../img/naman.png" rel="icon">
   <link rel="stylesheet" type="text/css" href="css/membership.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -59,15 +59,15 @@ if (phone.length != 10) {
         <label>Email</label>
         <input type="email" name="email" required>
       </div>
-   
+
     <div class="input-group">
       <label>Phone</label>
       <input type="number" name="phone" required>
     </div>
     <div class="input-group">
       <textarea rows="10" name="query" placeholder="Enter queries about membership here.."></textarea>
-    </div>  
-  
+    </div>
+
     <div class="contbot">
           <div class="input-group">
             <button type="submit" onclick="validateForm()"class="btn" name="dir_mem" style="background-color: #0e3c58;">Request Membership</button>

@@ -8,6 +8,8 @@
 
     <head>
         <meta charset="utf-8">
+        <link href="../img/naman.png" rel="icon">
+        <title>Login | Naman Angels India Foundation</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <link href="../css/style.css" rel="stylesheet">
@@ -17,16 +19,9 @@
         <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
         <!-- <link href="../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
 
-       <!-- <link href="../css/style.css" rel="stylesheet"> -->
-       <link href="css/login-form.css" rel="stylesheet">
+        <!-- <link href="../css/style.css" rel="stylesheet"> -->
+        <link href="css/login-form.css" rel="stylesheet">
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-        <style>
-
-
-
-
-        </style>
-
     </head>
 
     <body>

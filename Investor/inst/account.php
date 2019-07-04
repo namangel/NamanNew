@@ -9,7 +9,7 @@
     $Email = $row['Email'];
 	$Phone = $row['Phone'];
     $Website = $row['Website'];
-    
+
     $qu = "SELECT * FROM inv_addetails WHERE InvID='$id'";
     $results = mysqli_query($db, $qu);
 	$row = mysqli_fetch_assoc($results);
@@ -121,7 +121,8 @@
 ?>
 <html>
     <head>
-        <title>Account Settings</title>
+        <link href="../../img/naman.png" rel="icon">
+        <title><?=$CName?>'s Account Settings | Naman Angels India Foundation</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
