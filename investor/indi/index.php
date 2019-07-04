@@ -445,7 +445,7 @@
           <a class="nav-link js-scroll-trigger" href="#membership">Membership</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="../browse/browsestartup.php" target="_blank">browse startups</a>
+          <a class="nav-link js-scroll-trigger" href="../browse/browsestartup.php" target="_blank">Browse Startups</a>
         </li>
         <li class="nav-item">
           <a class="nav-link js-scroll-trigger" href="#investment">Investments </a>
@@ -758,11 +758,11 @@
 	      </div>
 
         <div class="subheading mb-5">GET STARTED.
-        </div>
-		<p class="lead mb-2">
+        
+		<p class="subheading mb-6">
 			<?php
 				if($member == 0){
-					echo "<a class='btn btn-member' href='#'>Become a member</a>";
+					echo "<a href='#membership'>Become a member</a>";
 				}
 				else{
 					if($_SESSION['memexp'] == "EXPIRED"){
@@ -779,6 +779,7 @@
 
 
 		</p>
+		</div>
         <p class="lead mb-2">Thank you for your interest in Naman!
           Our team will contact you shortly to discuss your needs and schedulea demo. In the meantime,
           take a look at some startups in your area.
