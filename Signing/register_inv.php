@@ -19,10 +19,10 @@
         <title>Investor | Registration Form</title>
 
         <!-- Bootstrap -->
-        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <!-- <link href="css/bootstrap.min.css" rel="stylesheet"> -->
 
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+        <!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script> -->
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
         <link href="../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -54,120 +54,7 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-        <script src="js/jquery-1.12.4.js"></script>
-        <!-- Include all compiled plugins (below), or include individual files as needed -->
-        <script src="js/bootstrap.min.js"></script>
 
-        <script>
-            $(document).ready(function(){
-
-                load_json_data('country');
-
-                function load_json_data(id,parent_id,state_id)
-                {
-                //console.log(parent_id);
-                //console.log(id);
-                var html_code = '';
-                $.getJSON('json/location.json', function(data){
-
-                html_code += '<option value="">Select '+id+'</option>';
-                $.each(data, function(key, value){
-                if(id == 'country')
-                {
-
-                    html_code += '<option value="'+value.name+'" id="'+value.id+'">'+value.name+'</option>';
-                }
-                else if(id == 'state')
-                {
-                    if(value.id == parent_id)
-                    {
-                        $.each(data[parent_id-1].states, function(key, value){
-                        html_code += '<option value="'+key+'">'+key+'</option>';
-                    });
-                    }
-                }
-                else
-                {
-                    // console.log("Parent_id"+parent_id);
-                    // console.log("State_id"+state_id);
-
-                    if(value.id == parent_id)
-                    {
-                        $.each(data[parent_id-1].states, function(key, value){
-                        if(key == state_id)
-                        {
-                            for (var i = 0;i < value.length;i++)
-                            {
-                                html_code += '<option value="'+value[i]+'">'+value[i]+'</option>';
-                            }
-                        }
-                    });
-                }
-                }
-                });
-                $('#'+id).html(html_code);
-                });
-
-                }
-
-                $(document).on('change', '#country', function(){
-                var country_id = $('#country option:selected').attr('id');
-                //console.log("Hello"+country_id);
-                if(country_id != '')
-                {
-                load_json_data('state',country_id);
-                }
-                else
-                {
-                $('#state').html('<option value="">Select state</option>');
-                $('#city').html('<option value="">Select city</option>');
-                }
-                });
-                $(document).on('change', '#state', function(){
-
-                var e = document.getElementById("country");
-                var country_id = $('#country option:selected').attr('id');
-
-                //console.log("dafafafadfa"+country_id);
-
-                var e = document.getElementById("state");
-                var state_id = e.options[e.selectedIndex].text;
-
-            //   var state_id = $(this).val();
-            //   var state_id = "Maharashtra";
-
-                if(state_id != '')
-                {
-                load_json_data('city',country_id,state_id);
-                }
-                else
-                {
-                $('#city').html('<option value="">Select city</option>');
-                }
-                });
-            });
-        </script>
-
-        <script>
-            function show(){
-                var type = document.getElementById("selecttype").value;
-                if(type == "NULL"){
-                    document.getElementById("institution").style.display = "NONE";
-                    document.getElementById("individual").style.display = "NONE";
-                    document.getElementById("info").style.display = "block";
-                }
-                else if(type == "Institution"){
-                    document.getElementById("individual").style.display = "NONE";
-                    document.getElementById("institution").style.display = "block";
-                    document.getElementById("info").style.display = "NONE";
-                }
-                else if(type == "Individual"){
-                    document.getElementById("institution").style.display = "NONE";
-                    document.getElementById("individual").style.display = "block";
-                    document.getElementById("info").style.display = "NONE";
-                }
-            }
-        </script>
     </head>
     <body>
     <?php require "../include/header/registerheader.php"?>
@@ -497,4 +384,116 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.js"></script>
 <script src="js/validation.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+
+<script>
+    $(document).ready(function(){
+
+        load_json_data('country');
+
+        function load_json_data(id,parent_id,state_id)
+        {
+        //console.log(parent_id);
+        //console.log(id);
+        var html_code = '';
+        $.getJSON('json/location.json', function(data){
+
+        html_code += '<option value="">Select '+id+'</option>';
+        $.each(data, function(key, value){
+        if(id == 'country')
+        {
+
+            html_code += '<option value="'+value.name+'" id="'+value.id+'">'+value.name+'</option>';
+        }
+        else if(id == 'state')
+        {
+            if(value.id == parent_id)
+            {
+                $.each(data[parent_id-1].states, function(key, value){
+                html_code += '<option value="'+key+'">'+key+'</option>';
+            });
+            }
+        }
+        else
+        {
+            // console.log("Parent_id"+parent_id);
+            // console.log("State_id"+state_id);
+
+            if(value.id == parent_id)
+            {
+                $.each(data[parent_id-1].states, function(key, value){
+                if(key == state_id)
+                {
+                    for (var i = 0;i < value.length;i++)
+                    {
+                        html_code += '<option value="'+value[i]+'">'+value[i]+'</option>';
+                    }
+                }
+            });
+        }
+        }
+        });
+        $('#'+id).html(html_code);
+        });
+
+        }
+
+        $(document).on('change', '#country', function(){
+        var country_id = $('#country option:selected').attr('id');
+        //console.log("Hello"+country_id);
+        if(country_id != '')
+        {
+        load_json_data('state',country_id);
+        }
+        else
+        {
+        $('#state').html('<option value="">Select state</option>');
+        $('#city').html('<option value="">Select city</option>');
+        }
+        });
+        $(document).on('change', '#state', function(){
+
+        var e = document.getElementById("country");
+        var country_id = $('#country option:selected').attr('id');
+
+        //console.log("dafafafadfa"+country_id);
+
+        var e = document.getElementById("state");
+        var state_id = e.options[e.selectedIndex].text;
+
+    //   var state_id = $(this).val();
+    //   var state_id = "Maharashtra";
+
+        if(state_id != '')
+        {
+        load_json_data('city',country_id,state_id);
+        }
+        else
+        {
+        $('#city').html('<option value="">Select city</option>');
+        }
+        });
+    });
+</script>
+
+<script>
+    function show(){
+        var type = document.getElementById("selecttype").value;
+        if(type == "NULL"){
+            document.getElementById("institution").style.display = "NONE";
+            document.getElementById("individual").style.display = "NONE";
+            document.getElementById("info").style.display = "block";
+        }
+        else if(type == "Institution"){
+            document.getElementById("individual").style.display = "NONE";
+            document.getElementById("institution").style.display = "block";
+            document.getElementById("info").style.display = "NONE";
+        }
+        else if(type == "Individual"){
+            document.getElementById("institution").style.display = "NONE";
+            document.getElementById("individual").style.display = "block";
+            document.getElementById("info").style.display = "NONE";
+        }
+    }
+</script>
 </html>

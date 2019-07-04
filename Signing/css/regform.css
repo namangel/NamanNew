@@ -1,16 +1,15 @@
 
-           
-            #individual, #institution{
-                display: none;
-            }
-            input.error {
-		    border: 1px dotted red;
-            }
-            label.error{
-                width: 100%;
-                color: red;
-                font-style: italic;
-                margin-left: 10px;
-                margin-bottom: 5px;
-            }
-       
+
+#individual, #institution{
+    display: none;
+}
+input.error {
+    border: 1px dotted red;
+}
+label.error{
+    width: 100%;
+    color: red;
+    /* font-style: italic; */
+    font-size: 10px;
+    margin-bottom: 5px;
+}
