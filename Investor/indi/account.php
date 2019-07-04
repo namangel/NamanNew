@@ -122,13 +122,15 @@
   <title>Account Settings</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <!-- <link href="../css/inv.css" rel="stylesheet"> -->
   <!-- <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet"> -->
-  <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!--<link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">-->
+
 
   <style>
     input.error {
@@ -145,21 +147,37 @@
 
 </head>
 <body>
-  <section class="sticky-top shadow p-2 bg-white d-none d-lg-block ">
-    <div class="row m-0">
-      <div class="col-10 text-right">
-      <button class="btn" >NAMAN</button>
-      <button class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      <i class="fa fa-user" style="font-size:20px"></i>
-      </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="position:absolute">
-            <a class="dropdown-item" href="account.php" target="_blank">Account Settings</a>
-            <a class="dropdown-item" href="../../logout.php">Logout</a>
-        </div>
-      </div>
-    </div>
-  </section>
-    <hr>
+  
+<main>
+<nav class="navbar navbar-default navbar-static-top">
+<div class="container-fluid">
+
+<!-- Brand/logo -->
+<div class="navbar-header">
+<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#example-1" aria-expanded="false">
+<span class="sr-only">Toggle navigation</span>
+
+</button>
+<a class="navbar-brand" href="#">Naman</a>
+</div>
+
+<!-- Collapsible Navbar -->
+<div class="collapse navbar-collapse" id="example-1">
+<ul class="nav navbar-nav navbar-right">
+
+<li class="nav-item active">
+        <a class="nav-link" href="../../index.php">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="../../logout.php">Logout</a>
+      </li>
+</ul>
+</div>
+
+</div>
+
+</nav>
+</main>
     <div class="container bootstrap snippet">
         <div class="row">
             <div class="col-sm-10"><h1><?=$FName,' ', $LName?></h1></div>

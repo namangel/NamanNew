@@ -569,7 +569,7 @@
                 </li>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link d-lg-none d-xl-none d-md-block d-sm-block" href="account.php" target="_blank"> Account Settings</a>
+                    <a class="nav-link d-lg-none d-xl-none d-md-block d-sm-block" href="../account.php"> Account Settings</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link d-lg-none d-xl-none d-md-block d-sm-block" href="../logout.php">Logout</a>

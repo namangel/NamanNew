@@ -128,6 +128,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        
 
         <style>
             input.error {
@@ -141,9 +142,40 @@
             /* margin-bottom: 5px; */
             }
         </style>
+        
 
     </head>
     <body>
+    <main>
+<nav class="navbar navbar-default navbar-static-top">
+<div class="container-fluid">
+
+<!-- Brand/logo -->
+<div class="navbar-header">
+<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#example-1" aria-expanded="false">
+<span class="sr-only">Toggle navigation</span>
+
+</button>
+<a class="navbar-brand" href="#">Naman</a>
+</div>
+
+<!-- Collapsible Navbar -->
+<div class="collapse navbar-collapse" id="example-1">
+<ul class="nav navbar-nav navbar-right">
+
+<li class="nav-item active">
+        <a class="nav-link" href="../../index.php">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="../../logout.php">Logout</a>
+      </li>
+</ul>
+</div>
+
+</div>
+
+</nav>
+</main>
         <div class="container bootstrap snippet">
             <div class="row">
                 <div class="col-sm-10"><h1><?=$CName?></h1></div>
