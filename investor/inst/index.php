@@ -964,25 +964,23 @@
             </div>
         </section>
 
-        <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="home">
-            <div class="w-100">
-                <h1 class="mb-0 mt-0">
-                    <span class="text-primary">Hello <?=$cname?></span>
-                </h1>
-                <div class="row">
-
-                    <div class="subheading mb-5 col-md-9">GET STARTED.
-                    </div>
-					<div class="text-right col-md-3">
-                        <button class="btn btn-member" onclick="window.open('../browse/browsestartup.php')">Browse Startups</button>
-                    </div>
-
-                </div>
-
-				<p class="lead mb-2">
+				<section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="home">
+		      <div class="w-100">
+			      <div class="row">
+			        <h1 class="mb-0 col-md-9">
+			          <span class="text-primary">Hello <?= $cname ?></span>
+			        </h1>
+			        <div class="text-right col-md-3">
+			          <button class="btn btn-member" onclick="window.open('../browse/browsestartup.php')">Browse Startups</button>
+			        </div>
+			      </div>
+		
+		        <div class="subheading mb-5">GET STARTED.
+		
+				<p class="subheading mb-6">
 					<?php
 						if($member == 0){
-							echo "<a class='btn btn-member' href='#'>Become a member</a>";
+							echo "<a href='#membership'>Become a member</a>";
 						}
 						else{
 							if($_SESSION['memexp'] == "EXPIRED"){
@@ -993,13 +991,13 @@
 							}
 							echo "Membership ID :- ".$memid;
 						}
-
-
+		
+		
 					?>
-
-
+		
+		
 				</p>
-
+				</div>
                 <p class="lead mb-2">
 					Thank you for your interest in Naman!
                     Our team will contact you shortly to discuss your needs and schedulea demo. In the meantime,

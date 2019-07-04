@@ -475,7 +475,6 @@
       $tool[$i]=$row['TID'];
   }
   $notool = $i+1;
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -708,6 +707,15 @@
                                           <input type="hidden" name="op" value="<?= $id?>">
                                           <input type="submit" class="btn btn-lg btn-block btn-login text-uppercase font-weight-bold mb-3" href="generateonepager.php?op=<?= $id?>" target="_blank" value="MY ONE PAGER"></a>
                                       </form>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-md-2" style="padding-top:20px">
+                          <div class="profile-item">
+                              <div class="media">
+                                  <div class="media-body">
+                                          <a href = "../profile/index.php?st=<?= $id?>" target='_blank' class="btn btn-lg btn-block btn-login text-uppercase font-weight-bold mb-3" name="profilebtn">VIEW PROFILE</a>
                                   </div>
                               </div>
                           </div>

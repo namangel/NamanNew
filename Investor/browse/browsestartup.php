@@ -240,7 +240,7 @@
                                         // echo'<div class="card-footer btn btn-viewprofile">';
                                             $button = "";
                                             if($memberstatus == 'NotMember'){
-                                                $button = "<a href='../../../Profile/index.php?s=".$row['StpID']."' target='_blank'>
+                                                $button = "<a href='../../profile/index.php?st=".$row['StpID']."' target='_blank'>
                                                 <button type='submit' class='card-footer btn btn-viewprofile btn-lg btn-block button' name='subinv' value='View Profile' action='index.php'><span>View Profile</span></button></a>";
                                             }
                                             echo $button;
