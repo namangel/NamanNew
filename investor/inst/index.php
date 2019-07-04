@@ -265,6 +265,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
+	<link href="../../img/naman.png" rel="icon">
     <title><?=$cname?>'s Dashboard | Naman Angels India Foundation</title>
 
 

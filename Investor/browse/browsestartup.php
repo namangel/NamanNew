@@ -31,6 +31,8 @@
 <html>
 <head>
     <meta charset="utf-8">
+    <title>Browse Startups | Naman Angels India Foundation</title>
+    <link href="../../img/naman.png" rel="icon">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="../css/browse.css" rel="stylesheet">
@@ -42,7 +44,7 @@
             <form class="text-align-center" action="browsestartup.php" method="post">
                 <div class="card-body row no-gutters align-items-center">
                     <div class="col-lg-6 col-md-6 col-sm-12">
-                        <input class="form-control form-control-md " name="searchkey" type="search" placeholder="Search Startup name">                        
+                        <input class="form-control form-control-md " name="searchkey" type="search" placeholder="Search Startup name">
                     </div>
                     <div class="input-group-append col-lg-6 col-md-6 col-sm-12">
                         <select class="custom-select" id="inputGroupSelect01" name="indsearchkey">
@@ -149,7 +151,7 @@
             }
         ?>
     </div>
-    
+
         <div class="row">
             <?php
                 if (isset($_GET['pageno'])) {
@@ -164,7 +166,7 @@
 
                 $no_of_records_per_page = 4;
                 $offset = ($pageno - 1) * $no_of_records_per_page;
-            
+
                 if(isset($_SESSION['searchbox']) || isset($_SESSION['searchselect'])){
                 $sname = $_SESSION['searchbox'];
                 $sind = $_SESSION['searchselect'];
@@ -187,7 +189,7 @@
                         $res_data1 = mysqli_query($db,$sql1);
                         $row1 = mysqli_fetch_array($res_data1);
 
-                        echo'<div class="col-md-3 ml-5">';  
+                        echo'<div class="col-md-3 ml-5">';
                             echo'<div class="image-flip" ontouchstart="this.classList.toggle(';
                             echo"'hover'";
                             echo"');";
@@ -230,9 +232,9 @@
                     }
                     ?>
                 </div>
-            
+
         <div class="row">
-        <?php 
+        <?php
             echo '<nav aria-label="Page navigation example">';
             echo '<ul class="pagination">';
             echo '<li class="page-item">';
@@ -257,9 +259,9 @@
             echo '</nav>';
         ?>
         </div>
-        </div>      
+        </div>
 
-        
-           
+
+
 </body>
 </html>

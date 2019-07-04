@@ -4,6 +4,7 @@
 <head>
     <title>Frequently Asked Questions| Naman Angels India Foundation</title>
     <link href="investor/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="img/naman.png" rel="icon">
 
     <!-- Custom fonts for this template -->
     <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet">

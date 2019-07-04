@@ -289,13 +289,3 @@ $pdf->AddPage();
 
 $pdf->OutPut();
 ?>
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-    <head>
-        <meta charset="utf-8">
-        <title><?=$row1['Stname']?>'s One Pager</title>
-    </head>
-    <body>
-
-    </body>
-</html>

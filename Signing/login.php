@@ -8,6 +8,7 @@
 
     <head>
         <meta charset="utf-8">
+        <link href="../img/naman.png" rel="icon">
         <title>Login | Naman Angels India Foundation</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 

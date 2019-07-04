@@ -487,7 +487,7 @@
     <meta name="author" content="">
 
     <title><?=$Stname?>'s Dashboard | Naman Angels India Foundation</title>
-
+    <link href="../img/naman.png" rel="icon">
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
