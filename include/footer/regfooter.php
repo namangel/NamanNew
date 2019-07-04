@@ -1,14 +1,3 @@
-
-<html>
-    <head>
-<!--
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<!- Include the above in your HEAD tag ---------->
-
-<!-- <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" -->
-</head>
 <style>
 
 
@@ -79,24 +68,22 @@
      width:80%;
  }
 
-    </style>
+</style>
 
-</div>
 <div class="footer-bottom">
-        <div class="container">
-					<div class="row">
-						<div class="col-sm-6 ">
-							<div class="copyright-text">
-								<p>CopyRight © 2017 Digital All Rights Reserved</p>
-							</div>
-						</div> <!-- End Col -->
-						<div class="col-sm-6  ">
-						    <div class="copyright-text pull-right">
-								<p> <a href="../include/about/team.php">Team</a> | <a href="../faq.php">FAQS</a> |<a href="../include/about/terms.php">Terms & Conditions</a> | <a href="../include/about/privacy.php">Privacy Policy</a>|<a href="../#contact">Contact</a> </p>
-							</div>
-
-						</div> <!-- End Col -->
-					</div>
+    <div class="container">
+		<div class="row">
+			<div class="col-sm-5">
+				<div class="copyright-text">
+					<p>CopyRight © 2017 Digital All Rights Reserved</p>
 				</div>
-    </div>
-    </html>
+			</div> <!-- End Col -->
+			<div class="col-sm-6  ">
+			    <div class="copyright-text pull-right">
+					<p> <a href="../include/about/team.php">Team</a> | <a href="../faq.php">FAQS</a> |<a href="../include/about/terms.php">Terms & Conditions</a> | <a href="../include/about/privacy.php">Privacy Policy</a>|<a href="../#contact">Contact</a> </p>
+				</div>
+
+			</div> <!-- End Col -->
+		</div>
+	</div>
+</div>

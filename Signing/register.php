@@ -9,12 +9,10 @@
 <head>
 
     <link href="../css/style.css" rel="stylesheet">
-    <!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <link href="../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+    <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> -->
     <style>
         .container1 {
             padding: 10%;
@@ -34,21 +32,6 @@
         h6{
             font-size: 1rem;
         }
-		/* .btn-choice {
-			font-size: 2.3rem;
-			letter-spacing: 0.08rem;
-			padding: 0.75rem 1rem;
-			background-color: #0a2b40;
-			color: #fff;
-			}
-		.btn-choice-focus,
-		.btn-choice:hover {
-			color: #fff;
-			opacity: 0.7;
-		}
-		.panel-body{
-			padding: 4rem;
-		} */
     </style>
 </head>
 <body>
@@ -73,59 +56,7 @@
 		</div>
     </div>
 
-    <section class="sticky-bottom shadow p-1 bg-light">
-      <div class="row" style="font-size:12px">
-        <div class="col-md-12 text-center p-2">
-            <div class="row">
-                <div class="col-md-12 text-center p-1">
-                    <div class="col-md-2 d-inline">
-                        <a href="#" class="text-dark">Home</a>
-                    </div>
-                    <div class="col-md-2 d-inline">
-                        <a href="#" class="text-dark">About</a>
-                    </div>
-                    <div class="col-md-2 d-inline">
-                        <a href="#" class="text-dark">Services</a>
-                    </div>
-                    <div class="col-md-2 d-inline">
-                        <a href="#" class="text-dark">Privacy policy</a>
-                    </div>
-                    <div class="col-md-2 d-inline">
-                        <a href="#" class="text-dark">FAQs</a>
-                    </div>
-                    <div class="col-md-2 d-inline">
-                        <a href="#" class="text-dark">Contact</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-12 text-center p-1">
-                    <div class="col-md-12 d-block">
-                        Copyright @2019 | Designed by Bronn Of Blackwater
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12 text-center p-1">
-                    <div class="col-md-1 d-inline">
-                        <a href="#" class="text-dark"><i class="fa fa-facebook-f"></i></a>
-                    </div>
-                    <div class="col-md-1 d-inline">
-                        <a href="#" class="text-dark"><i class="fa fa-twitter"></i></a>
-                    </div>
-                    <div class="col-md-1 d-inline">
-                        <a href="#" class="text-dark"><i class="fa fa-linkedin"></i></a>
-                    </div>
-
-                    <div class="col-md-1 d-inline">
-                        <a href="#" class="text-dark"><i class="fa fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-      </div>
-    </section>
+    <?php require "../include/footer/regfooter.php"?>
 </body>
 
 </html>

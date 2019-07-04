@@ -3,13 +3,13 @@
 
       <div class="logo float-left">
         <!-- Uncomment below if you prefer to use an image logo -->
-        <!-- <h1 class="text-light"><a href="#header"><span>NewBiz</span></a></h1> -->
-       <!-- <a href="#intro" class="scrollto"><img src="img/logo.png" alt="" class="img-fluid"></a>-->
+        <!-- <h1 class="text-light"><a href="#header"><span>Naman Angels</span></a></h1> -->
+        <a href="#intro" class="scrollto"><img src="/NamanNew/img/Logo.png" alt="Logo"></a>
       </div>
 
       <nav class="main-nav float-right d-none d-lg-block">
         <ul>
-          <li class="active"><a href="#intro">Home</a></li>
+          <li><a href="index.php#intro">Home</a></li>
           <li><a href="index.php#about">About Us</a></li>
           <li><a href="index.php#startups">Startups</a></li>
           <li><a href="index.php#investors">Investors</a></li>

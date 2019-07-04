@@ -9,7 +9,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
-    
+        <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
         <style>
             .main{margin-top: 100px;}
             a{text-decoration:none}
@@ -91,7 +91,7 @@
                             <div class="timeline-content">
                                 <h3 class="title">Startups Build Profiles</h3>
                                 <p class="description">
-                                    Startups register on our platform and pitch their ideas in a methodical documented approach. Templates and services are available for building profiles, making it a very simple process. If any other consulting is needed, contact our team and we shall work towards providing a solution. 
+                                    Startups register on our platform and pitch their ideas in a methodical documented approach. Templates and services are available for building profiles, making it a very simple process. If any other consulting is needed, contact our team and we shall work towards providing a solution.
                                 </p>
                             </div>
                         </a>
@@ -109,7 +109,7 @@
                             <div class="timeline-content">
                                 <h3 class="title">Investors browse startup profiles</h3>
                                 <p class="description">
-                                    Verified member investors can browse through the startup profiles and through a single click notify our team. Non-members can see basic details of startups. No information is misused. Take note of our privacy policy. 
+                                    Verified member investors can browse through the startup profiles and through a single click notify our team. Non-members can see basic details of startups. No information is misused. Take note of our privacy policy.
                                 </p>
                             </div>
                         </a>
@@ -127,8 +127,8 @@
                             <div class="timeline-content">
                                 <h3 class="title">Deal Complete</h3>
                                 <p class="description">
-                                    All formal procedures are taken care of and the transactions progress, thereby benefiting both parties. 
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis, delectus.  
+                                    All formal procedures are taken care of and the transactions progress, thereby benefiting both parties.
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis, delectus.
                                 </p>
                             </div>
                         </a>
@@ -136,8 +136,9 @@
                 </div>
             </div>
         </div>
+        <?php require "include/footer/footer.php"?>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
-        
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
     </body>
 </html>
