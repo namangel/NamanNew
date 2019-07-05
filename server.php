@@ -163,7 +163,7 @@ if (isset($_POST['dir_mem'])) {
     $state = mysqli_real_escape_string($db, $_POST['state']);
     $website = mysqli_real_escape_string($db, $_POST['website']);
 
-    header('location: ../Signing/mem_email.php');
+    header('location: ../account/mem_email.php');
 
 }
 

@@ -137,7 +137,7 @@
                 NAMAN carefully curate startups and hand-hold them through the entire process of angel investing.
                 The startups choose by NAMAN and they have an overall access to all amenities of our incubation center, networks and technology support.
                 </p>
-          <button type="button" class="btn btn-primary" onclick="location.href = './Signing/register_st.php'"   >Register Now!</button>
+          <button type="button" class="btn btn-primary" onclick="location.href = './account/register_st.php'"   >Register Now!</button>
           </div>
         </div>
       </section>
@@ -158,7 +158,7 @@
                 Investors when onboard are provided with Investor Development Program (IDP) and opportunities to attend round table conferences
                  with fellow investors. Once the agreement is signed the investor becomes a certified NAMAN investor with recognition across social media.
                 </p>
-              <button type="button" class="btn btn-primary" onclick="location.href = './Signing/register_inv.php'">Register Now!</button>
+              <button type="button" class="btn btn-primary" onclick="location.href = './account/register_inv.php'">Register Now!</button>
               </div>
           </div>
           </section>

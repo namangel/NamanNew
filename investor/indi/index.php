@@ -1,7 +1,7 @@
 <?php
 	require '../../server.php';
 	if(!isset($_SESSION['InvID'])){
-		header('location: ../../Signing/login.php');
+		header('location: ../../account/login.php');
 	}
 	$u = $_SESSION['InvID'];
 	$qu = "SELECT * FROM inv_details WHERE InvID='$u'";

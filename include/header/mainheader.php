@@ -33,9 +33,9 @@
           </li> -->
           <li><a href="index.php#contact">Contact Us</a></li>
           <div class="btn-group">
-            <li><button type="button" class="btn btn-primary" onclick="location.href = './Signing/login.php'"><a style="height:40px;">Sign In</a></button></li>
+            <li><button type="button" class="btn btn-primary" onclick="location.href = './account/login.php'"><a style="height:40px;">Sign In</a></button></li>
             <li>&nbsp;</li>
-            <li><button type="button" class="btn btn-primary" onclick="location.href = './Signing/register.php'"><a style="height:40px;">Sign Up</a></button></li>
+            <li><button type="button" class="btn btn-primary" onclick="location.href = './account/register.php'"><a style="height:40px;">Sign Up</a></button></li>
           </div>
 
           <!--<li><a href="#team">Sign up </a></li>-->

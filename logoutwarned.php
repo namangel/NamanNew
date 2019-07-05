@@ -14,7 +14,7 @@
     <body class="h-100">
         <div class="container h-100 d-flex justify-content-center">
             <div class="jumbotron my-auto">
-                <h4 class="display-5">Session Expired, You will be redirected to <a href="Signing/login.php">Login Page</a> in few moments.</h4>
+                <h4 class="display-5">Session Expired, You will be redirected to <a href="account/login.php">Login Page</a> in few moments.</h4>
             </div>
         </div>
     </body>

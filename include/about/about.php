@@ -264,7 +264,7 @@
               </font>
           </p>
           <br><center>
-          <button class="apply-button" onclick="location.href='/NamanNew/Signing/register_st.php'">APPLY NOW </button>
+          <button class="apply-button" onclick="location.href='/NamanNew/account/register_st.php'">APPLY NOW </button>
           </center><br>
     </div>
     <div class="c2" id="finv">
@@ -279,7 +279,7 @@
           </p>
           <br>
           <center>
-          <button class="apply-button" onclick="location.href='/NamanNew/Signing/register_inv.php'">APPLY NOW </button>
+          <button class="apply-button" onclick="location.href='/NamanNew/account/register_inv.php'">APPLY NOW </button>
           </center><br>
     </div>
     <div class="c3" id="cinf">
