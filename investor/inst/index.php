@@ -808,7 +808,9 @@
                                     <div class="card-body">
                                         <div class="form-group">
                                             <label>Industry of Interest</label>
-                                            <input type="text" class="form-control" name="cbioi" placeholder="<?=$indOfInt?>">
+                                            <select class="form-control input-sm font-small" name="ioi" id="type">
+                                                <option value="">Select Industry Type</option>
+                                            </select>
                                         </div>
                                         <div class="form-group">
                                             <label>Investment range</label>
@@ -1482,6 +1484,53 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.js"></script>
 	<script src="../js/validation.js"></script>
+
+    <script>
+
+$(document).ready(function(){
+load_json_data('type');
+
+function load_json_data(id){
+   var html_code = '';
+   $.getJSON('../../json/industry.json', function(data){
+
+       function SortByName(x,y){
+           return (((x.name).toLowerCase() == (y.name).toLowerCase()) ? 0 : (((x.name).toLowerCase() > (y.name).toLowerCase()) ? 1 : -1 ));
+       }
+
+       // Call Sort By Name
+       data.sort(SortByName);
+
+       function removeDumplicateValue(myArray){
+           var newArray = [];
+
+           $.each(myArray, function(key, value) {
+               var exists = false;
+               $.each(newArray, function(k, val2) {
+                   if(value.name == val2.name){ exists = true };
+               });
+               if(exists == false && value.name != "") { newArray.push(value); }
+           });
+
+           return newArray;
+       }
+
+       data = removeDumplicateValue(data);
+       var count = Object.keys(data).length;
+       console.log(count);
+
+       html_code += '<option value="">Select Industry '+id+'</option>';
+       $.each(data, function(key, value){
+           if(value.name != "Others")
+               html_code += '<option value="'+value.name+'" id="'+value.name+'">'+value.name+'</option>';
+       });
+       html_code += '<option value="Others" id="Others">Others</option>';
+
+       $('#'+id).html(html_code);
+   });
+}
+});
+</script>
 
 
 </body>
