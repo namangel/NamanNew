@@ -984,7 +984,7 @@
         </div>
         <div class="row">
           <div class="container-fluid">
-            <button type="button" class="btn btn-member" onclick="location.href=#" style="margin:20px 50px 0px 50px">BECOME OUR MEMBER</button>
+            <button type="button" class="btn btn-member" onclick="window.open('../../account/direct_member_individual.php')" style="margin:20px 50px 0px 50px">BECOME OUR MEMBER</button>
           </div>
         </div>
     </section>

@@ -45,6 +45,12 @@
                 margin-left: 10px;
                 margin-bottom: 5px;
             }
+            .font-big{
+              font-size: 16px;
+            }
+            .font-small{
+              font-size: 14px;
+            }
         </style>
 
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -59,14 +65,14 @@
     <body>
     <?php require "../include/header/registerheader.php"?>
         <div class="panel panel-primary" style="margin:20px;">
-            <div class="panel-heading">
+            <div class="panel-heading font-big">
                     <h3 class="panel-title"> Investor Registration Form</h3>
             </div>
-            <div class="form-content">
+            <div class="form-content font-big">
                 <div class="row">
                     <div class="form-group col-md-12 col-sm-12">
                         <form method="POST" name="register_inv_select">
-                            <select class="form-control input-sm" name="type" onchange="show()" id="selecttype">
+                            <select class="form-control input-sm font-big" name="type" onchange="show()" id="selecttype">
                                 <option value="NULL">--Select Type of Investor--</option>
                                 <option value="Individual">Individual Investor</option>
                                 <option value="Institution">Institution Investor</option>
@@ -80,7 +86,7 @@
                         <div class="col-lg-6 wow fadeInUp">
                             <img src="../img/5 copy.png" class="img-fluid" alt="">
                         </div>
-                        <div class="col-lg-6 wow fadeInUp pt-5 pt-lg-0">
+                        <div class="col-lg-6 wow fadeInUp pt-5 pt-lg-0 font-small">
                             <h3>What's the right choice for you?</h3>
                             <p><b>Institutional Investor</b></p>
                             <p>Institutional Investor is a nonbank person or organization that trades securities in large enough share quantities or dollar amounts that it qualifies for preferential treatment and lower commissions, that is, it is an organization that invests on their behalf of its members</p>
@@ -95,48 +101,48 @@
             <div class="panel-body" id="individual">
                 <form method="POST" name="register_inv" id="indi" action="register_inv.php">
                     <div class="col-md-12 col-sm-12">
-                        <div class="form-group col-md-6 col-sm-6">
+                        <div class="form-group col-md-6 col-sm-6 font-small">
                             <label for="fname">First Name	</label>
-                            <input type="text" class="form-control input-sm" name="fname" placeholder="">
+                            <input type="text" class="form-control input-sm font-small" name="fname" placeholder="">
                         </div>
-                        <div class="form-group col-md-6 col-sm-6">
+                        <div class="form-group col-md-6 col-sm-6 font-small">
                             <label for="lname">Last Name	</label>
-                            <input type="text" class="form-control input-sm" name="lname" placeholder="">
+                            <input type="text" class="form-control input-sm font-small" name="lname" placeholder="">
                         </div>
-                        <div class="form-group col-md-6 col-sm-6">
+                        <div class="form-group col-md-6 col-sm-6 font-small">
                             <label for="email">Email Address</label>
-                            <input type="email" class="form-control input-sm" name="email" placeholder="">
+                            <input type="email" class="form-control input-sm font-small" name="email" placeholder="">
                         </div>
 
-                        <div class="form-group col-md-6 col-sm-6">
+                        <div class="form-group col-md-6 col-sm-6 font-small">
                             <label for="phone">Phone Number</label>
-                            <input type="text" class="form-control input-sm" name="phone" placeholder="">
+                            <input type="text" class="form-control input-sm font-small" name="phone" placeholder="">
                         </div>
 
-                        <div class="form-group col-md-6 col-sm-6">
+                        <div class="form-group col-md-6 col-sm-6 font-small">
                             <label for="country">Country</label>
-                            <select class="form-control input-sm custom-select" name="country" id="country">
+                            <select class="form-control input-sm custom-select font-small" name="country" id="country">
                                 <option value="">Select country</option>
                             </select>
                         </div>
 
-                        <div class="form-group col-md-6 col-sm-6">
+                        <div class="form-group col-md-6 col-sm-6 font-small">
                             <label for="state">State</label>
-                            <select class="form-control input-sm custom-select " name="state" id="state">
+                            <select class="form-control input-sm custom-select font-small" name="state" id="state">
                                 <option value="">Select state</option>
                             </select>
                         </div>
 
-                        <div class="form-group col-md-6 col-sm-6">
+                        <div class="form-group col-md-6 col-sm-6 font-small">
                             <label for="city">City</label>
-                            <select class="form-control input-sm custom-select" name="city" id="city">
+                            <select class="form-control input-sm custom-select font-small" name="city" id="city">
                                 <option value="">Select city</option>
                             </select>
                         </div>
 
-                        <div class="form-group col-md-6 col-sm-6">
+                        <div class="form-group col-md-6 col-sm-6 font-small">
                             <label for="ioi">Industry of Interest</label>
-                            <select class="form-control input-sm" name="ioi" id="type">
+                            <select class="form-control input-sm font-small" name="ioi" id="type">
                             <option value=""></option>
                                         <option value="Advertising">Advertising</option>
                                         <option value="Agriculture">Agriculture</option>
@@ -229,14 +235,14 @@
                             </select>
                         </div>
 
-                        <div class="form-group col-md-6 col-sm-6">
+                        <div class="form-group col-md-6 col-sm-6 font-small">
                             <label for="average">Avg. No. of Companies Invested per Year</label>
-                            <input type="text" class="form-control input-sm" name="average" placeholder="">
+                            <input type="text" class="form-control input-sm font-small" name="average" placeholder="">
                         </div>
 
-                        <div class = "form-group col-md-6 col-sm-6">
+                        <div class = "form-group col-md-6 col-sm-6 font-small">
                             <label for="invrange">Investment range</label>
-                            <select class="form-control input-sm" name="invrange">
+                            <select class="form-control input-sm font-small" name="invrange">
                                     <option>Select Investment range</option>
                                     <option>0 - 1,00,000</option>
                                     <option>1,00,000 - 10,00,000</option>
@@ -246,25 +252,25 @@
                             </select>
                         </div>
 
-                        <div class="form-group col-md-6 col-sm-6">
+                        <div class="form-group col-md-6 col-sm-6 font-small">
                             <label for="address">Company Description</label>
                             <span class="help-block">Describe yourself and the value of your company</span>
-                            <textarea class="form-control input-sm" name="address" rows="3"></textarea>
+                            <textarea class="form-control input-sm font-small" name="address" rows="3"></textarea>
                         </div>
 
-                        <div class="form-group col-md-6 col-sm-6">
+                        <div class="form-group col-md-6 col-sm-6 font-small">
                             <label for="username">Username</label>
-                            <input type="text" class="form-control input-sm" id="username" placeholder="">
+                            <input type="text" class="form-control input-sm font-small" id="username" placeholder="">
                         </div>
 
-                        <div class="form-group col-md-6 col-sm-6">
+                        <div class="form-group col-md-6 col-sm-6 font-small">
                             <label for="password_1">Password</label>
-                            <input type="password" class="form-control input-sm" name="password_1" placeholder="">
+                            <input type="password" class="form-control input-sm font-small" name="password_1" placeholder="">
                         </div>
 
-                        <div class="form-group col-md-6 col-sm-6">
+                        <div class="form-group col-md-6 col-sm-6 font-small">
                             <label for="password_2">Confirm Password</label>
-                            <input type="password" class="form-control input-sm" name="password_2" placeholder="">
+                            <input type="password" class="form-control input-sm font-small" name="password_2" placeholder="">
                         </div>
 
                     </div>
@@ -272,7 +278,7 @@
 
                     <div class="col-md-12 col-sm-12">
                         <div class="form-group col-md-12 col-sm-12 pull-right" >
-                            <input type="submit" class="btn btn-primary" value="Register" name="reginv_ind">
+                            <input type="submit" class="btn btn-primary font-small" value="Register" name="reginv_ind">
                         </div>
                     </div>
                 </form>
@@ -280,62 +286,62 @@
             <div class="panel-body" id="institution">
                 <form method="POST" name="register_inv" id="inst" action="register_inv.php">
                     <div class="col-md-12 col-sm-12">
-                        <div class="form-group col-md-6 col-sm-6">
+                        <div class="form-group col-md-6 col-sm-6 font-small">
                             <label for="fname">Company Name </label>
-                            <input type="text" class="form-control input-sm" name="iname" placeholder="">
+                            <input type="text" class="form-control input-sm font-small" name="iname" placeholder="">
                         </div>
-                        <div class="form-group col-md-6 col-sm-6">
+                        <div class="form-group col-md-6 col-sm-6 font-small">
                             <label for="fname">First Name	</label>
-                            <input type="text" class="form-control input-sm" name="fname" placeholder="">
+                            <input type="text" class="form-control input-sm font-small" name="fname" placeholder="">
                         </div>
-                        <div class="form-group col-md-6 col-sm-6">
+                        <div class="form-group col-md-6 col-sm-6 font-small">
                             <label for="lname">Last Name	</label>
-                            <input type="text" class="form-control input-sm" name="lname" placeholder="">
+                            <input type="text" class="form-control input-sm font-small" name="lname" placeholder="">
                         </div>
-                        <div class="form-group col-md-6 col-sm-6">
+                        <div class="form-group col-md-6 col-sm-6 font-small">
                             <label for="email">Email Address</label>
-                            <input type="email" class="form-control input-sm" name="email" placeholder="">
+                            <input type="email" class="form-control input-sm font-small" name="email" placeholder="">
                         </div>
 
-                        <div class="form-group col-md-6 col-sm-6">
+                        <div class="form-group col-md-6 col-sm-6 font-small">
                             <label for="phone">Phone Number</label>
-                            <input type="text" class="form-control input-sm" name="phone" placeholder="">
+                            <input type="text" class="form-control input-sm font-small" name="phone" placeholder="">
                         </div>
 
-                        <div class="form-group col-md-6 col-sm-6">
+                        <div class="form-group col-md-6 col-sm-6 font-small">
                             <label for="country">Country</label>
-                            <select class="form-control input-sm custom-select " name="country" id="country">
+                            <select class="form-control input-sm custom-select font-small" name="country" id="country">
                                 <option value="">Select country</option>
                             </select>
                         </div>
 
-                        <div class="form-group col-md-6 col-sm-6">
+                        <div class="form-group col-md-6 col-sm-6 font-small">
                             <label for="state">State</label>
-                            <select class="form-control input-sm custom-select " name="state" id="state">
+                            <select class="form-control input-sm custom-select font-small " name="state" id="state">
                                 <option value="">Select state</option>
                             </select>
                         </div>
 
-                        <div class="form-group col-md-6 col-sm-6">
+                        <div class="form-group col-md-6 col-sm-6 font-small">
                             <label for="city">City</label>
-                            <select class="form-control input-sm custom-select " name="city" id="city">
+                            <select class="form-control input-sm custom-select font-small" name="city" id="city">
                                 <option value="">Select city</option>
                             </select>
                         </div>
 
-                        <div class="form-group col-md-6 col-sm-6">
+                        <div class="form-group col-md-6 col-sm-6 font-small">
                             <label for="ioi">Industry of Interest</label>
-                            <input type="text" class="form-control input-sm" name="ioi" placeholder="">
+                            <input type="text" class="form-control input-sm font-small" name="ioi" placeholder="">
                         </div>
 
-                        <div class="form-group col-md-6 col-sm-6">
+                        <div class="form-group col-md-6 col-sm-6 font-small">
                             <label for="average">Avg. No. of Companies Invested per Year</label>
-                            <input type="text" class="form-control input-sm" name="average" placeholder="">
+                            <input type="text" class="form-control input-sm font-small" name="average" placeholder="">
                         </div>
 
-                        <div class = "form-group col-md-6 col-sm-6">
+                        <div class = "form-group col-md-6 col-sm-6 font-small">
                             <label for="invrange">Investment range</label>
-                            <select class="form-control input-sm" name="invrange">
+                            <select class="form-control input-sm font-small" name="invrange">
                                     <option>Select Investment range</option>
                                     <option>0 - 1,00,000</option>
                                     <option>1,00,000 - 10,00,000</option>
@@ -345,25 +351,25 @@
                             </select>
                         </div>
 
-                        <div class="form-group col-md-6 col-sm-6">
+                        <div class="form-group col-md-6 col-sm-6 font-small">
                             <label for="address">Company Description</label>
                             <span class="help-block">Describe yourself and the value of your company</span>
-                            <textarea class="form-control input-sm" name="address" rows="3"></textarea>
+                            <textarea class="form-control input-sm font-small" name="address" rows="3"></textarea>
                         </div>
 
-                        <div class="form-group col-md-6 col-sm-6">
+                        <div class="form-group col-md-6 col-sm-6 font-small">
                             <label for="username">Username</label>
-                            <input type="text" class="form-control input-sm" id="username" placeholder="">
+                            <input type="text" class="form-control input-sm font-small" id="username" placeholder="">
                         </div>
 
-                        <div class="form-group col-md-6 col-sm-6">
+                        <div class="form-group col-md-6 col-sm-6 font-small">
                             <label for="password_1">Password</label>
-                            <input type="password" class="form-control input-sm" name="password_1" placeholder="">
+                            <input type="password" class="form-control input-sm font-small" name="password_1" placeholder="">
                         </div>
 
-                        <div class="form-group col-md-6 col-sm-6">
+                        <div class="form-group col-md-6 col-sm-6 font-small">
                             <label for="password_2">Confirm Password</label>
-                            <input type="password" class="form-control input-sm" name="password_2" placeholder="">
+                            <input type="password" class="form-control input-sm font-small" name="password_2" placeholder="">
                         </div>
 
                     </div>
@@ -371,7 +377,7 @@
 
                     <div class="col-md-12 col-sm-12">
                         <div class="form-group col-md-12 col-sm-12 pull-right" >
-                            <input type="submit" class="btn btn-primary" value="Register" name="reginv_inst">
+                            <input type="submit" class="btn btn-primary font-small" value="Register" name="reginv_inst">
                         </div>
                     </div>
                 </form>
