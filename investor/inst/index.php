@@ -974,9 +974,9 @@
 			          <button class="btn btn-member" onclick="window.open('../browse/browsestartup.php')">Browse Startups</button>
 			        </div>
 			      </div>
-		
+
 		        <div class="subheading mb-5">GET STARTED.
-		
+
 				<p class="subheading mb-6">
 					<?php
 						if($member == 0){
@@ -991,11 +991,11 @@
 							}
 							echo "Membership ID :- ".$memid;
 						}
-		
-		
+
+
 					?>
-		
-		
+
+
 				</p>
 				</div>
                 <p class="lead mb-2">
@@ -1496,7 +1496,7 @@
   inactivityTimeout = false;
   resetTimeout();
   function onUserInactivity() {
-     window.location.href = "../logoutwarned.php";
+     window.location.href = "../../logoutwarned.php";
   }
   function resetTimeout() {
      clearTimeout(inactivityTimeout);

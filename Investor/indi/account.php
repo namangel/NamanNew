@@ -120,65 +120,60 @@
 <html>
 <head>
     <link href="../../img/naman.png" rel="icon">
-  <title><?=$FName?>'s Account Settings | Naman Angels India Foundation</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <!-- <link href="../css/inv.css" rel="stylesheet"> -->
-  <!-- <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet"> -->
-  <!--<link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">-->
+    <title><?=$FName?>'s Account Settings | Naman Angels India Foundation</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-  <style>
-    input.error {
-        border: 1px dotted red;
-    }
-    label.error{
-        width: 100%;
-        color: red;
-        font-style: italic;
-        margin-left: 10px;
-        margin-bottom: 5px;
-    }
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- <link href="../css/inv.css" rel="stylesheet"> -->
+    <!-- <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet"> -->
+    <!--<link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">-->
+
+
+    <style>
+        input.error {
+            border: 1px dotted red;
+        }
+        label.error{
+            width: 100%;
+            color: red;
+            font-style: italic;
+            margin-left: 10px;
+            margin-bottom: 5px;
+        }
     </style>
 
 </head>
 <body>
-  
-<main>
-<nav class="navbar navbar-default navbar-static-top">
-<div class="container-fluid">
+    <div class="container">
+        <nav class="navbar navbar-default navbar-static-top">
+            <div class="container-fluid">
 
-<!-- Brand/logo -->
-<div class="navbar-header">
-<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#example-1" aria-expanded="false">
-<span class="sr-only">Toggle navigation</span>
+            <!-- Brand/logo -->
+                <div class="navbar-header">
+                        <img src="/NamanNew/img/logo.png"  height="50" class="d-inline-block align-top" alt="">
+                </div>
 
-</button>
-<a class="navbar-brand" href="#">Naman</a>
-</div>
+                <!-- Collapsible Navbar -->
+                <div class="collapse navbar-collapse" id="example-1">
+                    <ul class="nav navbar-nav navbar-right">
 
-<!-- Collapsible Navbar -->
-<div class="collapse navbar-collapse" id="example-1">
-<ul class="nav navbar-nav navbar-right">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../../logout.php">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
 
-<li class="nav-item active">
-        <a class="nav-link" href="../../index.php">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="../../logout.php">Logout</a>
-      </li>
-</ul>
-</div>
+        </nav>
 
-</div>
+    </div>
 
-</nav>
-</main>
     <div class="container bootstrap snippet">
         <div class="row">
             <div class="col-sm-10"><h1><?=$FName,' ', $LName?></h1></div>
@@ -277,8 +272,8 @@
                       <div class="form-group">
                            <div class="col-xs-12">
                                 <br>
-                              	<button class="btn btn-lg btn-success" type="submit" name="company_save"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
-                               	<button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i> Reset</button>
+                              	<button class="btn btn-success" type="submit" name="company_save"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
+                               	<button class="btn" type="reset"><i class="glyphicon glyphicon-repeat"></i> Reset</button>
                             </div>
                       </div>
               	</form>
@@ -327,8 +322,12 @@
             </div>
         </div>
     </div>
+    <?php include('../../include/footer/footersmall.php')?>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.js"></script>
     <script src="../js/validation.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
 </html>

@@ -295,7 +295,7 @@
               if($intbtn == 1){
                 echo '<form action="index.php" name="interest" method="post">';
                 echo '<button class="btn btn-lg btn-block btn-login text-uppercase font-weight-bold mb-3" type="submit">INTERESTED<?= $intbtn?></button>';
-                echo '</form>'
+                echo '</form>';
               }
               ?>
             </div>
@@ -816,10 +816,10 @@
                 <h4>Business Plan</h4>
                 <p>What is your long term business plan? (Upload .pdf file)</p>
                 <div class="">
-                    <form action="index.php#documents" method="post" enctype="multipart/form-data">
+                    <!-- <form action="index.php#documents" method="post" enctype="multipart/form-data">
                         <input type="file" name="businessplan" value="Select File">
                         <input type="submit" name="subbusinessplan" value="Submit">
-                    </form>
+                    </form> -->
                 </div>
 
                 <!-- echo '<div class="col-md-12">';
@@ -863,18 +863,18 @@
             <div style="padding-bottom:40px">
                 <h4>Financial Projection</h4>
                 <p>Provide an overview of where your financials are headed within the next 5 years. Preferred file types: .pdf, .doc, .xls</p>
-                <form action="index.php#documents" method="post" enctype="multipart/form-data">
+                <!-- <form action="index.php#documents" method="post" enctype="multipart/form-data">
                     <input type="file" name="financialprojection" value="Select File">
                     <input type="submit" name="subfinancialprojection" value="Submit">
-                </form>
+                </form> -->
             </div>
             <div style="padding-bottom:40px">
                 <h4>Additional Documents</h4>
                 <p>Upload any documents to support your company. (Upload all document as a single PDF File )</p>
-                <form action="index.php#documents" method="post" enctype="multipart/form-data">
+                <!-- <form action="index.php#documents" method="post" enctype="multipart/form-data">
                     <input type="file" name="add_doc" value="Select File">
                     <input type="submit" name="sub_add_docs" value="Submit">
-                </form>
+                </form> -->
             </div>
 
 

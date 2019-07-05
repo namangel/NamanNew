@@ -34,7 +34,7 @@
     <title>Browse Startups | Naman Angels India Foundation</title>
     <link href="../../img/naman.png" rel="icon">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-   
+
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
@@ -43,23 +43,39 @@
     <link href="../css/browse.css" rel="stylesheet">
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Naman</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="nav navbar-nav ml-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href=../../index.php>Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="../../logout.php">Logout</a>
-      </li>
-      
-    </ul>
-</nav>
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="navbar-header">
+                    <img src="/NamanNew/img/logo.png"  height="50" class="d-inline-block align-top" alt="">
+            </div>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <!-- <ul class="nav navbar-nav ml-auto">
+              <li class="nav-item">
+                <a class="btn btn-info" href='<?=$path?>'>Back</a>
+              </li>
+              &nbsp;
+              <li class="nav-item">
+                <a class="btn btn-secondary" href="../../logout.php">Logout</a>
+              </li>
+
+            </ul> -->
+        </div>
+
+        </nav>
+    </div>
+
 <div class="container">
+    <div class="row">
+        <div class="col-12 col-md-12 col-lg-12">
+            <br>
+            <blockquote class="blockquote text-center">
+            <p class="mb-0">
+                Search among various Startups and Businesses.
+            </p>
+            </blockquote>
+
+        </div>
+    </div>
     <div class="row">
         <div class="col-12 col-md-12 col-lg-12">
             <form class="text-align-center" action="browsestartup.php" method="post">
@@ -255,34 +271,41 @@
                 </div>
 
         <div class="row">
-        <?php
-            echo '<nav aria-label="Page navigation example">';
-            echo '<ul class="pagination">';
-            echo '<li class="page-item">';
-                echo '<li class="page-item"><a href="?pageno=1" class="page-link" >First</a></li>';
-                echo '<li class="page-item ';
-                    if($pageno <= 1){ echo 'disabled'; };
-                        echo '">';
-                        echo'<a class="page-link" href=';
-                    if($pageno <= 1){ echo "#"; } else { echo "?pageno=".($pageno - 1); };
-                        echo '>Prev</a>';
-                echo '</li>';
-                echo '<li class="page-item ';
-                    if($pageno >= $total_pages){ echo 'disabled'; };
-                        echo '">';
-                        echo '<a class="page-link" href=';
-                    if($pageno >= $total_pages){ echo "#"; } else { echo "?pageno=".($pageno + 1); };
-                        echo '>Next</a>';
+
+            <div class="col-md-12 float-center">
+                <center>
+                <?php
+                    // echo '<nav aria-label="Page navigation example">';
+                    echo '<ul class="pagination">';
+                        echo '<li class="page-item"><a href="?pageno=1" class="page-link" >First</a></li>';
+                        echo '<li class="page-item ';
+                            if($pageno <= 1){ echo 'disabled'; };
+                                echo '">';
+                                echo'<a class="page-link" href=';
+                            if($pageno <= 1){ echo "#"; } else { echo "?pageno=".($pageno - 1); };
+                                echo '>Prev</a>';
                         echo '</li>';
+                        echo '<li class="page-item ';
+                            if($pageno >= $total_pages){ echo 'disabled'; };
+                                echo '">';
+                                echo '<a class="page-link" href=';
+                            if($pageno >= $total_pages){ echo "#"; } else { echo "?pageno=".($pageno + 1); };
+                                echo '>Next</a>';
+                                echo '</li>';
                         echo "<li class='page-item'><a class='page-link' href='?pageno=$total_pages'>Last</a></li>";
-                echo '</li>';
-                echo '</ul>';
-            echo '</nav>';
-        ?>
+                    echo '</ul>';
+                    // echo '</nav>';
+                ?>
+                    </center>
+            </div>
+
+
         </div>
-        </div>
+
+    </div>
 
 
 
+<?php include('../../include/footer/footersmall.php')?>
 </body>
 </html>

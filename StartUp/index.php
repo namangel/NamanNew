@@ -2,7 +2,7 @@
 <?php
     require '../server.php';
 	if(!isset($_SESSION['StpID'])){
-        header('location: ../pageerror.php');
+        header('location: ../account/login.php');
     }
 
 	$id = $_SESSION['StpID'];

@@ -1172,7 +1172,7 @@
   inactivityTimeout = false;
   resetTimeout();
   function onUserInactivity() {
-     window.location.href = "../logoutwarned.php";
+     window.location.href = "../../logoutwarned.php";
   }
   function resetTimeout() {
      clearTimeout(inactivityTimeout);
