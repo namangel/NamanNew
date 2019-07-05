@@ -189,92 +189,90 @@
         ?>
     </div>
 
-        <div class="row">
-            <?php
-                if (isset($_GET['pageno'])) {
-                    $pageno = $_GET['pageno'];
-                }
-                else {
-                    $pageno = 1;
-                }
+    <div class="row">
+        <?php
+            if (isset($_GET['pageno'])) {
+                $pageno = $_GET['pageno'];
+            }
+            else {
+                $pageno = 1;
+            }
 
-                $sname="";
-                $sind="";
+            $sname="";
+            $sind="";
 
-                $no_of_records_per_page = 4;
-                $offset = ($pageno - 1) * $no_of_records_per_page;
+            $no_of_records_per_page = 4;
+            $offset = ($pageno - 1) * $no_of_records_per_page;
 
-                if(isset($_SESSION['searchbox']) || isset($_SESSION['searchselect'])){
-                $sname = $_SESSION['searchbox'];
-                $sind = $_SESSION['searchselect'];
-                }
-                $total_pages_sql = "SELECT COUNT(*) FROM Profile where StpName LIKE '%{$sname}%' AND Type LIKE '%{$sind}%'";
+            if(isset($_SESSION['searchbox']) || isset($_SESSION['searchselect'])){
+            $sname = $_SESSION['searchbox'];
+            $sind = $_SESSION['searchselect'];
+            }
+            $total_pages_sql = "SELECT COUNT(*) FROM Profile where StpName LIKE '%{$sname}%' AND Type LIKE '%{$sind}%'";
 
-                    $result = mysqli_query($db,$total_pages_sql);
-                    $total_rows = mysqli_fetch_array($result)[0];
-                    $total_rows = $total_rows < 1? 1:$total_rows;
-                    $total_pages = ceil($total_rows/$no_of_records_per_page);
+                $result = mysqli_query($db,$total_pages_sql);
+                $total_rows = mysqli_fetch_array($result)[0];
+                $total_rows = $total_rows < 1? 1:$total_rows;
+                $total_pages = ceil($total_rows/$no_of_records_per_page);
 
-                    $sql = "SELECT * FROM Profile where StpName Like '%{$sname}%' AND Type LIKE '%{$sind}%' LIMIT $offset, $no_of_records_per_page";
-                    $res_data = mysqli_query($db,$sql);
+                $sql = "SELECT * FROM Profile where StpName Like '%{$sname}%' AND Type LIKE '%{$sind}%' LIMIT $offset, $no_of_records_per_page";
+                $res_data = mysqli_query($db,$sql);
 
-                    while($row = mysqli_fetch_array($res_data)){
+                while($row = mysqli_fetch_array($res_data)){
 
-                        $i=$row['StpID'];
+                    $i=$row['StpID'];
 
-                        $sql1 = "SELECT * FROM st_description where StpID='$i';";
-                        $res_data1 = mysqli_query($db,$sql1);
-                        $row1 = mysqli_fetch_array($res_data1);
+                    $sql1 = "SELECT * FROM st_description where StpID='$i';";
+                    $res_data1 = mysqli_query($db,$sql1);
+                    $row1 = mysqli_fetch_array($res_data1);
 
-                        echo'<div class="col-md-3 ml-5">';
-                            echo'<div class="image-flip" ontouchstart="this.classList.toggle(';
-                            echo"'hover'";
-                            echo"');";
-                            echo'">';
-                            echo'<div class="mainflip">';
-                                echo'<div class="frontside">';
-                                    echo'<div class="card" style="width:18rem; height: 22rem;">';
-                                        echo'<img class="card-img-top rounded-circle " src="../../'.$row['StpImg'].'" alt="StartUp Logo"  >';
-                                        echo'<div class="card-body">';
-                                            echo'<h4 class="card-title d-flex justify-content-center">'.$row['StpName'].'</h4>';
-                                            echo'<p class="card-text text-center"><b>Industry type:</b> '.$row['Type'].'</p>';
-                                            echo'<p class="card-text text-center"><b>Founders:</b> '.$row['FName'].' ,</p>';
-                                            echo'<p class="card-text text-center">'.$row['SName'].'</p>';
-                                        echo'</div>';
-                                    echo'</div>';
-                                echo'</div>';
-                                echo'<div class="backside">';
-                                    echo'<div class="card" style="width:18rem; height: 22rem;">';
-                                        echo'<div class="card-header">';
-                                            echo'<h4 class="card-title d-flex justify-content-center">'.$row['StpName'].'</h4>';
-                                        echo'</div>';
-                                        echo'<div class="card-body pitch">';
-                                            echo'<h4 class="card-title">One Line Pitch</h4>';
-                                            echo'<p class="card-text">'.$row1['OLP'].'</p>';
-                                            echo'<span class="d-flex align-content-end flex-wrap"">View profile to get further details!</span>';
-                                        echo'</div>';
-                                        // echo'<div class="card-footer btn btn-viewprofile">';
-                                            $button = "";
-                                            if($memberstatus == 'NotMember'){
-                                                $button = "<a href='../../profile/index.php?st=".$row['StpID']."' target='_blank'>
-                                                <button type='submit' class='card-footer btn btn-viewprofile btn-lg btn-block button' name='subinv' value='View Profile' action='index.php'><span>View Profile</span></button></a>";
-                                            }
-                                            echo $button;
-                                        // echo'</div>';
+                    echo'<div class="col-md-3 ml-5">';
+                        echo'<div class="image-flip" ontouchstart="this.classList.toggle(';
+                        echo"'hover'";
+                        echo"');";
+                        echo'">';
+                        echo'<div class="mainflip">';
+                            echo'<div class="frontside">';
+                                echo'<div class="card" style="width:18rem; height: 22rem;">';
+                                    echo'<img class="card-img-top rounded-circle " src="../../'.$row['StpImg'].'" alt="StartUp Logo"  >';
+                                    echo'<div class="card-body">';
+                                        echo'<h4 class="card-title d-flex justify-content-center">'.$row['StpName'].'</h4>';
+                                        echo'<p class="card-text text-center"><b>Industry type:</b> '.$row['Type'].'</p>';
+                                        echo'<p class="card-text text-center"><b>Founders:</b> '.$row['FName'].' ,</p>';
+                                        echo'<p class="card-text text-center">'.$row['SName'].'</p>';
                                     echo'</div>';
                                 echo'</div>';
                             echo'</div>';
+                            echo'<div class="backside">';
+                                echo'<div class="card" style="width:18rem; height: 22rem;">';
+                                    echo'<div class="card-header">';
+                                        echo'<h4 class="card-title d-flex justify-content-center">'.$row['StpName'].'</h4>';
+                                    echo'</div>';
+                                    echo'<div class="card-body pitch">';
+                                        echo'<h4 class="card-title">One Line Pitch</h4>';
+                                        echo'<p class="card-text">'.$row1['OLP'].'</p>';
+                                        echo'<span class="d-flex align-content-end flex-wrap"">View profile to get further details!</span>';
+                                    echo'</div>';
+                                    // echo'<div class="card-footer btn btn-viewprofile">';
+                                        $button = "";
+                                        if($memberstatus == 'NotMember'){
+                                            $button = "<a href='../../profile/index.php?st=".$row['StpID']."' target='_blank'>
+                                            <button type='submit' class='card-footer btn btn-viewprofile btn-lg btn-block button' name='subinv' value='View Profile' action='index.php'><span>View Profile</span></button></a>";
+                                        }
+                                        echo $button;
+                                    // echo'</div>';
+                                echo'</div>';
+                            echo'</div>';
                         echo'</div>';
-                        echo'</div>';
-                    }
-                    ?>
-                </div>
+                    echo'</div>';
+                    echo'</div>';
+                }
+                ?>
+    </div>
 
-        <div class="row">
-
-            <div class="col-md-12 float-center">
-                <center>
+        <div class="row justify-content-center">
                 <?php
+                    echo '<center>';
                     // echo '<nav aria-label="Page navigation example">';
                     echo '<ul class="pagination">';
                         echo '<li class="page-item"><a href="?pageno=1" class="page-link" >First</a></li>';
@@ -295,11 +293,8 @@
                         echo "<li class='page-item'><a class='page-link' href='?pageno=$total_pages'>Last</a></li>";
                     echo '</ul>';
                     // echo '</nav>';
+                    echo '</center>';
                 ?>
-                    </center>
-            </div>
-
-
         </div>
 
     </div>
