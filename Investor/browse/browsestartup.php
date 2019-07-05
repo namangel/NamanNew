@@ -34,60 +34,13 @@
     <title>Browse Startups | Naman Angels India Foundation</title>
     <link href="../../img/naman.png" rel="icon">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+
     <link href="../css/browse.css" rel="stylesheet">
 
-     <script>
 
-$(document).ready(function(){
-    load_json_data('type');
-
-    function load_json_data(id){
-        var html_code = '';
-        $.getJSON('../../json/industry.json', function(data){
-
-            function SortByName(x,y){
-                return (((x.name).toLowerCase() == (y.name).toLowerCase()) ? 0 : (((x.name).toLowerCase() > (y.name).toLowerCase()) ? 1 : -1 ));
-            }
-
-            // Call Sort By Name
-            data.sort(SortByName);
-
-            function removeDumplicateValue(myArray){
-                var newArray = [];
-
-                $.each(myArray, function(key, value) {
-                    var exists = false;
-                    $.each(newArray, function(k, val2) {
-                        if(value.name == val2.name){ exists = true };
-                    });
-                    if(exists == false && value.name != "") { newArray.push(value); }
-                });
-
-                return newArray;
-            }
-
-            data = removeDumplicateValue(data);
-            var count = Object.keys(data).length;
-            console.log(count);
-
-            html_code += '<option value="">Select Industry '+id+'</option>';
-            $.each(data, function(key, value){
-                if(value.name != "Others")
-                    html_code += '<option value="'+value.name+'" id="'+value.name+'">'+value.name+'</option>';
-            });
-            html_code += '<option value="Others" id="Others">Others</option>';
-
-            $('#'+id).html(html_code);
-        });
-    }
-});
-</script>
 </head>
 <body>
     <div class="container">
@@ -131,7 +84,7 @@ $(document).ready(function(){
                         <input class="form-control form-control-md " name="searchkey" type="search" placeholder="Search Startup name">
                     </div>
                     <div class="input-group-append col-lg-6 col-md-6 col-sm-12">
-                    
+
                             <select class="form-control input-sm" name="indsearchkey" id="type" onchange="CheckInd(this.value);">
                             <option value="">Select Industry Type</option>
                             </select>
@@ -260,10 +213,62 @@ $(document).ready(function(){
     </div>
 
 
-   
+
 
 
 
 </body>
+<?php
+include('../../include/footer/footersmall.php');
+?>
 
 </html>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+
+$(document).ready(function(){
+load_json_data('type');
+
+function load_json_data(id){
+   var html_code = '';
+   $.getJSON('../../json/industry.json', function(data){
+
+       function SortByName(x,y){
+           return (((x.name).toLowerCase() == (y.name).toLowerCase()) ? 0 : (((x.name).toLowerCase() > (y.name).toLowerCase()) ? 1 : -1 ));
+       }
+
+       // Call Sort By Name
+       data.sort(SortByName);
+
+       function removeDumplicateValue(myArray){
+           var newArray = [];
+
+           $.each(myArray, function(key, value) {
+               var exists = false;
+               $.each(newArray, function(k, val2) {
+                   if(value.name == val2.name){ exists = true };
+               });
+               if(exists == false && value.name != "") { newArray.push(value); }
+           });
+
+           return newArray;
+       }
+
+       data = removeDumplicateValue(data);
+       var count = Object.keys(data).length;
+       console.log(count);
+
+       html_code += '<option value="">Select Industry '+id+'</option>';
+       $.each(data, function(key, value){
+           if(value.name != "Others")
+               html_code += '<option value="'+value.name+'" id="'+value.name+'">'+value.name+'</option>';
+       });
+       html_code += '<option value="Others" id="Others">Others</option>';
+
+       $('#'+id).html(html_code);
+   });
+}
+});
+</script>
