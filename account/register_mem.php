@@ -1,8 +1,8 @@
 <?php require('../server.php');
 
-if(isset($_SESSION['InvID'])){
-	header('location: ../Investor/index.php');
-}
+	// if(isset($_SESSION['InvID'])){
+	// 	header('location: ../Investor/index.php');
+	// }
 // $_SESSION["type"]
 ?>
 <html>
