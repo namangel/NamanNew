@@ -285,7 +285,7 @@
 	       //console.log(parent_id);
 	       //console.log(id);
 	     var html_code = '';
-	     $.getJSON('../json/location.json', function(data){
+	     $.getJSON('../../json/location.json', function(data){
 
 	      html_code += '<option value="">Select '+id+'</option>';
 	      $.each(data, function(key, value){

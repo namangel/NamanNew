@@ -597,7 +597,7 @@
 
     <!-- <div class="container-fluid p-0"> -->
     <section class="sticky-top shadow p-2 bg-white d-sm-none d-lg-block ">
-      <div class="row">
+      <div class="row m-0">
         <div class="col-12 text-right">
         <button class="btn btn-member" >NAMAN</button>
             <button class="btn btn-member dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -2098,7 +2098,7 @@
        //console.log(parent_id);
        //console.log(id);
      var html_code = '';
-     $.getJSON('json/location.json', function(data){
+     $.getJSON('../json/location.json', function(data){
 
       html_code += '<option value="">Select '+id+'</option>';
       $.each(data, function(key, value){

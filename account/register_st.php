@@ -12,16 +12,16 @@
       }
       else
       {
-           if(file_exists('json/industry.json'))
+           if(file_exists('../json/industry.json'))
            {
-                $current_data = file_get_contents('json/industry.json');
+                $current_data = file_get_contents('../json/industry.json');
                 $array_data = json_decode($current_data, true);
                 $extra = array(
                      'name'               =>     $_POST['name'],
                 );
                 $array_data[] = $extra;
                 $final_data = json_encode($array_data);
-                if(file_put_contents('json/industry.json', $final_data))
+                if(file_put_contents('../json/industry.json', $final_data))
                 {
                     echo "<script>alert('Industry appended')</script>";
                 }
@@ -191,7 +191,7 @@
 
         function load_json_data(id){
             var html_code = '';
-            $.getJSON('json/industry.json', function(data){
+            $.getJSON('../json/industry.json', function(data){
 
                 function SortByName(x,y){
                     return (((x.name).toLowerCase() == (y.name).toLowerCase()) ? 0 : (((x.name).toLowerCase() > (y.name).toLowerCase()) ? 1 : -1 ));
@@ -248,7 +248,7 @@
        //console.log(parent_id);
        //console.log(id);
      var html_code = '';
-     $.getJSON('json/location.json', function(data){
+     $.getJSON('../json/location.json', function(data){
 
       html_code += '<option value="">Select '+id+'</option>';
       $.each(data, function(key, value){
