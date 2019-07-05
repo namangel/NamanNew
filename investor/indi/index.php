@@ -763,7 +763,7 @@
 		<p class="subheading mb-6">
 			<?php
 				if($member == 0){
-					echo "<a href='#membership'>Become a member</a>";
+					echo "<a href='../../account/direct_member_individual.php' target='_blank'>Become a member</a>";
 				}
 				else{
 					if($_SESSION['memexp'] == "EXPIRED"){
