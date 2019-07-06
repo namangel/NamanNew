@@ -57,7 +57,7 @@
 
 </script>
 <body>
-<?php require "../include/header/registerheader.php"?>
+<?php require "../include/header/plainheader.php"?>
 
   <div class="panel panel-primary m-5 text-center">
       <div class="panel-heading">
@@ -107,7 +107,7 @@
   <br>
   <br>
 
-  <?php require "../include/footer/regfooter.php"?>
+  <?php require "../include/footer/footersmall.php"?>
 
 </body>
 </html>

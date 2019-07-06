@@ -1209,8 +1209,11 @@
 				    </div>
 				</div>
 				<div class="row">
-			    <div class="container-fluid">
+			    <div class="container-fluid col-md-6 col-sm-12">
 			        <button type="button" class="btn btn-member" onclick="window.open('../../account/direct_member_institution.php')" style="margin:20px 50px 0px 50px">BECOME OUR MEMBER</button>
+			    </div>
+					<div class="container-fluid col-md-6 col-sm-12">
+						  <button type="button" class="btn btn-member" onclick="window.open('../browse/browsestartup.php')" style="margin:20px 50px 0px 50px">START BROWSING</button>
 			    </div>
 			</div>
 			</div>

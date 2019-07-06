@@ -14,17 +14,19 @@
     //     header('location: browsebyname.php?pageno=1');
     // }
     $u = $_SESSION['InvID'];
-	$qu = "SELECT * FROM inv_details WHERE InvID='$u'";
+	  $qu = "SELECT * FROM inv_details WHERE InvID='$u'";
   	$results = mysqli_query($db, $qu);
-	$row = mysqli_fetch_assoc($results);
+	  $row = mysqli_fetch_assoc($results);
     $cname = $row['CName'];
+    $Type = $row['Type'];
 
     $qu = "SELECT * FROM userinv WHERE InvID='$u'";
-  	$resultrow = mysqli_query($db, $qu);
+  	$results= mysqli_query($db, $qu);
     $row = mysqli_fetch_assoc($results);
+    $MemID = $row['MemID'];
     $memberstatus = 'Member';
     if(empty($row['MemID'])){
-        $memberstatus = 'NotMember'; ///not a member
+        $memberstatus = 'NotMember'; //member
     }
 ?>
 
@@ -96,8 +98,18 @@
     </div>
     <div class="row">
         <?php
-            if($memberstatus == 'Member'){
+            if($memberstatus == 'NotMember'){
                 echo '<p style="color:gray;padding-bottom:10px"><i class="fa fa-lock" aria-hidden="true"></i> Become A Member to have an exclusive access to profile of Startups</p>';
+
+                if($Type == 'Individual'){
+                  echo "<br>";
+                  echo "<a href='../../account/direct_member_individual.php'>Click here to request membership</a>";
+                }
+
+                if($Type == 'Institution'){
+                  echo "<br>";
+                  echo '<a href="../../account/direct_member_institution.php">Click here to request membership</a>';
+                }
             }
         ?>
     </div>
@@ -168,9 +180,12 @@
                                     echo'</div>';
                                     // echo'<div class="card-footer btn btn-viewprofile">';
                                         $button = "";
-                                        if($memberstatus == 'NotMember'){
+                                        if($memberstatus == 'Member'){
                                             $button = "<a href='../../profile/index.php?st=".$row['StpID']."' target='_blank'>
                                             <button type='submit' class='card-footer btn btn-viewprofile btn-lg btn-block button' name='subinv' value='View Profile' action='index.php'><span>View Profile</span></button></a>";
+                                        }
+                                        if($memberstatus == 'NotMember'){
+                                            $button = "<button type='button' class='card-footer btn btn-viewprofile btn-lg btn-block button' name='subinv' value='View Profile' data-toggle='tooltip' data-placement='top' title='Become a member to view profile' disabled><span>View Profile</span></button></a>";
                                         }
                                         echo $button;
                                     // echo'</div>';

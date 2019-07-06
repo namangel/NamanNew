@@ -985,9 +985,13 @@
           </div>
         </div>
         <div class="row">
-          <div class="container-fluid">
-            <button type="button" class="btn btn-member" onclick="window.open('../../account/direct_member_individual.php')" style="margin:20px 50px 0px 50px">BECOME OUR MEMBER</button>
-          </div>
+          <div class="container-fluid col-md-6 col-sm-12">
+            <button type="button" class="btn btn-member mb-4" onclick="window.open('../../account/direct_member_individual.php')" style="margin:20px 50px 0px 50px">BECOME OUR MEMBER</button>
+					</div>
+					<div class="container-fluid col-md-6 col-sm-12">
+            <!-- <p class="lead">Already a member? Start browsing!!</p> -->
+            <button type="button" class="btn btn-member" onclick="window.open('../browse/browsestartup.php')" style="margin:20px 50px 0px 50px">START BROWSING</button>
+					</div>
         </div>
     </section>
 
