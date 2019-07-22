@@ -1,9 +1,9 @@
  <header id="header" class="fixed-top">
     <div class="container">
 
-      <div class="logo float-left">
+      <div class="logo float-left d-block">
         <!-- Uncomment below if you prefer to use an image logo -->
-        <!-- <h1 class="text-light"><a href="#header"><span>Naman Angels</span></a></h1> -->
+        <!-- <h1 class="text-light"><a href="#header"><span>Billennium Divas</span></a></h1> -->
         <a href="#intro" class="scrollto"><img src="/NamanNew/img/Logo.png" alt="Logo"></a>
       </div>
 

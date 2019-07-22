@@ -54,7 +54,7 @@
 ?>
 <html>
     <head>
-        <title>Transactions | NAMAN</title>
+        <title>Transactions | B-Divas</title>
         <link rel="icon" href="../img/favicon.jpg" type="image/jpg" sizes="16x16">
         <link rel="stylesheet" href="css/transaction.css">
         <style>
@@ -133,7 +133,7 @@
                 <div class="col-md-12">
                 <div class="content">
                     <h2>Transaction Details!</h2>
-                    <p>Manage the deals made through Naman Angels and update the transaction details.</p>
+                    <p>Manage the deals made through Billennium Divas and update the transaction details.</p>
                 </div>
                 </div>
             </div>

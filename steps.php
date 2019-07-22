@@ -4,8 +4,8 @@
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <link href="img/naman.png" rel="icon">
-        <title>Learn What We Do | Naman Angels India Foundation</title>
+        <link href="img/divas.png" rel="icon">
+        <title>Learn What We Do | Billennium Divas</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
@@ -116,7 +116,7 @@
                         <a href="#" class="timeline">
                             <div class="timeline-icon"><i class="fa fa-mobile"></i></div>
                             <div class="timeline-content">
-                                <h3 class="title">Naman connects both</h3>
+                                <h3 class="title">Billennium Divas connects both</h3>
                                 <p class="description">
                                     Our team connects interested investors to respective startups. Face to face meetings or via skype or phone calls shall be arranged.
                                 </p>

@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>About Naman Angels | NAMAN</title>
+        <title>About Billennium Divas | B-Divas</title>
         <link rel="icon" href="../../img/favicon.jpg" type="image/jpg" sizes="16x16">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -256,10 +256,10 @@
           <p>
               <font class="content">
               Building a successful business requires more than just capital – a motivated team, a business edge, mentoring, technological
-              support and networks NAMAN nurtures the idea of start-ups, helps them grow with proper mentoring and provides varied investment
-              opportunities for the investors. NAMAN ensures that quality startups are given the support they need in the form of capital,
-              tech support and mentoring. NAMAN carefully curate startups and hand-hold them through the entire process of angel investing.
-              The startups choose by NAMAN and they have an overall access to all amenities of our incubation center, networks and technology
+              support and networks B-Divas nurtures the idea of start-ups, helps them grow with proper mentoring and provides varied investment
+              opportunities for the investors. B-Divas ensures that quality startups are given the support they need in the form of capital,
+              tech support and mentoring. B-Divas carefully curate startups and hand-hold them through the entire process of angel investing.
+              The startups choose by B-Divas and they have an overall access to all amenities of our incubation center, networks and technology
               support.
               </font>
           </p>
@@ -271,9 +271,9 @@
         <center><font class="top">For Investor</font></center>
           <p>
               <font class="content">
-              As Seed Investment continues to grow, Naman Angels India Foundation will strive to bring investors a greater breadth of
+              As Seed Investment continues to grow, Billennium Divas will strive to bring investors a greater breadth of
               investment opportunities. Investors when onboard are provided with Investor Development Program (IDP) and opportunities to
-              attend round table conferences with fellow investors. Once the agreement is signed the investor becomes a certified NAMAN
+              attend round table conferences with fellow investors. Once the agreement is signed the investor becomes a certified B-Divas
               investor with recognition across social media.
               </font>
           </p>
@@ -286,11 +286,11 @@
         <center><font class="top">Company Info</font></center>
         <p>
             <font class="content">
-                Naman Angels India Foundation (NAMAN) is Navi Mumbai’s first Seed Investment & Innovation Platform.
+                Billennium Divas  is Navi Mumbai’s first Seed Investment & Innovation Platform.
                 We are committed to disrupt the seed investment in Navi Mumbai and Maharashtra. Our innovation platform
                 provides values to startups through its angel networks, venture funds & co-working facility and strategic tie-ups.<br>
-                NAMAN ensures that quality startups are given the support they need in the form of capital, tech support and mentoring.
-                NAMAN carefully curate startups and hand-hold them through the entire process of angel investing.
+                B-Divas ensures that quality startups are given the support they need in the form of capital, tech support and mentoring.
+                B-Divas carefully curate startups and hand-hold them through the entire process of angel investing.
             </font>
         </p>
         <center><font style="font-size: 24px; color: #1390ff;">Objectives</font></center><br>

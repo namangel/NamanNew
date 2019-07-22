@@ -11,8 +11,8 @@ Footer
     <div class="row">
 
         <div class="col-lg-4 col-md-6 footer-info">
-        <h3>Naman Angels</h3>
-        <p class="text-justify">Naman Angels India Foundation (NAMAN) is Navi Mumbai’s first Seed Investment & Innovation Platform. We are committed to disrupt the seed investment in Navi Mumbai and Maharashtra. Our innovation platform provides values to startups through its angel networks, mentors, venture funds & co-working facility and strategic tie-ups.</p>
+        <h3>Billennium Divas</h3>
+        <p class="text-justify">Billennium Divas  is Navi Mumbai’s first Seed Investment & Innovation Platform. We are committed to disrupt the seed investment in Navi Mumbai and Maharashtra. Our innovation platform provides values to startups through its angel networks, mentors, venture funds & co-working facility and strategic tie-ups.</p>
         </div>
 
         <div class="col-lg-2 col-md-6 footer-links">

@@ -1,8 +1,8 @@
 <?php require('../server.php') ?>
 <html>
 <head>
-  <title>Membership | Naman Angels India Foundation</title>
-  <link href="../img/naman.png" rel="icon">
+  <title>Membership | Billennium Divas</title>
+  <link href="../img/divas.png" rel="icon">
   <link rel="stylesheet" type="text/css" href="css/register.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>

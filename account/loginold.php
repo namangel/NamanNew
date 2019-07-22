@@ -13,8 +13,8 @@ if(isset($_SESSION['InvID'])){
 <head>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link type="text/css" rel="stylesheet" href="css\sign.css">
-	<title>Login | Naman Angels India Foundation</title>
-	<link href="../img/naman.png" rel="icon">
+	<title>Login | Billennium Divas</title>
+	<link href="../img/divas.png" rel="icon">
 </head>
 <body>
 
@@ -26,7 +26,7 @@ if(isset($_SESSION['InvID'])){
 		<center>
 		<img src="../img/logo.png" height="200">
 		</center>
-		Welcome to Naman
+		Welcome to Billennium Divas
 		<hr style="align:center;size:10px;width:30%">
 	</div>
 

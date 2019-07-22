@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
         <title>Session Expired</title>
-        <link href="img/naman.png" rel="icon">
+        <link href="img/divas.png" rel="icon">
         <style media="screen">
         html, body {
             height: 100%;

@@ -25,8 +25,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Payment | Naman Angels India Foundation</title>
-    <link href="../img/naman.png" rel="icon">
+    <title>Payment | Billennium Divas</title>
+    <link href="../img/divas.png" rel="icon">
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">

@@ -8,8 +8,8 @@
 
     <head>
         <meta charset="utf-8">
-        <link href="../img/naman.png" rel="icon">
-        <title>Login | Naman Angels India Foundation</title>
+        <link href="../img/divas.png" rel="icon">
+        <title>Login | Billennium Divas</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <link href="../css/style.css" rel="stylesheet">

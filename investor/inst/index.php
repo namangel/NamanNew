@@ -265,8 +265,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-	<link href="../../img/naman.png" rel="icon">
-    <title><?=$cname?>'s Dashboard | Naman Angels India Foundation</title>
+	<link href="../../img/divas.png" rel="icon">
+    <title><?=$cname?>'s Dashboard | Billennium Divas</title>
 
 
 
@@ -954,7 +954,7 @@
         <section class="sticky-top shadow p-2 bg-white d-none d-lg-block ">
             <div class="row m-0">
                 <div class="col-12 text-right">
-                    <button class="btn" >NAMAN</button>
+                    <button class="btn" >B-Divas</button>
                         <button class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fa fa-user" style="font-size:20px"></i>
                         </button>
@@ -989,7 +989,7 @@
 								echo "<p class='text-danger'>You're Membership has expired. Please renew asap.</p>";
 							}
 							else if($_SESSION['memexp'] == "MONTHLEFT"){
-								echo "<p class='text-warning'>You're Membership expires within a month. Please contact Naman for renewal purposes</p>";
+								echo "<p class='text-warning'>You're Membership expires within a month. Please contact Billennium Divas for renewal purposes</p>";
 							}
 							echo "Membership ID :- ".$memid;
 						}
@@ -1001,7 +1001,7 @@
 				</p>
 				</div>
                 <p class="lead mb-2">
-					Thank you for your interest in Naman!
+					Thank you for your interest in Billennium Divas!
                     Our team will contact you shortly to discuss your needs and schedulea demo. In the meantime,
                     take a look at some startups in your area.
                 </p>
@@ -1170,8 +1170,8 @@
 				            <div class="media">
 				                <div class="media-body">
 				                    <h3 class="media-heading">Why become a member?</h3>
-				                    <p class="lead">Becoming a member of Naman Angels enables you to explore the startups and look through their details before investing.
-				                    Become a member of Naman Angels network, browse through unlimited industries and get premium treatment.</p>
+				                    <p class="lead">Becoming a member of Billennium Divas enables you to explore the startups and look through their details before investing.
+				                    Become a member of Billennium Divas network, browse through unlimited industries and get premium treatment.</p>
 				                </div>
 				            </div>
 				        </div>
@@ -1362,7 +1362,7 @@
 			    <div class="row">
 			        <div class="col-md-3">
 			            <div class="section-title">
-			                <h3>Investments Through Naman</h3>
+			                <h3>Investments Through Billennium Divas</h3>
 			            </div>
 			        </div>
 
@@ -1430,7 +1430,7 @@
 
 		<section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="consultancy">
 			<div class="w-100">
-			    <h2 class="mb-5">Contact Naman</h2>
+			    <h2 class="mb-5">Contact Billennium Divas</h2>
 			<div class="col-md-12">
 			    <div class="row">
 			        <div class="col-md-6" style="padding-top:10px">

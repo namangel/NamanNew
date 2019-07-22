@@ -7,8 +7,8 @@
 <html lang="en">
 
 <head>
-    <title>Register | Naman Angels India Foundation</title>
-    <link href="../img/naman.png" rel="icon">
+    <title>Register | Billennium Divas</title>
+    <link href="../img/divas.png" rel="icon">
     <link href="../css/style.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
@@ -42,7 +42,7 @@
 			<div class="col-md-6">
 				<div class="">
 					<div class="panel-body">
-						<h3 class="mb-3">Join Naman's Platform for Startup Investing</h3>
+						<h3 class="mb-3">Join Billennium Divas's Platform for Startup Investing</h3>
 						<h5 class="media-heading mt-3">Please select the role that best describes you.</h5>
 						<div class="row justify-content-center align-items-center">
 							<button class="col-md-8 btn btn-lg btn-block btn-primary mt-5" onclick = "location.href='register_st.php'">I am a Startup</button>

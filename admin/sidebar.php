@@ -305,7 +305,7 @@ if(!isset($_SESSION['adminID'])){
     <aside class="side-nav" id="show-side-navigation1">
       <i class="fa fa-bars close-aside hidden-sm hidden-md hidden-lg" data-close="show-side-navigation1"></i>
       <div class="heading">
-        <h2>Naman Angels</h2><br>
+        <h2>Billennium Divas</h2><br>
         <?= "<img src='../".$ProfilePic."' style='border-radius:50%;'/>";?>
         <div class="info">
           <h3><a href="profile.php"><?php echo $AdminName;?></a></h3>

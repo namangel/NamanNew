@@ -149,7 +149,7 @@
         $verify = '#cf1919';
         $acctype = "Verify Yourself";
         $verifydisable = 'disabled';
-        $message = 'Your Account is not yet verified By Naman Angels. Please continue to complete your profile and have an early verification.';
+        $message = 'Your Account is not yet verified By Billennium Divas. Please continue to complete your profile and have an early verification.';
     }
     else{
         $verify = '#18c74d';
@@ -167,8 +167,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title><?=$Stname?>'s Dashboard | Naman Angels India Foundation</title>
-    <link href="../img/naman.png" rel="icon">
+    <title><?=$Stname?>'s Dashboard | Billennium Divas</title>
+    <link href="../img/divas.png" rel="icon">
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -268,7 +268,7 @@
     <section class="sticky-top shadow p-2 bg-white d-sm-none d-lg-block ">
       <div class="row">
         <div class="col-12 text-right">
-        <button class="btn btn-member" >NAMAN</button>
+        <button class="btn btn-member" >B-Divas</button>
         <!-- <button class="btn btn-member" onclick="window.open('../browse/browsestartup.php')"><i class="fa fa-navicon" style="font-size:20px;color:white"></i></button> -->
         </div>
       </div>

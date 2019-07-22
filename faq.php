@@ -2,9 +2,9 @@
 <html lang="en">
 
 <head>
-    <title>Frequently Asked Questions| Naman Angels India Foundation</title>
+    <title>Frequently Asked Questions| Billennium Divas</title>
     <link href="investor/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="img/naman.png" rel="icon">
+    <link href="img/divas.png" rel="icon">
 
     <!-- Custom fonts for this template -->
     <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet">
@@ -32,7 +32,7 @@
                 <a data-toggle="collapse" data-parent="#accordionEx" href="#collapseOne1" aria-expanded="true"
                 aria-controls="collapseOne1">
                 <h5 class="mb-0">
-                    What is NAMAN? <i class="fas fa-angle-down rotate-icon"></i>
+                    What is B-Divas? <i class="fas fa-angle-down rotate-icon"></i>
                 </h5>
                 </a>
             </div>
@@ -40,7 +40,7 @@
             <!-- Card body -->
             <div id="collapseOne1" class="collapse show" role="tabpanel" aria-labelledby="headingOne1" data-parent="#accordionEx">
                 <div class="card-body">
-                    Naman Angels India Foundation is Navi Mumbai’s first angel network focused on facilitating investments in early stage startups. The company acts as a facilitator and undertakes secretarial functions on behalf of NAMAN members.
+                    Billennium Divas is Navi Mumbai’s first angel network focused on facilitating investments in early stage startups. The company acts as a facilitator and undertakes secretarial functions on behalf of B-Divas members.
                 </div>
             </div>
 
@@ -55,7 +55,7 @@
                 <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx" href="#collapseTwo2"
                 aria-expanded="false" aria-controls="collapseTwo2">
                 <h5 class="mb-0">
-                    Who are NAMAN members? <i class="fas fa-angle-down rotate-icon"></i>
+                    Who are B-Divas members? <i class="fas fa-angle-down rotate-icon"></i>
                 </h5>
                 </a>
             </div>
@@ -63,7 +63,7 @@
             <!-- Card body -->
             <div id="collapseTwo2" class="collapse" role="tabpanel" aria-labelledby="headingTwo2" data-parent="#accordionEx">
                 <div class="card-body">
-                    NAMAN Network members are successful entrepreneurs, business professionals and industry experts who want to invest in early stage companies and also support them with their expertise and networks.
+                    B-Divas Network members are successful entrepreneurs, business professionals and industry experts who want to invest in early stage companies and also support them with their expertise and networks.
                 </div>
             </div>
 
@@ -86,7 +86,7 @@
             <!-- Card body -->
             <div id="collapseThree3" class="collapse" role="tabpanel" aria-labelledby="headingThree3" data-parent="#accordionEx">
                 <div class="card-body">
-                    NAMAN currently operates chapters in Mumbai. These meetings are conducted once a month.
+                    B-Divas currently operates chapters in Mumbai. These meetings are conducted once a month.
                 </div>
             </div>
 
@@ -101,7 +101,7 @@
                 <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx" href="#collapseThree4"
                 aria-expanded="false" aria-controls="collapseThree4">
                 <h5 class="mb-0">
-                    Does NAMAN charge any fee? <i class="fas fa-angle-down rotate-icon"></i>
+                    Does B-Divas charge any fee? <i class="fas fa-angle-down rotate-icon"></i>
                 </h5>
                 </a>
             </div>
@@ -109,7 +109,7 @@
             <!-- Card body -->
             <div id="collapseThree4" class="collapse" role="tabpanel" aria-labelledby="headingThree4" data-parent="#accordionEx">
                 <div class="card-body">
-                    NAMAN charges a concession from the startups post investment from the funds raised.
+                    B-Divas charges a concession from the startups post investment from the funds raised.
                 </div>
             </div>
 
@@ -132,7 +132,7 @@
             <!-- Card body -->
             <div id="collapseThree5" class="collapse" role="tabpanel" aria-labelledby="headingThree5" data-parent="#accordionEx">
                 <div class="card-body">
-                    Yes, there are guidelines for presentations. Please ask the NAMAN team to send you the guidelines if you haven’t received them.
+                    Yes, there are guidelines for presentations. Please ask the B-Divas team to send you the guidelines if you haven’t received them.
                 </div>
             </div>
 
@@ -156,7 +156,7 @@
             <!-- Card body -->
             <div id="collapseThree6" class="collapse" role="tabpanel" aria-labelledby="headingThree6" data-parent="#accordionEx">
                 <div class="card-body">
-                    Please share your valuation expectations with the NAMAN team before you confirm your interest in presenting. While valuations are largely based on negotiations here is some information, the average valuation for angel networks is Rs. 10 crores post money. In case your company is pre-revenues or has revenues less than Rs. 10 lakhs the valuations are usually below this mark. Companies with substantial revenues or with a team with strong domain experience a higher valuation can be expected.
+                    Please share your valuation expectations with the B-Divas team before you confirm your interest in presenting. While valuations are largely based on negotiations here is some information, the average valuation for angel networks is Rs. 10 crores post money. In case your company is pre-revenues or has revenues less than Rs. 10 lakhs the valuations are usually below this mark. Companies with substantial revenues or with a team with strong domain experience a higher valuation can be expected.
                 </div>
             </div>
 
@@ -171,7 +171,7 @@
                 <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx" href="#collapseThree7"
                 aria-expanded="false" aria-controls="collapseThree7">
                 <h5 class="mb-0">
-                    What is the maximum amount of money I can raise from NAMAN network? <i class="fas fa-angle-down rotate-icon"></i>
+                    What is the maximum amount of money I can raise from B-Divas network? <i class="fas fa-angle-down rotate-icon"></i>
                 </h5>
                 </a>
             </div>
@@ -179,7 +179,7 @@
             <!-- Card body -->
             <div id="collapseThree7" class="collapse" role="tabpanel" aria-labelledby="headingThree7" data-parent="#accordionEx">
                 <div class="card-body">
-                    The typical raise that NAMAN members together can support is around Rs. 20-25 lakhs. However, NAMAN has tie ups with other angel networks and VC firms thus NAMAN enables startups to raise higher funds.
+                    The typical raise that B-Divas members together can support is around Rs. 20-25 lakhs. However, B-Divas has tie ups with other angel networks and VC firms thus B-Divas enables startups to raise higher funds.
                 </div>
             </div>
 
@@ -298,7 +298,7 @@
             <!-- Card body -->
             <div id="collapseThree14" class="collapse" role="tabpanel" aria-labelledby="headingThree14" data-parent="#accordionEx">
                 <div class="card-body">
-                    We expect companies shortlisted for presentation to provide information to the best of their knowledge in their own interest. If at any point of time it is found that the information submitted is incorrect then the investment process is likely to be cancelled. Companies should also share any material change that occurs during the process of the investment or due diligence that may affect the investment. In case they are also engaging with other investors, companies should keep the NAMAN team informed of such developments.
+                    We expect companies shortlisted for presentation to provide information to the best of their knowledge in their own interest. If at any point of time it is found that the information submitted is incorrect then the investment process is likely to be cancelled. Companies should also share any material change that occurs during the process of the investment or due diligence that may affect the investment. In case they are also engaging with other investors, companies should keep the B-Divas team informed of such developments.
                 </div>
             </div>
 
@@ -314,7 +314,7 @@
                 <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx" href="#collapseThree15"
                 aria-expanded="false" aria-controls="collapseThree15">
                 <h5 class="mb-0">
-                    What is the support NAMAN provides post investment? <i class="fas fa-angle-down rotate-icon"></i>
+                    What is the support B-Divas provides post investment? <i class="fas fa-angle-down rotate-icon"></i>
                 </h5>
                 </a>
             </div>
@@ -322,7 +322,7 @@
             <!-- Card body -->
             <div id="collapseThree15" class="collapse" role="tabpanel" aria-labelledby="headingThree15" data-parent="#accordionEx">
                 <div class="card-body">
-                        NAMAN members and team take the support function for startups very seriously. Post investment the team works with the startup to assist it key areas like future capital raise, business connections, PR and talent search.
+                        B-Divas members and team take the support function for startups very seriously. Post investment the team works with the startup to assist it key areas like future capital raise, business connections, PR and talent search.
                 </div>
             </div>
 
@@ -332,59 +332,7 @@
     </div>
     <!-- Accordion wrapper -->
 
-    <section class="sticky-bottom shadow p-1 bg-light">
-          <div class="row" style="font-size:12px">
-            <div class="col-md-12 text-center p-2">
-                <div class="row">
-                    <div class="col-md-12 text-center p-1">
-                        <div class="col-2 d-inline">
-                            <a href="index.php#intro" class="text-dark">Home</a>
-                        </div>
-                        <div class="col-2 d-inline">
-                            <a href="index.php#about" class="text-dark">About</a>
-                        </div>
-                        <div class="col-2 d-inline">
-                            <a href="include/about/terms.php" class="text-dark">Terms and Conditions</a>
-                        </div>
-                        <div class="col-2 d-inline">
-                            <a href="include/about/privacy.php" class="text-dark">Privacy policy</a>
-                        </div>
-                        <div class="col-2 d-inline">
-                            <a href="faq.php" class="text-dark">FAQs</a>
-                        </div>
-                        <div class="col-2 d-inline">
-                            <a href="index.php#contact" class="text-dark">Contact</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-12 text-center p-1">
-                        <div class="col-md-12 d-block">
-                            Copyright @2019
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12 text-center p-1">
-                        <div class="col-1 d-inline">
-                            <a href="#" class="text-dark"><i class="fa fa-facebook-f"></i></a>
-                        </div>
-                        <div class="col-1 d-inline">
-                            <a href="#" class="text-dark"><i class="fa fa-twitter"></i></a>
-                        </div>
-                        <div class="col-1 d-inline">
-                            <a href="#" class="text-dark"><i class="fa fa-linkedin"></i></a>
-                        </div>
-
-                        <div class="col-1 d-inline">
-                            <a href="#" class="text-dark"><i class="fa fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+     <?php require "include/footer/footer.php"?>
 
 
 

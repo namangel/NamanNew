@@ -71,7 +71,7 @@
 ?>
 <html>
 <head>
-    <title><?=$AdminName?>'s Account | NAMAN</title>
+    <title><?=$AdminName?>'s Account | B-Divas</title>
     <link rel="icon" href="../img/favicon.jpg" type="image/jpg" sizes="16x16">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta charset="utf-8">

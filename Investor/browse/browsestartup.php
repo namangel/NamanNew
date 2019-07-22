@@ -33,8 +33,8 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Browse Startups | Naman Angels India Foundation</title>
-    <link href="../../img/naman.png" rel="icon">
+    <title>Browse Startups | Billennium Divas</title>
+    <link href="../../img/divas.png" rel="icon">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
